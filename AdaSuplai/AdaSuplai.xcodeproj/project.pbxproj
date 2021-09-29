@@ -74,6 +74,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9D64D0E27030341000DDB95 /* Build configuration list for PBXNativeTarget "AdaSuplai" */;
 			buildPhases = (
+				4DB9FA792704A19300B36E98 /* Run SwiftLint */,
 				B9D64CF627030340000DDB95 /* Sources */,
 				B9D64CF727030340000DDB95 /* Frameworks */,
 				B9D64CF827030340000DDB95 /* Resources */,
@@ -132,6 +133,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DB9FA792704A19300B36E98 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B9D64CF627030340000DDB95 /* Sources */ = {
