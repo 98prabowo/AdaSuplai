@@ -1,0 +1,18 @@
+disabled_rules:
+  - identifier_name
+  - trailing_whitespace
+  
+opt_in_rules:
+  - empty_count
+  
+excluded:
+  - Carthage
+  - Pods
+
+line_length:
+  warning: 150
+  error: 200
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
