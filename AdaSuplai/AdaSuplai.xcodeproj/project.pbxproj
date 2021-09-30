@@ -11,21 +11,46 @@
 		4DB9FA7F2705930A00B36E98 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7E2705930A00B36E98 /* AlamofireImage */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
 		B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFF27030340000DDB95 /* SceneDelegate.swift */; };
-		B9D64D0227030340000DDB95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64D0127030340000DDB95 /* ViewController.swift */; };
+		B9D64D0227030340000DDB95 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64D0127030340000DDB95 /* AuthenticationController.swift */; };
 		B9D64D0527030340000DDB95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0327030340000DDB95 /* Main.storyboard */; };
 		B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0627030341000DDB95 /* Assets.xcassets */; };
 		B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0827030341000DDB95 /* LaunchScreen.storyboard */; };
+		C3C94D8927059ABE00688485 /* AdaSuplaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */; };
+		C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */; };
+		C3C94D9A27059CF000688485 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9927059CF000688485 /* BaseViewModel.swift */; };
+		C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9C27059D7C00688485 /* BaseUIViewController.swift */; };
+		C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */; };
+		C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94DA127059F2700688485 /* Extension-UIView.swift */; };
+		C3C94DA72705A07100688485 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94DA62705A07100688485 /* Model.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C3C94D8A27059ABE00688485 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9D64CF227030340000DDB95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9D64CF927030340000DDB95;
+			remoteInfo = AdaSuplai;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D64CFD27030340000DDB95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D64CFF27030340000DDB95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B9D64D0127030340000DDB95 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B9D64D0127030340000DDB95 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		B9D64D0427030340000DDB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9D64D0627030341000DDB95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D64D0927030341000DDB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D64D0B27030341000DDB95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3C94D8627059ABE00688485 /* AdaSuplaiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdaSuplaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaSuplaiTests.swift; sourceTree = "<group>"; };
+		C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		C3C94D9927059CF000688485 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		C3C94D9C27059D7C00688485 /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
+		C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-Identifiable.swift"; sourceTree = "<group>"; };
+		C3C94DA127059F2700688485 /* Extension-UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIView.swift"; sourceTree = "<group>"; };
+		C3C94DA62705A07100688485 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +63,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3C94D8327059ABE00688485 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D64CFC27030340000DDB95 /* AdaSuplai */,
+				C3C94D8727059ABE00688485 /* AdaSuplaiTests */,
 				B9D64CFB27030340000DDB95 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D64CFA27030340000DDB95 /* AdaSuplai.app */,
+				C3C94D8627059ABE00688485 /* AdaSuplaiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,15 +94,117 @@
 		B9D64CFC27030340000DDB95 /* AdaSuplai */ = {
 			isa = PBXGroup;
 			children = (
-				B9D64CFD27030340000DDB95 /* AppDelegate.swift */,
-				B9D64CFF27030340000DDB95 /* SceneDelegate.swift */,
-				B9D64D0127030340000DDB95 /* ViewController.swift */,
-				B9D64D0327030340000DDB95 /* Main.storyboard */,
-				B9D64D0627030341000DDB95 /* Assets.xcassets */,
-				B9D64D0827030341000DDB95 /* LaunchScreen.storyboard */,
-				B9D64D0B27030341000DDB95 /* Info.plist */,
+				C3C94D9727059C7B00688485 /* Core */,
+				C3C94D8F27059AEB00688485 /* Main Resource */,
+				C3C94D9B27059D3200688485 /* Module */,
 			);
 			path = AdaSuplai;
+			sourceTree = "<group>";
+		};
+		C3C94D8727059ABE00688485 /* AdaSuplaiTests */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */,
+			);
+			path = AdaSuplaiTests;
+			sourceTree = "<group>";
+		};
+		C3C94D8F27059AEB00688485 /* Main Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94D9027059AFD00688485 /* Base */,
+				B9D64D0827030341000DDB95 /* LaunchScreen.storyboard */,
+				B9D64D0627030341000DDB95 /* Assets.xcassets */,
+				B9D64D0B27030341000DDB95 /* Info.plist */,
+			);
+			path = "Main Resource";
+			sourceTree = "<group>";
+		};
+		C3C94D9027059AFD00688485 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B9D64CFD27030340000DDB95 /* AppDelegate.swift */,
+				B9D64CFF27030340000DDB95 /* SceneDelegate.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C3C94D9127059C1800688485 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94D9427059C5500688485 /* ViewModel */,
+				C3C94D9227059C3A00688485 /* Controller */,
+				C3C94D9327059C4500688485 /* View */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C3C94D9227059C3A00688485 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9D64D0127030340000DDB95 /* AuthenticationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C3C94D9327059C4500688485 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9D64D0327030340000DDB95 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C3C94D9427059C5500688485 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C3C94D9727059C7B00688485 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94DA52705A06600688485 /* Model */,
+				C3C94D9E27059EBE00688485 /* Helper */,
+				C3C94D9827059C8A00688485 /* Base */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C3C94D9827059C8A00688485 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94D9927059CF000688485 /* BaseViewModel.swift */,
+				C3C94D9C27059D7C00688485 /* BaseUIViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C3C94D9B27059D3200688485 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94D9127059C1800688485 /* Authentication */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		C3C94D9E27059EBE00688485 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */,
+				C3C94DA127059F2700688485 /* Extension-UIView.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		C3C94DA52705A06600688485 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3C94DA62705A07100688485 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +232,24 @@
 			productReference = B9D64CFA27030340000DDB95 /* AdaSuplai.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C3C94D8527059ABE00688485 /* AdaSuplaiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3C94D8E27059ABE00688485 /* Build configuration list for PBXNativeTarget "AdaSuplaiTests" */;
+			buildPhases = (
+				C3C94D8227059ABE00688485 /* Sources */,
+				C3C94D8327059ABE00688485 /* Frameworks */,
+				C3C94D8427059ABE00688485 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3C94D8B27059ABE00688485 /* PBXTargetDependency */,
+			);
+			name = AdaSuplaiTests;
+			productName = AdaSuplaiTests;
+			productReference = C3C94D8627059ABE00688485 /* AdaSuplaiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -108,6 +262,10 @@
 				TargetAttributes = {
 					B9D64CF927030340000DDB95 = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					C3C94D8527059ABE00688485 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = B9D64CF927030340000DDB95;
 					};
 				};
 			};
@@ -129,6 +287,7 @@
 			projectRoot = "";
 			targets = (
 				B9D64CF927030340000DDB95 /* AdaSuplai */,
+				C3C94D8527059ABE00688485 /* AdaSuplaiTests */,
 			);
 		};
 /* End PBXProject section */
@@ -141,6 +300,13 @@
 				B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */,
 				B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */,
 				B9D64D0527030340000DDB95 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3C94D8427059ABE00688485 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,13 +338,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9D64D0227030340000DDB95 /* ViewController.swift in Sources */,
+				C3C94DA72705A07100688485 /* Model.swift in Sources */,
+				C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */,
+				C3C94D9A27059CF000688485 /* BaseViewModel.swift in Sources */,
+				B9D64D0227030340000DDB95 /* AuthenticationController.swift in Sources */,
+				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
+				C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */,
+				C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */,
 				B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */,
 				B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3C94D8227059ABE00688485 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3C94D8927059ABE00688485 /* AdaSuplaiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3C94D8B27059ABE00688485 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9D64CF927030340000DDB95 /* AdaSuplai */;
+			targetProxy = C3C94D8A27059ABE00688485 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B9D64D0327030340000DDB95 /* Main.storyboard */ = {
@@ -370,6 +558,52 @@
 			};
 			name = Release;
 		};
+		C3C94D8C27059ABE00688485 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DY684J9X8;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dimasprabowo.AdaSuplaiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdaSuplai.app/AdaSuplai";
+			};
+			name = Debug;
+		};
+		C3C94D8D27059ABE00688485 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DY684J9X8;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dimasprabowo.AdaSuplaiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdaSuplai.app/AdaSuplai";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -387,6 +621,15 @@
 			buildConfigurations = (
 				B9D64D0F27030341000DDB95 /* Debug */,
 				B9D64D1027030341000DDB95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3C94D8E27059ABE00688485 /* Build configuration list for PBXNativeTarget "AdaSuplaiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3C94D8C27059ABE00688485 /* Debug */,
+				C3C94D8D27059ABE00688485 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
