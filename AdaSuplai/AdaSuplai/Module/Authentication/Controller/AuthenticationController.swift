@@ -11,9 +11,6 @@ class AuthenticationController: BaseUIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
-
 }
-

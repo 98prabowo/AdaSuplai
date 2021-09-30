@@ -7,7 +7,14 @@ opt_in_rules:
 excluded:
   - Carthage
   - Pods
-  
+
 line_length:
-  warning: 150
+  warning: 110
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
   error: 200
+
+disabled_rules:
+  - trailing_whitespace
