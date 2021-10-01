@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 extension Identifiable where Self: NSObject {
     public static var identifier: String {
         String(describing: self)
+    }
+    
+    public static func nib() -> UINib {
+        return UINib(nibName: Self.identifier, bundle: nil)
     }
 }
