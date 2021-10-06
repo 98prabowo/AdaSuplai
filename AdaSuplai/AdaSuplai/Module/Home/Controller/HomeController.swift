@@ -84,7 +84,10 @@ extension HomeController: UISearchControllerDelegate, UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
+        let nextVC = SearchUpdaterController(nibName: SearchUpdaterController.identifier, bundle: nil)
+        let navController = UINavigationController(rootViewController: nextVC)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: false, completion: nil)
     }
 }
 
