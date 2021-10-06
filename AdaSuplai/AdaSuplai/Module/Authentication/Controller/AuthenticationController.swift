@@ -2,15 +2,15 @@
 //  AuthenticationController.swift
 //  AdaSuplai
 //
-//  Created by David Tandjung on 28/09/21.
+//  Created by Dimas A. Prabowo on 01/10/21.
 //
 
 import UIKit
 
-class AuthenticationController: BaseUIViewController {
+class AuthenticationController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
 
+    }
 }

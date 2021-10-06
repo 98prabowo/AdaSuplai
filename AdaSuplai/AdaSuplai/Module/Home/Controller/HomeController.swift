@@ -15,24 +15,36 @@ class HomeController: BaseUIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let searchController = UISearchController(searchResultsController: nil)
+    var searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
-        self.setupSearchController()
         self.setupTableView()
     }
     
     private func setupNavigationBar() {
-        self.navigationItem.searchController = self.searchController
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+        let wishlistButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: .some(#selector(wishlistTapped(_:))))
+        wishlistButton.tintColor = .systemBackground
+        navigationItem.hidesBackButton = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.titleView = searchController.searchBar
+        navigationItem.rightBarButtonItems = [wishlistButton]
+        self.navigationController?.navigationBar.backgroundColor = .systemGreen
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.setupSearchController()
+    }
+    
+    @objc func wishlistTapped(_ sender: UIBarButtonItem) {
+        print("Wishlist Tapped")
     }
     
     private func setupSearchController() {
         self.searchController.delegate = self
-        self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.barTintColor = .systemGreen
+        self.searchController.searchBar.setTextFieldColor(.systemBackground)
         self.searchController.searchBar.placeholder = Constant.searchPlaceholder
     }
     
@@ -67,19 +79,19 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - Search Controller
-extension HomeController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
+extension HomeController: UISearchControllerDelegate, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
     }
-    
-    func willPresentSearchController(_ searchController: UISearchController) {
-        DispatchQueue.main.async {
-            self.searchController.searchResultsController?.view.isHidden = false
+}
+
+extension UISearchBar {
+    func setTextFieldColor(_ color: UIColor) {
+        if let textfield = self.value(forKey: "searchField") as? UITextField {
+            textfield.backgroundColor = color
         }
     }
-    
-    func didPresentSearchController(_ searchController: UISearchController) {
-        self.searchController.searchResultsController?.view.isHidden = false
-    }
-    
 }

@@ -11,7 +11,7 @@
 		4DB9FA7F2705930A00B36E98 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7E2705930A00B36E98 /* AlamofireImage */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
 		B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFF27030340000DDB95 /* SceneDelegate.swift */; };
-		B9D64D0227030340000DDB95 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64D0127030340000DDB95 /* AuthenticationController.swift */; };
+		B9D64D0227030340000DDB95 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64D0127030340000DDB95 /* MainController.swift */; };
 		B9D64D0527030340000DDB95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0327030340000DDB95 /* Main.storyboard */; };
 		B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0627030341000DDB95 /* Assets.xcassets */; };
 		B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0827030341000DDB95 /* LaunchScreen.storyboard */; };
@@ -30,6 +30,10 @@
 		C366D2EC2706FD5500EF1E0C /* BannerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D2EA2706FD5500EF1E0C /* BannerCollectionCell.xib */; };
 		C366D2EF270700BE00EF1E0C /* HotProductCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D2ED270700BE00EF1E0C /* HotProductCollectionCell.swift */; };
 		C366D2F0270700BE00EF1E0C /* HotProductCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D2EE270700BE00EF1E0C /* HotProductCollectionCell.xib */; };
+		C366D2F227071C7200EF1E0C /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C366D2F127071C7200EF1E0C /* TabBar.storyboard */; };
+		C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D2F32707211C00EF1E0C /* AuthenticationController.swift */; };
+		C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C366D2F52707212E00EF1E0C /* Authentication.storyboard */; };
+		C366D331270C3B5B00EF1E0C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D330270C3B5B00EF1E0C /* TabBarController.swift */; };
 		C3C94D8927059ABE00688485 /* AdaSuplaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */; };
 		C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */; };
 		C3C94D9A27059CF000688485 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9927059CF000688485 /* BaseViewModel.swift */; };
@@ -53,7 +57,7 @@
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D64CFD27030340000DDB95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D64CFF27030340000DDB95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B9D64D0127030340000DDB95 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		B9D64D0127030340000DDB95 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B9D64D0427030340000DDB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9D64D0627030341000DDB95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D64D0927030341000DDB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,6 +77,10 @@
 		C366D2EA2706FD5500EF1E0C /* BannerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerCollectionCell.xib; sourceTree = "<group>"; };
 		C366D2ED270700BE00EF1E0C /* HotProductCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotProductCollectionCell.swift; sourceTree = "<group>"; };
 		C366D2EE270700BE00EF1E0C /* HotProductCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotProductCollectionCell.xib; sourceTree = "<group>"; };
+		C366D2F127071C7200EF1E0C /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		C366D2F32707211C00EF1E0C /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		C366D2F52707212E00EF1E0C /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		C366D330270C3B5B00EF1E0C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C3C94D8627059ABE00688485 /* AdaSuplaiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdaSuplaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaSuplaiTests.swift; sourceTree = "<group>"; };
 		C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -125,8 +133,8 @@
 		B9D64CFC27030340000DDB95 /* AdaSuplai */ = {
 			isa = PBXGroup;
 			children = (
-				C3C94D9727059C7B00688485 /* Core */,
 				C3C94D8F27059AEB00688485 /* Main Resource */,
+				C3C94D9727059C7B00688485 /* Core */,
 				C3C94D9B27059D3200688485 /* Module */,
 			);
 			path = AdaSuplai;
@@ -186,6 +194,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C366D2F72707214800EF1E0C /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D64D0127030340000DDB95 /* MainController.swift */,
+				B9D64D0327030340000DDB95 /* Main.storyboard */,
+				C366D2F127071C7200EF1E0C /* TabBar.storyboard */,
+				C366D330270C3B5B00EF1E0C /* TabBarController.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		C3C94D8727059ABE00688485 /* AdaSuplaiTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +246,7 @@
 		C3C94D9227059C3A00688485 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B9D64D0127030340000DDB95 /* AuthenticationController.swift */,
+				C366D2F32707211C00EF1E0C /* AuthenticationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -235,7 +254,7 @@
 		C3C94D9327059C4500688485 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9D64D0327030340000DDB95 /* Main.storyboard */,
+				C366D2F52707212E00EF1E0C /* Authentication.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -263,6 +282,7 @@
 			children = (
 				C3C94D9927059CF000688485 /* BaseViewModel.swift */,
 				C3C94D9C27059D7C00688485 /* BaseUIViewController.swift */,
+				C366D2F72707214800EF1E0C /* MainView */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -383,7 +403,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */,
 				C366D2DC2706F47E00EF1E0C /* HomeCategoryCollectionCell.xib in Resources */,
+				C366D2F227071C7200EF1E0C /* TabBar.storyboard in Resources */,
 				B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */,
 				B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */,
 				C366D2DE2706F98700EF1E0C /* Home.storyboard in Resources */,
@@ -439,9 +461,11 @@
 				C3318D6C2706EF4E002294EC /* HomeViewModel.swift in Sources */,
 				C366D2DB2706F47E00EF1E0C /* HomeCategoryCollectionCell.swift in Sources */,
 				C366D2EB2706FD5500EF1E0C /* BannerCollectionCell.swift in Sources */,
-				B9D64D0227030340000DDB95 /* AuthenticationController.swift in Sources */,
+				B9D64D0227030340000DDB95 /* MainController.swift in Sources */,
+				C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */,
 				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
 				C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */,
+				C366D331270C3B5B00EF1E0C /* TabBarController.swift in Sources */,
 				C366D2E32706FC0F00EF1E0C /* BannerPromoCell.swift in Sources */,
 				C366D2D72706F39F00EF1E0C /* HomeCategoryCell.swift in Sources */,
 				C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */,

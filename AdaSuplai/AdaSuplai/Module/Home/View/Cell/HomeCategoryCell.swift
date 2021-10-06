@@ -8,11 +8,18 @@
 import UIKit
 
 class HomeCategoryCell: UITableViewCell, Identifiable {
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupBackgroundView()
         self.setUpCollectionView()
+    }
+    
+    private func setupBackgroundView() {
+        self.containerView.roundSpecificCorners([.topRight], radius: 20)
+        self.contentView.backgroundColor = .systemGreen
     }
     
     private func setUpCollectionView() {
