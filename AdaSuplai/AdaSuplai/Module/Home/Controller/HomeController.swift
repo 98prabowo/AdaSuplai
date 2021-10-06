@@ -23,15 +23,14 @@ class HomeController: BaseUIViewController {
         self.setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.backgroundColor = .systemGreen
+    }
+    
     private func setupNavigationBar() {
-        let wishlistButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: .some(#selector(wishlistTapped(_:))))
-        wishlistButton.tintColor = .systemBackground
-        navigationItem.hidesBackButton = false
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.titleView = searchController.searchBar
-        navigationItem.rightBarButtonItems = [wishlistButton]
-        self.navigationController?.navigationBar.backgroundColor = .systemGreen
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.setupSearchController()
     }
     
@@ -85,9 +84,19 @@ extension HomeController: UISearchControllerDelegate, UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let nextVC = SearchUpdaterController(nibName: SearchUpdaterController.identifier, bundle: nil)
+        nextVC.homeDelegate = self
         let navController = UINavigationController(rootViewController: nextVC)
         navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: false, completion: nil)
+    }
+}
+
+extension HomeController: SearchNavigationDelegate {
+    func goToSearchResult() {
+        let nextVC = SearchResultController(nibName: SearchResultController.identifier, bundle: nil)
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
     }
 }
 

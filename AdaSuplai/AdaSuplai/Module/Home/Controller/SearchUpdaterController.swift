@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol SearchNavigationDelegate: AnyObject {
+    func goToSearchResult()
+}
+
 class SearchUpdaterController: UIViewController, Identifiable {
     @IBOutlet private weak var tableView: UITableView!
     
+    weak var homeDelegate: SearchNavigationDelegate?
     let searchController = UISearchController(searchResultsController: nil)
     
     var searchText: String = "" {
@@ -55,6 +60,15 @@ extension SearchUpdaterController: UISearchControllerDelegate, UISearchBarDelega
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: false)
+        self.dismiss(animated: false) {
+            if let delegate = self.homeDelegate {
+                delegate.goToSearchResult()
+            }
+        }
     }
 }
 
