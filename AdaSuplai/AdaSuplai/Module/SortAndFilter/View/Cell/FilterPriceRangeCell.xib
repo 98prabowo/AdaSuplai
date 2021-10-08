@@ -65,6 +65,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="header" destination="pN7-oC-C4a" id="JRP-k1-QwJ"/>
                 <outlet property="maxPrice" destination="ZhQ-Uq-0Bu" id="tjr-JI-fqQ"/>
                 <outlet property="minPrice" destination="ErG-OG-5hx" id="rOf-aK-Wlt"/>
             </connections>

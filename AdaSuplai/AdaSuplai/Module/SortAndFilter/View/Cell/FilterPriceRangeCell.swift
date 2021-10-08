@@ -8,6 +8,7 @@
 import UIKit
 
 class FilterPriceRangeCell: UITableViewCell, Identifiable {
+    @IBOutlet weak var header: UILabel!
     @IBOutlet weak var minPrice: UITextField!
     @IBOutlet weak var maxPrice: UITextField!
     
@@ -19,6 +20,10 @@ class FilterPriceRangeCell: UITableViewCell, Identifiable {
     private func setupTextField() {
         self.minPrice.addTarget(self, action: #selector(minPriceDidChanged(_:)), for: .editingChanged)
         self.maxPrice.addTarget(self, action: #selector(maxPriceDidChanged(_:)), for: .editingChanged)
+    }
+    
+    func configure(title: String) {
+        self.header.text = title
     }
     
     @objc private func minPriceDidChanged(_ sender: UITextField) {
