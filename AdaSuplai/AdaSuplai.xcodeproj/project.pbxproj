@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4DB9FA7C270592E400B36E98 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7B270592E400B36E98 /* Alamofire */; };
 		4DB9FA7F2705930A00B36E98 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7E2705930A00B36E98 /* AlamofireImage */; };
+		85FBBD602710174200A8CCF1 /* AllCategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */; };
+		85FBBD622710174D00A8CCF1 /* AllCategoriesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */; };
+		85FBBD652710175800A8CCF1 /* AllCategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */; };
+		85FBBD662710175800A8CCF1 /* AllCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
 		B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFF27030340000DDB95 /* SceneDelegate.swift */; };
 		B9D64D0227030340000DDB95 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64D0127030340000DDB95 /* MainController.swift */; };
@@ -58,6 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoriesController.swift; sourceTree = "<group>"; };
+		85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllCategoriesController.xib; sourceTree = "<group>"; };
+		85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllCategoryCollectionCell.xib; sourceTree = "<group>"; };
+		85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D64CFD27030340000DDB95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D64CFF27030340000DDB95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 			children = (
 				C366D361270DA7A100EF1E0C /* SearchUpdaterController.xib */,
 				C366D2DD2706F98700EF1E0C /* Home.storyboard */,
+				85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */,
 				C3318D782706F340002294EC /* Cell */,
 			);
 			path = View;
@@ -173,6 +182,7 @@
 			children = (
 				C366D2DF2706F9E700EF1E0C /* HomeController.swift */,
 				C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */,
+				85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -202,6 +212,8 @@
 				C366D2EE270700BE00EF1E0C /* HotProductCollectionCell.xib */,
 				C366D364270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.swift */,
 				C366D365270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.xib */,
+				85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */,
+				85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -416,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */,
+				85FBBD652710175800A8CCF1 /* AllCategoryCollectionCell.xib in Resources */,
 				C366D2DC2706F47E00EF1E0C /* HomeCategoryCollectionCell.xib in Resources */,
 				C366D2F227071C7200EF1E0C /* TabBar.storyboard in Resources */,
 				B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */,
@@ -424,6 +437,7 @@
 				C366D367270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.xib in Resources */,
 				C366D2D82706F39F00EF1E0C /* HomeCategoryCell.xib in Resources */,
 				C366D363270DA7A100EF1E0C /* SearchUpdaterController.xib in Resources */,
+				85FBBD622710174D00A8CCF1 /* AllCategoriesController.xib in Resources */,
 				C366D2E42706FC0F00EF1E0C /* BannerPromoCell.xib in Resources */,
 				B9D64D0527030340000DDB95 /* Main.storyboard in Resources */,
 				C366D2EC2706FD5500EF1E0C /* BannerCollectionCell.xib in Resources */,
@@ -480,9 +494,11 @@
 				B9D64D0227030340000DDB95 /* MainController.swift in Sources */,
 				C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */,
 				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
+				85FBBD602710174200A8CCF1 /* AllCategoriesController.swift in Sources */,
 				C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */,
 				C366D331270C3B5B00EF1E0C /* TabBarController.swift in Sources */,
 				C366D2E32706FC0F00EF1E0C /* BannerPromoCell.swift in Sources */,
+				85FBBD662710175800A8CCF1 /* AllCategoryCollectionCell.swift in Sources */,
 				C366D2D72706F39F00EF1E0C /* HomeCategoryCell.swift in Sources */,
 				C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */,
 				B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */,
