@@ -14,6 +14,14 @@ class SearchResultController: UIViewController, Identifiable {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    init() {
+        super.init(nibName: Self.identifier, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     let searchController: UISearchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -41,7 +49,8 @@ class SearchResultController: UIViewController, Identifiable {
     }
     
     @objc func filterTapped(_ sender: UIBarButtonItem) {
-        print("Filter Tapped")
+        let nextVC = FilterController()
+        self.present(nextVC, animated: true)
     }
     
     private func setupSearchController() {
@@ -79,7 +88,7 @@ extension SearchResultController: UISearchControllerDelegate, UISearchBarDelegat
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let nextVC = SearchUpdaterController(nibName: SearchUpdaterController.identifier, bundle: nil)
+        let nextVC = SearchUpdaterController()
         nextVC.homeDelegate = self
         let navController = UINavigationController(rootViewController: nextVC)
         navController.modalPresentationStyle = .fullScreen
@@ -89,7 +98,7 @@ extension SearchResultController: UISearchControllerDelegate, UISearchBarDelegat
 
 extension SearchResultController: SearchNavigationDelegate {
     func goToSearchResult() {
-        let nextVC = SearchResultController(nibName: SearchResultController.identifier, bundle: nil)
+        let nextVC = SearchResultController()
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }

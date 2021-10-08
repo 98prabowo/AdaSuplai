@@ -34,10 +34,6 @@ class HomeController: BaseUIViewController {
         self.setupSearchController()
     }
     
-    @objc func wishlistTapped(_ sender: UIBarButtonItem) {
-        print("Wishlist Tapped")
-    }
-    
     private func setupSearchController() {
         self.searchController.delegate = self
         self.searchController.searchBar.delegate = self
@@ -83,7 +79,7 @@ extension HomeController: UISearchControllerDelegate, UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let nextVC = SearchUpdaterController(nibName: SearchUpdaterController.identifier, bundle: nil)
+        let nextVC = SearchUpdaterController()
         nextVC.homeDelegate = self
         let navController = UINavigationController(rootViewController: nextVC)
         navController.modalPresentationStyle = .fullScreen
@@ -93,7 +89,7 @@ extension HomeController: UISearchControllerDelegate, UISearchBarDelegate {
 
 extension HomeController: SearchNavigationDelegate {
     func goToSearchResult() {
-        let nextVC = SearchResultController(nibName: SearchResultController.identifier, bundle: nil)
+        let nextVC = SearchResultController()
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
