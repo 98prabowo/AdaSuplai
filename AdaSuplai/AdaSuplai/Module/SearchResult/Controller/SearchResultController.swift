@@ -14,11 +14,12 @@ class SearchResultController: UIViewController, Identifiable {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchController: UISearchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
+        self.setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,12 +28,16 @@ class SearchResultController: UIViewController, Identifiable {
     }
     
     private func setupNavigationBar() {
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.titleView = self.searchController.searchBar
+        self.navigationItem.rightBarButtonItems = self.setupRightButtonItems()
+        self.setupSearchController()
+    }
+    
+    private func setupRightButtonItems() -> [UIBarButtonItem] {
         let wishlistButton = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: .some(#selector(filterTapped(_:))))
         wishlistButton.tintColor = .systemGreen
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.titleView = self.searchController.searchBar
-        navigationItem.rightBarButtonItems = [wishlistButton]
-        self.setupSearchController()
+        return [wishlistButton]
     }
     
     @objc func filterTapped(_ sender: UIBarButtonItem) {
@@ -57,11 +62,14 @@ class SearchResultController: UIViewController, Identifiable {
 
 extension SearchResultController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.identifier, for: indexPath) as? SearchResultCell else { return UICollectionViewCell() }
+        if indexPath.item % 2 == 0 {
+            cell.isDiscount()
+        }
         return cell
     }
 }

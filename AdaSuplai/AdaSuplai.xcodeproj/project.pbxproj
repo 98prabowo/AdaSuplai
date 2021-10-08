@@ -49,6 +49,8 @@
 		C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */; };
 		C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94DA127059F2700688485 /* Extension-UIView.swift */; };
 		C3C94DA72705A07100688485 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94DA62705A07100688485 /* Model.swift */; };
+		C3D58560270EF14200F6678D /* Extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D5855F270EF14200F6678D /* Extension-String.swift */; };
+		C3D58562270EF25F00F6678D /* Extension-UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D58561270EF25F00F6678D /* Extension-UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-Identifiable.swift"; sourceTree = "<group>"; };
 		C3C94DA127059F2700688485 /* Extension-UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIView.swift"; sourceTree = "<group>"; };
 		C3C94DA62705A07100688485 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C3D5855F270EF14200F6678D /* Extension-String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-String.swift"; sourceTree = "<group>"; };
+		C3D58561270EF25F00F6678D /* Extension-UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,7 +360,9 @@
 			isa = PBXGroup;
 			children = (
 				C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */,
+				C3D5855F270EF14200F6678D /* Extension-String.swift */,
 				C3C94DA127059F2700688485 /* Extension-UIView.swift */,
+				C3D58561270EF25F00F6678D /* Extension-UIColor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -514,7 +520,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C94DA72705A07100688485 /* Model.swift in Sources */,
+				C3D58562270EF25F00F6678D /* Extension-UIColor.swift in Sources */,
 				C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */,
+				C3D58560270EF14200F6678D /* Extension-String.swift in Sources */,
 				C366D2E72706FD3C00EF1E0C /* HotProductCell.swift in Sources */,
 				C366D362270DA7A100EF1E0C /* SearchUpdaterController.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
