@@ -38,10 +38,6 @@ class SearchResultCell: UICollectionViewCell, Identifiable {
         self.contentView.layer.masksToBounds = true
         self.contentView.backgroundColor = .systemBackground
         
-        self.layer.shadowColor = UIColor.systemGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowRadius = 2.0
-        self.layer.shadowOpacity = 0.3
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
     }
@@ -64,6 +60,7 @@ class SearchResultCell: UICollectionViewCell, Identifiable {
         stackView.axis = .horizontal
         stackView.distribution = .fill
         stackView.spacing = 3
+        self.removeAllStackViewElement()
         stackView.addArrangedSubview(realPriceLabel)
         stackView.addArrangedSubview(discount)
         self.priceStack.addArrangedSubview(stackView)
@@ -78,5 +75,15 @@ class SearchResultCell: UICollectionViewCell, Identifiable {
         discountLabel.backgroundColor = .discountBackgroundColor
         discountLabel.layer.cornerRadius = 7
         return discountLabel
+    }
+    
+    private func removeAllStackViewElement() {
+        let stackViewInSequence = self.priceStack.arrangedSubviews.filter { imageStackView in
+            return imageStackView.isKind(of: UIStackView.self)
+        }
+
+        for stackView in stackViewInSequence {
+            stackView.removeFromSuperview()
+        }
     }
 }

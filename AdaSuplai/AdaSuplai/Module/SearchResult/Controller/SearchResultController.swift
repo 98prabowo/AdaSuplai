@@ -14,6 +14,8 @@ class SearchResultController: UIViewController, Identifiable {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    private let isItemsDiscount = [true, false, false, true, true, true, false, true, false, false]
+    
     init() {
         super.init(nibName: Self.identifier, bundle: nil)
     }
@@ -36,6 +38,7 @@ class SearchResultController: UIViewController, Identifiable {
     }
     
     private func setupNavigationBar() {
+        self.navigationController?.navigationBar.backgroundColor = .label
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.titleView = self.searchController.searchBar
         self.navigationItem.rightBarButtonItems = self.setupRightButtonItems()
@@ -65,21 +68,40 @@ class SearchResultController: UIViewController, Identifiable {
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.backgroundColor = .secondarySystemBackground
+        let layout = WaterfallLayout()
+        layout.delegate = self
+        layout.numberOfColumn = 2
+        layout.horizontalContentInset = 5
+        layout.verticalContentInset = 5
+        self.collectionView.collectionViewLayout = layout
         self.collectionView.register(UINib(nibName: SearchResultCell.identifier, bundle: nil), forCellWithReuseIdentifier: SearchResultCell.identifier)
     }
 }
 
-extension SearchResultController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SearchResultController: UICollectionViewDelegate, UICollectionViewDataSource, WaterfallLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.isItemsDiscount.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.identifier, for: indexPath) as? SearchResultCell else { return UICollectionViewCell() }
-        if indexPath.item % 2 == 0 {
+        let cell = collectionView.dequeueReusableCell(withCell: SearchResultCell.self, for: indexPath)
+        if self.isItemsDiscount[indexPath.item] {
             cell.isDiscount()
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+    }
+    
+    func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = 300
+        if self.isItemsDiscount[indexPath.item] {
+            height = 320
+        }
+        return height
     }
 }
 

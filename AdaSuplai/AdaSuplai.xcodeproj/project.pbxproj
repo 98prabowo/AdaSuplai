@@ -66,6 +66,8 @@
 		C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */; };
 		C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94DA127059F2700688485 /* Extension-UIView.swift */; };
 		C3C94DA72705A07100688485 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94DA62705A07100688485 /* Model.swift */; };
+		C3CBECA12715688E00622FE1 /* Extension-UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBECA02715688E00622FE1 /* Extension-UICollectionView.swift */; };
+		C3CBECA3271568B500622FE1 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */; };
 		C3D58560270EF14200F6678D /* Extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D5855F270EF14200F6678D /* Extension-String.swift */; };
 		C3D58562270EF25F00F6678D /* Extension-UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D58561270EF25F00F6678D /* Extension-UIColor.swift */; };
 /* End PBXBuildFile section */
@@ -140,6 +142,8 @@
 		C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-Identifiable.swift"; sourceTree = "<group>"; };
 		C3C94DA127059F2700688485 /* Extension-UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIView.swift"; sourceTree = "<group>"; };
 		C3C94DA62705A07100688485 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C3CBECA02715688E00622FE1 /* Extension-UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UICollectionView.swift"; sourceTree = "<group>"; };
+		C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
 		C3D5855F270EF14200F6678D /* Extension-String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-String.swift"; sourceTree = "<group>"; };
 		C3D58561270EF25F00F6678D /* Extension-UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -329,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				C366D368270DB1BE00EF1E0C /* SearchResultController.swift */,
+				C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				C3D5855F270EF14200F6678D /* Extension-String.swift */,
 				C3C94DA127059F2700688485 /* Extension-UIView.swift */,
 				C3D58561270EF25F00F6678D /* Extension-UIColor.swift */,
+				C3CBECA02715688E00622FE1 /* Extension-UICollectionView.swift */,
 				C30EA06E27104D3100832135 /* Extension-UITableView.swift */,
 			);
 			path = Helper;
@@ -624,6 +630,8 @@
 				C3D58560270EF14200F6678D /* Extension-String.swift in Sources */,
 				C366D2E72706FD3C00EF1E0C /* HotProductCell.swift in Sources */,
 				C366D362270DA7A100EF1E0C /* SearchUpdaterController.swift in Sources */,
+				C3CBECA12715688E00622FE1 /* Extension-UICollectionView.swift in Sources */,
+				C3CBECA3271568B500622FE1 /* WaterfallLayout.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
 				C30EA06F27104D3100832135 /* Extension-UITableView.swift in Sources */,
 				C30EA060271043A000832135 /* FilterPriceRangeCell.swift in Sources */,

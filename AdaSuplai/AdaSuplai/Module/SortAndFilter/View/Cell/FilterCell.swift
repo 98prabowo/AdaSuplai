@@ -24,7 +24,7 @@ class FilterCell: UITableViewCell, Identifiable {
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.register(UINib(nibName: FilterCollectionCell.identifier, bundle: nil), forCellWithReuseIdentifier: FilterCollectionCell.identifier)
+        self.collectionView.registerNib(forCell: FilterCollectionCell.self)
     }
     
     private func setupButton() {
@@ -65,7 +65,7 @@ extension FilterCell: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionCell.identifier, for: indexPath) as? FilterCollectionCell else { return UICollectionViewCell() }
+        let cell = collectionView.dequeueReusableCell(withCell: FilterCollectionCell.self, for: indexPath)
         cell.configure(filterKey: self.filterKeys[indexPath.item])
         if isRating {
             cell.configureRating(filterKey: self.filterKeys[indexPath.item])
