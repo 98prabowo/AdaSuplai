@@ -71,8 +71,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="header" destination="pN7-oC-C4a" id="JRP-k1-QwJ"/>
-                <outlet property="maxPrice" destination="ZhQ-Uq-0Bu" id="tjr-JI-fqQ"/>
-                <outlet property="minPrice" destination="ErG-OG-5hx" id="rOf-aK-Wlt"/>
+                <outlet property="maxPrice" destination="ErG-OG-5hx" id="Icy-bf-g3A"/>
+                <outlet property="minPrice" destination="ZhQ-Uq-0Bu" id="Bcf-ao-DV1"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="62.611607142857139"/>
         </tableViewCell>
