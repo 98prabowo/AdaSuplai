@@ -15,6 +15,23 @@
 		B9D64D0527030340000DDB95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0327030340000DDB95 /* Main.storyboard */; };
 		B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0627030341000DDB95 /* Assets.xcassets */; };
 		B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0827030341000DDB95 /* LaunchScreen.storyboard */; };
+		C30EA04E27103D2400832135 /* FilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA04C27103D2400832135 /* FilterController.swift */; };
+		C30EA04F27103D2400832135 /* FilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA04D27103D2400832135 /* FilterController.xib */; };
+		C30EA05327103E5200832135 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA05227103E5200832135 /* FilterViewModel.swift */; };
+		C30EA05627103EA800832135 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA05427103EA800832135 /* FilterCell.swift */; };
+		C30EA05727103EA800832135 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA05527103EA800832135 /* FilterCell.xib */; };
+		C30EA05A2710406C00832135 /* FilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA0582710406C00832135 /* FilterCollectionCell.swift */; };
+		C30EA05B2710406C00832135 /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA0592710406C00832135 /* FilterCollectionCell.xib */; };
+		C30EA060271043A000832135 /* FilterPriceRangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA05E271043A000832135 /* FilterPriceRangeCell.swift */; };
+		C30EA061271043A000832135 /* FilterPriceRangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA05F271043A000832135 /* FilterPriceRangeCell.xib */; };
+		C30EA064271046C600832135 /* SpacerFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA062271046C600832135 /* SpacerFilterCell.swift */; };
+		C30EA065271046C600832135 /* SpacerFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA063271046C600832135 /* SpacerFilterCell.xib */; };
+		C30EA0682710492A00832135 /* FilterHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA0662710492A00832135 /* FilterHeaderCell.swift */; };
+		C30EA0692710492A00832135 /* FilterHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA0672710492A00832135 /* FilterHeaderCell.xib */; };
+		C30EA06C2710494600832135 /* SubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA06A2710494600832135 /* SubmitButtonCell.swift */; };
+		C30EA06D2710494600832135 /* SubmitButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA06B2710494600832135 /* SubmitButtonCell.xib */; };
+		C30EA06F27104D3100832135 /* Extension-UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA06E27104D3100832135 /* Extension-UITableView.swift */; };
+		C30EA072271052B600832135 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C30EA05C2710436100832135 /* Info.plist */; };
 		C3318D6C2706EF4E002294EC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3318D6B2706EF4E002294EC /* HomeViewModel.swift */; };
 		C366D2D72706F39F00EF1E0C /* HomeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D2D52706F39F00EF1E0C /* HomeCategoryCell.swift */; };
 		C366D2D82706F39F00EF1E0C /* HomeCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D2D62706F39F00EF1E0C /* HomeCategoryCell.xib */; };
@@ -71,7 +88,23 @@
 		B9D64D0427030340000DDB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9D64D0627030341000DDB95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D64D0927030341000DDB95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B9D64D0B27030341000DDB95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "AdaSuplai/Main Resource/Info.plist"; sourceTree = SOURCE_ROOT; };
+		C30EA04C27103D2400832135 /* FilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterController.swift; sourceTree = "<group>"; };
+		C30EA04D27103D2400832135 /* FilterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterController.xib; sourceTree = "<group>"; };
+		C30EA05227103E5200832135 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		C30EA05427103EA800832135 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		C30EA05527103EA800832135 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		C30EA0582710406C00832135 /* FilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionCell.swift; sourceTree = "<group>"; };
+		C30EA0592710406C00832135 /* FilterCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionCell.xib; sourceTree = "<group>"; };
+		C30EA05C2710436100832135 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C30EA05E271043A000832135 /* FilterPriceRangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPriceRangeCell.swift; sourceTree = "<group>"; };
+		C30EA05F271043A000832135 /* FilterPriceRangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterPriceRangeCell.xib; sourceTree = "<group>"; };
+		C30EA062271046C600832135 /* SpacerFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerFilterCell.swift; sourceTree = "<group>"; };
+		C30EA063271046C600832135 /* SpacerFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpacerFilterCell.xib; sourceTree = "<group>"; };
+		C30EA0662710492A00832135 /* FilterHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderCell.swift; sourceTree = "<group>"; };
+		C30EA0672710492A00832135 /* FilterHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterHeaderCell.xib; sourceTree = "<group>"; };
+		C30EA06A2710494600832135 /* SubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButtonCell.swift; sourceTree = "<group>"; };
+		C30EA06B2710494600832135 /* SubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitButtonCell.xib; sourceTree = "<group>"; };
+		C30EA06E27104D3100832135 /* Extension-UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UITableView.swift"; sourceTree = "<group>"; };
 		C3318D6B2706EF4E002294EC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C366D2D52706F39F00EF1E0C /* HomeCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryCell.swift; sourceTree = "<group>"; };
 		C366D2D62706F39F00EF1E0C /* HomeCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCategoryCell.xib; sourceTree = "<group>"; };
@@ -153,11 +186,65 @@
 		B9D64CFC27030340000DDB95 /* AdaSuplai */ = {
 			isa = PBXGroup;
 			children = (
-				C3C94D8F27059AEB00688485 /* Main Resource */,
+				C3C94D8F27059AEB00688485 /* MainResource */,
 				C3C94D9727059C7B00688485 /* Core */,
 				C3C94D9B27059D3200688485 /* Module */,
 			);
 			path = AdaSuplai;
+			sourceTree = "<group>";
+		};
+		C30EA04A27103CED00832135 /* SortAndFilter */ = {
+			isa = PBXGroup;
+			children = (
+				C30EA05127103E4100832135 /* View */,
+				C30EA05027103D2E00832135 /* ViewModel */,
+				C30EA04B27103D0600832135 /* Controller */,
+			);
+			path = SortAndFilter;
+			sourceTree = "<group>";
+		};
+		C30EA04B27103D0600832135 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C30EA04C27103D2400832135 /* FilterController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C30EA05027103D2E00832135 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C30EA05227103E5200832135 /* FilterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C30EA05127103E4100832135 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C30EA04D27103D2400832135 /* FilterController.xib */,
+				C30EA0732710547200832135 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C30EA0732710547200832135 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C30EA05427103EA800832135 /* FilterCell.swift */,
+				C30EA05527103EA800832135 /* FilterCell.xib */,
+				C30EA0582710406C00832135 /* FilterCollectionCell.swift */,
+				C30EA0592710406C00832135 /* FilterCollectionCell.xib */,
+				C30EA05E271043A000832135 /* FilterPriceRangeCell.swift */,
+				C30EA05F271043A000832135 /* FilterPriceRangeCell.xib */,
+				C30EA062271046C600832135 /* SpacerFilterCell.swift */,
+				C30EA063271046C600832135 /* SpacerFilterCell.xib */,
+				C30EA0662710492A00832135 /* FilterHeaderCell.swift */,
+				C30EA0672710492A00832135 /* FilterHeaderCell.xib */,
+				C30EA06A2710494600832135 /* SubmitButtonCell.swift */,
+				C30EA06B2710494600832135 /* SubmitButtonCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C3318D6A2706EF37002294EC /* Home */ = {
@@ -272,15 +359,15 @@
 			path = AdaSuplaiTests;
 			sourceTree = "<group>";
 		};
-		C3C94D8F27059AEB00688485 /* Main Resource */ = {
+		C3C94D8F27059AEB00688485 /* MainResource */ = {
 			isa = PBXGroup;
 			children = (
 				C3C94D9027059AFD00688485 /* Base */,
 				B9D64D0827030341000DDB95 /* LaunchScreen.storyboard */,
 				B9D64D0627030341000DDB95 /* Assets.xcassets */,
-				B9D64D0B27030341000DDB95 /* Info.plist */,
+				C30EA05C2710436100832135 /* Info.plist */,
 			);
-			path = "Main Resource";
+			path = MainResource;
 			sourceTree = "<group>";
 		};
 		C3C94D9027059AFD00688485 /* Base */ = {
@@ -349,6 +436,7 @@
 		C3C94D9B27059D3200688485 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C30EA04A27103CED00832135 /* SortAndFilter */,
 				C366D36C270DBBFF00EF1E0C /* SearchResult */,
 				C3318D6A2706EF37002294EC /* Home */,
 				C3C94D9127059C1800688485 /* Authentication */,
@@ -363,6 +451,7 @@
 				C3D5855F270EF14200F6678D /* Extension-String.swift */,
 				C3C94DA127059F2700688485 /* Extension-UIView.swift */,
 				C3D58561270EF25F00F6678D /* Extension-UIColor.swift */,
+				C30EA06E27104D3100832135 /* Extension-UITableView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -470,17 +559,24 @@
 				C366D2F227071C7200EF1E0C /* TabBar.storyboard in Resources */,
 				B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */,
 				B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */,
+				C30EA06D2710494600832135 /* SubmitButtonCell.xib in Resources */,
 				C366D2DE2706F98700EF1E0C /* Home.storyboard in Resources */,
 				C366D367270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.xib in Resources */,
 				C366D2D82706F39F00EF1E0C /* HomeCategoryCell.xib in Resources */,
 				C366D363270DA7A100EF1E0C /* SearchUpdaterController.xib in Resources */,
+				C30EA0692710492A00832135 /* FilterHeaderCell.xib in Resources */,
 				C366D2E42706FC0F00EF1E0C /* BannerPromoCell.xib in Resources */,
 				C366D373270DBC5D00EF1E0C /* SearchResultCell.xib in Resources */,
+				C30EA05B2710406C00832135 /* FilterCollectionCell.xib in Resources */,
 				C366D36B270DB1BE00EF1E0C /* SearchResultController.xib in Resources */,
 				B9D64D0527030340000DDB95 /* Main.storyboard in Resources */,
+				C30EA04F27103D2400832135 /* FilterController.xib in Resources */,
 				C366D2EC2706FD5500EF1E0C /* BannerCollectionCell.xib in Resources */,
+				C30EA05727103EA800832135 /* FilterCell.xib in Resources */,
 				C366D2E82706FD3C00EF1E0C /* HotProductCell.xib in Resources */,
 				C366D2F0270700BE00EF1E0C /* HotProductCollectionCell.xib in Resources */,
+				C30EA061271043A000832135 /* FilterPriceRangeCell.xib in Resources */,
+				C30EA065271046C600832135 /* SpacerFilterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +584,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30EA072271052B600832135 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +616,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30EA06C2710494600832135 /* SubmitButtonCell.swift in Sources */,
+				C30EA0682710492A00832135 /* FilterHeaderCell.swift in Sources */,
 				C3C94DA72705A07100688485 /* Model.swift in Sources */,
 				C3D58562270EF25F00F6678D /* Extension-UIColor.swift in Sources */,
 				C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */,
@@ -526,6 +625,8 @@
 				C366D2E72706FD3C00EF1E0C /* HotProductCell.swift in Sources */,
 				C366D362270DA7A100EF1E0C /* SearchUpdaterController.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
+				C30EA06F27104D3100832135 /* Extension-UITableView.swift in Sources */,
+				C30EA060271043A000832135 /* FilterPriceRangeCell.swift in Sources */,
 				C366D366270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.swift in Sources */,
 				C3C94D9A27059CF000688485 /* BaseViewModel.swift in Sources */,
 				C3318D6C2706EF4E002294EC /* HomeViewModel.swift in Sources */,
@@ -534,10 +635,15 @@
 				C366D36A270DB1BE00EF1E0C /* SearchResultController.swift in Sources */,
 				B9D64D0227030340000DDB95 /* MainController.swift in Sources */,
 				C366D372270DBC5D00EF1E0C /* SearchResultCell.swift in Sources */,
+				C30EA04E27103D2400832135 /* FilterController.swift in Sources */,
+				C30EA05A2710406C00832135 /* FilterCollectionCell.swift in Sources */,
 				C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */,
 				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
+				C30EA064271046C600832135 /* SpacerFilterCell.swift in Sources */,
 				C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */,
+				C30EA05327103E5200832135 /* FilterViewModel.swift in Sources */,
 				C366D331270C3B5B00EF1E0C /* TabBarController.swift in Sources */,
+				C30EA05627103EA800832135 /* FilterCell.swift in Sources */,
 				C366D2E32706FC0F00EF1E0C /* BannerPromoCell.swift in Sources */,
 				C366D2D72706F39F00EF1E0C /* HomeCategoryCell.swift in Sources */,
 				C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */,
@@ -709,7 +815,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AdaSuplai/Main Resource/Info.plist";
+				INFOPLIST_FILE = AdaSuplai/MainResource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -736,7 +842,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AdaSuplai/Main Resource/Info.plist";
+				INFOPLIST_FILE = AdaSuplai/MainResource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
