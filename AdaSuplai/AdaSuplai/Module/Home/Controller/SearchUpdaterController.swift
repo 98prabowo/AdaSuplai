@@ -57,7 +57,7 @@ class SearchUpdaterController: UIViewController, Identifiable {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(UINib(nibName: SearchUpdaterLastSeenCell.identifier, bundle: nil), forCellReuseIdentifier: SearchUpdaterLastSeenCell.identifier)
+        self.tableView.registerNib(forCell: SearchUpdaterLastSeenCell.self)
     }
 }
 
@@ -86,7 +86,7 @@ extension SearchUpdaterController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchUpdaterLastSeenCell.identifier, for: indexPath) as? SearchUpdaterLastSeenCell else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withCell: SearchUpdaterLastSeenCell.self, for: indexPath)
         cell.selectionStyle = .none
         cell.configure(history: self.searchText)
         return cell

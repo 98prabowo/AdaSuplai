@@ -18,7 +18,7 @@ class BannerPromoCell: UITableViewCell, Identifiable {
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.register(BannerCollectionCell.nib(), forCellWithReuseIdentifier: BannerCollectionCell.identifier)
+        self.collectionView.registerNib(forCell: BannerCollectionCell.self)
     }
 }
 
@@ -28,7 +28,7 @@ extension BannerPromoCell: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionCell.identifier, for: indexPath) as? BannerCollectionCell else { return UICollectionViewCell() }
+        let cell = collectionView.dequeueReusableCell(withCell: BannerCollectionCell.self, for: indexPath)
         return cell
     }
     

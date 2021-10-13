@@ -11,11 +11,13 @@ import UIKit
 class HomeController: BaseUIViewController {
     private enum Constant {
         static let searchPlaceholder = "Cari Penawaran"
+        static let productTrend = "Trending Hari Ini"
     }
     
     @IBOutlet weak var tableView: UITableView!
     
-    var searchController = UISearchController()
+    let searchController = UISearchController()
+    let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,28 +48,30 @@ class HomeController: BaseUIViewController {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(HomeCategoryCell.nib(), forCellReuseIdentifier: HomeCategoryCell.identifier)
-        self.tableView.register(BannerPromoCell.nib(), forCellReuseIdentifier: BannerPromoCell.identifier)
-        self.tableView.register(HotProductCell.nib(), forCellReuseIdentifier: HotProductCell.identifier)
+        self.tableView.registerNib(forCell: HomeCategoryCell.self)
+        self.tableView.registerNib(forCell: BannerPromoCell.self)
+        self.tableView.registerNib(forCell: HotProductCell.self)
     }
 }
 
 // MARK: - TableView
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeCategoryCell.identifier, for: indexPath) as? HomeCategoryCell else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withCell: HomeCategoryCell.self, for: indexPath)
+            cell.configure(categories: self.viewModel.categories)
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BannerPromoCell.identifier, for: indexPath) as? BannerPromoCell else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withCell: BannerPromoCell.self, for: indexPath)
             return cell
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HotProductCell.identifier, for: indexPath) as? HotProductCell else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withCell: HotProductCell.self, for: indexPath)
+            cell.configure(with: self.viewModel.todayTrends, title: Constant.productTrend)
             return cell
         }
     }
@@ -92,14 +96,6 @@ extension HomeController: SearchNavigationDelegate {
         let nextVC = SearchResultController()
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
-        }
-    }
-}
-
-extension UISearchBar {
-    func setTextFieldColor(_ color: UIColor) {
-        if let textfield = self.value(forKey: "searchField") as? UITextField {
-            textfield.backgroundColor = color
         }
     }
 }

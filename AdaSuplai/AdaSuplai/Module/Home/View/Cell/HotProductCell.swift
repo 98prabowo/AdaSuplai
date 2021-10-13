@@ -11,6 +11,12 @@ class HotProductCell: UITableViewCell, Identifiable {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    var productTrends = [DummyProduct]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupCollectionView()
@@ -19,25 +25,23 @@ class HotProductCell: UITableViewCell, Identifiable {
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.register(HotProductCollectionCell.nib(), forCellWithReuseIdentifier: HotProductCollectionCell.identifier)
+        self.collectionView.registerNib(forCell: SearchResultCell.self)
     }
     
-    func configure(title: String) {
+    func configure(with products: [DummyProduct], title: String) {
+        self.productTrends = products
         self.header.text = title
     }
 }
 
-extension HotProductCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HotProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.productTrends.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HotProductCollectionCell.identifier, for: indexPath) as? HotProductCollectionCell else { return UICollectionViewCell() }
+        let cell = collectionView.dequeueReusableCell(withCell: SearchResultCell.self, for: indexPath)
+        cell.configure(product: self.productTrends[indexPath.item])
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 110, height: 90)
     }
 }
