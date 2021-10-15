@@ -384,8 +384,6 @@
 				C366D2EA2706FD5500EF1E0C /* BannerCollectionCell.xib */,
 				C366D2E52706FD3C00EF1E0C /* HotProductCell.swift */,
 				C366D2E62706FD3C00EF1E0C /* HotProductCell.xib */,
-				C366D364270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.swift */,
-				C366D365270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -433,6 +431,8 @@
 			children = (
 				C366D370270DBC5D00EF1E0C /* SearchResultCell.swift */,
 				C366D371270DBC5D00EF1E0C /* SearchResultCell.xib */,
+				C366D364270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.swift */,
+				C366D365270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
