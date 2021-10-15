@@ -15,7 +15,6 @@ class SearchResultController: UIViewController, Identifiable {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private let isItemsDiscount = [true, false, false, true, true, true, false, true, false, false]
-    
     init() {
         super.init(nibName: Self.identifier, bundle: nil)
     }

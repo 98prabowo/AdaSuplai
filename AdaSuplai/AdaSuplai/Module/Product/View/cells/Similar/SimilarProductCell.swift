@@ -1,27 +1,25 @@
 //
-//  HotProductCell.swift
+//  SimilarProductCell.swift
 //  AdaSuplai
 //
-//  Created by Dimas A. Prabowo on 01/10/21.
+//  Created by Dimas A. Prabowo on 13/10/21.
 //
 
 import UIKit
 
-class HotProductCell: UITableViewCell, Identifiable {
+class SimilarProductCell: UITableViewCell, Identifiable {
     @IBOutlet private weak var header: UILabel!
+    @IBOutlet private weak var seeMoreButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
-    
-    weak var delegate: ProductDelegate?
-    
-    var productTrends = [DummyProduct]() {
-        didSet {
-            self.collectionView.reloadData()
-        }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupButton()
         self.setupCollectionView()
+    }
+    
+    private func setupButton() {
+        self.seeMoreButton.setTitleColor(.primaryGreen, for: .normal)
     }
     
     private func setupCollectionView() {
@@ -30,25 +28,17 @@ class HotProductCell: UITableViewCell, Identifiable {
         self.collectionView.registerNib(forCell: SearchResultCell.self)
     }
     
-    func configure(with products: [DummyProduct], title: String) {
-        self.productTrends = products
-        self.header.text = title
+    @IBAction func seeMoreButtonTapped(_ sender: Any) {
     }
 }
 
-extension HotProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SimilarProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.productTrends.count
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: SearchResultCell.self, for: indexPath)
-        cell.configure(product: self.productTrends[indexPath.item])
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let delegate = self.delegate else { return }
-        delegate.goToProductController()
     }
 }

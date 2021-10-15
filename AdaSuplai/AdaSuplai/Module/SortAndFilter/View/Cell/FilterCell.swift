@@ -88,6 +88,6 @@ extension FilterCell: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionCell else { return }
-        cell.setSelected()
+        cell.configureSelected(filterKey: self.filterKeys[indexPath.item])
     }
 }

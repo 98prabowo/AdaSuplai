@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductController" customModule="AdaSuplai" customModuleProvider="target">
+            <connections>
+                <outlet property="addToCart" destination="ebr-Ya-eeO" id="ezP-Hg-qaq"/>
+                <outlet property="buyButton" destination="cR8-dk-WtI" id="n93-P6-cIB"/>
+                <outlet property="tableView" destination="o1h-Ux-yoh" id="e1b-Yk-QiM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="o1h-Ux-yoh">
+                    <rect key="frame" x="0.0" y="44" width="414" height="743"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YRv-Jh-x9E">
+                    <rect key="frame" x="15" y="807" width="384" height="35"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cR8-dk-WtI">
+                            <rect key="frame" x="0.0" y="0.0" width="182" height="35"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Beli"/>
+                            <connections>
+                                <action selector="buyButtonTapped:" destination="-1" eventType="touchUpInside" id="qvl-o9-bMF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebr-Ya-eeO">
+                            <rect key="frame" x="202" y="0.0" width="182" height="35"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="+ Keranjang"/>
+                            <connections>
+                                <action selector="addToCartButtonTapped:" destination="-1" eventType="touchUpInside" id="XXR-Lr-PaO"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="v6s-Pm-9v9"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="YRv-Jh-x9E" firstAttribute="top" secondItem="o1h-Ux-yoh" secondAttribute="bottom" constant="20" id="DcU-NA-j4o"/>
+                <constraint firstItem="YRv-Jh-x9E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Fox-wf-MdE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YRv-Jh-x9E" secondAttribute="trailing" constant="15" id="JCu-qK-ur3"/>
+                <constraint firstItem="o1h-Ux-yoh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tnk-is-jfX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YRv-Jh-x9E" secondAttribute="bottom" constant="20" id="V5g-Yp-zqL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o1h-Ux-yoh" secondAttribute="trailing" id="XDs-tn-KLs"/>
+                <constraint firstItem="o1h-Ux-yoh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pUZ-bn-OBU"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="44"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

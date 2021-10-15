@@ -52,7 +52,7 @@
                 <outlet property="collectionView" destination="xoT-X3-sOY" id="AJs-sE-Qzn"/>
                 <outlet property="header" destination="JL8-0y-LNb" id="8xh-m1-BjZ"/>
             </connections>
-            <point key="canvasLocation" x="132" y="63"/>
+            <point key="canvasLocation" x="131.8840579710145" y="62.611607142857139"/>
         </tableViewCell>
     </objects>
     <resources>

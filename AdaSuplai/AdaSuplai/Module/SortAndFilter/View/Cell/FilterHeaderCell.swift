@@ -18,7 +18,7 @@ class FilterHeaderCell: UITableViewCell, Identifiable {
     
     private func setupButton() {
         self.closeButton.tintColor = .label
-        self.resetButton.setTitleColor(.aler, for: .normal)
+        self.resetButton.setTitleColor(.alert, for: .normal)
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {

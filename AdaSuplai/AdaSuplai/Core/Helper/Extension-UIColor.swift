@@ -58,7 +58,7 @@ extension UIColor {
         UIColor(hex: "101010")
     }
     
-    public static var aler: UIColor {
+    public static var alert: UIColor {
         UIColor(hex: "D53D34")
     }
     
@@ -68,6 +68,10 @@ extension UIColor {
     
     public static var star: UIColor {
         UIColor(hex: "FFC700")
+    }
+    
+    public static var blueBackground: UIColor {
+        UIColor(hex: "FAFCFE")
     }
     
     public static var discountBackgroundColor: UIColor {

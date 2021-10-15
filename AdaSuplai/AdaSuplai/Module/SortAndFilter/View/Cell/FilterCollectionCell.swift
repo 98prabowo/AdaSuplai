@@ -19,6 +19,8 @@ class FilterCollectionCell: UICollectionViewCell, Identifiable {
     }
 
     private func setupBackgroundView() {
+        self.filterKey.textColor = .label
+        self.containerView.backgroundColor = .systemBackground
         self.containerView.addBorderAndCornerRadius(withBorderWidth: 0.5, borderColor: .label, cornerRadius: 5)
     }
     
@@ -29,6 +31,7 @@ class FilterCollectionCell: UICollectionViewCell, Identifiable {
     
     func configure(filterKey: String) {
         self.filterKey.text = filterKey
+        self.setupBackgroundView()
     }
     
     func configureRating(filterKey: String) {
@@ -36,9 +39,17 @@ class FilterCollectionCell: UICollectionViewCell, Identifiable {
         self.filterKey.text = filterKey
     }
     
-    func setSelected() {
+    func configureDisable(filterKey: String) {
+        self.filterKey.text = filterKey
+        self.containerView.backgroundColor = .systemGray5
+        self.containerView.layer.borderWidth = 1
+        self.containerView.layer.borderColor = UIColor.systemGray5.cgColor
+    }
+    
+    func configureSelected(filterKey: String) {
+        self.filterKey.text = filterKey
+        self.filterKey.textColor = .primaryGreen
         self.containerView.backgroundColor = .discountBackgroundColor
         self.containerView.addBorderAndCornerRadius(withBorderWidth: 0.5, borderColor: .primaryGreen, cornerRadius: 5)
-        self.filterKey.textColor = .primaryGreen
     }
 }

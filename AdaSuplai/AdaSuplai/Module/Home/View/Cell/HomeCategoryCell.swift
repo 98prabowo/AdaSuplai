@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeCategoryCell: UITableViewCell, Identifiable {
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     var categories = [DummyCategory]()

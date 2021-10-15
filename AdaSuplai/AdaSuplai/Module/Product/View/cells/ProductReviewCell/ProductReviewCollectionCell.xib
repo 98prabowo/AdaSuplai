@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProductReviewCollectionCell" customModule="AdaSuplai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FsB-8I-n4g">
+                        <rect key="frame" x="0.0" y="1" width="80" height="77.5"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="FsB-8I-n4g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="IZv-pV-GGW"/>
+                <constraint firstAttribute="trailing" secondItem="FsB-8I-n4g" secondAttribute="trailing" id="MOV-kz-iGf"/>
+                <constraint firstItem="FsB-8I-n4g" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gq6-ZM-Rzc"/>
+                <constraint firstAttribute="bottom" secondItem="FsB-8I-n4g" secondAttribute="bottom" id="l92-qs-pL0"/>
+            </constraints>
+            <connections>
+                <outlet property="reviewImage" destination="FsB-8I-n4g" id="Itv-5l-bq3"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="64"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="photo.fill" catalog="system" width="128" height="93"/>
+    </resources>
+</document>

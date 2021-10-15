@@ -16,7 +16,6 @@ class HomeController: BaseUIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let searchController = UISearchController()
     let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
@@ -27,22 +26,13 @@ class HomeController: BaseUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.backgroundColor = .systemGreen
+        self.setupNavigationBar()
     }
     
     private func setupNavigationBar() {
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.titleView = searchController.searchBar
-        self.setupSearchController()
-    }
-    
-    private func setupSearchController() {
-        self.searchController.delegate = self
-        self.searchController.searchBar.delegate = self
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.barTintColor = .systemGreen
-        self.searchController.searchBar.setTextFieldColor(.systemBackground)
-        self.searchController.searchBar.placeholder = Constant.searchPlaceholder
+        guard let navigation = self.navigationController else { return }
+        navigation.navigationBar.backgroundColor = .systemGreen
+        self.addSearchBar(placeholder: Constant.searchPlaceholder)
     }
     
     private func setupTableView() {
@@ -71,29 +61,17 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withCell: HotProductCell.self, for: indexPath)
+            cell.delegate = self
             cell.configure(with: self.viewModel.todayTrends, title: Constant.productTrend)
             return cell
         }
     }
 }
 
-// MARK: - Search Controller
-extension HomeController: UISearchControllerDelegate, UISearchBarDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let nextVC = SearchUpdaterController()
-        nextVC.homeDelegate = self
-        let navController = UINavigationController(rootViewController: nextVC)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: false, completion: nil)
-    }
-}
-
-extension HomeController: SearchNavigationDelegate {
-    func goToSearchResult() {
-        let nextVC = SearchResultController()
+// MARK: - Protocol Delegate
+extension HomeController: ProductDelegate {    
+    func goToProductController() {
+        let nextVC = ProductController()
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
