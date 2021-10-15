@@ -1,5 +1,5 @@
 //
-//  SearchResultCell.swift
+//  ProductCell.swift
 //  AdaSuplai
 //
 //  Created by Dimas A. Prabowo on 06/10/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchResultCell: UICollectionViewCell, Identifiable {
+class ProductCell: UICollectionViewCell, Identifiable {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var productImage: UIImageView!
     @IBOutlet private weak var productName: UILabel!
@@ -29,6 +29,7 @@ class SearchResultCell: UICollectionViewCell, Identifiable {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupBackgroundView()
+        self.setupWishlistButton()
     }
     
     private func setupBackgroundView() {
@@ -44,7 +45,7 @@ class SearchResultCell: UICollectionViewCell, Identifiable {
     }
     
     private func setupWishlistButton() {
-        
+        self.wishlistButton.isHidden = true
     }
     
     @IBAction private func wishlistButton(_ sender: Any) {

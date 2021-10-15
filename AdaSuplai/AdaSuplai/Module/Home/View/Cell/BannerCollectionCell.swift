@@ -12,11 +12,19 @@ class BannerCollectionCell: UICollectionViewCell, Identifiable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.backgroundColor = .secondarySystemBackground
-        self.contentView.layer.cornerRadius = 10
+        self.setupBanner()
+    }
+    
+    private func setupBanner() {
+        self.banner.backgroundColor = .secondarySystemBackground
+        self.banner.layer.cornerRadius = 10
     }
     
     func configure(banner: UIImage) {
         self.banner.image = banner
+    }
+    
+    func configure(color: UIColor) {
+        self.banner.backgroundColor = color
     }
 }

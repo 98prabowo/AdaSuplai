@@ -10,6 +10,12 @@ import UIKit
 
 class HomeViewModel: BaseViewModel {
     let categories: [DummyCategory] = [
+        DummyCategory(image: UIImage(named: "Kopi"),
+                      category: "Biji Kopi"),
+        DummyCategory(image: UIImage(named: "Sirup"),
+                      category: "Sirup"),
+        DummyCategory(image: UIImage(named: "Susu"),
+                      category: "Susu"),
         DummyCategory(image: UIImage(named: "Bubuk"),
                       category: "Bubuk"),
         DummyCategory(image: UIImage(named: "Es Batu"),
@@ -18,12 +24,6 @@ class HomeViewModel: BaseViewModel {
                       category: "Gula"),
         DummyCategory(image: UIImage(named: "Kemasan"),
                       category: "Kemasan"),
-        DummyCategory(image: UIImage(named: "Kopi"),
-                      category: "Kopi"),
-        DummyCategory(image: UIImage(named: "Sirup"),
-                      category: "Susu"),
-        DummyCategory(image: UIImage(named: "Susu"),
-                      category: "Susu"),
         DummyCategory(image: UIImage(named: "Lihat Lebih"),
                       category: "Lihat Lebih")]
     

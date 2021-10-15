@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class HotProductCell: UITableViewCell, Identifiable {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    weak var delegate: ProductDelegate?
+    let productPublisher = PassthroughSubject<Void, Never>()
     
     var productTrends = [DummyProduct]() {
         didSet {
@@ -27,7 +28,7 @@ class HotProductCell: UITableViewCell, Identifiable {
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.registerNib(forCell: SearchResultCell.self)
+        self.collectionView.registerNib(forCell: ProductCell.self)
     }
     
     func configure(with products: [DummyProduct], title: String) {
@@ -42,13 +43,12 @@ extension HotProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withCell: SearchResultCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
         cell.configure(product: self.productTrends[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let delegate = self.delegate else { return }
-        delegate.goToProductController()
+        self.productPublisher.send()
     }
 }

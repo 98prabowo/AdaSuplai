@@ -74,7 +74,7 @@ class SearchResultController: UIViewController, Identifiable {
         layout.horizontalContentInset = 5
         layout.verticalContentInset = 5
         self.collectionView.collectionViewLayout = layout
-        self.collectionView.register(UINib(nibName: SearchResultCell.identifier, bundle: nil), forCellWithReuseIdentifier: SearchResultCell.identifier)
+        self.collectionView.register(UINib(nibName: ProductCell.identifier, bundle: nil), forCellWithReuseIdentifier: ProductCell.identifier)
     }
 }
 
@@ -84,7 +84,7 @@ extension SearchResultController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withCell: SearchResultCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
         if self.isItemsDiscount[indexPath.item] {
             cell.isDiscount()
         }

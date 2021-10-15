@@ -18,7 +18,7 @@ class ProductAttributesHeaderCell: UITableViewCell, Identifiable {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var isFirst: Bool = true
-    private let attributesPublisher = PassthroughSubject<ProductAttribute, Never>()
+    let attributesPublisher = PassthroughSubject<ProductAttribute, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()

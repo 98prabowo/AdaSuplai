@@ -25,7 +25,7 @@ class SimilarProductCell: UITableViewCell, Identifiable {
     private func setupCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.registerNib(forCell: SearchResultCell.self)
+        self.collectionView.registerNib(forCell: ProductCell.self)
     }
     
     @IBAction func seeMoreButtonTapped(_ sender: Any) {
@@ -38,7 +38,7 @@ extension SimilarProductCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withCell: SearchResultCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
         return cell
     }
 }

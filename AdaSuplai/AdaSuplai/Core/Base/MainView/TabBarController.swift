@@ -19,9 +19,10 @@ class TabBarController: UITabBarController {
     
     private func setupTabBarItem() {
         self.tabBar.barTintColor = .systemBackground
+        self.tabBar.backgroundColor = .systemBackground
         if let tabItems = self.tabBar.items {
             tabItems[0].title = "Home"
-            tabItems[0].image = UIImage(systemName: "house.fill")
+            tabItems[0].image = UIImage(systemName: "takeoutbag.and.cup.and.straw.fill")
             tabItems[1].title = "Test"
             tabItems[1].image = UIImage(systemName: "pencil")
         }
