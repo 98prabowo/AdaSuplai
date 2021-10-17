@@ -7,14 +7,17 @@
 
 import UIKit
 
-class AllCategoriesController: UIViewController, Identifiable, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class AllCategoriesController: UIViewController, Identifiable {
     
     @IBOutlet var collectionView: UICollectionView!
+    var searchController = UISearchController()
+    var isSearch : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpNavigationBar()
+        setupSearchController()
         setUpCollectionView()
     }
     
@@ -23,26 +26,38 @@ class AllCategoriesController: UIViewController, Identifiable, UICollectionViewD
     private func setUpNavigationBar(){
         title = "Lihat Lebih"
         
-        let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: .some(#selector(searchTapped(_:))))
-        navigationItem.hidesBackButton = false
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.rightBarButtonItems = [searchButton]
-        self.navigationController?.navigationBar.tintColor = .systemGreen
-        self.navigationController?.navigationBar.backgroundColor = .white
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        if isSearch == false {
+            let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: .some(#selector(searchTapped(_:))))
+            navigationItem.hidesBackButton = false
+            navigationItem.hidesSearchBarWhenScrolling = false
+            self.navigationItem.titleView = .none
+            navigationItem.rightBarButtonItems = [searchButton]
+            self.navigationController?.navigationBar.tintColor = .systemGreen
+            self.navigationController?.navigationBar.backgroundColor = .white
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+        } else {
+            self.navigationItem.titleView = self.searchController.searchBar
+            navigationItem.hidesBackButton = true
+            navigationItem.hidesSearchBarWhenScrolling = false
+            navigationItem.rightBarButtonItems = []
+            self.navigationController?.navigationBar.tintColor = .systemGreen
+            self.navigationController?.navigationBar.backgroundColor = .white
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+        }
+        
     }
-    
+
     @objc func searchTapped(_ sender: UIBarButtonItem) {
         print("Search Tapped")
         
-        let nextVC = SearchUpdaterController(nibName: SearchUpdaterController.identifier, bundle: nil)
-        let navController = UINavigationController(rootViewController: nextVC)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: false, completion: nil)
-        
+        isSearch = true
+        setUpNavigationBar()
     }
-    
-    // MARK: - Collection View
+}
+
+
+// MARK: - Collection View
+extension AllCategoriesController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func setUpCollectionView(){
         collectionView.register(AllCategoryCollectionCell.nib(), forCellWithReuseIdentifier: AllCategoryCollectionCell.identifier)
@@ -59,6 +74,7 @@ class AllCategoriesController: UIViewController, Identifiable, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCategoryCollectionCell.identifier, for: indexPath) as! AllCategoryCollectionCell
         cell.layer.cornerRadius = 8
+        cell.backgroundColor = .white
         return cell
     }
     
@@ -69,18 +85,31 @@ class AllCategoriesController: UIViewController, Identifiable, UICollectionViewD
         let width = (collectionView.bounds.width / numRowItems) - padding - spacing
         return CGSize(width: width, height: 100)
     }
-    
-    // MARK: - END
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
+
+
+// MARK: - Search Bar
+extension AllCategoriesController : UISearchControllerDelegate, UISearchBarDelegate  {
+    
+    private enum Constant {
+        static let searchPlaceholder = "Cari Kategori"
+    }
+    
+    private func setupSearchController() {
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.showsCancelButton = true
+        self.searchController.searchBar.barTintColor = .systemGreen
+        self.searchController.searchBar.placeholder = Constant.searchPlaceholder
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("Cancel")
+        
+        isSearch = false
+        setUpNavigationBar()
+    }
+}
+
+// MARK: - END
