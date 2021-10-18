@@ -246,6 +246,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8576EF5D271C86AA00F69D29 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				8576EF5E271C86B700F69D29 /* ViewModel */,
+				8576EF60271C86D600F69D29 /* Controller */,
+				8576EF5F271C86BF00F69D29 /* View */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		8576EF5E271C86B700F69D29 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8576EF5F271C86BF00F69D29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */,
+				8576EF61271C86F100F69D29 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8576EF60271C86D600F69D29 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8576EF61271C86F100F69D29 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8576EF62271C871200F69D29 /* AllCategory */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8576EF62271C871200F69D29 /* AllCategory */ = {
+			isa = PBXGroup;
+			children = (
+				85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */,
+				85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */,
+			);
+			path = AllCategory;
+			sourceTree = "<group>";
+		};
 		B9D64CF127030340000DDB95 = {
 			isa = PBXGroup;
 			children = (
@@ -356,7 +407,6 @@
 			isa = PBXGroup;
 			children = (
 				C366D2DD2706F98700EF1E0C /* Home.storyboard */,
-				85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */,
 				C3318D782706F340002294EC /* Cell */,
 			);
 			path = View;
@@ -367,7 +417,6 @@
 			children = (
 				C366D2DF2706F9E700EF1E0C /* HomeController.swift */,
 				C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */,
-				85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -393,12 +442,6 @@
 				C366D2EA2706FD5500EF1E0C /* BannerCollectionCell.xib */,
 				C366D2E52706FD3C00EF1E0C /* HotProductCell.swift */,
 				C366D2E62706FD3C00EF1E0C /* HotProductCell.xib */,
-				C366D2ED270700BE00EF1E0C /* HotProductCollectionCell.swift */,
-				C366D2EE270700BE00EF1E0C /* HotProductCollectionCell.xib */,
-				C366D364270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.swift */,
-				C366D365270DA90B00EF1E0C /* SearchUpdaterLastSeenCell.xib */,
-				85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */,
-				85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -427,7 +470,6 @@
 			isa = PBXGroup;
 			children = (
 				C366D368270DB1BE00EF1E0C /* SearchResultController.swift */,
-				C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */,
 				C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */,
 			);
 			path = Controller;
@@ -642,6 +684,7 @@
 				C30EA04A27103CED00832135 /* SortAndFilter */,
 				C366D36C270DBBFF00EF1E0C /* SearchResult */,
 				C3318D6A2706EF37002294EC /* Home */,
+				8576EF5D271C86AA00F69D29 /* Category */,
 				C3C94D9127059C1800688485 /* Authentication */,
 			);
 			path = Module;
