@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4DB9FA7C270592E400B36E98 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7B270592E400B36E98 /* Alamofire */; };
 		4DB9FA7F2705930A00B36E98 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7E2705930A00B36E98 /* AlamofireImage */; };
+		85FBBD602710174200A8CCF1 /* AllCategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */; };
+		85FBBD622710174D00A8CCF1 /* AllCategoriesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */; };
+		85FBBD652710175800A8CCF1 /* AllCategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */; };
+		85FBBD662710175800A8CCF1 /* AllCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
 		B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFF27030340000DDB95 /* SceneDelegate.swift */; };
 		B9D64D0227030340000DDB95 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64D0127030340000DDB95 /* MainController.swift */; };
@@ -68,7 +72,6 @@
 		C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D2F32707211C00EF1E0C /* AuthenticationController.swift */; };
 		C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C366D2F52707212E00EF1E0C /* Authentication.storyboard */; };
 		C366D331270C3B5B00EF1E0C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D330270C3B5B00EF1E0C /* TabBarController.swift */; };
-		C366D362270DA7A100EF1E0C /* SearchUpdaterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */; };
 		C366D363270DA7A100EF1E0C /* SearchUpdaterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D361270DA7A100EF1E0C /* SearchUpdaterController.xib */; };
 		C366D36A270DB1BE00EF1E0C /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D368270DB1BE00EF1E0C /* SearchResultController.swift */; };
 		C366D36B270DB1BE00EF1E0C /* SearchResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D369270DB1BE00EF1E0C /* SearchResultController.xib */; };
@@ -118,6 +121,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoriesController.swift; sourceTree = "<group>"; };
+		85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllCategoriesController.xib; sourceTree = "<group>"; };
+		85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllCategoryCollectionCell.xib; sourceTree = "<group>"; };
+		85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D64CFD27030340000DDB95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D64CFF27030340000DDB95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,7 +185,6 @@
 		C366D2F32707211C00EF1E0C /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		C366D2F52707212E00EF1E0C /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		C366D330270C3B5B00EF1E0C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUpdaterController.swift; sourceTree = "<group>"; };
 		C366D361270DA7A100EF1E0C /* SearchUpdaterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchUpdaterController.xib; sourceTree = "<group>"; };
 		C366D368270DB1BE00EF1E0C /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		C366D369270DB1BE00EF1E0C /* SearchResultController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultController.xib; sourceTree = "<group>"; };
@@ -238,6 +244,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8576EF5D271C86AA00F69D29 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				8576EF5E271C86B700F69D29 /* ViewModel */,
+				8576EF60271C86D600F69D29 /* Controller */,
+				8576EF5F271C86BF00F69D29 /* View */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		8576EF5E271C86B700F69D29 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8576EF5F271C86BF00F69D29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85FBBD612710174D00A8CCF1 /* AllCategoriesController.xib */,
+				8576EF61271C86F100F69D29 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8576EF60271C86D600F69D29 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				85FBBD5F2710174200A8CCF1 /* AllCategoriesController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8576EF61271C86F100F69D29 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8576EF62271C871200F69D29 /* AllCategory */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8576EF62271C871200F69D29 /* AllCategory */ = {
+			isa = PBXGroup;
+			children = (
+				85FBBD642710175800A8CCF1 /* AllCategoryCollectionCell.swift */,
+				85FBBD632710175800A8CCF1 /* AllCategoryCollectionCell.xib */,
+			);
+			path = AllCategory;
+			sourceTree = "<group>";
+		};
 		B9D64CF127030340000DDB95 = {
 			isa = PBXGroup;
 			children = (
@@ -410,7 +467,6 @@
 			isa = PBXGroup;
 			children = (
 				C366D368270DB1BE00EF1E0C /* SearchResultController.swift */,
-				C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */,
 				C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */,
 			);
 			path = Controller;
@@ -625,6 +681,7 @@
 				C30EA04A27103CED00832135 /* SortAndFilter */,
 				C366D36C270DBBFF00EF1E0C /* SearchResult */,
 				C3318D6A2706EF37002294EC /* Home */,
+				8576EF5D271C86AA00F69D29 /* Category */,
 				C3C94D9127059C1800688485 /* Authentication */,
 			);
 			path = Module;
@@ -788,6 +845,7 @@
 				C378E4952719FC79008288B9 /* SearchUpdaterLastSeenCell.xib in Resources */,
 				C32BF8A7271805D500658994 /* ProductAttributesDescriptionCell.xib in Resources */,
 				C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */,
+				85FBBD652710175800A8CCF1 /* AllCategoryCollectionCell.xib in Resources */,
 				C366D2DC2706F47E00EF1E0C /* HomeCategoryCollectionCell.xib in Resources */,
 				C3CBECC12716E73600622FE1 /* StatusProductCollectionCell.xib in Resources */,
 				C366D2F227071C7200EF1E0C /* TabBar.storyboard in Resources */,
@@ -807,6 +865,7 @@
 				C3CBECB52716E2B300622FE1 /* ProductImagePriceCell.xib in Resources */,
 				C366D363270DA7A100EF1E0C /* SearchUpdaterController.xib in Resources */,
 				C30EA0692710492A00832135 /* FilterHeaderCell.xib in Resources */,
+				85FBBD622710174D00A8CCF1 /* AllCategoriesController.xib in Resources */,
 				C366D2E42706FC0F00EF1E0C /* BannerPromoCell.xib in Resources */,
 				C366D373270DBC5D00EF1E0C /* ProductCell.xib in Resources */,
 				C3CBECC92716EC6300622FE1 /* ProductVariantCell.xib in Resources */,
@@ -873,7 +932,6 @@
 				C3D58560270EF14200F6678D /* Extension-String.swift in Sources */,
 				C32BF89E2718059500658994 /* ProductAttributesHeaderCell.swift in Sources */,
 				C366D2E72706FD3C00EF1E0C /* HotProductCell.swift in Sources */,
-				C366D362270DA7A100EF1E0C /* SearchUpdaterController.swift in Sources */,
 				C378E4942719FC79008288B9 /* SearchUpdaterLastSeenCell.swift in Sources */,
 				C3CBECA12715688E00622FE1 /* Extension-UICollectionView.swift in Sources */,
 				C3CBECA3271568B500622FE1 /* WaterfallLayout.swift in Sources */,
@@ -903,6 +961,7 @@
 				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
 				C30EA064271046C600832135 /* SpacerFilterCell.swift in Sources */,
 				C3CBECB82716E31B00622FE1 /* ProductStatusCell.swift in Sources */,
+				85FBBD602710174200A8CCF1 /* AllCategoriesController.swift in Sources */,
 				C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */,
 				C3CBECB42716E2B300622FE1 /* ProductImagePriceCell.swift in Sources */,
 				C30EA05327103E5200832135 /* FilterViewModel.swift in Sources */,
@@ -910,6 +969,7 @@
 				C30EA05627103EA800832135 /* FilterCell.swift in Sources */,
 				C366D2E32706FC0F00EF1E0C /* BannerPromoCell.swift in Sources */,
 				C3CBECC02716E73600622FE1 /* StatusProductCollectionCell.swift in Sources */,
+				85FBBD662710175800A8CCF1 /* AllCategoryCollectionCell.swift in Sources */,
 				C366D2D72706F39F00EF1E0C /* HomeCategoryCell.swift in Sources */,
 				C3CBECA92716D6EA00622FE1 /* Extension-UISearchBar.swift in Sources */,
 				C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */,
