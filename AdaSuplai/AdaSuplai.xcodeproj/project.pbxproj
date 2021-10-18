@@ -72,7 +72,6 @@
 		C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D2F32707211C00EF1E0C /* AuthenticationController.swift */; };
 		C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C366D2F52707212E00EF1E0C /* Authentication.storyboard */; };
 		C366D331270C3B5B00EF1E0C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D330270C3B5B00EF1E0C /* TabBarController.swift */; };
-		C366D362270DA7A100EF1E0C /* SearchUpdaterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */; };
 		C366D363270DA7A100EF1E0C /* SearchUpdaterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D361270DA7A100EF1E0C /* SearchUpdaterController.xib */; };
 		C366D36A270DB1BE00EF1E0C /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D368270DB1BE00EF1E0C /* SearchResultController.swift */; };
 		C366D36B270DB1BE00EF1E0C /* SearchResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D369270DB1BE00EF1E0C /* SearchResultController.xib */; };
@@ -186,7 +185,6 @@
 		C366D2F32707211C00EF1E0C /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		C366D2F52707212E00EF1E0C /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		C366D330270C3B5B00EF1E0C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUpdaterController.swift; sourceTree = "<group>"; };
 		C366D361270DA7A100EF1E0C /* SearchUpdaterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchUpdaterController.xib; sourceTree = "<group>"; };
 		C366D368270DB1BE00EF1E0C /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		C366D369270DB1BE00EF1E0C /* SearchResultController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultController.xib; sourceTree = "<group>"; };
@@ -416,7 +414,6 @@
 			isa = PBXGroup;
 			children = (
 				C366D2DF2706F9E700EF1E0C /* HomeController.swift */,
-				C366D360270DA7A100EF1E0C /* SearchUpdaterController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -935,7 +932,6 @@
 				C3D58560270EF14200F6678D /* Extension-String.swift in Sources */,
 				C32BF89E2718059500658994 /* ProductAttributesHeaderCell.swift in Sources */,
 				C366D2E72706FD3C00EF1E0C /* HotProductCell.swift in Sources */,
-				C366D362270DA7A100EF1E0C /* SearchUpdaterController.swift in Sources */,
 				C378E4942719FC79008288B9 /* SearchUpdaterLastSeenCell.swift in Sources */,
 				C3CBECA12715688E00622FE1 /* Extension-UICollectionView.swift in Sources */,
 				C3CBECA3271568B500622FE1 /* WaterfallLayout.swift in Sources */,
