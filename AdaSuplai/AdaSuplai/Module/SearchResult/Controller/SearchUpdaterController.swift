@@ -6,26 +6,22 @@
 //
 
 import UIKit
+import Combine
 
-protocol SearchNavigationDelegate: AnyObject {
-    func goToSearchResult()
+enum SearchError: Error {
+    case noKeywordError
 }
 
 class SearchUpdaterController: UIViewController, Identifiable {
     @IBOutlet private weak var tableView: UITableView!
     
-    weak var homeDelegate: SearchNavigationDelegate?
-    let searchController = UISearchController(searchResultsController: nil)
-    
-    var searchText: String = "" {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    let searchPublisher = PassthroughSubject<String, SearchError>()
+    private var searchSubscriber = Set<AnyCancellable>()
+    private let viewModel: SearchUpdaterViewModel
+    private lazy var searchController = UISearchController(searchResultsController: nil)
     
     init() {
+        self.viewModel = SearchUpdaterViewModel()
         super.init(nibName: Self.identifier, bundle: nil)
     }
     
@@ -37,6 +33,7 @@ class SearchUpdaterController: UIViewController, Identifiable {
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupTableView()
+        self.searchTextFieldListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,24 +56,22 @@ class SearchUpdaterController: UIViewController, Identifiable {
         self.tableView.dataSource = self
         self.tableView.registerNib(forCell: SearchUpdaterLastSeenCell.self)
     }
-}
-
-extension SearchUpdaterController: UISearchControllerDelegate, UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchText = searchText
-    }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.dismiss(animated: false, completion: nil)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.dismiss(animated: false)
-        self.dismiss(animated: false) {
-            if let delegate = self.homeDelegate {
-                delegate.goToSearchResult()
+    private func searchTextFieldListener() {
+        let publisher = NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: searchController.searchBar.searchTextField)
+        publisher
+            .compactMap {
+                ($0.object as? UISearchTextField)?.text
             }
-        }
+            .receive(on: DispatchQueue.main)
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [unowned self] value in
+                self.viewModel.keyword = value
+                self.tableView.reloadData()
+                print(value)
+            }
+            .store(in: &searchSubscriber)
     }
 }
 
@@ -88,7 +83,30 @@ extension SearchUpdaterController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: SearchUpdaterLastSeenCell.self, for: indexPath)
         cell.selectionStyle = .none
-        cell.configure(history: self.searchText)
+        cell.configure(history: self.viewModel.keyword)
         return cell
+    }
+}
+
+extension SearchUpdaterController: UISearchControllerDelegate, UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: false)
+        self.dismiss(animated: false) { [weak self] in
+            if let keyword = searchBar.text {
+                self?.searchPublisher.send(keyword)
+            } else {
+                self?.searchPublisher.send(completion: .failure(.noKeywordError))
+            }
+        }
+    }
+    
+    func didPresentSearchController(_ searchController: UISearchController) {
+        DispatchQueue.main.async {
+            searchController.searchBar.becomeFirstResponder()
+        }
     }
 }

@@ -7,23 +7,25 @@
 
 import UIKit
 
-class SearchResultController: UIViewController, Identifiable {
+class SearchResultController: BaseUIViewController {
     private enum Constant {
-        static let searchPlaceholder = "Cari Penawaran"
+        static let wishlistButtonImage = "slider.horizontal.3"
     }
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private let isItemsDiscount = [true, false, false, true, true, true, false, true, false, false]
-    init() {
+    
+    private let viewModel: SearchResultViewModel
+    
+    init(keyword: String) {
+        self.viewModel = SearchResultViewModel(keyword: keyword)
         super.init(nibName: Self.identifier, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let searchController: UISearchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,35 +35,27 @@ class SearchResultController: UIViewController, Identifiable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.backgroundColor = .systemBackground
+        self.setupNavigationBar()
     }
     
     private func setupNavigationBar() {
-        self.navigationController?.navigationBar.backgroundColor = .label
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.titleView = self.searchController.searchBar
-        self.navigationItem.rightBarButtonItems = self.setupRightButtonItems()
-        self.setupSearchController()
+        guard let navigation = navigationController else { return }
+        navigation.navigationBar.backgroundColor = .systemBackground
+        navigation.navigationBar.barTintColor = .systemBackground
+        self.addSearchBar(with: self.setupRightButtonItems(),
+                          placeholder: self.viewModel.keyword,
+                          barColor: .secondarySystemBackground)
     }
     
     private func setupRightButtonItems() -> [UIBarButtonItem] {
-        let wishlistButton = UIBarButtonItem(image: UIImage(systemName: "slider.horizontal.3"), style: .plain, target: self, action: .some(#selector(filterTapped(_:))))
+        let wishlistButton = UIBarButtonItem(image: UIImage(systemName: Constant.wishlistButtonImage), style: .plain, target: self, action: .some(#selector(filterTapped(_:))))
         wishlistButton.tintColor = .systemGreen
         return [wishlistButton]
     }
     
-    @objc func filterTapped(_ sender: UIBarButtonItem) {
+    @objc private func filterTapped(_ sender: UIBarButtonItem) {
         let nextVC = FilterController()
         self.present(nextVC, animated: true)
-    }
-    
-    private func setupSearchController() {
-        self.searchController.delegate = self
-        self.searchController.searchBar.delegate = self
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.barTintColor = .systemGreen
-        self.searchController.searchBar.setTextFieldColor(.secondarySystemBackground)
-        self.searchController.searchBar.placeholder = Constant.searchPlaceholder
     }
     
     private func setupCollectionView() {
@@ -74,7 +68,14 @@ class SearchResultController: UIViewController, Identifiable {
         layout.horizontalContentInset = 5
         layout.verticalContentInset = 5
         self.collectionView.collectionViewLayout = layout
-        self.collectionView.register(UINib(nibName: ProductCell.identifier, bundle: nil), forCellWithReuseIdentifier: ProductCell.identifier)
+        self.collectionView.registerNib(forCell: ProductCell.self)
+    }
+    
+    private func goToProduct(with indexPath: IndexPath) {
+        let nextVC = ProductController()
+        if let navigation = navigationController {
+            navigation.pushViewController(nextVC, animated: true)
+        }
     }
 }
 
@@ -92,7 +93,7 @@ extension SearchResultController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        self.goToProduct(with: indexPath)
     }
     
     func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
@@ -101,27 +102,5 @@ extension SearchResultController: UICollectionViewDelegate, UICollectionViewData
             height = 320
         }
         return height
-    }
-}
-
-extension SearchResultController: UISearchControllerDelegate, UISearchBarDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let nextVC = SearchUpdaterController()
-        nextVC.homeDelegate = self
-        let navController = UINavigationController(rootViewController: nextVC)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: false, completion: nil)
-    }
-}
-
-extension SearchResultController: SearchNavigationDelegate {
-    func goToSearchResult() {
-        let nextVC = SearchResultController()
-        if let navigationController = self.navigationController {
-            navigationController.pushViewController(nextVC, animated: true)
-        }
     }
 }

@@ -2,7 +2,7 @@
 //  MainController.swift
 //  AdaSuplai
 //
-//  Created by David Tandjung on 28/09/21.
+//  Created by Dimas A. Prabowo on 28/09/21.
 //
 
 import UIKit

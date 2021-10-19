@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Combine
 import UIKit
 
 class BaseUIViewController: UIViewController, Identifiable {
-    lazy var searchController = UISearchController()
+    private var subscribers = Set<AnyCancellable>()
+    
+    private lazy var searchController = UISearchController()
     
     func addSearchBar(with buttons: [UIBarButtonItem]? = nil, placeholder: String, barColor: UIColor = .systemBackground) {
         self.navigationItem.hidesSearchBarWhenScrolling = false
@@ -26,23 +29,33 @@ class BaseUIViewController: UIViewController, Identifiable {
         self.searchController.searchBar.setTextFieldColor(barColor)
         self.searchController.searchBar.placeholder = placeholder
     }
+    
+    private func goToSearchResult(keyword: String) {
+        let nextVC = SearchResultController(keyword: keyword)
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
+    }
 }
 
 extension BaseUIViewController: UISearchControllerDelegate, UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let nextVC = SearchUpdaterController()
-        nextVC.homeDelegate = self
+        nextVC.searchPublisher
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(.noKeywordError):
+                    print("No Keyword found")
+                }
+            } receiveValue: { value in
+                self.goToSearchResult(keyword: value)
+            }
+            .store(in: &subscribers)
+        
         let navController = UINavigationController(rootViewController: nextVC)
         navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: false, completion: nil)
-    }
-}
-
-extension BaseUIViewController: SearchNavigationDelegate {
-    func goToSearchResult() {
-        let nextVC = SearchResultController()
-        if let navigationController = self.navigationController {
-            navigationController.pushViewController(nextVC, animated: true)
-        }
     }
 }

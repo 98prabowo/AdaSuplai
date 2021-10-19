@@ -72,7 +72,7 @@ extension AllCategoriesController : UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCategoryCollectionCell.identifier, for: indexPath) as! AllCategoryCollectionCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCategoryCollectionCell.identifier, for: indexPath) as? AllCategoryCollectionCell else { return UICollectionViewCell() }
         cell.layer.cornerRadius = 8
         cell.backgroundColor = .white
         return cell
