@@ -57,10 +57,10 @@ class HomeController: BaseUIViewController {
     
     private func goToBannerController() {
         // TODO: Assign BannerVC to nextVC
-        let nextVC = TransactionDetailController()
-        if let navigationController = self.navigationController {
-            navigationController.pushViewController(nextVC, animated: true)
-        }
+//        let nextVC = UIViewController()
+//        if let navigationController = self.navigationController {
+//            navigationController.pushViewController(nextVC, animated: true)
+//        }
     }
     
     private func goToProductController() {
