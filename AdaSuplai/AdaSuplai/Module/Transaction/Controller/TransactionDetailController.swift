@@ -15,7 +15,7 @@ class TransactionDetailController: UIViewController, Identifiable, UIGestureReco
     @IBOutlet var deliveryTotalLabel: UILabel!
     @IBOutlet var totalLabel: UILabel!
     @IBOutlet var viewer: UIView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTable()
@@ -33,7 +33,7 @@ class TransactionDetailController: UIViewController, Identifiable, UIGestureReco
         let tapGesture = UITapGestureRecognizer(target: self, action: .some(#selector(clickView(_:))))
         tapGesture.delegate = self
         viewer.addGestureRecognizer(tapGesture)
-
+        
     }
     
     @objc func clickView(_ sender: UIView) {
@@ -117,6 +117,15 @@ extension TransactionDetailController: UITableViewDelegate, UITableViewDataSourc
             default :
                 return UITableViewCell()
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section > 0 && indexPath.row == 2 {
+            let nextVC = ListDeliveryController(nibName: ListDeliveryController.identifier, bundle: nil)
+            let navController = UINavigationController(rootViewController: nextVC)
+            navController.modalPresentationStyle = .automatic
+            self.present(navController, animated: true, completion: nil)
         }
     }
 }
