@@ -25,6 +25,8 @@ class TabBarController: UITabBarController {
             tabItems[0].image = UIImage(systemName: "takeoutbag.and.cup.and.straw.fill")
             tabItems[1].title = "Test"
             tabItems[1].image = UIImage(systemName: "pencil")
+            tabItems[2].title = "Profile"
+            tabItems[2].image = UIImage(systemName: "person.fill")
         }
     }
 }
