@@ -38,10 +38,10 @@ class ProfileViewController: BaseUIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func setUpTable() {
-        table.register(ProfileUserCell.nib(), forCellReuseIdentifier: ProfileUserCell.identifier)
-        table.register(ProfileOrderStatusCell.nib(), forCellReuseIdentifier: ProfileOrderStatusCell.identifier)
-        table.register(ProfileTransactionCell.nib(), forCellReuseIdentifier: ProfileTransactionCell.identifier)
-        table.register(ProfileInformationsCell.nib(), forCellReuseIdentifier: ProfileInformationsCell.identifier)
+        table.registerNib(forCell: ProfileUserCell.self)
+        table.registerNib(forCell: ProfileOrderStatusCell.self)
+        table.registerNib(forCell: ProfileTransactionCell.self)
+        table.registerNib(forCell: ProfileInformationsCell.self)
         
         table.allowsSelection = false
         table.separatorStyle = .none

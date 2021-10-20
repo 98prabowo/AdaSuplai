@@ -41,7 +41,7 @@ class ProfileInformationsCell: UITableViewCell, Identifiable {
 // MARK: - Table
 extension ProfileInformationsCell: UITableViewDelegate, UITableViewDataSource {
     private func setUpTable() {
-        table.register(InformationCell.nib(), forCellReuseIdentifier: InformationCell.identifier)
+        table.registerNib(forCell: InformationCell.self)
         table.backgroundColor = UIColor.white
         table.dataSource = self
         table.delegate = self

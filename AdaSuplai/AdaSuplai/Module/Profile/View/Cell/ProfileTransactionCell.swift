@@ -40,7 +40,7 @@ class ProfileTransactionCell: UITableViewCell, Identifiable {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        self.collectionView.register(ProfileTransactionCollectionCell.nib(), forCellWithReuseIdentifier: ProfileTransactionCollectionCell.identifier)
+        self.collectionView.registerNib(forCell: ProfileTransactionCollectionCell.self)
     }
     
 }
