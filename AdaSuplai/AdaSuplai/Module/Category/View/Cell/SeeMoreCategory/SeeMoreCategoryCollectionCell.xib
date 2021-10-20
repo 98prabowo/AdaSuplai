@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SeeMoreCategoryCollectionCell" customModule="AdaSuplai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="294" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="294" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="451-Gb-jf8">
+                        <rect key="frame" x="0.0" y="0.0" width="294" height="100"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="KopiBanyak" translatesAutoresizingMaskIntoConstraints="NO" id="Rru-hr-bf4">
+                                <rect key="frame" x="0.0" y="0.0" width="294" height="76"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lM4-x0-NYW">
+                                <rect key="frame" x="0.0" y="80" width="294" height="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="lM4-x0-NYW" secondAttribute="bottom" constant="4" id="1Qg-rY-kra"/>
+                            <constraint firstItem="lM4-x0-NYW" firstAttribute="top" secondItem="Rru-hr-bf4" secondAttribute="bottom" constant="4" id="FKK-Zx-ojp"/>
+                            <constraint firstAttribute="trailing" secondItem="Rru-hr-bf4" secondAttribute="trailing" id="I2o-QZ-oWF"/>
+                            <constraint firstItem="Rru-hr-bf4" firstAttribute="leading" secondItem="451-Gb-jf8" secondAttribute="leading" id="Jlx-hh-gnK"/>
+                            <constraint firstItem="lM4-x0-NYW" firstAttribute="leading" secondItem="451-Gb-jf8" secondAttribute="leading" id="OS4-Of-tuF"/>
+                            <constraint firstAttribute="trailing" secondItem="lM4-x0-NYW" secondAttribute="trailing" id="Ovw-0G-K1F"/>
+                            <constraint firstItem="Rru-hr-bf4" firstAttribute="top" secondItem="451-Gb-jf8" secondAttribute="top" id="fBo-5R-LE7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="451-Gb-jf8" secondAttribute="trailing" id="7dg-Fg-nmG"/>
+                <constraint firstItem="451-Gb-jf8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9J8-7Q-vV0"/>
+                <constraint firstItem="451-Gb-jf8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ifm-HS-rMm"/>
+                <constraint firstAttribute="bottom" secondItem="451-Gb-jf8" secondAttribute="bottom" id="Zlb-0o-VQm"/>
+            </constraints>
+            <size key="customSize" width="294" height="100"/>
+            <connections>
+                <outlet property="categoryImage" destination="Rru-hr-bf4" id="MM1-92-CZZ"/>
+                <outlet property="categoryName" destination="lM4-x0-NYW" id="fRx-6E-lkT"/>
+                <outlet property="containerView" destination="451-Gb-jf8" id="fdc-oB-lep"/>
+            </connections>
+            <point key="canvasLocation" x="308.69565217391306" y="124.55357142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="KopiBanyak" width="174" height="154"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
