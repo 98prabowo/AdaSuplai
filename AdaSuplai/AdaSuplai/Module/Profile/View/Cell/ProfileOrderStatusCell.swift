@@ -38,7 +38,7 @@ class ProfileOrderStatusCell: UITableViewCell, Identifiable {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        self.collectionView.register(ProfileOrderStatusCollectionCell.nib(), forCellWithReuseIdentifier: ProfileOrderStatusCollectionCell.identifier)
+        self.collectionView.registerNib(forCell: ProfileOrderStatusCollectionCell.self)
     }
     
 }
