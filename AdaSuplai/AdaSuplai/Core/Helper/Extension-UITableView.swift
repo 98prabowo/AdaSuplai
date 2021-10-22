@@ -11,14 +11,14 @@ import UIKit
 extension UITableView {
     func dequeueReusableCell<T: UITableViewCell> (withCell: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: T.reusableIdentifier(), for: indexPath) as? T else {
-            fatalError("Can't not cast Cell with reusable identfier\(T.reusableIdentifier())")
+            return T()
         }
         return cell
     }
 
     func dequeueReusableHeaderFooterView<T: UIView> () -> T {
         guard let cell = dequeueReusableHeaderFooterView(withIdentifier: T.reusableIdentifier()) as? T else {
-            fatalError("Can't not cast View with reusable identfier\(T.reusableIdentifier())")
+            return T()
         }
         return cell
     }

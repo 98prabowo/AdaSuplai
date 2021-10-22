@@ -18,15 +18,18 @@ class TabBarController: UITabBarController {
     }
     
     private func setupTabBarItem() {
+        self.tabBar.tintColor = .primaryGreen
         self.tabBar.barTintColor = .systemBackground
         self.tabBar.backgroundColor = .systemBackground
         if let tabItems = self.tabBar.items {
             tabItems[0].title = "Home"
             tabItems[0].image = UIImage(systemName: "takeoutbag.and.cup.and.straw.fill")
-            tabItems[1].title = "Test"
-            tabItems[1].image = UIImage(systemName: "pencil")
-            tabItems[2].title = "Profile"
-            tabItems[2].image = UIImage(systemName: "person.fill")
+            tabItems[1].title = "Wishlist"
+            tabItems[1].image = UIImage(systemName: "heart.fill")
+            tabItems[2].title = "Keranjang"
+            tabItems[2].image = UIImage(systemName: "cart.fill")
+            tabItems[3].title = "Profile"
+            tabItems[3].image = UIImage(systemName: "person.fill")
         }
     }
 }

@@ -3,8 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,23 +24,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYg-qs-LgM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2305" y="960"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="85D-98-fhr">
-            <objects>
-                <viewController id="Jos-LT-Jtv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6l8-ek-h2p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="yCJ-Zp-ce8"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="8yH-LA-g4o"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G1U-I5-9A5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2870" y="567"/>
+            <point key="canvasLocation" x="2726" y="491"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cfP-Pa-DAe">
@@ -57,19 +39,37 @@
                     </tabBar>
                     <connections>
                         <segue destination="ntj-Yr-4gl" kind="relationship" relationship="viewControllers" id="Imh-bj-7GN"/>
-                        <segue destination="Jos-LT-Jtv" kind="relationship" relationship="viewControllers" id="bKv-6J-5yV"/>
-                        <segue destination="OV9-jF-R0r" kind="relationship" relationship="viewControllers" id="jSI-Ti-chL"/>
+                        <segue destination="4Mq-Xg-UTF" kind="relationship" relationship="viewControllers" id="qjk-IY-IDk"/>
+                        <segue destination="6DZ-og-rrS" kind="relationship" relationship="viewControllers" id="8cZ-BF-Xbd"/>
+                        <segue destination="OV9-jF-R0r" kind="relationship" relationship="viewControllers" id="7O6-hl-3dk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6k-hG-p43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1908.6956521739132" y="105.80357142857143"/>
         </scene>
+        <!--Cart-->
+        <scene sceneID="Oqm-oE-BDp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cart" id="6DZ-og-rrS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="R8s-23-GpO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yz6-YT-4Qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2763" y="307"/>
+        </scene>
+        <!--Wishlist-->
+        <scene sceneID="lOJ-B3-ulm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wishlist" id="4Mq-Xg-UTF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="C6m-jf-16i"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxo-EW-A4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2827" y="159"/>
+        </scene>
     </scenes>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

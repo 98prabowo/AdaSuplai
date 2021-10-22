@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CartSupplierCell" customModule="AdaSuplai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86d-dK-MAc">
+                        <rect key="frame" x="15" y="20" width="384" height="55"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="XEu-oS-dmc">
+                                <rect key="frame" x="15" y="15" width="354" height="30"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D6c-kM-UQ5">
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="30"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FJE-QR-7RA">
+                                                <rect key="frame" x="0.0" y="1" width="19.5" height="27.5"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEI-mZ-Pn6">
+                                                <rect key="frame" x="29.5" y="0.0" width="41.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kb3-o5-iIu">
+                                        <rect key="frame" x="330.5" y="0.0" width="23.5" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="clock.arrow.2.circlepath" catalog="system"/>
+                                        <connections>
+                                            <action selector="reorderButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KCn-P4-r6J"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XEu-oS-dmc" secondAttribute="trailing" constant="15" id="DOP-f1-qGD"/>
+                            <constraint firstAttribute="bottom" secondItem="XEu-oS-dmc" secondAttribute="bottom" constant="10" id="Kqa-uv-YWk"/>
+                            <constraint firstItem="XEu-oS-dmc" firstAttribute="leading" secondItem="86d-dK-MAc" secondAttribute="leading" constant="15" id="WZr-Zj-dhs"/>
+                            <constraint firstItem="XEu-oS-dmc" firstAttribute="top" secondItem="86d-dK-MAc" secondAttribute="top" constant="15" id="w0P-vW-0t2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="86d-dK-MAc" secondAttribute="trailing" constant="15" id="PVx-Br-g22"/>
+                    <constraint firstAttribute="bottom" secondItem="86d-dK-MAc" secondAttribute="bottom" id="ayW-ew-EAm"/>
+                    <constraint firstItem="86d-dK-MAc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="bxg-y5-RLU"/>
+                    <constraint firstItem="86d-dK-MAc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="wks-Hb-qpq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="checkmark" destination="FJE-QR-7RA" id="7WE-6e-Dk8"/>
+                <outlet property="containerView" destination="86d-dK-MAc" id="gtd-aT-O0j"/>
+                <outlet property="reorderButton" destination="Kb3-o5-iIu" id="KbH-hg-9rA"/>
+                <outlet property="supplierName" destination="uEI-mZ-Pn6" id="mOE-KE-HdZ"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="44"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="103"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

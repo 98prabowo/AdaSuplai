@@ -22,7 +22,6 @@ class HomeCategoryCell: UITableViewCell, Identifiable {
     }
     
     private func setupBackgroundView() {
-        self.containerView.roundSpecificCorners([.topRight], radius: 20)
         self.contentView.backgroundColor = .systemGreen
     }
     
