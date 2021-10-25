@@ -48,11 +48,17 @@ class HomeController: BaseUIViewController {
     }
     
     private func goToCategoryController() {
-        // TODO: Assign CategoryVC to nextVC
-//        let nextVC = UIViewController()
-//        if let navigationController = self.navigationController {
-//            navigationController.pushViewController(nextVC, animated: true)
-//        }
+        let nextVC = CategoryController()
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
+    }
+    
+    private func goToMoreCategoryController() {
+        let nextVC = SeeMoreCategoryController()
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
     }
     
     private func goToBannerController() {
@@ -82,8 +88,12 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withCell: HomeCategoryCell.self, for: indexPath)
             cell.configure(categories: self.viewModel.categories)
             cell.categoryPublisher
-                .sink { [unowned self] in
-                    self.goToCategoryController()
+                .sink { [unowned self] index in
+                    if index == self.viewModel.categories.count - 1 {
+                        self.goToMoreCategoryController()
+                    } else {
+                        self.goToCategoryController()
+                    }
                 }
                 .store(in: &homeTokens)
             return cell

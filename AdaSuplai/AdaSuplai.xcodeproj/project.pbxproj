@@ -979,8 +979,8 @@
 		C3C94D9B27059D3200688485 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				C3963BE92721802D0017AAB6 /* Wishlist */,
 				C3963BC227217D950017AAB6 /* OnBoarding */,
+				C3963BE92721802D0017AAB6 /* Wishlist */,
 				C3963BD327217F710017AAB6 /* Cart */,
 				C3CBECAA2716E04200622FE1 /* Product */,
 				C30EA04A27103CED00832135 /* SortAndFilter */,

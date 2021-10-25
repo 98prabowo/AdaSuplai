@@ -13,7 +13,7 @@ class HomeCategoryCell: UITableViewCell, Identifiable {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var categories = [DummyCategory]()
-    let categoryPublisher = PassthroughSubject<Void, Never>()
+    let categoryPublisher = PassthroughSubject<Int, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +49,6 @@ extension HomeCategoryCell: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(categories[indexPath.item].category)
-        self.categoryPublisher.send()
+        self.categoryPublisher.send(indexPath.item)
     }
 }
