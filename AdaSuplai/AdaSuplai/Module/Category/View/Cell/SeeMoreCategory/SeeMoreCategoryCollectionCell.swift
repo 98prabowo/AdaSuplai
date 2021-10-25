@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeeMoreCategoryCollectionCell: UICollectionViewCell, Identifiable {
+class SeeMoreCategoryCollectionCell: UICollectionViewCell {
     
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet var categoryImage: UIImageView!

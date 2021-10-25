@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllProductTransactionCell: UITableViewCell, Identifiable {
+class AllProductTransactionCell: UITableViewCell {
     
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet var tableView: UITableView!

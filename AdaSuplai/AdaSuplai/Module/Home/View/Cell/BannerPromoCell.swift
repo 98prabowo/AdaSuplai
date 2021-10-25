@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class BannerPromoCell: UITableViewCell, Identifiable {
+class BannerPromoCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     let bannerPublisher = PassthroughSubject<Void, Never>()

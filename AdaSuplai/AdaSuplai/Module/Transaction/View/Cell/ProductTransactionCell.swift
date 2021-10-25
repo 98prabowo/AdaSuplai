@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductTransactionCell: UITableViewCell, Identifiable {
+class ProductTransactionCell: UITableViewCell {
     
     @IBOutlet var productImage: UIImageView!
     @IBOutlet var productName: UILabel!

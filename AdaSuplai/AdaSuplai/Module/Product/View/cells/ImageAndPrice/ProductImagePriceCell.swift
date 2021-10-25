@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductImagePriceCell: UITableViewCell, Identifiable {
+class ProductImagePriceCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var price: UILabel!
     @IBOutlet private weak var productName: UILabel!

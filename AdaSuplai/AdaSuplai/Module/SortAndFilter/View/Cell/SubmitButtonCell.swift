@@ -11,7 +11,7 @@ protocol SubmitButtonDelegate: AnyObject {
     func submitTapped()
 }
 
-class SubmitButtonCell: UITableViewCell, Identifiable {
+class SubmitButtonCell: UITableViewCell {
     @IBOutlet weak var submitButton: UIButton!
     
     weak var delegate: SubmitButtonDelegate?

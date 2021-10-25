@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCategoryCollectionCell: UICollectionViewCell, Identifiable {
+class HomeCategoryCollectionCell: UICollectionViewCell {
     @IBOutlet private weak var categoryImage: UIImageView!
     @IBOutlet private weak var categoryName: UILabel!
     

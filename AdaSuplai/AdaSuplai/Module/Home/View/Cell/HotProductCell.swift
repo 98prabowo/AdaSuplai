@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class HotProductCell: UITableViewCell, Identifiable {
+class HotProductCell: UITableViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     

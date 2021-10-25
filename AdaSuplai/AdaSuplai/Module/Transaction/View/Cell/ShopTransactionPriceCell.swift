@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopTransactionPriceCell: UITableViewCell, Identifiable {
+class ShopTransactionPriceCell: UITableViewCell {
     
     @IBOutlet var deliveryButton: UIView!
     @IBOutlet var subtotalLabel: UILabel!

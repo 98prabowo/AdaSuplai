@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileOrderStatusCell: UITableViewCell, Identifiable {
+class ProfileOrderStatusCell: UITableViewCell {
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var containerView: UIView!

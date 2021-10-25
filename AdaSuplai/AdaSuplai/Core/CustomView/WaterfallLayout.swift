@@ -13,7 +13,9 @@ protocol WaterfallLayoutDelegate: AnyObject {
 }
 
 class WaterfallLayout: UICollectionViewLayout {
+    /// The object that acts as the delegate of the collection view layout.
     weak var delegate: WaterfallLayoutDelegate?
+    
     var numberOfColumn = 1
     var horizontalContentInset: CGFloat = 0
     var verticalContentInset: CGFloat = 0

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductAttributesCollectionCell: UICollectionViewCell, Identifiable {
+class ProductAttributesCollectionCell: UICollectionViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var line: UIView!
     

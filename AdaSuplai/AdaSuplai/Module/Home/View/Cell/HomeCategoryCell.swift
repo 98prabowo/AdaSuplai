@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class HomeCategoryCell: UITableViewCell, Identifiable {
+class HomeCategoryCell: UITableViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     

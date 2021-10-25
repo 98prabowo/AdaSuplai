@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductVariantCell: UITableViewCell, Identifiable {
+class ProductVariantCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var header: UILabel!
     

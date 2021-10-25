@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeliveryAddressCell: UITableViewCell, Identifiable {
+class DeliveryAddressCell: UITableViewCell {
     
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var addressDetailLabel: UILabel!

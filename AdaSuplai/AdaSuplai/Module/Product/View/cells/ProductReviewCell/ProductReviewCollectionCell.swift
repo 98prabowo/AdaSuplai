@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductReviewCollectionCell: UICollectionViewCell, Identifiable {
+class ProductReviewCollectionCell: UICollectionViewCell {
     @IBOutlet private weak var reviewImage: UIImageView!
     
     override func awakeFromNib() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimilarProductCell: UITableViewCell, Identifiable {
+class SimilarProductCell: UITableViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var seeMoreButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!

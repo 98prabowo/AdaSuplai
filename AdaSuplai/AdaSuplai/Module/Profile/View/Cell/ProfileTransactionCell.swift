@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileTransactionCell: UITableViewCell, Identifiable {
+class ProfileTransactionCell: UITableViewCell {
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var containerView: UIView!

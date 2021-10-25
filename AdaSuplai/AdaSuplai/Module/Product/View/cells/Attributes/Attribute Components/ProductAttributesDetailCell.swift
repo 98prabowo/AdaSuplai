@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductAttributesDetailCell: UITableViewCell, Identifiable {
+class ProductAttributesDetailCell: UITableViewCell {
     @IBOutlet private weak var minimumOrder: UILabel!
     @IBOutlet private weak var netWeight: UILabel!
     @IBOutlet private weak var grossWeight: UILabel!

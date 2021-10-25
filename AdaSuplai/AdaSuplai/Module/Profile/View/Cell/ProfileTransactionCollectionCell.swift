@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileTransactionCollectionCell: UICollectionViewCell, Identifiable {
+class ProfileTransactionCollectionCell: UICollectionViewCell {
     
     @IBOutlet var iconImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!

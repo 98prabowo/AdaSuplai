@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductReviewCell: UITableViewCell, Identifiable {
+class ProductReviewCell: UITableViewCell {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var star: UIImageView!

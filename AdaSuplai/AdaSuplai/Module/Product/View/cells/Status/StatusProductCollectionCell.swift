@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatusProductCollectionCell: UICollectionViewCell, Identifiable {
+class StatusProductCollectionCell: UICollectionViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var star: UIImageView!
     @IBOutlet private weak var productStatus: UILabel!

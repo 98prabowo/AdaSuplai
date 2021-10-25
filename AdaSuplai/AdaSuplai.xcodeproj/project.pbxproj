@@ -389,8 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				8576EFC427208D8B00F69D29 /* SeeMoreCategoryController.xib */,
-				8576EFC527208D8B00F69D29 /* Cell */,
 				8576EFCE27208D8B00F69D29 /* CategoryController.xib */,
+				8576EFC527208D8B00F69D29 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -408,8 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				8576EFC727208D8B00F69D29 /* PromoProductCell.swift */,
-				8576EFC827208D8B00F69D29 /* AllProductCell.swift */,
 				8576EFC927208D8B00F69D29 /* PromoProductCell.xib */,
+				8576EFC827208D8B00F69D29 /* AllProductCell.swift */,
 				8576EFCA27208D8B00F69D29 /* AllProductCell.xib */,
 			);
 			path = Category;
@@ -418,8 +418,8 @@
 		8576EFCB27208D8B00F69D29 /* SeeMoreCategory */ = {
 			isa = PBXGroup;
 			children = (
-				8576EFCC27208D8B00F69D29 /* SeeMoreCategoryCollectionCell.xib */,
 				8576EFCD27208D8B00F69D29 /* SeeMoreCategoryCollectionCell.swift */,
+				8576EFCC27208D8B00F69D29 /* SeeMoreCategoryCollectionCell.xib */,
 			);
 			path = SeeMoreCategory;
 			sourceTree = "<group>";
@@ -701,7 +701,6 @@
 			children = (
 				8576EF65271D8B1100F69D29 /* SearchUpdaterController.swift */,
 				C366D368270DB1BE00EF1E0C /* SearchResultController.swift */,
-				C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1063,6 +1062,7 @@
 		C3DF14822722B0A600C7A0C7 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */,
 				C3963BDC27217F710017AAB6 /* AdaSuplaiStepper.swift */,
 			);
 			path = CustomView;

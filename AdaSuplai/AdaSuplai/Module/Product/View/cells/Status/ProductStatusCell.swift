@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductStatusCell: UITableViewCell, Identifiable {
+class ProductStatusCell: UITableViewCell {
     private struct Status {
         let header: String
         let status: String

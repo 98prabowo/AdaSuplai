@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    /// Return a string with strike through text.
     var strikethroughText: NSMutableAttributedString {
         let attributedString: NSMutableAttributedString =  NSMutableAttributedString(string: self)
         attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributedString.length))

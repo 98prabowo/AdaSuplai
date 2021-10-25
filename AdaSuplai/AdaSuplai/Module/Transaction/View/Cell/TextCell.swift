@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextCell: UITableViewCell, Identifiable {
+class TextCell: UITableViewCell {
     
     @IBOutlet var title: UILabel!
     @IBOutlet var cellImage: UIImageView!

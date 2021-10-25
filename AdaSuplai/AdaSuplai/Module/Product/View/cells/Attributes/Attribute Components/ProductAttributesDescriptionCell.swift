@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductAttributesDescriptionCell: UITableViewCell, Identifiable {
+class ProductAttributesDescriptionCell: UITableViewCell {
     @IBOutlet private weak var productDescription: UILabel!
     
     override func awakeFromNib() {

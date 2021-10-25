@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterPriceRangeCell: UITableViewCell, Identifiable {
+class FilterPriceRangeCell: UITableViewCell {
     private enum Constant {
         static let minPrice = "Min."
         static let maxPrice = "Max."

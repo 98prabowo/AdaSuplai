@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileUserCell: UITableViewCell, Identifiable {
+class ProfileUserCell: UITableViewCell {
     
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileName: UILabel!

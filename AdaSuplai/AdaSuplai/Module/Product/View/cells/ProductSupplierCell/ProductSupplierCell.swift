@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductSupplierCell: UITableViewCell, Identifiable {
+class ProductSupplierCell: UITableViewCell {
     @IBOutlet private weak var supplierImage: UIImageView!
     @IBOutlet private weak var supplierName: UILabel!
     @IBOutlet private weak var star: UIImageView!

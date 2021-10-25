@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductReviewDetailCell: UITableViewCell, Identifiable {
+class ProductReviewDetailCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var userName: UILabel!
     @IBOutlet private weak var userReview: UILabel!

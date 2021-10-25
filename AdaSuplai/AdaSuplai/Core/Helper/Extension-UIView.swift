@@ -8,15 +8,13 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    static func nibName() -> String {
-        return String(describing: self)
-    }
-
-    static func reusableIdentifier() -> String {
-        return String(describing: self)
-    }
-    
+extension UIView: Identifiable {
+    /// Add border and corner radius for all corners and edges of `UIView`.
+    ///
+    /// - Parameters:
+    ///   - withBorderWidth: Width for border in `CGFloat`.
+    ///   - borderColor: Color for border in `UIColor`.
+    ///   - cornerRadius: Corner radius for `UIView` in `CGFloat`.
     func addBorderAndCornerRadius(withBorderWidth borderWidth: CGFloat, borderColor: UIColor, cornerRadius: CGFloat) {
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = borderColor.cgColor
@@ -24,7 +22,13 @@ extension UIView {
         self.clipsToBounds = true
     }
     
-    func addShadow(color: UIColor = .black, opacity: Float = 0.2, radius: CGFloat = 1) {
+    /// Add shadow for a `UIView`.
+    ///
+    /// - Parameters:
+    ///   - color: Color for the shadow. Default to label color.
+    ///   - opacity: Opacity or transparency for the shadow. Default to 0.2.
+    ///   - radius: Radius for the shdaow in `CGFloat`. Default to 1.
+    func addShadow(color: UIColor = .label, opacity: Float = 0.2, radius: CGFloat = 1) {
         self.layer.masksToBounds = false
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOpacity = opacity
@@ -32,6 +36,11 @@ extension UIView {
         self.layer.shadowRadius = radius
     }
     
+    /// Round corner radius for for specific corners of `UIView`.
+    ///
+    /// - Parameters:
+    ///   - corners: Add array of specific corners that will be rounded.
+    ///   - radius: Magnitude of radius for rounded corners.
     func roundSpecificCorners(_ corners: UIRectCorner, radius: CGFloat) {
         self.layer.cornerRadius = radius
         var masked = CACornerMask()
@@ -54,7 +63,13 @@ extension UIView {
         self.layer.maskedCorners = masked
     }
     
-    func addSpecificBorders(_ edges: UIRectEdge = .all, color: UIColor = .black, width: CGFloat = 1.0) {
+    /// Add border for specific edges of `UIView`.
+    ///
+    /// - Parameters:
+    ///   - edges: Add array of specific edges that will be bordered. Default to all edges.
+    ///   - color: Color for border in `UIColor`. Default to label color.
+    ///   - width: Width for border in `CGFloat`. Default to 1.
+    func addSpecificBorders(_ edges: UIRectEdge = .all, color: UIColor = .label, width: CGFloat = 1.0) {
         func createBorder() -> UIView {
             let borderView = UIView(frame: CGRect.zero)
             borderView.translatesAutoresizingMaskIntoConstraints = false

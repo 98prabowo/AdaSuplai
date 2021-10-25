@@ -7,11 +7,10 @@
 
 import Foundation
 import UIKit
-import SwiftUI
 
 @IBDesignable public class AdaSuplaiStepper: UIControl {
-    /// Current value of stepper. Default to 0
-    @IBInspectable public var value: Double = 0 {
+    /// Current value of stepper.
+    private var value: Double = 0 {
         didSet {
             valueLabel.text = String(Int(value))
             self.setLeftButtonColor(enableColor: buttonEnableColor,
@@ -24,8 +23,8 @@ import SwiftUI
     /// Disable or enable maximum infinity
     @IBInspectable public var maxInfinity: Bool = false
     
-    /// Minimum value of stepper. Default to 0
-    @IBInspectable public var minimumValue: Double = 0
+    /// Minimum value of stepper. Default to 1
+    @IBInspectable public var minimumValue: Double = 1
     
     /// Maximum value of stepper. Default to 100
     @IBInspectable public var maximumValue: Double = 100
@@ -116,7 +115,7 @@ import SwiftUI
     /// The same as UIStepper's autorepeat. If true, holding on the buttons or keeping the pan gesture alters the value repeatedly. Defaults to true.
     @IBInspectable public var autorepeat: Bool = true
     
-    private lazy var timer = Timer()
+    private var timer: Timer?
     private var repeatSpeed: Double = 0.2
     
     private lazy var leftButton: UIButton = {
@@ -125,7 +124,7 @@ import SwiftUI
         button.setImage(leftButtonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(leftButtonDown(_:)), for: .touchDown)
-        button.addTarget(self, action: #selector(leftButtonUp(_:)), for: [.touchUpInside, .touchUpOutside])
+        button.addTarget(self, action: #selector(leftButtonUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchDragExit])
         return button
     }()
 
@@ -135,7 +134,7 @@ import SwiftUI
         button.setImage(rightButtonImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(rightButtonDown(_:)), for: .touchDown)
-        button.addTarget(self, action: #selector(rightButtonUp(_:)), for: [.touchUpInside, .touchUpOutside])
+        button.addTarget(self, action: #selector(rightButtonUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchDragExit])
         return button
     }()
     
@@ -175,7 +174,12 @@ import SwiftUI
         self.setupView()
     }
     
+    deinit {
+        self.resetTimer()
+    }
+    
     private func setupView() {
+        self.value = self.minimumValue
         self.addSubview(stack)
         self.setupConstraint()
         self.setLeftButtonColor(enableColor: buttonEnableColor,
@@ -218,21 +222,21 @@ import SwiftUI
         }
     }
     
+    @objc private func leftButtonAction() {
+        if value > minimumValue {
+            self.value -= self.increment
+        } else if self.timer != nil {
+            self.resetTimer()
+        }
+    }
+    
     @objc private func rightButtonAction() {
         if value < maximumValue {
             self.value += self.increment
         } else if maxInfinity {
             self.value += self.increment
-        } else {
-            timer.invalidate()
-        }
-    }
-    
-    @objc private func leftButtonAction() {
-        if value > minimumValue {
-            self.value -= self.increment
-        } else {
-            timer.invalidate()
+        } else if self.timer != nil {
+            self.resetTimer()
         }
     }
     
@@ -246,7 +250,7 @@ import SwiftUI
     }
     
     @objc private func leftButtonUp(_ sender: UIButton) {
-        timer.invalidate()
+        self.resetTimer()
     }
     
     @objc private func rightButtonDown(_ sender: UIButton) {
@@ -259,6 +263,12 @@ import SwiftUI
     }
     
     @objc private func rightButtonUp(_ sender: UIButton) {
+        self.resetTimer()
+    }
+    
+    private func resetTimer() {
+        guard let timer = self.timer else { return }
         timer.invalidate()
+        self.timer = nil
     }
 }

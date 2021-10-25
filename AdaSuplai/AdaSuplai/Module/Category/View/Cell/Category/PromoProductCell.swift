@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PromoProductCell: UITableViewCell, Identifiable {
+class PromoProductCell: UITableViewCell {
     
     @IBOutlet var collectionView: UICollectionView!
     

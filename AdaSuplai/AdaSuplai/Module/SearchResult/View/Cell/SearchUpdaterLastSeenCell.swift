@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchUpdaterLastSeenCell: UITableViewCell, Identifiable {
+class SearchUpdaterLastSeenCell: UITableViewCell {
     @IBOutlet private weak var history: UILabel!
     
     override func awakeFromNib() {

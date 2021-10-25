@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InformationCell: UITableViewCell, Identifiable {
+class InformationCell: UITableViewCell {
     
     @IBOutlet var title: UILabel!
     @IBOutlet var desc: UILabel!

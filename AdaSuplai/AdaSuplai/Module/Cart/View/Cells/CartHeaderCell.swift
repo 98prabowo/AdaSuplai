@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CartHeaderCell: UITableViewCell, Identifiable {
+class CartHeaderCell: UITableViewCell {
     @IBOutlet private weak var checkMark: UIImageView!
     @IBOutlet private weak var checkAllLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!

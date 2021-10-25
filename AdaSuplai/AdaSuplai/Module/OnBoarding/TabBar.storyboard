@@ -39,7 +39,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="ntj-Yr-4gl" kind="relationship" relationship="viewControllers" id="Imh-bj-7GN"/>
-                        <segue destination="4Mq-Xg-UTF" kind="relationship" relationship="viewControllers" id="qjk-IY-IDk"/>
                         <segue destination="6DZ-og-rrS" kind="relationship" relationship="viewControllers" id="8cZ-BF-Xbd"/>
                         <segue destination="OV9-jF-R0r" kind="relationship" relationship="viewControllers" id="7O6-hl-3dk"/>
                     </connections>
@@ -57,16 +56,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yz6-YT-4Qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2763" y="307"/>
-        </scene>
-        <!--Wishlist-->
-        <scene sceneID="lOJ-B3-ulm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Wishlist" id="4Mq-Xg-UTF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="C6m-jf-16i"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mxo-EW-A4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2827" y="159"/>
         </scene>
     </scenes>
     <resources>

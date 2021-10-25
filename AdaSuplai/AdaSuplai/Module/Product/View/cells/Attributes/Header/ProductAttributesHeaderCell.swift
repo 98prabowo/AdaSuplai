@@ -14,7 +14,7 @@ enum ProductAttribute: String, CaseIterable {
     case delivary = "Pengiriman"
 }
 
-class ProductAttributesHeaderCell: UITableViewCell, Identifiable {
+class ProductAttributesHeaderCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var isFirst: Bool = true

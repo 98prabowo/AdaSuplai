@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopTransactionDetailCell: UITableViewCell, Identifiable {
+class ShopTransactionDetailCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileOrderStatusCollectionCell: UICollectionViewCell, Identifiable {
+class ProfileOrderStatusCollectionCell: UICollectionViewCell {
     
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var numberLabel: UILabel!

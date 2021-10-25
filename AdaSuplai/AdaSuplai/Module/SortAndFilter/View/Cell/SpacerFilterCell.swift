@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SpacerFilterCell: UITableViewCell, Identifiable {
+class SpacerFilterCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }

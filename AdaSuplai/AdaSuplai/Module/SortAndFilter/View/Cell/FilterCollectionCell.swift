@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterCollectionCell: UICollectionViewCell, Identifiable {
+class FilterCollectionCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var filterKey: UILabel!
     @IBOutlet weak var ratingStar: UIImageView!

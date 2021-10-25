@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductAttributesDeliveryCell: UITableViewCell, Identifiable {
+class ProductAttributesDeliveryCell: UITableViewCell {
     @IBOutlet private weak var branchs: UIButton!
     @IBOutlet private weak var chevron: UIButton!
     @IBOutlet private weak var deliveredFrom: UILabel!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BannerCollectionCell: UICollectionViewCell, Identifiable {
+class BannerCollectionCell: UICollectionViewCell {
     @IBOutlet private weak var banner: UIImageView!
     
     override func awakeFromNib() {

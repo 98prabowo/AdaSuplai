@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterHeaderCell: UITableViewCell, Identifiable {
+class FilterHeaderCell: UITableViewCell {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     

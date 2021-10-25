@@ -8,6 +8,7 @@
 import Foundation
 
 extension Int {
+    /// Return string with `.` format that follor IDR currency format
     var toIDR: String {
         var result = String(self)
         let numberFormatter = NumberFormatter()
@@ -21,6 +22,7 @@ extension Int {
 }
 
 extension Float {
+    /// Return string with `.` format that follor IDR currency format
     var toIDR: String {
         var result = String(self)
         let numberFormatter = NumberFormatter()
@@ -34,6 +36,7 @@ extension Float {
 }
 
 extension Double {
+    /// Return string with `.` format that follor IDR currency format
     var toIDR: String {
         var result = String(self)
         let numberFormatter = NumberFormatter()

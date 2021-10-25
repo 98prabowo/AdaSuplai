@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileInformationsCell: UITableViewCell, Identifiable {
+class ProfileInformationsCell: UITableViewCell {
     
     @IBOutlet var table: UITableView!
     @IBOutlet var containerView: UIView!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeliveryCell: UITableViewCell, Identifiable {
+class DeliveryCell: UITableViewCell {
     
     @IBOutlet var deliveryName: UILabel!
     @IBOutlet var deliveryPrice: UILabel!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterCell: UITableViewCell, Identifiable {
+class FilterCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterTitle: UILabel!
     @IBOutlet weak var seeMoreButton: UIButton!
