@@ -8,6 +8,17 @@
 import UIKit
 import Combine
 
+enum ProductDetailCellIndex {
+    static let imagePrice = 0
+    static let status = 1
+    static let variant = 2
+    static let attributesHeader = 3
+    static let supplier = 5
+    static let reviewHeader = 6
+    static let reviewDetail = 7...9
+    static let similar = 10
+}
+
 class ProductController: BaseUIViewController {
     private enum Constant {
         static let searchPlaceholder = "Cari"
@@ -95,6 +106,88 @@ class ProductController: BaseUIViewController {
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
         print("Add to Cart")
     }
+}
+
+extension ProductController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 11
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.item {
+        case ProductDetailCellIndex.imagePrice:
+            return self.setupImagePriceCell(tableView, for: indexPath)
+        case ProductDetailCellIndex.status:
+            return self.setupStatusCell(tableView, for: indexPath)
+        case ProductDetailCellIndex.variant:
+            return self.setupVariantCell(tableView, for: indexPath)
+        case ProductDetailCellIndex.attributesHeader:
+            return self.setupAttributeHeaderCell(tableView, for: indexPath)
+        case ProductDetailCellIndex.supplier:
+            return self.setupSupplierCell(tableView, for: indexPath)
+        case ProductDetailCellIndex.reviewHeader:
+            return self.setupReviewHeaderCell(tableView, for: indexPath)
+        case ProductDetailCellIndex.reviewDetail:
+            return self.setupReviewDetailCell(tableView, for: indexPath)
+        case ProductDetailCellIndex.similar:
+            return self.setupSimilarCell(tableView, for: indexPath)
+        default:
+            return self.getAttributeCell(indexPath)
+        }
+    }
+}
+
+// MARK: Setup Table Cell
+extension ProductController {
+    private func setupImagePriceCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: ProductImagePriceCell.self, for: indexPath)
+        return cell
+    }
+    
+    private func setupStatusCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: ProductStatusCell.self, for: indexPath)
+        return cell
+    }
+    
+    private func setupVariantCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: ProductVariantCell.self, for: indexPath)
+        return cell
+    }
+    
+    private func setupAttributeHeaderCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: ProductAttributesHeaderCell.self, for: indexPath)
+        cell.attributesPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] action in
+                self?.attribute = action
+                self?.tableView.reloadData()
+            }
+            .store(in: &attributeToken)
+        return cell
+    }
+    
+    private func setupSupplierCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: ProductSupplierCell.self, for: indexPath)
+        return cell
+    }
+    
+    private func setupReviewHeaderCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: ProductReviewCell.self, for: indexPath)
+        return cell
+    }
+    
+    private func setupReviewDetailCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: ProductReviewDetailCell.self, for: indexPath)
+        if indexPath.item == 7 {
+            cell.configureFirstReview()
+        }
+        return cell
+    }
+    
+    private func setupSimilarCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: SimilarProductCell.self, for: indexPath)
+        return cell
+    }
     
     private func getAttributeCell(_ indexPath: IndexPath) -> UITableViewCell {
         switch attribute {
@@ -108,53 +201,6 @@ class ProductController: BaseUIViewController {
         case .delivary:
             let cell = tableView.dequeueReusableCell(withCell: ProductAttributesDeliveryCell.self, for: indexPath)
             return cell
-        }
-    }
-}
-
-extension ProductController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.item {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withCell: ProductImagePriceCell.self, for: indexPath)
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withCell: ProductStatusCell.self, for: indexPath)
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withCell: ProductVariantCell.self, for: indexPath)
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withCell: ProductAttributesHeaderCell.self, for: indexPath)
-            cell.attributesPublisher
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] action in
-                    self?.attribute = action
-                    self?.tableView.reloadData()
-                }
-                .store(in: &attributeToken)
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withCell: ProductSupplierCell.self, for: indexPath)
-            return cell
-        case 6:
-            let cell = tableView.dequeueReusableCell(withCell: ProductReviewCell.self, for: indexPath)
-            return cell
-        case 7...9:
-            let cell = tableView.dequeueReusableCell(withCell: ProductReviewDetailCell.self, for: indexPath)
-            if indexPath.item == 7 {
-                cell.configureFirstReview()
-            }
-            return cell
-        case 10:
-            let cell = tableView.dequeueReusableCell(withCell: SimilarProductCell.self, for: indexPath)
-            return cell
-        default:
-            return self.getAttributeCell(indexPath)
         }
     }
 }
