@@ -8,7 +8,14 @@
 import UIKit
 
 class SpacerFilterCell: UITableViewCell {
+    @IBOutlet private weak var lineWidth: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupLine()
+    }
+    
+    private func setupLine() {
+        self.lineWidth.constant = 0.6
     }
 }

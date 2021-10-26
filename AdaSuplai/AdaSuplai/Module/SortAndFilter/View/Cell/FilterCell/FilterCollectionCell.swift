@@ -8,9 +8,9 @@
 import UIKit
 
 class FilterCollectionCell: UICollectionViewCell {
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var filterKey: UILabel!
-    @IBOutlet weak var ratingStar: UIImageView!
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var filterKey: UILabel!
+    @IBOutlet private weak var ratingStar: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

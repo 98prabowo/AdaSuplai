@@ -6,9 +6,23 @@
 //
 
 import UIKit
+import Combine
+import SwiftUI
+
+enum FilterCellIndex {
+    static let header = 0
+    static let sort = 1
+    static let location = 3
+    static let priceRange = 5
+    static let rating = 7
+    static let minOrder = 9
+    static let category = 11
+    static let others = 13
+    static let submitButton = 14
+}
 
 class FilterController: BaseUIViewController {
-    private enum Constant {
+    fileprivate enum Constant {
         static let sort = "Urutkan"
         static let location = "Lokasi Supplier"
         static let priceRange = "Harga"
@@ -21,7 +35,11 @@ class FilterController: BaseUIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    fileprivate var subscribers = Set<AnyCancellable>()
+    private let viewModel: FilterViewModel
+    
     init() {
+        viewModel = FilterViewModel()
         super.init(nibName: Self.identifier, bundle: nil)
     }
     
@@ -43,6 +61,24 @@ class FilterController: BaseUIViewController {
         self.tableView.registerNib(forCell: SpacerFilterCell.self)
         self.tableView.registerNib(forCell: SubmitButtonCell.self)
     }
+    
+    private func goToMoreFilter(from type: Int) {
+        var filterKeys = [String]()
+        switch type {
+        case FilterCellIndex.location:
+            filterKeys = self.viewModel.locations
+        case FilterCellIndex.category:
+            // TODO: add more category in view model then change filter keys in here
+            break
+        default:
+            break
+        }
+        
+        let nextVC = MoreSortFilterCategoryController(keys: filterKeys)
+        let navController = UINavigationController(rootViewController: nextVC)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true)
+    }
 }
 
 extension FilterController: UITableViewDelegate, UITableViewDataSource {
@@ -52,58 +88,124 @@ extension FilterController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withCell: FilterHeaderCell.self, for: indexPath)
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
-            // Sort
-            cell.configure(title: Constant.sort, filterKeys: ["Penjualan Tertinggi", "Penjualan Termurah", "Harga Tergtinggi", "Harga Termurah", "Rating Tertinggi"])
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
-            // Location
-            cell.configureSeeMore(title: Constant.location, filterKeys: ["Surabaya Sidoarjo", "Malang", "Blitar", "Kediri", "Mojokerto", "Gresik"])
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withCell: FilterPriceRangeCell.self, for: indexPath)
-            // Price Range
-            cell.configure(title: Constant.priceRange)
-            return cell
-        case 7:
-            let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
-            // Rating
-            cell.configureRating(title: Constant.rating, filterKeys: ["5", "4 ke atas", "3 ke atas", "2 ke atas", "1 ke atas"])
-            return cell
-        case 9:
-            let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
-            // Min. Order
-            cell.configure(title: Constant.minimumOrder, filterKeys: ["Tanpa min. Order", "100", "1000"])
-            return cell
-        case 11:
-            let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
-            // Category
-            cell.configureSeeMore(title: Constant.category, filterKeys: ["Biji Kopi", "Bubuk", "Susu", "Gula", "Cokelat"])
-            return cell
-        case 13:
-            let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
-            // Others
-            cell.configure(title: Constant.others, filterKeys: ["Preorder", "Ready Stock", "Gratis Ongkir"])
-            return cell
-        case 14:
-            let cell = tableView.dequeueReusableCell(withCell: SubmitButtonCell.self, for: indexPath)
-            cell.configure(title: Constant.submitTitle)
-            cell.delegate = self
-            return cell
+        case FilterCellIndex.header:
+            return self.setupHeaderCell(tableView, for: indexPath)
+        case FilterCellIndex.sort:
+            return self.setupSortCell(tableView, for: indexPath)
+        case FilterCellIndex.location:
+            return self.setupLocationCell(tableView, for: indexPath)
+        case FilterCellIndex.priceRange:
+            return self.setupPriceRangeCell(tableView, for: indexPath)
+        case FilterCellIndex.rating:
+            return self.setupRatingCell(tableView, for: indexPath)
+        case FilterCellIndex.minOrder:
+            return self.setupMinOrderCell(tableView, for: indexPath)
+        case FilterCellIndex.category:
+            return self.setupCategoryCell(tableView, for: indexPath)
+        case FilterCellIndex.others:
+            return self.setupOthersCell(tableView, for: indexPath)
+        case FilterCellIndex.submitButton:
+            return self.setupSubmitCell(tableView, for: indexPath)
         default:
-            let cell = tableView.dequeueReusableCell(withCell: SpacerFilterCell.self, for: indexPath)
-            return cell
+            return self.setupSpacerCell(tableView, for: indexPath)
         }
     }
 }
 
-extension FilterController: SubmitButtonDelegate {
-    func submitTapped() {
-        self.dismiss(animated: true, completion: nil)
+// MARK: - Setup Table Cell
+extension FilterController {
+    private func setupHeaderCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterHeaderCell.self, for: indexPath)
+        cell.publisher
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] action in
+                switch action {
+                case .reset:
+                    print("RESET")
+                case .close:
+                    self.dismiss(animated: true)
+                }
+            }
+            .store(in: &subscribers)
+        return cell
+    }
+    
+    private func setupSortCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
+        cell.configure(title: Constant.sort,
+                       filterKeys: ["Penjualan Tertinggi", "Penjualan Termurah", "Harga Tergtinggi", "Harga Termurah", "Rating Tertinggi"])
+        return cell
+    }
+    
+    private func setupLocationCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
+        cell.showSeeMore()
+        cell.configure(title: Constant.location,
+                       filterKeys: self.viewModel.locations,
+                       type: FilterCellIndex.location)
+        cell.publisher
+            .sink { [unowned self] in
+                self.goToMoreFilter(from: FilterCellIndex.location)
+            }
+            .store(in: &subscribers)
+        return cell
+    }
+    
+    private func setupPriceRangeCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterPriceRangeCell.self, for: indexPath)
+        cell.configure(title: Constant.priceRange)
+        return cell
+    }
+    
+    private func setupRatingCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
+        cell.showRating()
+        cell.configure(title: Constant.rating,
+                       filterKeys: ["5", "4 ke atas", "3 ke atas", "2 ke atas", "1 ke atas"])
+        return cell
+    }
+    
+    private func setupMinOrderCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
+        cell.configure(title: Constant.minimumOrder,
+                       filterKeys: ["Tanpa min. Order", "100", "1000"])
+        return cell
+    }
+    
+    private func setupCategoryCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
+        cell.showSeeMore()
+        cell.configure(title: Constant.category,
+                       filterKeys: ["Biji Kopi", "Bubuk", "Susu", "Gula", "Cokelat"])
+        cell.publisher
+            .sink { [unowned self] in
+                self.goToMoreFilter(from: FilterCellIndex.category)
+            }
+            .store(in: &subscribers)
+        return cell
+    }
+    
+    private func setupOthersCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
+        cell.configure(title: Constant.others,
+                       filterKeys: ["Preorder", "Ready Stock", "Gratis Ongkir"])
+        return cell
+    }
+    
+    private func setupSubmitCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: SubmitButtonCell.self, for: indexPath)
+        cell.configure(title: Constant.submitTitle)
+        cell.publisher
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] in
+                self.dismiss(animated: true, completion: nil)
+            }
+            .store(in: &subscribers)
+        return cell
+    }
+    
+    private func setupSpacerCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withCell: SpacerFilterCell.self, for: indexPath)
+        return cell
     }
 }

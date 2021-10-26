@@ -6,17 +6,14 @@
 //
 
 import UIKit
-
-protocol SubmitButtonDelegate: AnyObject {
-    func submitTapped()
-}
+import Combine
 
 class SubmitButtonCell: UITableViewCell {
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet private weak var submitButton: UIButton!
     
-    weak var delegate: SubmitButtonDelegate?
+    var publisher = PassthroughSubject<Void, Never>()
     
-    var submitTitle: String? {
+    private var submitTitle: String? {
         didSet {
             self.submitButton.setTitle(submitTitle ?? "", for: .normal)
         }
@@ -38,7 +35,6 @@ class SubmitButtonCell: UITableViewCell {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        guard let delegate = self.delegate else { return }
-        delegate.submitTapped()
+        self.publisher.send()
     }
 }

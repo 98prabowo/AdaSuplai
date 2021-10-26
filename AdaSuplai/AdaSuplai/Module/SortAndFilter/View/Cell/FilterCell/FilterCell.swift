@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 class FilterCell: UITableViewCell {
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var filterTitle: UILabel!
-    @IBOutlet weak var seeMoreButton: UIButton!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var filterTitle: UILabel!
+    @IBOutlet private weak var seeMoreButton: UIButton!
     
+    var publisher = PassthroughSubject<Void, Never>()
     private var isRating: Bool = false
+    private var type: Int?
     private var filterKeys = [String]()
     
     override func awakeFromNib() {
@@ -29,39 +32,36 @@ class FilterCell: UITableViewCell {
     
     private func setupButton() {
         self.seeMoreButton.isHidden = true
+        self.seeMoreButton.tintColor = .primaryGreen
     }
     
-    func configure(title: String, filterKeys: [String]) {
+    func configure(title: String, filterKeys: [String], type: Int? = nil) {
+        self.type = type
         self.filterTitle.text = title
         self.filterKeys = filterKeys
     }
     
-    func configureSeeMore(title: String, filterKeys: [String]) {
-        self.filterTitle.text = title
-        self.filterKeys = filterKeys
+    func showSeeMore() {
         self.seeMoreButton.isHidden = false
     }
     
-    func configureRating(title: String, filterKeys: [String]) {
-        self.filterTitle.text = title
-        self.filterKeys = filterKeys
+    func showRating() {
         self.isRating = true
     }
     
-    func configureSeeMoreAndRating(title: String, filterKeys: [String]) {
-        self.filterTitle.text = title
-        self.filterKeys = filterKeys
-        self.seeMoreButton.isHidden = false
-        self.isRating = true
-    }
-    
-    @IBAction func seeMoreButtonTapped(_ sender: Any) {
+    @IBAction func seeMoreButtonTapped(_ sender: UIButton) {
+        self.publisher.send()
     }
 }
 
 extension FilterCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.filterKeys.count
+        var number = self.filterKeys.count
+        if let type = self.type,
+           type == FilterCellIndex.location {
+            number = 5
+        }
+        return number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

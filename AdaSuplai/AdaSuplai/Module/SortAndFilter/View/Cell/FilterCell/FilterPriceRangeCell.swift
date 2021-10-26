@@ -13,9 +13,9 @@ class FilterPriceRangeCell: UITableViewCell {
         static let maxPrice = "Max."
     }
     
-    @IBOutlet weak var header: UILabel!
-    @IBOutlet weak var minPrice: UITextField!
-    @IBOutlet weak var maxPrice: UITextField!
+    @IBOutlet private weak var header: UILabel!
+    @IBOutlet private weak var minPrice: UITextField!
+    @IBOutlet private weak var maxPrice: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

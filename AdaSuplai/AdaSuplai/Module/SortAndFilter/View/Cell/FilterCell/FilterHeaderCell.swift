@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import Combine
 
 class FilterHeaderCell: UITableViewCell {
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var resetButton: UIButton!
+    
+    enum HeaderCellAction {
+        case close, reset
+    }
+    
+    var publisher = PassthroughSubject<HeaderCellAction, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,10 +29,10 @@ class FilterHeaderCell: UITableViewCell {
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
-        print("Close")
+        self.publisher.send(.close)
     }
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
-        print("Reset")
+        self.publisher.send(.reset)
     }
 }
