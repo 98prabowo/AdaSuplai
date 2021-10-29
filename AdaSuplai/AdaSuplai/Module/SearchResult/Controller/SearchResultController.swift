@@ -42,6 +42,8 @@ class SearchResultController: BaseUIViewController {
         guard let navigation = navigationController else { return }
         navigation.navigationBar.backgroundColor = .systemBackground
         navigation.navigationBar.barTintColor = .systemBackground
+        navigation.navigationBar.tintColor = .primaryGreen
+        self.addBackButton()
         self.addSearchBar(with: self.setupRightButtonItems(),
                           placeholder: self.viewModel.keyword,
                           barColor: .secondarySystemBackground)

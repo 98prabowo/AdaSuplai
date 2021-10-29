@@ -14,7 +14,7 @@ class HotProductCell: UITableViewCell {
     
     let productPublisher = PassthroughSubject<Void, Never>()
     
-    var productTrends = [DummyProduct]() {
+    private var productTrends = [DummyProduct]() {
         didSet {
             self.collectionView.reloadData()
         }

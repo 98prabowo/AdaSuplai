@@ -13,6 +13,11 @@ enum SearchError: Error {
 }
 
 class SearchUpdaterController: UIViewController, Identifiable {
+    private enum Constant {
+        static let cancelButton = "Batal"
+        static let cancelButtonKey = "cancelButtonText"
+    }
+    
     @IBOutlet private weak var tableView: UITableView!
     
     let searchPublisher = PassthroughSubject<String, SearchError>()
@@ -42,6 +47,10 @@ class SearchUpdaterController: UIViewController, Identifiable {
     }
     
     private func setupNavigationBar() {
+        guard let navigation = self.navigationController else { return }
+        navigation.navigationBar.backgroundColor = .systemBackground
+        navigation.navigationBar.barTintColor = .systemBackground
+        navigation.navigationBar.tintColor = .primaryGreen
         self.navigationItem.searchController = self.searchController
         self.setupSearchBar()
     }
@@ -49,6 +58,7 @@ class SearchUpdaterController: UIViewController, Identifiable {
     private func setupSearchBar() {
         self.searchController.delegate = self
         self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.setValue(Constant.cancelButton, forKey: Constant.cancelButtonKey)
     }
     
     private func setupTableView() {

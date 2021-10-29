@@ -23,7 +23,7 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet private weak var realPrice: UILabel!
     @IBOutlet private weak var discountStack: UIStackView!
     
-    var buttonTapped: Bool = false {
+    private var buttonTapped: Bool = false {
         didSet {
             wishlistButton.isSelected = buttonTapped
         }

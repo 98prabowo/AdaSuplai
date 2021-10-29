@@ -12,6 +12,7 @@ import UIKit
 class BaseUIViewController: UIViewController, Identifiable {
     private enum Constant {
         static let searchButton = "magnifyingglass"
+        static let backButton = "chevron.backward"
         static let noKeywordError = "No Keyword found"
     }
     
@@ -39,6 +40,13 @@ class BaseUIViewController: UIViewController, Identifiable {
         let searchButton = UIBarButtonItem(image: UIImage(systemName: Constant.searchButton), style: .plain, target: self, action: #selector(goToSearchUpdater(_:)))
         searchButton.tintColor = tintColor
         self.navigationItem.rightBarButtonItems = [searchButton]
+    }
+    
+    /// Add custom back button 
+    func addBackButton() {
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(image: UIImage(systemName: Constant.backButton), style: .plain, target: self, action: #selector(backNavigation(_:)))
+        self.navigationItem.leftBarButtonItems = [backButton]
     }
     
     private func setupSearchController(placeholder: String, _ barColor: UIColor = .systemBackground) {
@@ -75,6 +83,11 @@ class BaseUIViewController: UIViewController, Identifiable {
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
+    }
+    
+    @objc private func backNavigation(_ sender: UIBarButtonItem) {
+        guard let navigation = self.navigationController else { return }
+        navigation.popViewController(animated: true)
     }
 }
 

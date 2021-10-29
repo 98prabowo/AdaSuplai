@@ -67,9 +67,12 @@ class ProductController: BaseUIViewController {
         self.addSearchBar(with: [cartButton, wishlistButton],
                           placeholder: Constant.searchPlaceholder,
                           barColor: .systemGray5)
+        self.addBackButton()
         
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .systemBackground
+        navigation.navigationBar.barTintColor = .systemBackground
+        navigation.navigationBar.tintColor = .primaryGreen
     }
     
     private func setupButton() {

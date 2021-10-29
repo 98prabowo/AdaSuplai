@@ -18,7 +18,7 @@ class HomeController: BaseUIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel = HomeViewModel()
-    private var homeTokens = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,7 @@ class HomeController: BaseUIViewController {
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .primaryGreen
         navigation.navigationBar.barTintColor = .primaryGreen
+        navigation.navigationBar.tintColor = .systemBackground
         self.view.backgroundColor = .primaryGreen
         self.addSearchBar(placeholder: Constant.searchPlaceholder)
     }
@@ -95,7 +96,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                         self.goToCategoryController()
                     }
                 }
-                .store(in: &homeTokens)
+                .store(in: &subscribers)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withCell: BannerPromoCell.self, for: indexPath)
@@ -103,7 +104,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                 .sink { [unowned self] in
                     self.goToBannerController()
                 }
-                .store(in: &homeTokens)
+                .store(in: &subscribers)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withCell: HotProductCell.self, for: indexPath)
@@ -112,7 +113,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
                 .sink { [unowned self] in
                     self.goToProductController()
                 }
-                .store(in: &homeTokens)
+                .store(in: &subscribers)
             return cell
         }
     }
