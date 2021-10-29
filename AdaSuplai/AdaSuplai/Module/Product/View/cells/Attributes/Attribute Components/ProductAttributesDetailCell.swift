@@ -16,10 +16,16 @@ class ProductAttributesDetailCell: UITableViewCell {
     @IBOutlet private weak var tradeMark: UILabel!
     @IBOutlet private weak var expiredAge: UILabel!
     @IBOutlet private weak var size: UILabel!
+    @IBOutlet private weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupButton()
+        self.setupBackgroundView()
+    }
+    
+    private func setupBackgroundView() {
+        self.containerView.addShadow()
     }
     
     private func setupButton() {

@@ -12,6 +12,7 @@ class ProductReviewCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupImage()
     }
     
     private func setupImage() {

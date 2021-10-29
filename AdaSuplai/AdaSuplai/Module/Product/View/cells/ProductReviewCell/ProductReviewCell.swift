@@ -14,11 +14,17 @@ class ProductReviewCell: UITableViewCell {
     @IBOutlet private weak var rating: UILabel!
     @IBOutlet private weak var ratingQuantity: UILabel!
     @IBOutlet private weak var seeMoreButton: UIButton!
+    @IBOutlet private weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupStar()
         self.setupButton()
+        self.setupBackgroundView()
+    }
+    
+    private func setupBackgroundView() {
+        self.containerView.addShadow()
     }
     
     private func setupStar() {

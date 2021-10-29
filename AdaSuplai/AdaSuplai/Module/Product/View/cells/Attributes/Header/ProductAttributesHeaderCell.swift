@@ -16,6 +16,7 @@ enum ProductAttribute: String, CaseIterable {
 
 class ProductAttributesHeaderCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var containerView: UIView!
     
     private var isFirst: Bool = true
     let attributesPublisher = PassthroughSubject<ProductAttribute, Never>()
@@ -23,6 +24,11 @@ class ProductAttributesHeaderCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupCollectionView()
+        self.setupBackgroundView()
+    }
+    
+    private func setupBackgroundView() {
+        self.containerView.addShadow()
     }
     
     private func setupCollectionView() {

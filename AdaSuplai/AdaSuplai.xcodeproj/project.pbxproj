@@ -174,6 +174,8 @@
 		C3D58562270EF25F00F6678D /* Extension-UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D58561270EF25F00F6678D /* Extension-UIColor.swift */; };
 		C3DF148127229D5300C7A0C7 /* WishlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF148027229D5300C7A0C7 /* WishlistController.swift */; };
 		C3DF14862722BA7600C7A0C7 /* Extension-UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBECA02715688E00622FE1 /* Extension-UICollectionView.swift */; };
+		C3F68F11272A92CF00F8A5A4 /* StaticStatusProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F68F0F272A92CF00F8A5A4 /* StaticStatusProductCell.swift */; };
+		C3F68F12272A92CF00F8A5A4 /* StaticStatusProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F68F10272A92CF00F8A5A4 /* StaticStatusProductCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +356,8 @@
 		C3D5855F270EF14200F6678D /* Extension-String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-String.swift"; sourceTree = "<group>"; };
 		C3D58561270EF25F00F6678D /* Extension-UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIColor.swift"; sourceTree = "<group>"; };
 		C3DF148027229D5300C7A0C7 /* WishlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistController.swift; sourceTree = "<group>"; };
+		C3F68F0F272A92CF00F8A5A4 /* StaticStatusProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticStatusProductCell.swift; sourceTree = "<group>"; };
+		C3F68F10272A92CF00F8A5A4 /* StaticStatusProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StaticStatusProductCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -742,6 +746,8 @@
 				C3CBECB72716E31B00622FE1 /* ProductStatusCell.xib */,
 				C3CBECBE2716E73600622FE1 /* StatusProductCollectionCell.swift */,
 				C3CBECBF2716E73600622FE1 /* StatusProductCollectionCell.xib */,
+				C3F68F0F272A92CF00F8A5A4 /* StaticStatusProductCell.swift */,
+				C3F68F10272A92CF00F8A5A4 /* StaticStatusProductCell.xib */,
 			);
 			path = Status;
 			sourceTree = "<group>";
@@ -1225,6 +1231,7 @@
 				B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */,
 				C32BF8BB2718066F00658994 /* ProductAttributesCollectionCell.xib in Resources */,
 				8576EFD527208D8B00F69D29 /* PromoProductCell.xib in Resources */,
+				C3F68F12272A92CF00F8A5A4 /* StaticStatusProductCell.xib in Resources */,
 				C3963BE827217F710017AAB6 /* Cart.storyboard in Resources */,
 				C30EA06D2710494600832135 /* SubmitButtonCell.xib in Resources */,
 				C366D2DE2706F98700EF1E0C /* Home.storyboard in Resources */,
@@ -1385,6 +1392,7 @@
 				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
 				C30EA064271046C600832135 /* SpacerFilterCell.swift in Sources */,
 				C3CBECB82716E31B00622FE1 /* ProductStatusCell.swift in Sources */,
+				C3F68F11272A92CF00F8A5A4 /* StaticStatusProductCell.swift in Sources */,
 				C3963BE427217F710017AAB6 /* CartSupplierCell.swift in Sources */,
 				8576EFCF27208D8B00F69D29 /* CategoryViewModel.swift in Sources */,
 				8576EFF4272093BA00F69D29 /* ProfileTransactionCollectionCell.swift in Sources */,

@@ -8,19 +8,52 @@
 import UIKit
 
 class ProductImagePriceCell: UITableViewCell {
+    private enum Constant {
+        static let wishlisted = "heart.fill"
+        static let notwishlist = "heart"
+    }
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var price: UILabel!
     @IBOutlet private weak var productName: UILabel!
     @IBOutlet private weak var wishlistButton: UIButton!
+    @IBOutlet private weak var star: UIImageView!
+    @IBOutlet private weak var rating: UILabel!
+    @IBOutlet private weak var separateRating: UILabel!
+    @IBOutlet private weak var reviewQuantity: UILabel!
+    @IBOutlet private weak var containerView: UIView!
+    
+    private var isWishlist: Bool = false {
+        didSet {
+            if self.isWishlist {
+                self.wishlistButton.setBackgroundImage(UIImage(systemName: Constant.wishlisted), for: .normal)
+            } else {
+                self.wishlistButton.setBackgroundImage(UIImage(systemName: Constant.notwishlist), for: .normal)
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupButton()
+        self.setupRating()
         self.setupCollectionView()
+        self.setupBackgroundView()
+    }
+    
+    private func setupBackgroundView() {
+        self.containerView.addShadow()
     }
     
     private func setupButton() {
+        self.star.tintColor = .star
         self.wishlistButton.tintColor = .primaryGreen
+    }
+    
+    private func setupRating() {
+        self.rating.textColor = .primaryGreen
+        self.reviewQuantity.textColor = .primaryGreen
+        self.separateRating.textColor = .primaryGreen
     }
     
     private func setupCollectionView() {
@@ -34,6 +67,13 @@ class ProductImagePriceCell: UITableViewCell {
     }
     
     @IBAction func wishlistButtonTapped(_ sender: UIButton) {
+        self.isWishlist = !self.isWishlist
+    }
+    
+    func configure() {
+        self.productName.text = "Biji Kopi Robusta - Dark Roast"
+        self.rating.text = "5"
+        self.reviewQuantity.text = "102 Ulasan"
     }
 }
 

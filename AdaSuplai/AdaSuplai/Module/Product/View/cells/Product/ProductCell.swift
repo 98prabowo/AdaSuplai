@@ -19,6 +19,9 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet private weak var unitOfPrice: UILabel!
     @IBOutlet private weak var wishlistButton: UIButton!
     @IBOutlet private weak var priceStack: UIStackView!
+    @IBOutlet private weak var discountPercentage: UILabel!
+    @IBOutlet private weak var realPrice: UILabel!
+    @IBOutlet private weak var discountStack: UIStackView!
     
     var buttonTapped: Bool = false {
         didSet {
@@ -28,6 +31,7 @@ class ProductCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupText()
         self.setupBackgroundView()
         self.setupWishlistButton()
     }
@@ -44,6 +48,11 @@ class ProductCell: UICollectionViewCell {
         self.layer.shadowRadius = 1
     }
     
+    private func setupText() {
+        self.discountStack.isHidden = true
+        self.minimumOrder.textColor = .alert
+    }
+    
     private func setupWishlistButton() {
         self.wishlistButton.isHidden = true
     }
@@ -57,9 +66,8 @@ class ProductCell: UICollectionViewCell {
         self.rating.text = "\(product.rating)"
         self.soldCount.text = "\(product.productSold) terjual"
         self.address.text = product.location
-        self.unitOfPrice.text = product.uomPrice
+        self.unitOfPrice.text = "/ " + product.uomPrice
         self.minimumOrder.text = "Min. Order " + product.minimumOrder
-        self.createDiscountView(product.discount, from: product.realPrice)
         self.productPrice.text = "Rp. \(self.createDiscountPrice(product.discount, from: product.realPrice).toIDR)"
         if let image = product.image {
             self.productImage.image = image
@@ -68,84 +76,18 @@ class ProductCell: UICollectionViewCell {
     
     func isDiscount() {
         let price = "Rp. 100.000"
-        let realPriceLabel = UILabel()
-        realPriceLabel.font.withSize(10)
-        realPriceLabel.attributedText = price.strikethroughText
-        let discount = createDiscountPercentage("10")
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 3
-        self.removeAllStackViewElement()
-        stackView.addArrangedSubview(realPriceLabel)
-        stackView.addArrangedSubview(discount)
-        self.priceStack.addArrangedSubview(stackView)
-    }
-    
-    private func createDiscountView(_ percent: Float, from price: Int) {
-        let realPriceLabel = self.createPriceLabel(price)
-        let discount = self.createDiscountLabel(percent)
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 3
-        self.removeAllStackViewElement()
-        stackView.addArrangedSubview(realPriceLabel)
-        stackView.addArrangedSubview(discount)
-        self.priceStack.addArrangedSubview(stackView)
-    }
-    
-    private func createPriceLabel(_ price: Int) -> UILabel {
-        let priceString = "Rp. \(price.toIDR)"
-        let realPriceLabel = UILabel()
-        realPriceLabel.font.withSize(10)
-        realPriceLabel.attributedText = priceString.strikethroughText
-        realPriceLabel.adjustsFontSizeToFitWidth = true
-        realPriceLabel.minimumScaleFactor = 0.5
-        return realPriceLabel
-    }
-    
-    private func createDiscountLabel(_ percent: Float) -> UILabel {
-        let discountLabel = createDiscountPercentage(percent)
-        discountLabel.adjustsFontSizeToFitWidth = true
-        discountLabel.minimumScaleFactor = 0.5
-        return discountLabel
+        self.realPrice.attributedText = price.strikethroughText
+        self.realPrice.textColor = .alert
+        self.discountPercentage.text = " 10% "
+        self.discountPercentage.layer.cornerRadius = 2
+        self.discountPercentage.textColor = .alert
+        self.discountPercentage.backgroundColor = .alertBackground
+        self.discountStack.isHidden = false
     }
     
     private func createDiscountPrice(_ percent: Float, from price: Int) -> Int {
         var result: Float = 0
         result = Float(price) - (Float(price) * percent / 100)
         return Int(result)
-    }
-    
-    private func createDiscountPercentage(_ percent: String) -> UILabel {
-        let discount = percent + "%"
-        let discountLabel = UILabel()
-        discountLabel.text = discount
-        discountLabel.textColor = .primaryGreen
-        discountLabel.font.withSize(12)
-        discountLabel.backgroundColor = .discountBackgroundColor
-        discountLabel.layer.cornerRadius = 7
-        return discountLabel
-    }
-    
-    private func createDiscountPercentage(_ percent: Float) -> UILabel {
-        let discount = "\(percent) %"
-        let discountLabel = UILabel()
-        discountLabel.text = discount
-        discountLabel.textColor = .primaryGreen
-        discountLabel.font.withSize(12)
-        discountLabel.backgroundColor = .discountBackgroundColor
-        discountLabel.layer.cornerRadius = 7
-        return discountLabel
-    }
-    
-    private func removeAllStackViewElement() {
-        let stackViewInSequence = self.priceStack.arrangedSubviews.filter { imageStackView in
-            return imageStackView.isKind(of: UIStackView.self)
-        }
-        for stackView in stackViewInSequence {
-            stackView.removeFromSuperview()
-        }
     }
 }

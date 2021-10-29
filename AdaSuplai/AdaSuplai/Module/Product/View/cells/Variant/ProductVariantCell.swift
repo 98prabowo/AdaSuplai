@@ -10,6 +10,7 @@ import UIKit
 class ProductVariantCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var header: UILabel!
+    @IBOutlet private weak var containerView: UIView!
     
     private var variants = [String](repeating: "DARK ROAST", count: 5)
     private var isFirst: Bool = true
@@ -17,6 +18,11 @@ class ProductVariantCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupCollectionView()
+        self.setupBackgroundView()
+    }
+    
+    private func setupBackgroundView() {
+        self.containerView.addShadow()
     }
     
     private func setupCollectionView() {

@@ -109,4 +109,10 @@ extension UIColor {
     public static var discountBackgroundColor: UIColor {
         UIColor(hex: "05850B", alpha: 0.13)
     }
+    
+    /// AdaSuplai alert background color
+    public static var alertBackground: UIColor {
+        UIColor(hex: "F9E2E1")
+    }
+    
 }

@@ -15,8 +15,8 @@ enum ProductDetailCellIndex {
     static let attributesHeader = 3
     static let supplier = 5
     static let reviewHeader = 6
-    static let reviewDetail = 7...9
-    static let similar = 10
+    static let reviewDetail = 7
+    static let similar = 8
 }
 
 class ProductController: BaseUIViewController {
@@ -46,11 +46,17 @@ class ProductController: BaseUIViewController {
         self.setupNavigationBar()
         self.setupButton()
         self.setupTableView()
+        self.setupBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupNavigationBar()
+        self.setupBackground()
+    }
+    
+    private func setupBackground() {
+        self.tableView.backgroundColor = .blueBackground
     }
     
     private func setupNavigationBar() {
@@ -79,7 +85,7 @@ class ProductController: BaseUIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.registerNib(forCell: ProductImagePriceCell.self)
-        self.tableView.registerNib(forCell: ProductStatusCell.self)
+        self.tableView.registerNib(forCell: StaticStatusProductCell.self)
         self.tableView.registerNib(forCell: ProductVariantCell.self)
         self.tableView.registerNib(forCell: ProductAttributesHeaderCell.self)
         self.tableView.registerNib(forCell: ProductAttributesDescriptionCell.self)
@@ -110,7 +116,7 @@ class ProductController: BaseUIViewController {
 
 extension ProductController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,11 +147,13 @@ extension ProductController: UITableViewDelegate, UITableViewDataSource {
 extension ProductController {
     private func setupImagePriceCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: ProductImagePriceCell.self, for: indexPath)
+        cell.configure()
         return cell
     }
     
     private func setupStatusCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withCell: ProductStatusCell.self, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withCell: StaticStatusProductCell.self, for: indexPath)
+        cell.configure()
         return cell
     }
     
