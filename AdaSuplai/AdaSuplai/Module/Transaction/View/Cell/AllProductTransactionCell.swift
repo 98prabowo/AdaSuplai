@@ -16,9 +16,7 @@ class AllProductTransactionCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         setUpTable()
-        
     }
     
     private func setUpTable() {
@@ -28,7 +26,7 @@ class AllProductTransactionCell: UITableViewCell {
         tableView.isScrollEnabled = false
         
         tableView.register(ProductTransactionCell.nib(), forCellReuseIdentifier: ProductTransactionCell.identifier)
-        
+        tableViewHeight.constant = CGFloat(tableView.numberOfRows(inSection: 0) * 70)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,14 +47,7 @@ extension AllProductTransactionCell: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == indexPath.last {
-            self.tableViewHeight.constant = self.tableView.contentSize.height
-            print("\(self.tableViewHeight.constant) == Heya \(tableView.contentSize.height)")
-        }
-        
-        if isLast {
-            mainTableView.reloadData()
-        }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 }

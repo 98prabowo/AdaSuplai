@@ -1,17 +1,16 @@
 //
-//  TextCell.swift
-//  adaSuplaiTrain
+//  SeparatorCell.swift
+//  AdaSuplai
 //
-//  Created by Felicia Devina on 08/10/21.
+//  Created by Felicia Devina on 31/10/21.
 //
 
 import UIKit
 
-class TextCell: UITableViewCell {
+class SeparatorCell: UITableViewCell {
     
-    @IBOutlet var title: UILabel!
-    @IBOutlet var cellImage: UIImageView!
-
+    @IBOutlet weak var separatorView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

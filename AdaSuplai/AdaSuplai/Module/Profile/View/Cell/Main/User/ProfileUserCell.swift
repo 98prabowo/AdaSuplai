@@ -12,10 +12,12 @@ class ProfileUserCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var profileName: UILabel!
     @IBOutlet var profileView: UIView!
+    @IBOutlet weak var profileShop: UILabel!
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var mainNavigation: UINavigationController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         setUpView()
     }
     
@@ -28,16 +30,9 @@ class ProfileUserCell: UITableViewCell {
     private func setUpView() {
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = 35
-        
-        profileView.backgroundColor = .white
-        profileView.addBorderAndCornerRadius(withBorderWidth: 0, borderColor: .clear, cornerRadius: 10)
-        profileView.layer.masksToBounds = true
-        profileView.backgroundColor = .systemBackground
-        profileView.layer.masksToBounds = false
-        profileView.layer.shadowColor = UIColor.black.cgColor
-        profileView.layer.shadowOpacity = 0.2
-        profileView.layer.shadowOffset = .zero
-        profileView.layer.shadowRadius = 1
+        settingButton.tintColor = .primaryGreen
+        profileName.textColor = .primaryGreen
+        profileShop.textColor = .inactive
         
         let tapGesture = UITapGestureRecognizer(target: self, action: .some(#selector(clickView(_:))))
         tapGesture.delegate = self
@@ -47,5 +42,10 @@ class ProfileUserCell: UITableViewCell {
     @objc func clickView(_ sender: UIView) {
         print("You clicked on view")
         
+    }
+    
+    @IBAction func settingButtonClicked(_ sender: UIButton) {
+        let nextVC = ProfileSettingController()
+        mainNavigation.pushViewController(nextVC, animated: true)
     }
 }

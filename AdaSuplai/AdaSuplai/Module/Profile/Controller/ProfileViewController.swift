@@ -10,7 +10,7 @@ import UIKit
 class ProfileViewController: BaseUIViewController {
     
     @IBOutlet var table: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +27,7 @@ class ProfileViewController: BaseUIViewController {
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .blueBackground
         navigation.navigationBar.isHidden = true
-        view.backgroundColor = .blueBackground
+        view.backgroundColor = .white
         
         tabBarController?.tabBar.backgroundColor = .white
         
@@ -43,13 +43,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         table.registerNib(forCell: ProfileTransactionCell.self)
         table.registerNib(forCell: ProfileInformationsCell.self)
         
-        table.allowsSelection = false
         table.separatorStyle = .none
         table.backgroundColor = .blueBackground
         table.dataSource = self
         table.delegate = self
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
@@ -58,14 +57,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0 :
             let cell = tableView.dequeueReusableCell(withCell: ProfileUserCell.self, for: indexPath)
+            cell.backgroundColor = .white
+            cell.addShadow(color: .black, opacity: 0.2, radius: 1)
+            cell.mainNavigation = self.navigationController
             return cell
             
         case 1 :
-            let cell = tableView.dequeueReusableCell(withCell: ProfileOrderStatusCell.self, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withCell: ProfileTransactionCell.self, for: indexPath)
             return cell
             
         case 2 :
-            let cell = tableView.dequeueReusableCell(withCell: ProfileTransactionCell.self, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withCell: ProfileOrderStatusCell.self, for: indexPath)
+            cell.mainNav = self.navigationController
             return cell
             
         case 3 :
@@ -74,6 +77,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
         default :
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextVC = TransactionDetailController()
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
         }
     }
 }

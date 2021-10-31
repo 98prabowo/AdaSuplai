@@ -21,7 +21,7 @@
                         <rect key="frame" x="16" y="24" width="312" height="90"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sear" translatesAutoresizingMaskIntoConstraints="NO" id="jLc-92-Ebh">
-                                <rect key="frame" x="8" y="10" width="70" height="70"/>
+                                <rect key="frame" x="0.0" y="10" width="70" height="70"/>
                                 <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="8Mg-xu-bFN"/>
@@ -33,33 +33,47 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjb-A7-Rjj">
-                                <rect key="frame" x="94" y="32" width="156" height="26.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="bFY-1n-v0c">
+                                <rect key="frame" x="86" y="22" width="180" height="46"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjb-A7-Rjj">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Romantica Cafe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jww-Ru-diM">
+                                        <rect key="frame" x="0.0" y="26.5" width="180" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXE-UT-TRd">
-                                <rect key="frame" x="266" y="30" width="30" height="30"/>
+                                <rect key="frame" x="282" y="30" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IJ6-M6-YHt"/>
                                     <constraint firstAttribute="width" constant="30" id="yB1-s7-YGl"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="settingButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ioa-Rl-z2L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MXE-UT-TRd" firstAttribute="leading" secondItem="Vjb-A7-Rjj" secondAttribute="trailing" constant="16" id="5NE-lU-e9p"/>
-                            <constraint firstAttribute="trailing" secondItem="MXE-UT-TRd" secondAttribute="trailing" constant="16" id="9mI-Qa-QnA"/>
+                            <constraint firstItem="MXE-UT-TRd" firstAttribute="leading" secondItem="bFY-1n-v0c" secondAttribute="trailing" constant="16" id="0Gr-m7-6An"/>
+                            <constraint firstItem="bFY-1n-v0c" firstAttribute="leading" secondItem="jLc-92-Ebh" secondAttribute="trailing" constant="16" id="9U2-iz-0fx"/>
+                            <constraint firstAttribute="trailing" secondItem="MXE-UT-TRd" secondAttribute="trailing" id="9mI-Qa-QnA"/>
                             <constraint firstItem="jLc-92-Ebh" firstAttribute="centerY" secondItem="tqu-pQ-1rd" secondAttribute="centerY" id="C5t-AX-ThT"/>
-                            <constraint firstItem="Vjb-A7-Rjj" firstAttribute="centerY" secondItem="tqu-pQ-1rd" secondAttribute="centerY" id="KvQ-H3-Lel"/>
-                            <constraint firstItem="jLc-92-Ebh" firstAttribute="leading" secondItem="tqu-pQ-1rd" secondAttribute="leading" constant="8" id="gdi-m8-WfZ"/>
+                            <constraint firstItem="jLc-92-Ebh" firstAttribute="leading" secondItem="tqu-pQ-1rd" secondAttribute="leading" id="gdi-m8-WfZ"/>
                             <constraint firstItem="MXE-UT-TRd" firstAttribute="centerY" secondItem="tqu-pQ-1rd" secondAttribute="centerY" id="sKp-ot-eU0"/>
-                            <constraint firstItem="Vjb-A7-Rjj" firstAttribute="leading" secondItem="jLc-92-Ebh" secondAttribute="trailing" constant="16" id="yhL-qE-1Z0"/>
                             <constraint firstAttribute="height" constant="90" id="zOV-XP-6EP"/>
+                            <constraint firstItem="bFY-1n-v0c" firstAttribute="centerY" secondItem="tqu-pQ-1rd" secondAttribute="centerY" id="zmC-S6-nTo"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -76,17 +90,19 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="profileImage" destination="jLc-92-Ebh" id="maw-a2-rv6"/>
                 <outlet property="profileName" destination="Vjb-A7-Rjj" id="X5W-ys-DG9"/>
+                <outlet property="profileShop" destination="jww-Ru-diM" id="fQx-sI-br8"/>
                 <outlet property="profileView" destination="tqu-pQ-1rd" id="p4p-jM-aIK"/>
+                <outlet property="settingButton" destination="MXE-UT-TRd" id="Dml-th-lnQ"/>
             </connections>
             <point key="canvasLocation" x="147.82608695652175" y="119.86607142857142"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="sear" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

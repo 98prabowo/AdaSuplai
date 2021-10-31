@@ -10,7 +10,7 @@ import UIKit
 class ProfileInformationsCell: UITableViewCell {
     
     @IBOutlet var table: UITableView!
-    @IBOutlet var containerView: UIView!
+    @IBOutlet weak var tableHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,15 +25,15 @@ class ProfileInformationsCell: UITableViewCell {
     }
     
     private func setUpView() {
-        containerView.backgroundColor = .white
-        containerView.addBorderAndCornerRadius(withBorderWidth: 0, borderColor: .clear, cornerRadius: 10)
-        containerView.layer.masksToBounds = true
-        containerView.backgroundColor = .systemBackground
-        containerView.layer.masksToBounds = false
-        containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowOpacity = 0.2
-        containerView.layer.shadowOffset = .zero
-        containerView.layer.shadowRadius = 1
+        table.backgroundColor = .white
+        table.addBorderAndCornerRadius(withBorderWidth: 0, borderColor: .clear, cornerRadius: 8)
+        table.layer.masksToBounds = true
+        table.backgroundColor = .systemBackground
+        table.layer.masksToBounds = false
+        table.layer.shadowColor = UIColor.black.cgColor
+        table.layer.shadowOpacity = 0.2
+        table.layer.shadowOffset = .zero
+        table.layer.shadowRadius = 1
     }
 
 }
@@ -42,13 +42,24 @@ class ProfileInformationsCell: UITableViewCell {
 extension ProfileInformationsCell: UITableViewDelegate, UITableViewDataSource {
     private func setUpTable() {
         table.registerNib(forCell: InformationCell.self)
+        table.registerNib(forCell: SeparatorCell.self)
+        table.separatorStyle = .none
         table.backgroundColor = UIColor.white
         table.dataSource = self
         table.delegate = self
+        
+        tableHeight.constant = 2 * 70
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row % 2 == 1 {
+            return 1
+        }
+        return 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,14 +70,16 @@ extension ProfileInformationsCell: UITableViewDelegate, UITableViewDataSource {
             cell.desc.text = "Berikan Penilaian dan Ulas Produk"
             return cell
             
-        case 1 :
+        case 2 :
             let cell = tableView.dequeueReusableCell(withCell: InformationCell.self, for: indexPath)
             cell.title.text = "Pusat Bantuan"
             cell.desc.text = "Solusi Permasalahan dari AdaSuplai"
             return cell
             
         default :
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withCell: SeparatorCell.self, for: indexPath)
+            cell.separatorView.backgroundColor = .lightGray
+            return cell
         }
     }
 }
