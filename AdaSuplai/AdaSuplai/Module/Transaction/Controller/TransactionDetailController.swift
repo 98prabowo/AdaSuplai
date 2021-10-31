@@ -43,8 +43,10 @@ class TransactionDetailController: UIViewController, Identifiable, UIGestureReco
     private func setUpTable() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsSelection = false
         
         tableView.registerNib(forCell: TextCell.self)
+        tableView.registerNib(forCell: SeparatorCell.self)
         tableView.registerNib(forCell: InformationCell.self)
         tableView.registerNib(forCell: ShopTransactionDetailCell.self)
         tableView.registerNib(forCell: AllProductTransactionCell.self)
@@ -60,7 +62,7 @@ extension TransactionDetailController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0 :
-            return 2
+            return 3
             
         default :
             return 3
@@ -76,12 +78,12 @@ extension TransactionDetailController: UITableViewDelegate, UITableViewDataSourc
                 cell.backgroundColor = UIColor.white
                 cell.title.text = "Alamat Pengiriman"
                 cell.title.font = UIFont.boldSystemFont(ofSize: 17.0)
-                cell.cellImage.isHidden = true
+                cell.cellButton.isHidden = true
                 cell.separatorInset = UIEdgeInsets.init(top: 0, left: 16, bottom: 0, right: 16)
                 cell.selectionStyle = .none
                 return cell
                 
-            case 1 :
+            case 2 :
                 let cell = tableView.dequeueReusableCell(withCell: InformationCell.self, for: indexPath)
                 cell.backgroundColor = .white
                 cell.title.text = "Cabang Barat"
@@ -93,7 +95,10 @@ extension TransactionDetailController: UITableViewDelegate, UITableViewDataSourc
                 cell.desc.font = UIFont.systemFont(ofSize: 13)
                 return cell
                 
-            default : return UITableViewCell()
+            default :
+                let cell = tableView.dequeueReusableCell(withCell: SeparatorCell.self, for: indexPath)
+                cell.separatorView.backgroundColor = .inactive
+                return cell
             }
             
         default :
@@ -105,9 +110,6 @@ extension TransactionDetailController: UITableViewDelegate, UITableViewDataSourc
             case 1 :
                 let cell = tableView.dequeueReusableCell(withCell: AllProductTransactionCell.self, for: indexPath)
                 cell.mainTableView = tableView
-                if indexPath.section == tableView.numberOfSections-1 {
-                    cell.isLast = true
-                }
                 return cell
                 
             case 2 :
