@@ -57,6 +57,18 @@
 		8576F0562720B6D500F69D29 /* ListDeliveryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8576F0552720B6D500F69D29 /* ListDeliveryController.xib */; };
 		8576F0592720B6EC00F69D29 /* DeliveryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8576F0572720B6EC00F69D29 /* DeliveryCell.xib */; };
 		8576F05A2720B6EC00F69D29 /* DeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576F0582720B6EC00F69D29 /* DeliveryCell.swift */; };
+		85AF807E272F00C300035658 /* SignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8077272F00C200035658 /* SignUpController.xib */; };
+		85AF807F272F00C300035658 /* SignUpPageRouteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8078272F00C200035658 /* SignUpPageRouteController.xib */; };
+		85AF8080272F00C300035658 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF807A272F00C200035658 /* TextFieldCell.swift */; };
+		85AF8081272F00C300035658 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF807B272F00C200035658 /* TextFieldCell.xib */; };
+		85AF8082272F00C300035658 /* OTPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF807C272F00C200035658 /* OTPController.xib */; };
+		85AF8083272F00C300035658 /* AccountInformationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF807D272F00C300035658 /* AccountInformationController.xib */; };
+		85AF8088272F013700035658 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8084272F013700035658 /* SignUpController.swift */; };
+		85AF8089272F013700035658 /* OTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8085272F013700035658 /* OTPController.swift */; };
+		85AF808A272F013700035658 /* AccountInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8086272F013700035658 /* AccountInformationController.swift */; };
+		85AF808B272F013700035658 /* SignUpPageRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8087272F013700035658 /* SignUpPageRouteController.swift */; };
+		85AF808F272F019100035658 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF808E272F019100035658 /* AuthenticationController.swift */; };
+		85AF8091272F01A200035658 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8090272F01A200035658 /* Authentication.storyboard */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
 		B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFF27030340000DDB95 /* SceneDelegate.swift */; };
 		B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0627030341000DDB95 /* Assets.xcassets */; };
@@ -109,8 +121,6 @@
 		C366D2E82706FD3C00EF1E0C /* HotProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D2E62706FD3C00EF1E0C /* HotProductCell.xib */; };
 		C366D2EB2706FD5500EF1E0C /* BannerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D2E92706FD5500EF1E0C /* BannerCollectionCell.swift */; };
 		C366D2EC2706FD5500EF1E0C /* BannerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D2EA2706FD5500EF1E0C /* BannerCollectionCell.xib */; };
-		C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D2F32707211C00EF1E0C /* AuthenticationController.swift */; };
-		C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C366D2F52707212E00EF1E0C /* Authentication.storyboard */; };
 		C366D363270DA7A100EF1E0C /* SearchUpdaterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D361270DA7A100EF1E0C /* SearchUpdaterController.xib */; };
 		C366D36A270DB1BE00EF1E0C /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D368270DB1BE00EF1E0C /* SearchResultController.swift */; };
 		C366D36B270DB1BE00EF1E0C /* SearchResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C366D369270DB1BE00EF1E0C /* SearchResultController.xib */; };
@@ -237,6 +247,18 @@
 		8576F0552720B6D500F69D29 /* ListDeliveryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListDeliveryController.xib; sourceTree = "<group>"; };
 		8576F0572720B6EC00F69D29 /* DeliveryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryCell.xib; sourceTree = "<group>"; };
 		8576F0582720B6EC00F69D29 /* DeliveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryCell.swift; sourceTree = "<group>"; };
+		85AF8077272F00C200035658 /* SignUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpController.xib; sourceTree = "<group>"; };
+		85AF8078272F00C200035658 /* SignUpPageRouteController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpPageRouteController.xib; sourceTree = "<group>"; };
+		85AF807A272F00C200035658 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		85AF807B272F00C200035658 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		85AF807C272F00C200035658 /* OTPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OTPController.xib; sourceTree = "<group>"; };
+		85AF807D272F00C300035658 /* AccountInformationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountInformationController.xib; sourceTree = "<group>"; };
+		85AF8084272F013700035658 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		85AF8085272F013700035658 /* OTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPController.swift; sourceTree = "<group>"; };
+		85AF8086272F013700035658 /* AccountInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInformationController.swift; sourceTree = "<group>"; };
+		85AF8087272F013700035658 /* SignUpPageRouteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPageRouteController.swift; sourceTree = "<group>"; };
+		85AF808E272F019100035658 /* AuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		85AF8090272F01A200035658 /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D64CFD27030340000DDB95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D64CFF27030340000DDB95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -290,8 +312,6 @@
 		C366D2E62706FD3C00EF1E0C /* HotProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotProductCell.xib; sourceTree = "<group>"; };
 		C366D2E92706FD5500EF1E0C /* BannerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionCell.swift; sourceTree = "<group>"; };
 		C366D2EA2706FD5500EF1E0C /* BannerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerCollectionCell.xib; sourceTree = "<group>"; };
-		C366D2F32707211C00EF1E0C /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
-		C366D2F52707212E00EF1E0C /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		C366D361270DA7A100EF1E0C /* SearchUpdaterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchUpdaterController.xib; sourceTree = "<group>"; };
 		C366D368270DB1BE00EF1E0C /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		C366D369270DB1BE00EF1E0C /* SearchResultController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultController.xib; sourceTree = "<group>"; };
@@ -556,6 +576,15 @@
 				8576F0462720B63500F69D29 /* ProductTransactionCell.xib */,
 				8576F0582720B6EC00F69D29 /* DeliveryCell.swift */,
 				8576F0572720B6EC00F69D29 /* DeliveryCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		85AF8079272F00C200035658 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				85AF807A272F00C200035658 /* TextFieldCell.swift */,
+				85AF807B272F00C200035658 /* TextFieldCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -989,7 +1018,11 @@
 		C3C94D9227059C3A00688485 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C366D2F32707211C00EF1E0C /* AuthenticationController.swift */,
+				85AF808E272F019100035658 /* AuthenticationController.swift */,
+				85AF8087272F013700035658 /* SignUpPageRouteController.swift */,
+				85AF8084272F013700035658 /* SignUpController.swift */,
+				85AF8086272F013700035658 /* AccountInformationController.swift */,
+				85AF8085272F013700035658 /* OTPController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -997,7 +1030,12 @@
 		C3C94D9327059C4500688485 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C366D2F52707212E00EF1E0C /* Authentication.storyboard */,
+				85AF8090272F01A200035658 /* Authentication.storyboard */,
+				85AF8078272F00C200035658 /* SignUpPageRouteController.xib */,
+				85AF8077272F00C200035658 /* SignUpController.xib */,
+				85AF807D272F00C300035658 /* AccountInformationController.xib */,
+				85AF807C272F00C200035658 /* OTPController.xib */,
+				85AF8079272F00C200035658 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1219,13 +1257,13 @@
 				8576F0562720B6D500F69D29 /* ListDeliveryController.xib in Resources */,
 				C32BF8A7271805D500658994 /* ProductAttributesDescriptionCell.xib in Resources */,
 				8576EFFB272093BA00F69D29 /* ProfileOrderStatusCollectionCell.xib in Resources */,
-				C366D2F62707212E00EF1E0C /* Authentication.storyboard in Resources */,
 				C366D2DC2706F47E00EF1E0C /* HomeCategoryCollectionCell.xib in Resources */,
 				8576F01C27209EA800F69D29 /* TransactionDetailController.xib in Resources */,
 				C3CBECC12716E73600622FE1 /* StatusProductCollectionCell.xib in Resources */,
 				8576F0502720B63500F69D29 /* DeliveryAddressCell.xib in Resources */,
 				B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */,
 				C32BF8B32718062900658994 /* ProductSupplierCell.xib in Resources */,
+				85AF8081272F00C300035658 /* TextFieldCell.xib in Resources */,
 				8576F04C2720B63500F69D29 /* ShopTransactionDetailCell.xib in Resources */,
 				C32BF8C3271826B500658994 /* ProductReviewDetailCell.xib in Resources */,
 				B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */,
@@ -1244,6 +1282,8 @@
 				8576EFFA272093BA00F69D29 /* ProfileInformationsCell.xib in Resources */,
 				C32BF8AF2718061100658994 /* ProductAttributesDeliveryCell.xib in Resources */,
 				C3CBECB92716E31B00622FE1 /* ProductStatusCell.xib in Resources */,
+				85AF807E272F00C300035658 /* SignUpController.xib in Resources */,
+				85AF8082272F00C300035658 /* OTPController.xib in Resources */,
 				C381C13127182C4700FDD5D4 /* ProductImageCollectionCell.xib in Resources */,
 				C366D2D82706F39F00EF1E0C /* HomeCategoryCell.xib in Resources */,
 				C3963BCA27217D950017AAB6 /* TabBar.storyboard in Resources */,
@@ -1271,6 +1311,8 @@
 				C32BF8BF2718268600658994 /* ProductReviewCollectionCell.xib in Resources */,
 				C3B27655272706EC002E8CC7 /* MoreCategorySortFilterCell.xib in Resources */,
 				C3963BC927217D950017AAB6 /* Main.storyboard in Resources */,
+				85AF807F272F00C300035658 /* SignUpPageRouteController.xib in Resources */,
+				85AF8083272F00C300035658 /* AccountInformationController.xib in Resources */,
 				C3B2765127270499002E8CC7 /* MoreSortFilterCategoryController.xib in Resources */,
 				8576F04F2720B63500F69D29 /* AllProductTransactionCell.xib in Resources */,
 				C366D2EC2706FD5500EF1E0C /* BannerCollectionCell.xib in Resources */,
@@ -1281,6 +1323,7 @@
 				C30EA061271043A000832135 /* FilterPriceRangeCell.xib in Resources */,
 				C3CBECAF2716E06C00622FE1 /* ProductController.xib in Resources */,
 				C3963BD127217DD00017AAB6 /* ProductCell.xib in Resources */,
+				85AF8091272F01A200035658 /* Authentication.storyboard in Resources */,
 				8576F0472720B63500F69D29 /* ShopTransactionPriceCell.xib in Resources */,
 				C30EA065271046C600832135 /* SpacerFilterCell.xib in Resources */,
 				C3B2765E27271C9E002E8CC7 /* regions.json in Resources */,
@@ -1323,6 +1366,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85AF808A272F013700035658 /* AccountInformationController.swift in Sources */,
+				85AF8089272F013700035658 /* OTPController.swift in Sources */,
 				C3C084E12722BAD1007F0762 /* WaterfallLayout.swift in Sources */,
 				C3DF14862722BA7600C7A0C7 /* Extension-UICollectionView.swift in Sources */,
 				C30EA06C2710494600832135 /* SubmitButtonCell.swift in Sources */,
@@ -1331,6 +1376,7 @@
 				C3C94DA72705A07100688485 /* DummyProduct.swift in Sources */,
 				C3CBECC82716EC6300622FE1 /* ProductVariantCell.swift in Sources */,
 				C3963BE127217F710017AAB6 /* CartProductCell.swift in Sources */,
+				85AF808B272F013700035658 /* SignUpPageRouteController.swift in Sources */,
 				C3D58562270EF25F00F6678D /* Extension-UIColor.swift in Sources */,
 				8576F04A2720B63500F69D29 /* ShopTransactionDetailCell.swift in Sources */,
 				C378E48727183006008288B9 /* ProductViewModel.swift in Sources */,
@@ -1367,6 +1413,7 @@
 				C32BF8AE2718061100658994 /* ProductAttributesDeliveryCell.swift in Sources */,
 				C366D2DB2706F47E00EF1E0C /* HomeCategoryCollectionCell.swift in Sources */,
 				C3B2765027270499002E8CC7 /* MoreSortFilterCategoryController.swift in Sources */,
+				85AF808F272F019100035658 /* AuthenticationController.swift in Sources */,
 				C366D2EB2706FD5500EF1E0C /* BannerCollectionCell.swift in Sources */,
 				C3CBECAE2716E06C00622FE1 /* ProductController.swift in Sources */,
 				C366D36A270DB1BE00EF1E0C /* SearchResultController.swift in Sources */,
@@ -1374,6 +1421,7 @@
 				C32BF8C2271826B500658994 /* ProductReviewDetailCell.swift in Sources */,
 				8576EFF6272093BA00F69D29 /* ProfileOrderStatusCollectionCell.swift in Sources */,
 				C32BF8B22718062900658994 /* ProductSupplierCell.swift in Sources */,
+				85AF8088272F013700035658 /* SignUpController.swift in Sources */,
 				C32BF8B62718063900658994 /* ProductReviewCell.swift in Sources */,
 				8576F0542720B6BE00F69D29 /* ListDeliveryController.swift in Sources */,
 				C3963BB6271F7B800017AAB6 /* SearchUpdaterViewModel.swift in Sources */,
@@ -1382,13 +1430,13 @@
 				8576F04E2720B63500F69D29 /* TextCell.swift in Sources */,
 				C3B2766027271E07002E8CC7 /* Location.swift in Sources */,
 				8576F05A2720B6EC00F69D29 /* DeliveryCell.swift in Sources */,
+				85AF8080272F00C300035658 /* TextFieldCell.swift in Sources */,
 				C30EA04E27103D2400832135 /* FilterController.swift in Sources */,
 				8576F0512720B63500F69D29 /* AllProductTransactionCell.swift in Sources */,
 				C3B27654272706EC002E8CC7 /* MoreCategorySortFilterCell.swift in Sources */,
 				C32BF8AA271805EA00658994 /* ProductAttributesDetailCell.swift in Sources */,
 				C3DF148127229D5300C7A0C7 /* WishlistController.swift in Sources */,
 				C30EA05A2710406C00832135 /* FilterCollectionCell.swift in Sources */,
-				C366D2F42707211C00EF1E0C /* AuthenticationController.swift in Sources */,
 				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
 				C30EA064271046C600832135 /* SpacerFilterCell.swift in Sources */,
 				C3CBECB82716E31B00622FE1 /* ProductStatusCell.swift in Sources */,
