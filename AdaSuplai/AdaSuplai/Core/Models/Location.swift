@@ -17,11 +17,11 @@ struct Location: Codable {
     }
 }
     
-public enum Provinces {
-    static let jakarta = "DKI Jakarta"
-    static let jawaBarat = "Jawa Barat"
-    static let jawaTengah = "Jawa Tengah"
-    static let jogjakarta = "DI Yogyakarta"
-    static let jawaTimur = "Jawa Timur"
-    static let bali = "Bali"
+public enum Province: String {
+    case jakarta = "DKI Jakarta"
+    case jawaBarat = "Jawa Barat"
+    case jawaTengah = "Jawa Tengah"
+    case jogjakarta = "DI Yogyakarta"
+    case jawaTimur = "Jawa Timur"
+    case bali = "Bali"
 }

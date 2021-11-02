@@ -7,6 +7,10 @@
 
 import Foundation
 
-enum DataURL {
-    static let regions = "regions"
+enum LocalFile: String {
+    case regions
+}
+
+enum RemoteURL: String {
+    case home
 }

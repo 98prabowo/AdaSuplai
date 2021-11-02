@@ -165,7 +165,7 @@
 		C3B27654272706EC002E8CC7 /* MoreCategorySortFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B27652272706EC002E8CC7 /* MoreCategorySortFilterCell.swift */; };
 		C3B27655272706EC002E8CC7 /* MoreCategorySortFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B27653272706EC002E8CC7 /* MoreCategorySortFilterCell.xib */; };
 		C3B2765727270BA5002E8CC7 /* MoreSortFilterCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2765627270BA5002E8CC7 /* MoreSortFilterCategoryViewModel.swift */; };
-		C3B2765C272714F5002E8CC7 /* LocalDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2765B272714F5002E8CC7 /* LocalDataServices.swift */; };
+		C3B2765C272714F5002E8CC7 /* LocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2765B272714F5002E8CC7 /* LocalDataService.swift */; };
 		C3B2765E27271C9E002E8CC7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = C3B2765D27271C9E002E8CC7 /* regions.json */; };
 		C3B2766027271E07002E8CC7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2765F27271E07002E8CC7 /* Location.swift */; };
 		C3B2766227271ECF002E8CC7 /* DataURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2766127271ECF002E8CC7 /* DataURL.swift */; };
@@ -198,6 +198,8 @@
 		C3DF14862722BA7600C7A0C7 /* Extension-UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBECA02715688E00622FE1 /* Extension-UICollectionView.swift */; };
 		C3F68F11272A92CF00F8A5A4 /* StaticStatusProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F68F0F272A92CF00F8A5A4 /* StaticStatusProductCell.swift */; };
 		C3F68F12272A92CF00F8A5A4 /* StaticStatusProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F68F10272A92CF00F8A5A4 /* StaticStatusProductCell.xib */; };
+		C3F68F16272C4A9A00F8A5A4 /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F68F15272C4A9A00F8A5A4 /* RemoteDataService.swift */; };
+		C3F68F3A2730703900F8A5A4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F68F392730703900F8A5A4 /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,7 +370,7 @@
 		C3B27652272706EC002E8CC7 /* MoreCategorySortFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCategorySortFilterCell.swift; sourceTree = "<group>"; };
 		C3B27653272706EC002E8CC7 /* MoreCategorySortFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreCategorySortFilterCell.xib; sourceTree = "<group>"; };
 		C3B2765627270BA5002E8CC7 /* MoreSortFilterCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSortFilterCategoryViewModel.swift; sourceTree = "<group>"; };
-		C3B2765B272714F5002E8CC7 /* LocalDataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataServices.swift; sourceTree = "<group>"; };
+		C3B2765B272714F5002E8CC7 /* LocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataService.swift; sourceTree = "<group>"; };
 		C3B2765D27271C9E002E8CC7 /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
 		C3B2765F27271E07002E8CC7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C3B2766127271ECF002E8CC7 /* DataURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataURL.swift; sourceTree = "<group>"; };
@@ -402,6 +404,8 @@
 		C3DF148027229D5300C7A0C7 /* WishlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistController.swift; sourceTree = "<group>"; };
 		C3F68F0F272A92CF00F8A5A4 /* StaticStatusProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticStatusProductCell.swift; sourceTree = "<group>"; };
 		C3F68F10272A92CF00F8A5A4 /* StaticStatusProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StaticStatusProductCell.xib; sourceTree = "<group>"; };
+		C3F68F15272C4A9A00F8A5A4 /* RemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataService.swift; sourceTree = "<group>"; };
+		C3F68F392730703900F8A5A4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1046,9 +1050,10 @@
 		C3B2765A272714C9002E8CC7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C3B2765D27271C9E002E8CC7 /* regions.json */,
-				C3B2765B272714F5002E8CC7 /* LocalDataServices.swift */,
+				C3B2765B272714F5002E8CC7 /* LocalDataService.swift */,
+				C3F68F15272C4A9A00F8A5A4 /* RemoteDataService.swift */,
 				C3B2766127271ECF002E8CC7 /* DataURL.swift */,
+				C3F68F392730703900F8A5A4 /* HTTPMethod.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1181,6 +1186,7 @@
 		C3C94DA52705A06600688485 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3B2765D27271C9E002E8CC7 /* regions.json */,
 				C3C94DA62705A07100688485 /* DummyProduct.swift */,
 				C3CBECA42716BBBD00622FE1 /* DummyCategory.swift */,
 				C3B2765F27271E07002E8CC7 /* Location.swift */,
@@ -1479,11 +1485,13 @@
 				C378E4942719FC79008288B9 /* SearchUpdaterLastSeenCell.swift in Sources */,
 				8576EFD127208D8B00F69D29 /* CategoryController.swift in Sources */,
 				C3CBECA72716D19000622FE1 /* CurrencyFormatter.swift in Sources */,
-				C3B2765C272714F5002E8CC7 /* LocalDataServices.swift in Sources */,
+				C3B2765C272714F5002E8CC7 /* LocalDataService.swift in Sources */,
+				8576EFFE272093BA00F69D29 /* InformationCell.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
 				85AF80B3272F056200035658 /* DeliveryCell.swift in Sources */,
 				85AF813B272F05F400035658 /* InformationCell.swift in Sources */,
 				C30EA06F27104D3100832135 /* Extension-UITableView.swift in Sources */,
+				C3F68F3A2730703900F8A5A4 /* HTTPMethod.swift in Sources */,
 				85AF80BA272F056200035658 /* ListDeliveryController.swift in Sources */,
 				85AF80B1272F056200035658 /* ProductTransactionCell.swift in Sources */,
 				C30EA060271043A000832135 /* FilterPriceRangeCell.swift in Sources */,
@@ -1509,6 +1517,7 @@
 				85AF813E272F05F400035658 /* ProfileTransactionCell.swift in Sources */,
 				C366D36A270DB1BE00EF1E0C /* SearchResultController.swift in Sources */,
 				8576EFD327208D8B00F69D29 /* PromoProductCell.swift in Sources */,
+				C3F68F16272C4A9A00F8A5A4 /* RemoteDataService.swift in Sources */,
 				C32BF8C2271826B500658994 /* ProductReviewDetailCell.swift in Sources */,
 				C32BF8B22718062900658994 /* ProductSupplierCell.swift in Sources */,
 				85AF8088272F013700035658 /* SignUpController.swift in Sources */,
@@ -1719,6 +1728,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DY684J9X8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AdaSuplai/MainResource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1730,7 +1740,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SuperTeam.AdaSuplai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1746,6 +1756,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DY684J9X8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AdaSuplai/MainResource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1757,7 +1768,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SuperTeam.AdaSuplai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

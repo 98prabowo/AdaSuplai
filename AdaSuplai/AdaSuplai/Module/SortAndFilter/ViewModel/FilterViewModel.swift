@@ -16,17 +16,17 @@ class FilterViewModel: BaseViewModel {
     }
     
     private func fetchLocations() {
-        let locationServices = LocalDataServices(fileName: DataURL.regions)
-        locationServices.readLocalFile { [weak self] (data: [Location]) in
-            if let provinces = self?.getSpecificProvince(Provinces.jawaTimur, from: data) {
-                self?.locations = provinces
-            }
+        do {
+            let data = try LocalDataService().readFile([Location].self, from: .regions)
+            self.locations = self.getSpecificProvince(.jawaTimur, from: data)
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
-    private func getSpecificProvince(_ province: String, from data: [Location]) -> [String] {
+    private func getSpecificProvince(_ province: Province, from data: [Location]) -> [String] {
         var result = [String]()
-        for datum in data where datum.province == province {
+        for datum in data where datum.province == province.rawValue {
             result = datum.city
         }
         return result
