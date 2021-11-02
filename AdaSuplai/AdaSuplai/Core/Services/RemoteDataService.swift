@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+typealias Parameters = [String: String]
 
 class RemoteDataService {
     
@@ -17,12 +20,13 @@ class RemoteDataService {
     /// - throws: An error when server can't be reach for certains condition.
     /// - throws: An error if any value throws an error during decoding.
     func getData<T: Codable>(url: RemoteURL) async throws -> T {
-        guard let url = URL(string: url.rawValue) else { throw RemoteServiceError.badURL }
+        guard let url = URL(string: url.rawValue) else {
+            throw RemoteServiceError.badURL }
         let (data, response) = try await URLSession.shared.data(from: url)
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
-                  throw RemoteServiceError.badServerResponse
-              }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
         let decodedData = try JSONDecoder().decode(T.self, from: data)
         return decodedData
     }
@@ -31,22 +35,23 @@ class RemoteDataService {
     ///
     /// - parameters:
     ///   - url: An end-point url in `String` format.
-    ///   - parameter: An object that will uploaded to remote directory
+    ///   - parameter: An object that will uploaded to remote directory.
     /// - throws: An error if url have wrong format or url is wrong.
     /// - throws: An error when server can't be reach for certains condition.
     /// - throws: An error if any value throws an error during decoding.
     func postData<T: Codable>(url: RemoteURL, parameter: T) async throws {
-        guard let url = URL(string: url.rawValue) else { throw RemoteServiceError.badURL }
+        guard let url = URL(string: url.rawValue) else {
+            throw RemoteServiceError.badURL }
         let jsonData = try JSONEncoder().encode(parameter)
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let (data, response) = try await URLSession.shared.upload(for: request, from: jsonData)
-        guard let httpResponse = response as? HTTPURLResponse,
-           (200...299).contains(httpResponse.statusCode) else {
-            throw RemoteServiceError.badServerResponse
-        }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
         let decodedData = try JSONDecoder().decode(T.self, from: data)
         print(decodedData)
     }
@@ -55,22 +60,23 @@ class RemoteDataService {
     ///
     /// - parameters:
     ///   - url: An end-point url in `String` format.
-    ///   - parameter: An object that will put in remote directory
+    ///   - parameter: An object that will put in remote directory.
     /// - throws: An error if url have wrong format or url is wrong.
     /// - throws: An error when server can't be reach for certains condition.
     /// - throws: An error if any value throws an error during decoding.
     func deleteData<T: Codable>(url: RemoteURL, parameter: T) async throws {
-        guard let url = URL(string: url.rawValue) else { throw RemoteServiceError.badURL }
+        guard let url = URL(string: url.rawValue) else {
+            throw RemoteServiceError.badURL }
         let jsonData = try JSONEncoder().encode(parameter)
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse,
-           (200...299).contains(httpResponse.statusCode) else {
-               throw RemoteServiceError.badServerResponse
-        }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
         let decodedData = try JSONDecoder().decode(T.self, from: data)
         print(decodedData)
     }
@@ -79,22 +85,23 @@ class RemoteDataService {
     ///
     /// - parameters:
     ///   - url: An end-point url in `String` format.
-    ///   - parameter: An object that will put in remote directory
+    ///   - parameter: An object that will put in remote directory.
     /// - throws: An error if url have wrong format or url is wrong.
     /// - throws: An error when server can't be reach for certains condition.
     /// - throws: An error if any value throws an error during decoding.
     func putData<T: Codable>(url: RemoteURL, parameter: T) async throws {
-        guard let url = URL(string: url.rawValue) else { throw RemoteServiceError.badURL }
+        guard let url = URL(string: url.rawValue) else {
+            throw RemoteServiceError.badURL }
         let jsonData = try JSONEncoder().encode(parameter)
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.put.rawValue
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse,
-           (200...299).contains(httpResponse.statusCode) else {
-               throw RemoteServiceError.badServerResponse
-        }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
         let decodedData = try JSONDecoder().decode(T.self, from: data)
         print(decodedData)
     }
@@ -103,39 +110,45 @@ class RemoteDataService {
     ///
     /// - parameters:
     ///   - url: An end-point url in `String` format.
-    ///   - parameter: An object that will put in remote directory
+    ///   - parameter: An object that will put in remote directory.
     /// - throws: An error if url have wrong format or url is wrong.
     /// - throws: An error when server can't be reach for certains condition.
     /// - throws: An error if any value throws an error during decoding.
     func patchData<T: Codable>(url: RemoteURL, parameter: T) async throws {
-        guard let url = URL(string: url.rawValue) else { throw RemoteServiceError.badURL }
+        guard let url = URL(string: url.rawValue) else {
+            throw RemoteServiceError.badURL }
         let jsonData = try JSONEncoder().encode(parameter)
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.patch.rawValue
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse,
-           (200...299).contains(httpResponse.statusCode) else {
-               throw RemoteServiceError.badServerResponse
-        }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
         let decodedData = try JSONDecoder().decode(T.self, from: data)
         print(decodedData)
     }
-}
-
-enum RemoteServiceError: Error {
-    case badURL
-    case badServerResponse
-}
-
-extension RemoteServiceError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .badURL:
-            return NSLocalizedString("You have wrong url", comment: "")
-        case .badServerResponse:
-            return NSLocalizedString("Server Error", comment: "")
-        }
+    
+    /// Upload image data to remote directory. This method is call in async condition.
+    ///
+    /// - parameters:
+    ///   - url: An end-point url in `String` format.
+    ///   - imageData: An image in `Data` format that will be uploaded to the remote directory.
+    /// - throws: An error if url have wrong format or url is wrong.
+    /// - throws: An error when server can't be reach for certains condition.
+    /// - throws: An error when there are any error in `URLSession`.
+    func postImage(url: RemoteURL, imageData: Data) async throws {
+        guard let url = URL(string: url.rawValue) else {
+            throw RemoteServiceError.badURL }
+        let request = MultiPartFormDataRequest(url: url, method: .post)
+        request.addDataField(named: "image", data: imageData, mimeType: "img/jpeg")
+        let (data, response) = try await URLSession.shared.data(with: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
+        print(data)
     }
 }

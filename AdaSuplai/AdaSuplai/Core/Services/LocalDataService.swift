@@ -23,19 +23,3 @@ class LocalDataService {
         return data
     }
 }
-
-enum LocalServiceError: Error {
-    case badPath
-    case badData
-}
-
-extension LocalServiceError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .badPath:
-            return NSLocalizedString("No such file found in your directory", comment: "")
-        case .badData:
-            return NSLocalizedString("File data can't be decoded to json format", comment: "")
-        }
-    }
-}
