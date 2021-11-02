@@ -33,6 +33,7 @@ class AuthenticationController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initializeHideKeyboard()
         setUpView()
         setupTextField()
         setupKeyboard()

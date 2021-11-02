@@ -43,6 +43,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         table.registerNib(forCell: ProfileTransactionCell.self)
         table.registerNib(forCell: ProfileInformationsCell.self)
         
+        table.allowsSelection = false
         table.separatorStyle = .none
         table.backgroundColor = .blueBackground
         table.dataSource = self
