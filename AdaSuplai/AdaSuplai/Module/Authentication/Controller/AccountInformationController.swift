@@ -36,6 +36,7 @@ class AccountInformationController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupKeyboard()
+        self.initializeHideKeyboard()
     }
     
     deinit {

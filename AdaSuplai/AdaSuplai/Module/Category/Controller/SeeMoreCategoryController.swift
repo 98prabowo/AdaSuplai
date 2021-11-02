@@ -29,6 +29,8 @@ class SeeMoreCategoryController: UIViewController, Identifiable {
     
     private func setUpNavigationBar() {
         title = "Lihat Lebih"
+        self.navigationItem.hidesBackButton = true
+        self.addBackButton()
         
         if Constant.isSearch == false {
             guard let navigation = self.navigationController else { return }
@@ -61,6 +63,17 @@ class SeeMoreCategoryController: UIViewController, Identifiable {
         
         Constant.isSearch = true
         setUpNavigationBar()
+    }
+    
+    private func addBackButton() {
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(backNavigation(_:)))
+        self.navigationItem.leftBarButtonItems = [backButton]
+    }
+    
+    @objc private func backNavigation(_ sender: UIBarButtonItem) {
+        guard let navigation = self.navigationController else { return }
+        navigation.popViewController(animated: true)
     }
 }
 

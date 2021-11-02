@@ -32,13 +32,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVe-Us-Isw">
-                    <rect key="frame" x="0.0" y="44" width="414" height="695"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="669"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LV7-NX-3SQ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="695"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="669"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AoR-eQ-PwX">
-                                    <rect key="frame" x="16" y="268" width="382" height="159"/>
+                                    <rect key="frame" x="16" y="255" width="382" height="159"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Verifikasi OTP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCu-iy-nXx">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="41"/>
@@ -125,7 +125,7 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="1eM-GR-N08"/>
                 </scrollView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-R4-ldf">
-                    <rect key="frame" x="16" y="739" width="382" height="99"/>
+                    <rect key="frame" x="16" y="713" width="382" height="99"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSp-fF-DQU">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="45.5"/>
@@ -161,7 +161,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gNR-R4-ldf" secondAttribute="trailing" constant="16" id="RzT-zz-V0k"/>
                 <constraint firstItem="KVe-Us-Isw" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="VZN-od-gZX"/>
                 <constraint firstItem="KVe-Us-Isw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gJp-Xq-RSE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gNR-R4-ldf" secondAttribute="bottom" constant="24" id="kof-7t-hcl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gNR-R4-ldf" secondAttribute="bottom" constant="50" id="kof-7t-hcl"/>
                 <constraint firstItem="KVe-Us-Isw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rvR-fU-f0Y"/>
                 <constraint firstItem="gNR-R4-ldf" firstAttribute="top" secondItem="KVe-Us-Isw" secondAttribute="bottom" id="z0f-rz-i6a"/>
             </constraints>

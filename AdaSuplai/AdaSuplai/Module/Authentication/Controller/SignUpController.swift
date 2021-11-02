@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpController: UIViewController, Identifiable {
+class SignUpController: BaseUIViewController {
     
     private enum Constant {
         static let usernamePlaceholder = "Alamat Email / No. Telepon"
@@ -29,6 +29,7 @@ class SignUpController: UIViewController, Identifiable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initializeHideKeyboard()
         setUpView()
         setupKeyboard()
     }
