@@ -49,7 +49,6 @@ extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == indexPath.last {
             self.collectionViewHeight.constant = collectionView.contentSize.height + 20
-            print("\(self.collectionViewHeight.constant) == \(collectionView.contentSize.height)")
             mainTableView.reloadData()
         }
     }

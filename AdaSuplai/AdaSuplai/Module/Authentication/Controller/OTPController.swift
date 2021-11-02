@@ -27,6 +27,7 @@ class OTPController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupView()
         setupKeyboard()
+        self.initializeHideKeyboard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,52 +85,61 @@ class OTPController: UIViewController, UITextFieldDelegate {
         let text = textfield.text
         
         if text?.utf16.count == 1 {
-            switch textfield {
-            case textField1:
-                textField2.becomeFirstResponder()
-                
-            case textField2:
-                textField3.becomeFirstResponder()
-                
-            case textField3:
-                textField4.becomeFirstResponder()
-                
-            case textField4:
-                textField5.becomeFirstResponder()
-                
-            case textField5:
-                textField6.becomeFirstResponder()
-                
-            case textField6:
-                print("OTP = \(text!)")
-                textField6.resignFirstResponder()
-                
-            default:
-                break
-            }
+            setupNextTextField(text: text, textfield: textfield)
         } else if text!.isEmpty {
-            switch textfield {
-            case textField6:
-                textField5.becomeFirstResponder()
-                
-            case textField5:
-                textField4.becomeFirstResponder()
-                
-            case textField4:
-                textField3.becomeFirstResponder()
-                
-            case textField3:
-                textField2.becomeFirstResponder()
-                
-            case textField2:
-                textField1.becomeFirstResponder()
-                
-            case textField1:
-                textField1.resignFirstResponder()
-                
-            default:
-                break
-            }
+            setupPreviousTextField(text: text, textfield: textfield)
+        }
+        
+    }
+    
+    private func setupPreviousTextField(text: String?, textfield: UITextField) {
+        switch textfield {
+        case textField6:
+            textField5.becomeFirstResponder()
+            
+        case textField5:
+            textField4.becomeFirstResponder()
+            
+        case textField4:
+            textField3.becomeFirstResponder()
+            
+        case textField3:
+            textField2.becomeFirstResponder()
+            
+        case textField2:
+            textField1.becomeFirstResponder()
+            
+        case textField1:
+            textField1.resignFirstResponder()
+            
+        default:
+            break
+        }
+    }
+    
+    private func setupNextTextField(text: String?, textfield: UITextField) {
+        switch textfield {
+        case textField1:
+            textField2.becomeFirstResponder()
+            
+        case textField2:
+            textField3.becomeFirstResponder()
+            
+        case textField3:
+            textField4.becomeFirstResponder()
+            
+        case textField4:
+            textField5.becomeFirstResponder()
+            
+        case textField5:
+            textField6.becomeFirstResponder()
+            
+        case textField6:
+            print("OTP = \(text!)")
+            textField6.resignFirstResponder()
+            
+        default:
+            break
         }
     }
     
@@ -150,7 +160,7 @@ class OTPController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        bottomConstraint.constant = 24
+        bottomConstraint.constant = 50
         let contentInset: UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
     }

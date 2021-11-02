@@ -19,26 +19,20 @@ class CategoryController: BaseUIViewController {
         setUpTable()
     }
     
-    // MARK: - Navigation Bar
+    private func configure(title: String) {
+        self.title = title
+    }
     
+    // MARK: - Navigation Bar
     private func setUpNavigationBar() {
-        title = categoryTitle
-        
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .white
         navigation.navigationBar.barTintColor = .white
         navigation.navigationBar.tintColor = .primaryGreen
         self.view.backgroundColor = .white
-        
-        let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: .some(#selector(searchTapped(_:))))
-        navigationItem.rightBarButtonItems = [searchButton]
-    }
-    
-    @objc func searchTapped(_ sender: UIBarButtonItem) {
-        let nextVC = SearchUpdaterController()
-        let navController = UINavigationController(rootViewController: nextVC)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: false, completion: nil)
+        self.navigationItem.hidesBackButton = true
+        self.addBackButton()
+        self.addSearchButton(tintColor: .primaryGreen)
     }
 }
 
