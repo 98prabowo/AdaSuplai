@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-typealias Parameters = [String: String]
-
 class RemoteDataService {
     
     /// HTTP GET method to get data from remote directory. This method is call in async condition.

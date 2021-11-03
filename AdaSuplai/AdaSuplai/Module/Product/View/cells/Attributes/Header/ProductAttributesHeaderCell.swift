@@ -18,8 +18,14 @@ class ProductAttributesHeaderCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var containerView: UIView!
     
-    private var isFirst: Bool = true
     let attributesPublisher = PassthroughSubject<ProductAttribute, Never>()
+    private var selectedIndex = 0 {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,13 +64,11 @@ extension ProductAttributesHeaderCell: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductAttributesCollectionCell.self, for: indexPath)
         let title = ProductAttribute.allCases[indexPath.item].rawValue
-        switch indexPath.item {
-        case 0 where self.isFirst:
+        if indexPath.item == selectedIndex {
             cell.configureSelected(title: title)
-        default:
+        } else {
             cell.configure(title: title)
         }
-        
         return cell
     }
     
@@ -76,12 +80,8 @@ extension ProductAttributesHeaderCell: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.collectionView.deselectItem(at: indexPath, animated: true)
-        let title = ProductAttribute.allCases[indexPath.item].rawValue
-        if let cell = collectionView.cellForItem(at: indexPath) as? ProductAttributesCollectionCell {
-            self.deselectAllItem()
-            cell.configureSelected(title: title)
-            self.isFirst = false
-            self.attributesPublisher.send(ProductAttribute.allCases[indexPath.item])
-        }
+        self.deselectAllItem()
+        self.selectedIndex = indexPath.item
+        self.attributesPublisher.send(ProductAttribute.allCases[indexPath.item])
     }
 }

@@ -13,7 +13,13 @@ class ProductVariantCell: UITableViewCell {
     @IBOutlet private weak var containerView: UIView!
     
     private var variants = [String](repeating: "DARK ROAST", count: 5)
-    private var isFirst: Bool = true
+    private var selectedIndex = 0 {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +50,14 @@ class ProductVariantCell: UITableViewCell {
             }
         }
     }
+    
+    private func setupItem(_ cell: FilterCollectionCell, indexPath: IndexPath) {
+        if indexPath.item == selectedIndex {
+            cell.configureSelected(filterKey: "DARK ROAST")
+        } else {
+            cell.configure(filterKey: "DARK ROAST")
+        }
+    }
 }
 
 extension ProductVariantCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -54,12 +68,10 @@ extension ProductVariantCell: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: FilterCollectionCell.self, for: indexPath)
         switch indexPath.item {
-        case 0 where self.isFirst:
-            cell.configureSelected(filterKey: "DARK ROAST")
         case 4:
             cell.configureDisable(filterKey: "DARK ROAST")
         default:
-            cell.configure(filterKey: "DARK ROAST")
+            self.setupItem(cell, indexPath: indexPath)
         }
         return cell
     }
@@ -76,11 +88,8 @@ extension ProductVariantCell: UICollectionViewDelegate, UICollectionViewDataSour
         case 4:
             break
         default:
-            if let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionCell {
-                self.deselectAllItem()
-                cell.configureSelected(filterKey: "DARK ROAST")
-                self.isFirst = false
-            }
+            self.deselectAllItem()
+            self.selectedIndex = indexPath.item
         }
     }
 }

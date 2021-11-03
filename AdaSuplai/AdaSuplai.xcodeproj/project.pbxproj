@@ -1506,6 +1506,7 @@
 				8576EFD127208D8B00F69D29 /* CategoryController.swift in Sources */,
 				C3CBECA72716D19000622FE1 /* CurrencyFormatter.swift in Sources */,
 				C3B2765C272714F5002E8CC7 /* LocalDataService.swift in Sources */,
+				8576EFFE272093BA00F69D29 /* InformationCell.swift in Sources */,
 				C3E584BB273191F70050CE3E /* LocalServiceError.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
 				85AF813B272F05F400035658 /* InformationCell.swift in Sources */,

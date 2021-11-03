@@ -21,8 +21,9 @@ class ProductAttributesCollectionCell: UICollectionViewCell {
     }
 
     func configure(title: String) {
-        self.header.text = title
         self.header.textColor = .label
+        let textFont = UIFont.systemFont(ofSize: 17, weight: .regular)
+        self.header.attributedText = NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: textFont])
         self.line.isHidden = true
     }
     
