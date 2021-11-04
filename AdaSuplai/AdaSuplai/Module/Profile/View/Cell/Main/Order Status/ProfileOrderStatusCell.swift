@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class ProfileOrderStatusCell: UITableViewCell {
     
-    @IBOutlet var mainNav: UINavigationController!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var seeMoreButton: UIButton!
+    
+    let orderStatusPublisher = PassthroughSubject<Void, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,8 +39,7 @@ class ProfileOrderStatusCell: UITableViewCell {
     }
     
     @IBAction func seeMoreButtonClicked(_ sender: UIButton) {
-        let nextNav = ProfileAllOrderStatusController()
-        mainNav.pushViewController(nextNav, animated: true)
+        self.orderStatusPublisher.send()
     }
     
 }

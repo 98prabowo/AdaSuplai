@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ProfileUserCell: UITableViewCell {
     
@@ -14,7 +15,13 @@ class ProfileUserCell: UITableViewCell {
     @IBOutlet var profileView: UIView!
     @IBOutlet weak var profileShop: UILabel!
     @IBOutlet weak var settingButton: UIButton!
-    @IBOutlet weak var mainNavigation: UINavigationController!
+    
+    private enum Constant {
+        static let editProfile = 0
+        static let setting = 1
+    }
+    
+    let profileUserPublisher = PassthroughSubject<Int, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,24 +35,25 @@ class ProfileUserCell: UITableViewCell {
     
     // MARK: - Setup
     private func setUpView() {
+        contentView.backgroundColor = .white
+        self.addShadow(color: .black, opacity: 0.2, radius: 1)
+        
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = 35
         settingButton.tintColor = .primaryGreen
         profileName.textColor = .primaryGreen
         profileShop.textColor = .inactive
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: .some(#selector(clickView(_:))))
+        let tapGesture = UITapGestureRecognizer(target: self, action: .some(#selector(goToEditProfile(_:))))
         tapGesture.delegate = self
         profileView.addGestureRecognizer(tapGesture)
     }
     
-    @objc func clickView(_ sender: UIView) {
-        print("You clicked on view")
-        
+    @objc func goToEditProfile(_ sender: UIView) {
+        profileUserPublisher.send(Constant.editProfile)
     }
     
     @IBAction func settingButtonClicked(_ sender: UIButton) {
-        let nextVC = ProfileSettingController()
-        mainNavigation.pushViewController(nextVC, animated: true)
+        profileUserPublisher.send(1)
     }
 }

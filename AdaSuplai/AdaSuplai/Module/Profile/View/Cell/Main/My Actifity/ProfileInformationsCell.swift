@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class ProfileInformationsCell: UITableViewCell {
     
     @IBOutlet var table: UITableView!
     @IBOutlet weak var tableHeight: NSLayoutConstraint!
+    
+    let myActivityPublisher = PassthroughSubject<String, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +38,7 @@ class ProfileInformationsCell: UITableViewCell {
         table.layer.shadowOffset = .zero
         table.layer.shadowRadius = 1
     }
-
+    
 }
 
 // MARK: - Table
@@ -66,20 +69,24 @@ extension ProfileInformationsCell: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0 :
             let cell = tableView.dequeueReusableCell(withCell: InformationCell.self, for: indexPath)
-            cell.title.text = "Ulasan Produk"
-            cell.desc.text = "Berikan Penilaian dan Ulas Produk"
+            cell.configure(title: "Ulasan Produk", desc: "Berikan Penilaian dan Ulas Produk")
             return cell
             
         case 2 :
             let cell = tableView.dequeueReusableCell(withCell: InformationCell.self, for: indexPath)
-            cell.title.text = "Pusat Bantuan"
-            cell.desc.text = "Solusi Permasalahan dari AdaSuplai"
+            cell.configure(title: "Pusat Bantuan", desc: "Solusi Permasalahan dari AdaSuplai")
             return cell
             
         default :
             let cell = tableView.dequeueReusableCell(withCell: SeparatorCell.self, for: indexPath)
             cell.separatorView.backgroundColor = .lightGray
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row % 2 == 0 {
+            myActivityPublisher.send("Information")
         }
     }
 }
