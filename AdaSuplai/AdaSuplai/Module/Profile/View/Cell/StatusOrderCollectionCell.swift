@@ -29,9 +29,6 @@ class StatusOrderCollectionCell: UICollectionViewCell {
     }
     
     func configureSelected(status: String) {
-//        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
-//        let underlineAttributedString = NSAttributedString(string: "StringWithUnderLine", attributes: underlineAttribute)
-//        self.statusLabel.attributedText = underlineAttributedString
         self.statusLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
         self.statusLabel.text = status
         self.statusLabel.textColor = .primaryGreen

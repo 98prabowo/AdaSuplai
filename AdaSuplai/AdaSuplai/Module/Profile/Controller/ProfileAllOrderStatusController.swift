@@ -7,19 +7,35 @@
 
 import UIKit
 
-class ProfileAllOrderStatusController: UIViewController {
+class ProfileAllOrderStatusController: BaseUIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var emptyView: UIView!
     
     private var titles = ["Dalam Proses", "Pengiriman", "Selesai", "Dibatalkan", "Pengembalian"]
+    private var selectedIndex = 0 {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setUpNavigationBar(isHidden: false)
         setupTableView()
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUpNavigationBar(isHidden: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setUpNavigationBar(isHidden: true)
     }
     
     private func setupView() {
@@ -47,6 +63,26 @@ class ProfileAllOrderStatusController: UIViewController {
         tableView.backgroundColor = .blueBackground
         
         tableView.registerNib(forCell: OrderSmallCell.self)
+    }
+    
+    private func setupItem(_ cell: StatusOrderCollectionCell, indexPath: IndexPath) {
+        if indexPath.item == selectedIndex {
+            cell.configureSelected(status: titles[indexPath.row])
+        } else {
+            cell.configure(status: titles[indexPath.row])
+        }
+    }
+    
+    // MARK: - Navigation Bar
+    private func setUpNavigationBar(isHidden: Bool) {
+        title = "Status Pemesanan"
+        
+        guard let navigation = self.navigationController else { return }
+        navigation.navigationBar.backgroundColor = .clear
+        navigation.navigationBar.isHidden = isHidden
+        navigation.navigationItem.hidesBackButton = true
+        navigation.navigationBar.tintColor = .primaryGreen
+        self.addBackButton()
     }
 }
 
@@ -81,23 +117,15 @@ extension ProfileAllOrderStatusController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withCell: StatusOrderCollectionCell.self, for: indexPath)
-            cell.configureSelected(status: titles[indexPath.row])
-            return cell
-        }
-        
         let cell = collectionView.dequeueReusableCell(withCell: StatusOrderCollectionCell.self, for: indexPath)
-        cell.configure(status: titles[indexPath.row])
+        self.setupItem(cell, indexPath: indexPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.collectionView.deselectItem(at: indexPath, animated: true)
         self.deselectStatus()
-        if let cell = collectionView.cellForItem(at: indexPath) as? StatusOrderCollectionCell {
-            cell.configureSelected(status: titles[indexPath.row])
-        }
+        self.selectedIndex = indexPath.item
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

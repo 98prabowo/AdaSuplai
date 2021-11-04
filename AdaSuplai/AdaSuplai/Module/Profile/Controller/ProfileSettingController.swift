@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileSettingController: UIViewController, Identifiable {
+class ProfileSettingController: BaseUIViewController {
     @IBOutlet var table: UITableView!
     @IBOutlet var logoutButton: UIButton!
     
@@ -20,6 +20,14 @@ class ProfileSettingController: UIViewController, Identifiable {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUpNavigationBar(isHidden: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setUpNavigationBar(isHidden: true)
+    }
+    
     private func setupView() {
         view.backgroundColor = .white
         logoutButton.tintColor = .primaryGreen
@@ -27,10 +35,15 @@ class ProfileSettingController: UIViewController, Identifiable {
     }
     
     // MARK: - Navigation Bar
-    private func setUpNavigationBar() {
-        self.navigationController?.navigationBar.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = false
-        title = "Profile"
+    private func setUpNavigationBar(isHidden: Bool) {
+        title = "Pengaturan"
+        
+        guard let navigation = self.navigationController else { return }
+        navigation.navigationBar.backgroundColor = .clear
+        navigation.navigationBar.isHidden = isHidden
+        navigation.navigationItem.hidesBackButton = true
+        navigation.navigationBar.tintColor = .primaryGreen
+        self.addBackButton()
     }
 }
 // MARK: - Table

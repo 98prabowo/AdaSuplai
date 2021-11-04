@@ -66,20 +66,16 @@
 		85AF8139272F05F400035658 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8115272F05F400035658 /* TextCell.swift */; };
 		85AF813A272F05F400035658 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8116272F05F400035658 /* InformationCell.xib */; };
 		85AF813B272F05F400035658 /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8117272F05F400035658 /* InformationCell.swift */; };
-		85AF813C272F05F400035658 /* ProfileTransactionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF811A272F05F400035658 /* ProfileTransactionCollectionCell.swift */; };
 		85AF813D272F05F400035658 /* ProfileTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF811B272F05F400035658 /* ProfileTransactionCell.xib */; };
 		85AF813E272F05F400035658 /* ProfileTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF811C272F05F400035658 /* ProfileTransactionCell.swift */; };
 		85AF813F272F05F400035658 /* TransactionActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF811D272F05F400035658 /* TransactionActivityCell.swift */; };
 		85AF8140272F05F400035658 /* TransactionActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF811E272F05F400035658 /* TransactionActivityCell.xib */; };
-		85AF8141272F05F400035658 /* ProfileTransactionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF811F272F05F400035658 /* ProfileTransactionCollectionCell.xib */; };
 		85AF8142272F05F400035658 /* ProfileUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8121272F05F400035658 /* ProfileUserCell.swift */; };
 		85AF8143272F05F400035658 /* ProfileUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8122272F05F400035658 /* ProfileUserCell.xib */; };
 		85AF8144272F05F400035658 /* ProfileInformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8124272F05F400035658 /* ProfileInformationsCell.swift */; };
 		85AF8145272F05F400035658 /* ProfileInformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8125272F05F400035658 /* ProfileInformationsCell.xib */; };
 		85AF8146272F05F400035658 /* ProfileOrderStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8127272F05F400035658 /* ProfileOrderStatusCell.xib */; };
-		85AF8147272F05F400035658 /* ProfileOrderStatusCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8128272F05F400035658 /* ProfileOrderStatusCollectionCell.swift */; };
 		85AF8148272F05F400035658 /* OrderSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8129272F05F400035658 /* OrderSmallCell.xib */; };
-		85AF8149272F05F400035658 /* ProfileOrderStatusCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF812A272F05F400035658 /* ProfileOrderStatusCollectionCell.xib */; };
 		85AF814A272F05F400035658 /* ProfileOrderStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF812B272F05F400035658 /* ProfileOrderStatusCell.swift */; };
 		85AF814B272F05F400035658 /* OrderSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF812C272F05F400035658 /* OrderSmallCell.swift */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
@@ -276,20 +272,16 @@
 		85AF8115272F05F400035658 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		85AF8116272F05F400035658 /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
 		85AF8117272F05F400035658 /* InformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
-		85AF811A272F05F400035658 /* ProfileTransactionCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTransactionCollectionCell.swift; sourceTree = "<group>"; };
 		85AF811B272F05F400035658 /* ProfileTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTransactionCell.xib; sourceTree = "<group>"; };
 		85AF811C272F05F400035658 /* ProfileTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTransactionCell.swift; sourceTree = "<group>"; };
 		85AF811D272F05F400035658 /* TransactionActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActivityCell.swift; sourceTree = "<group>"; };
 		85AF811E272F05F400035658 /* TransactionActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionActivityCell.xib; sourceTree = "<group>"; };
-		85AF811F272F05F400035658 /* ProfileTransactionCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTransactionCollectionCell.xib; sourceTree = "<group>"; };
 		85AF8121272F05F400035658 /* ProfileUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserCell.swift; sourceTree = "<group>"; };
 		85AF8122272F05F400035658 /* ProfileUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileUserCell.xib; sourceTree = "<group>"; };
 		85AF8124272F05F400035658 /* ProfileInformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationsCell.swift; sourceTree = "<group>"; };
 		85AF8125272F05F400035658 /* ProfileInformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInformationsCell.xib; sourceTree = "<group>"; };
 		85AF8127272F05F400035658 /* ProfileOrderStatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileOrderStatusCell.xib; sourceTree = "<group>"; };
-		85AF8128272F05F400035658 /* ProfileOrderStatusCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOrderStatusCollectionCell.swift; sourceTree = "<group>"; };
 		85AF8129272F05F400035658 /* OrderSmallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderSmallCell.xib; sourceTree = "<group>"; };
-		85AF812A272F05F400035658 /* ProfileOrderStatusCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileOrderStatusCollectionCell.xib; sourceTree = "<group>"; };
 		85AF812B272F05F400035658 /* ProfileOrderStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOrderStatusCell.swift; sourceTree = "<group>"; };
 		85AF812C272F05F400035658 /* OrderSmallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSmallCell.swift; sourceTree = "<group>"; };
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -640,12 +632,10 @@
 		85AF8119272F05F400035658 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				85AF811A272F05F400035658 /* ProfileTransactionCollectionCell.swift */,
 				85AF811B272F05F400035658 /* ProfileTransactionCell.xib */,
 				85AF811C272F05F400035658 /* ProfileTransactionCell.swift */,
-				85AF811D272F05F400035658 /* TransactionActivityCell.swift */,
 				85AF811E272F05F400035658 /* TransactionActivityCell.xib */,
-				85AF811F272F05F400035658 /* ProfileTransactionCollectionCell.xib */,
+				85AF811D272F05F400035658 /* TransactionActivityCell.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -671,12 +661,10 @@
 		85AF8126272F05F400035658 /* Order Status */ = {
 			isa = PBXGroup;
 			children = (
-				85AF8127272F05F400035658 /* ProfileOrderStatusCell.xib */,
-				85AF8128272F05F400035658 /* ProfileOrderStatusCollectionCell.swift */,
-				85AF8129272F05F400035658 /* OrderSmallCell.xib */,
-				85AF812A272F05F400035658 /* ProfileOrderStatusCollectionCell.xib */,
 				85AF812B272F05F400035658 /* ProfileOrderStatusCell.swift */,
+				85AF8127272F05F400035658 /* ProfileOrderStatusCell.xib */,
 				85AF812C272F05F400035658 /* OrderSmallCell.swift */,
+				85AF8129272F05F400035658 /* OrderSmallCell.xib */,
 			);
 			path = "Order Status";
 			sourceTree = "<group>";
@@ -1355,7 +1343,6 @@
 			files = (
 				C378E4952719FC79008288B9 /* SearchUpdaterLastSeenCell.xib in Resources */,
 				C32BF8A7271805D500658994 /* ProductAttributesDescriptionCell.xib in Resources */,
-				85AF8141272F05F400035658 /* ProfileTransactionCollectionCell.xib in Resources */,
 				85AF8135272F05F400035658 /* StatusOrderCollectionCell.xib in Resources */,
 				C366D2DC2706F47E00EF1E0C /* HomeCategoryCollectionCell.xib in Resources */,
 				C3CBECC12716E73600622FE1 /* StatusProductCollectionCell.xib in Resources */,
@@ -1419,7 +1406,6 @@
 				C3B27655272706EC002E8CC7 /* MoreCategorySortFilterCell.xib in Resources */,
 				C3963BC927217D950017AAB6 /* Main.storyboard in Resources */,
 				85AF807F272F00C300035658 /* SignUpPageRouteController.xib in Resources */,
-				85AF8149272F05F400035658 /* ProfileOrderStatusCollectionCell.xib in Resources */,
 				85AF8083272F00C300035658 /* AccountInformationController.xib in Resources */,
 				C3B2765127270499002E8CC7 /* MoreSortFilterCategoryController.xib in Resources */,
 				C366D2EC2706FD5500EF1E0C /* BannerCollectionCell.xib in Resources */,
@@ -1494,7 +1480,6 @@
 				C3963BC827217D950017AAB6 /* MainController.swift in Sources */,
 				C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */,
 				C381C13027182C4700FDD5D4 /* ProductImageCollectionCell.swift in Sources */,
-				85AF813C272F05F400035658 /* ProfileTransactionCollectionCell.swift in Sources */,
 				C3D58560270EF14200F6678D /* Extension-String.swift in Sources */,
 				C32BF89E2718059500658994 /* ProductAttributesHeaderCell.swift in Sources */,
 				85AF813F272F05F400035658 /* TransactionActivityCell.swift in Sources */,
@@ -1506,14 +1491,11 @@
 				8576EFD127208D8B00F69D29 /* CategoryController.swift in Sources */,
 				C3CBECA72716D19000622FE1 /* CurrencyFormatter.swift in Sources */,
 				C3B2765C272714F5002E8CC7 /* LocalDataService.swift in Sources */,
-				8576EFFE272093BA00F69D29 /* InformationCell.swift in Sources */,
 				C3E584BB273191F70050CE3E /* LocalServiceError.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
 				85AF813B272F05F400035658 /* InformationCell.swift in Sources */,
 				C30EA06F27104D3100832135 /* Extension-UITableView.swift in Sources */,
 				C3F68F3A2730703900F8A5A4 /* HTTPMethod.swift in Sources */,
-				85AF80BA272F056200035658 /* ListDeliveryController.swift in Sources */,
-				85AF80B1272F056200035658 /* ProductTransactionCell.swift in Sources */,
 				C30EA060271043A000832135 /* FilterPriceRangeCell.swift in Sources */,
 				C3C94D9A27059CF000688485 /* BaseViewModel.swift in Sources */,
 				C3B2765727270BA5002E8CC7 /* MoreSortFilterCategoryViewModel.swift in Sources */,
@@ -1535,7 +1517,6 @@
 				85AF808F272F019100035658 /* AuthenticationController.swift in Sources */,
 				C366D2EB2706FD5500EF1E0C /* BannerCollectionCell.swift in Sources */,
 				859DD86B27312CBA000FFD53 /* DeliveryAddressCell.swift in Sources */,
-				85AF8147272F05F400035658 /* ProfileOrderStatusCollectionCell.swift in Sources */,
 				859DD87927313D15000FFD53 /* Extension-UIViewController.swift in Sources */,
 				859DD86D27312CBA000FFD53 /* ShopTransactionPriceCell.swift in Sources */,
 				859DD87727312CBA000FFD53 /* TransactionViewModel.swift in Sources */,

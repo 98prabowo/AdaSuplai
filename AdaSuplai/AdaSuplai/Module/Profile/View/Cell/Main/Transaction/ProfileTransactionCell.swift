@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 class ProfileTransactionCell: UITableViewCell {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var containerView: UIView!
+    
+    private let cellTitle: [String] = ["Penawaran", "", "Menunggu Pembayaran"]
+    
+    let transactionActivityPublisher = PassthroughSubject<String, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +44,6 @@ class ProfileTransactionCell: UITableViewCell {
     private func setUpTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.allowsSelection = false
         
         self.tableView.registerNib(forCell: TransactionActivityCell.self)
         self.tableView.registerNib(forCell: SeparatorCell.self)
@@ -54,19 +58,14 @@ extension ProfileTransactionCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0 :
+        if indexPath.row % 2 == 0 {
             let cell = tableView.dequeueReusableCell(withCell: TransactionActivityCell.self, for: indexPath)
-            cell.titleLabel.text = "Penawaran"
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            cell.titleLabel.text = cellTitle[indexPath.row]
+            cell.selectionStyle = .none
             return cell
-        case 2 :
-            let cell = tableView.dequeueReusableCell(withCell: TransactionActivityCell.self, for: indexPath)
-            cell.titleLabel.text = "Menunggu Pembayaran"
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
-            return cell
-        default :
+        } else {
             let cell = tableView.dequeueReusableCell(withCell: SeparatorCell.self, for: indexPath)
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -76,5 +75,12 @@ extension ProfileTransactionCell: UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         return 70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row % 2 == 0 {
+            print(cellTitle[indexPath.row])
+            self.transactionActivityPublisher.send(cellTitle[indexPath.row])
+        }
     }
 }
