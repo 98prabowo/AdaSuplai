@@ -14,6 +14,7 @@ class ProfileTransactionCell: UITableViewCell {
     @IBOutlet var containerView: UIView!
     
     private let cellTitle: [String] = ["Penawaran", "", "Menunggu Pembayaran"]
+    private let cellImage: [String] = ["penawaran", "", "menunggu_pembayaran"]
     
     let transactionActivityPublisher = PassthroughSubject<String, Never>()
     
@@ -60,7 +61,7 @@ extension ProfileTransactionCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row % 2 == 0 {
             let cell = tableView.dequeueReusableCell(withCell: TransactionActivityCell.self, for: indexPath)
-            cell.titleLabel.text = cellTitle[indexPath.row]
+            cell.configure(title: cellTitle[indexPath.row], image: cellImage[indexPath.row])
             cell.selectionStyle = .none
             return cell
         } else {

@@ -40,6 +40,7 @@ class OrderSmallCell: UITableViewCell {
         containerView.layer.shadowRadius = 1
         
         productImage.roundSpecificCorners(.allCorners, radius: 8)
+        productImage.image = UIImage(imageLiteralResourceName: "coffee_2")
     }
     
 }
