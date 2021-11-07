@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Combine
 
 class AllProductCell: UITableViewCell {
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    
+    let allProductPublisher = PassthroughSubject<Void, Never>()
     
     override func awakeFromNib() {
         setUpCollectionView()
@@ -34,23 +37,20 @@ extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
+        let heightTemp = ceil(CGFloat(collectionView.numberOfItems(inSection: 0))/2) * 305
+        let spacingTemp =  ceil(CGFloat(collectionView.numberOfItems(inSection: 0))/2) * 16
+        collectionViewHeight.constant = CGFloat(heightTemp+spacingTemp)
+        
         self.collectionView.registerNib(forCell: ProductCell.self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == indexPath.last {
-            self.collectionViewHeight.constant = collectionView.contentSize.height + 20
-            mainTableView.reloadData()
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -59,6 +59,10 @@ extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         let spacing: CGFloat = 4
         let width = (collectionView.bounds.width / numRowItems) - padding - spacing
         return CGSize(width: width, height: 305)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        allProductPublisher.send()
     }
     
 }

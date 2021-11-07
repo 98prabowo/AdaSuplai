@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SeeMoreCategoryController: UIViewController, Identifiable {
     
     @IBOutlet var collectionView: UICollectionView!
     var searchController = UISearchController()
+    let viewModel = CategoryViewModel()
     
     private enum Constant {
         static let searchPlaceholder = "Cari Kategori"
@@ -23,6 +25,14 @@ class SeeMoreCategoryController: UIViewController, Identifiable {
         setUpNavigationBar()
         setupSearchController()
         setUpCollectionView()
+        
+        viewModel.categoryData.bind { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
+        
+        viewModel.fetchCategory()
     }
     
     // MARK: - Navigation Bar
@@ -89,11 +99,17 @@ extension SeeMoreCategoryController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16
+        return viewModel.categoryData.value?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: SeeMoreCategoryCollectionCell.self, for: indexPath)
+        
+        let dataCell = viewModel.categoryData.value?[indexPath.row]
+        cell.categoryName.text = dataCell?.name
+        
+        let url = URL(string: "https://adasuplai-api-env-staging.herokuapp.com/image/\(dataCell?.image ?? "")")
+        if let data = try? Data(contentsOf: url!) { cell.categoryImage.image = UIImage(data: data) } else { cell.categoryImage.backgroundColor = .primaryGreen }
         return cell
     }
     
@@ -104,6 +120,14 @@ extension SeeMoreCategoryController: UICollectionViewDelegate, UICollectionViewD
         let spacing: CGFloat = 8
         let width = (collectionView.bounds.width / numRowItems) - padding - spacing
         return CGSize(width: width, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = CategoryController()
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
+        print(indexPath.row)
     }
 }
 
@@ -118,7 +142,20 @@ extension SeeMoreCategoryController: UISearchControllerDelegate, UISearchBarDele
         self.searchController.searchBar.placeholder = Constant.searchPlaceholder
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            viewModel.categoryData.value = viewModel.allCategoryData.value ?? []
+        } else {
+            let dataTemp = viewModel.allCategoryData.value?
+                .filter { word in word.name.uppercased().contains(searchText.uppercased()) }
+                .sorted { ($0.name.uppercased().hasPrefix(searchText.uppercased()) ? 0 : 1) < ($1.name.uppercased().hasPrefix(searchText.uppercased()) ? 0 : 1) }
+            
+            viewModel.categoryData.value = dataTemp ?? []
+        }
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.categoryData.value = viewModel.allCategoryData.value ?? []
         print("Cancel")
         
         Constant.isSearch = false

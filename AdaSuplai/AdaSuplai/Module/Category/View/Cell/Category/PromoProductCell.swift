@@ -6,25 +6,30 @@
 //
 
 import UIKit
+import Combine
 
 class PromoProductCell: UITableViewCell {
     
+    @IBOutlet var cellTitle: UILabel!
     @IBOutlet var collectionView: UICollectionView!
+    
+    let promoProductPublisher = PassthroughSubject<Void, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpCollectionView()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     private func setUpView() {
         self.backgroundColor = .blueBackground
+    }
+    
+    func configure(title: String) {
+        cellTitle.text = title
     }
 }
 // MARK: - Collection View
@@ -54,6 +59,10 @@ extension PromoProductCell: UICollectionViewDelegate, UICollectionViewDataSource
         let width = (collectionView.bounds.width / numRowItems) - padding
         return CGSize(width: width, height: 300)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("text \(indexPath.row)")
+        self.promoProductPublisher.send()
+    }
 }
-
 // MARK: - END
