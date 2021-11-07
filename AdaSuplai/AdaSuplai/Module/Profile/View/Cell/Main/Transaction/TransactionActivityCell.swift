@@ -20,11 +20,15 @@ class TransactionActivityCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
     
     private func setupView() {
         totalProductButton.tintColor = .alert
+    }
+    
+    func configure(title: String, image: String) {
+        titleLabel.text = title
+        iconImage.image = UIImage(imageLiteralResourceName: image)
     }
     
 }

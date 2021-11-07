@@ -37,6 +37,7 @@ class ProfileViewController: BaseUIViewController {
     // MARK: - Navigation
     private func goToAllOrderController() {
         let nextVC = ProfileAllOrderStatusController()
+        nextVC.hidesBottomBarWhenPushed = true
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
@@ -44,13 +45,18 @@ class ProfileViewController: BaseUIViewController {
     
     private func goToProfileSettingController() {
         let nextVC = ProfileSettingController()
+        nextVC.hidesBottomBarWhenPushed = true
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
     }
     
     private func goToEditProfileController() {
-        print("Go To Edit Profile")
+        let nextVC = ProfileEditController()
+        nextVC.hidesBottomBarWhenPushed = true
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
     }
     
     private func goToActivityController(text: String) {
