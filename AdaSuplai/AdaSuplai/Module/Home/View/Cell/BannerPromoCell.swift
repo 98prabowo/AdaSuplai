@@ -11,7 +11,7 @@ import Combine
 class BannerPromoCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    let bannerPublisher = PassthroughSubject<Void, Never>()
+    var bannerPublisher: PassthroughSubject<Void, Never>?
     
     private let dummyColors: [UIColor] = [.systemRed, .systemCyan, .systemPink]
     private var timer = Timer()
@@ -21,6 +21,11 @@ class BannerPromoCell: UITableViewCell {
         super.awakeFromNib()
         self.setupCollectionView()
         self.setupSlideTimer()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.bannerPublisher = PassthroughSubject<Void, Never>()
     }
     
     private func setupCollectionView() {
@@ -66,6 +71,7 @@ extension BannerPromoCell: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.bannerPublisher.send()
+        guard let publisher = self.bannerPublisher else { return }
+        publisher.send()
     }
 }

@@ -112,35 +112,38 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withCell: HomeCategoryCell.self, for: indexPath)
             cell.configure(categories: self.viewModel.categories)
-            cell.categoryPublisher
-                .sink { [unowned self] value in
-                    switch value {
-                    case .seeMore:
-                        self.goToMoreCategoryController()
-                    case .category(index: let index):
-                        self.goToCategoryController(index: index)
-                    }
-                }
-                .store(in: &subscribers)
+            if let publisher = cell.categoryPublisher {
+                publisher
+                    .sink { [unowned self] value in
+                        switch value {
+                        case .seeMore:
+                            self.goToMoreCategoryController()
+                        case .category(index: let index):
+                            self.goToCategoryController(index: index)
+                        }
+                    }.store(in: &subscribers)
+            }
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withCell: BannerPromoCell.self, for: indexPath)
-            cell.bannerPublisher
-                .sink { [unowned self] in
+            if let publisher = cell.bannerPublisher {
+                publisher
+                    .sink { [unowned self] in
                     self.goToBannerController()
-                }
-                .store(in: &subscribers)
+                }.store(in: &subscribers)
+            }
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withCell: HotProductCell.self, for: indexPath)
             cell.configure(with: self.viewModel.productTrends.value,
                            suppliers: self.viewModel.suppliers.value,
                            title: Constant.productTrend)
-            cell.productPublisher
-                .sink { [unowned self] product in
-                    self.goToProductController(with: product)
-                }
-                .store(in: &subscribers)
+            if let publisher = cell.productPublisher {
+                publisher
+                    .sink { [unowned self] product in
+                        self.goToProductController(with: product)
+                    }.store(in: &subscribers)
+            }
             return cell
         }
     }

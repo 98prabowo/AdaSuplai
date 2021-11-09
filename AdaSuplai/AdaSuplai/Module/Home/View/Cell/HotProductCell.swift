@@ -12,7 +12,7 @@ class HotProductCell: UITableViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    let productPublisher = PassthroughSubject<Product, Never>()
+    var productPublisher: PassthroughSubject<Product, Never>?
     
     private var productTrends = [Product]() {
         didSet {
@@ -29,6 +29,11 @@ class HotProductCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupCollectionView()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.productPublisher = PassthroughSubject<Product, Never>()
     }
     
     private func setupCollectionView() {
@@ -58,6 +63,7 @@ extension HotProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.productPublisher.send(self.productTrends[indexPath.item])
+        guard let publisher = self.productPublisher else { return }
+        publisher.send(self.productTrends[indexPath.item])
     }
 }

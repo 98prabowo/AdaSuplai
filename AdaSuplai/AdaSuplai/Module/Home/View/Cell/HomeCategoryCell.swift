@@ -16,13 +16,18 @@ class HomeCategoryCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var categories = [DummyCategory]()
-    let categoryPublisher = PassthroughSubject<HomeCategoryAction, Never>()
+    var categoryPublisher: PassthroughSubject<HomeCategoryAction, Never>?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupBackgroundView()
         self.setUpCollectionView()
         self.setupButton()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.categoryPublisher = PassthroughSubject<HomeCategoryAction, Never>()
     }
     
     private func setupBackgroundView() {
@@ -43,7 +48,8 @@ class HomeCategoryCell: UITableViewCell {
         self.categories = categories
     }
     @IBAction func seeMoreTapped(_ sender: UIButton) {
-        self.categoryPublisher.send(.seeMore)
+        guard let publisher = self.categoryPublisher else { return }
+        publisher.send(.seeMore)
     }
 }
 
@@ -59,8 +65,8 @@ extension HomeCategoryCell: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(categories[indexPath.item].category)
-        self.categoryPublisher.send(.category(index: indexPath.item))
+        guard let publisher = self.categoryPublisher else { return }
+        publisher.send(.category(index: indexPath.item))
     }
 }
 
