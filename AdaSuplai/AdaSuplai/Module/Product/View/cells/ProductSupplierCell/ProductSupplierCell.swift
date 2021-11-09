@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import  Kingfisher
 
 class ProductSupplierCell: UITableViewCell {
     @IBOutlet private weak var supplierImage: UIImageView!
@@ -29,11 +30,23 @@ class ProductSupplierCell: UITableViewCell {
     private func setupBackgroundView() {
         self.containerView.backgroundColor = .blueBackground
         self.containerView.backgroundColor = .systemBackground
-        self.containerView.addShadow(opacity: 0.1, radius: 0.5)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        self.containerView.addShadow()
     }
     
+    func configure(with product: Product) {
+        self.supplierName.text = product.supplierID.supplierName
+    }
+    
+    private func setupImage(url: URL) {
+        let processor = DownsamplingImageProcessor(size: supplierImage.bounds.size)
+        supplierImage.kf.indicatorType = .activity
+        supplierImage.kf.setImage(
+            with: url,
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+    }
 }

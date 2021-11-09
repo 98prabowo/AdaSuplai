@@ -9,15 +9,13 @@ import Foundation
 
 struct Supplier: Codable {
     let id, supplierName: String
-//    let address: [JSONAny]
-    let isOpen: Bool
+    let address: [String]
     let v: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case supplierName = "supplier_name"
-//        case address
-        case isOpen = "is_open"
+        case address
         case v = "__v"
     }
 }

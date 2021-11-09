@@ -70,11 +70,11 @@ class ProductCell: UICollectionViewCell {
         print("phew")
     }
     
-    func configure(product: Product, location: String) {
+    func configure(product: Product) {
         self.productName.text = product.name
         self.rating.text = "\(product.rating)"
         self.soldCount.text = "\(product.sales) terjual"
-        self.address.text = location
+        self.address.text = product.supplierID.address.first
         self.unitOfPrice.text = "/ " + product.unit
         self.minimumOrder.text = Constant.minOrder + String(product.minOrder)
         self.productPrice.text = Constant.idr + self.createDiscountPrice(10, from: product.price).toIDR

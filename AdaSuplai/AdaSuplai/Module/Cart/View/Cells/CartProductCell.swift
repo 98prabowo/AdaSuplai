@@ -27,6 +27,8 @@ class CartProductCell: UITableViewCell {
     
     private func setupBackground() {
         self.containerView.addShadow()
+        self.productImage.layer.cornerRadius = 10
+        self.productImage.backgroundColor = .secondarySystemFill
     }
     
     private func setupButton() {

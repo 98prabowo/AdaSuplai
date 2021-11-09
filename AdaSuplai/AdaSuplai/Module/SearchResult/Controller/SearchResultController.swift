@@ -101,7 +101,7 @@ extension SearchResultController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
         let product = self.viewModel.products.value[indexPath.item]
-        cell.configure(product: product, location: "Surabaya")
+        cell.configure(product: product)
         if self.isItemsDiscount[indexPath.item] {
             cell.isDiscount(product: product)
         }

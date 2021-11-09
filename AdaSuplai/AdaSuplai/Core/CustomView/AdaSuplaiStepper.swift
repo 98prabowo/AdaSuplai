@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 @IBDesignable public class AdaSuplaiStepper: UIControl {
-    /// Current value of stepper.
+    /// Get current value of stepper.
+    public func getValue() -> Double {
+        return self.value
+    }
+    
     private var value: Double = 0 {
         didSet {
             valueLabel.text = String(Int(value))

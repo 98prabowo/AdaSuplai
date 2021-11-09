@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dIU-ON-CEm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dIU-ON-CEm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,27 +11,79 @@
         <!--Cart Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CartController" customModule="AdaSuplai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartController" id="Y6W-OH-hqX" customClass="CartController" customModule="AdaSuplai" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kkq-0e-6Se">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="699"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gqf-jb-60z">
+                                <rect key="frame" x="0.0" y="787" width="414" height="75"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="i8R-xm-WnZ">
+                                        <rect key="frame" x="30" y="15" width="84.5" height="45"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Harga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G9-V3-aKt">
+                                                <rect key="frame" x="0.0" y="0.0" width="84.5" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp. xx.xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf2-SM-GAE">
+                                                <rect key="frame" x="0.0" y="21" width="84" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWh-Mb-Sdk">
+                                        <rect key="frame" x="279" y="15" width="120" height="40"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="Irl-h2-xng"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="buyButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="44R-BK-pDZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="mWh-Mb-Sdk" firstAttribute="top" secondItem="Gqf-jb-60z" secondAttribute="top" constant="15" id="5iX-B0-ogC"/>
+                                    <constraint firstItem="i8R-xm-WnZ" firstAttribute="top" secondItem="Gqf-jb-60z" secondAttribute="top" constant="15" id="8uB-Sy-6dZ"/>
+                                    <constraint firstItem="i8R-xm-WnZ" firstAttribute="leading" secondItem="Gqf-jb-60z" secondAttribute="leading" constant="30" id="IgH-g0-7zx"/>
+                                    <constraint firstAttribute="bottom" secondItem="mWh-Mb-Sdk" secondAttribute="bottom" constant="20" id="Zz3-Hm-xsY"/>
+                                    <constraint firstAttribute="bottom" secondItem="i8R-xm-WnZ" secondAttribute="bottom" constant="15" id="eVS-5M-50i"/>
+                                    <constraint firstAttribute="trailing" secondItem="mWh-Mb-Sdk" secondAttribute="trailing" constant="15" id="jMy-zA-osQ"/>
+                                    <constraint firstAttribute="height" constant="75" id="wVA-WQ-G5r"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Gqf-jb-60z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4VM-fa-hLe"/>
                             <constraint firstItem="kkq-0e-6Se" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Ao5-A8-7Lx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Gqf-jb-60z" secondAttribute="trailing" id="DR3-6g-hoZ"/>
                             <constraint firstItem="kkq-0e-6Se" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="G8X-Sl-bqX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kkq-0e-6Se" secondAttribute="trailing" id="JsC-cy-PAr"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kkq-0e-6Se" secondAttribute="bottom" id="yUX-PJ-zXc"/>
+                            <constraint firstItem="Gqf-jb-60z" firstAttribute="top" secondItem="kkq-0e-6Se" secondAttribute="bottom" id="MJb-Fx-tYD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Gqf-jb-60z" secondAttribute="bottom" id="ZMy-W0-aR0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="StY-ao-SsX"/>
                     <connections>
+                        <outlet property="buyButton" destination="mWh-Mb-Sdk" id="kXJ-0I-xxe"/>
+                        <outlet property="price" destination="Wf2-SM-GAE" id="Gdc-Fq-NDw"/>
+                        <outlet property="priceBarView" destination="Gqf-jb-60z" id="c9v-zm-Zbm"/>
                         <outlet property="tableView" destination="kkq-0e-6Se" id="JW3-WQ-fom"/>
+                        <outlet property="totalPriceHeader" destination="3G9-V3-aKt" id="lwg-SF-4p3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -58,6 +110,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

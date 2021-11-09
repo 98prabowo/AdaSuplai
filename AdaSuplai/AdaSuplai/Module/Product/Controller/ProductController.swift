@@ -24,11 +24,12 @@ class ProductController: BaseUIViewController {
         static let searchPlaceholder = "Cari"
     }
     
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var buyButton: UIButton!
     @IBOutlet private weak var addToCart: UIButton!
     
-    private var attributeToken = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
     private var attribute: ProductAttribute = .description
     private let viewModel: ProductViewModel
     
@@ -55,8 +56,17 @@ class ProductController: BaseUIViewController {
         self.setupBackground()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let tabBarController = self.tabBarController else { return }
+        tabBarController.tabBar.isHidden = false
+    }
+    
     private func setupBackground() {
+        guard let tabBarController = self.tabBarController else { return }
+        tabBarController.tabBar.isHidden = true
         self.tableView.backgroundColor = .blueBackground
+        self.containerView.addShadow()
     }
     
     private func setupNavigationBar() {
@@ -105,7 +115,10 @@ class ProductController: BaseUIViewController {
     }
     
     @objc private func cartButtonTapped(_ sender: UIBarButtonItem) {
-        print("Go To Cart")
+        guard let navigation = self.navigationController,
+              let tabBarController = self.tabBarController else { return }
+        navigation.popViewController(animated: false)
+        tabBarController.selectedIndex = 1
     }
     
     @IBAction func buyButtonTapped(_ sender: UIButton) {
@@ -113,7 +126,26 @@ class ProductController: BaseUIViewController {
     }
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
-        print("Add to Cart")
+        let nextVC = AddToCartBottomSheetController(product: self.viewModel.product)
+        nextVC.publisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                guard let navigation = self?.navigationController,
+                      let tabBarController = self?.tabBarController else { return }
+                navigation.popViewController(animated: false)
+                tabBarController.selectedIndex = 1
+            }.store(in: &subscribers)
+        
+        if let sheet = nextVC.presentationController as? UISheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+        
+        self.present(nextVC, animated: true)
     }
 }
 
@@ -173,7 +205,7 @@ extension ProductController {
                 self?.attribute = action
                 self?.tableView.reloadData()
             }
-            .store(in: &attributeToken)
+            .store(in: &subscribers)
         return cell
     }
     

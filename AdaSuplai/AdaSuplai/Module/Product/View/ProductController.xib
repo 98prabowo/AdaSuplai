@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="addToCart" destination="ebr-Ya-eeO" id="ezP-Hg-qaq"/>
                 <outlet property="buyButton" destination="cR8-dk-WtI" id="n93-P6-cIB"/>
+                <outlet property="containerView" destination="X2O-nS-64u" id="2oS-Yo-9NK"/>
                 <outlet property="tableView" destination="o1h-Ux-yoh" id="e1b-Yk-QiM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,45 +26,57 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="743"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YRv-Jh-x9E">
-                    <rect key="frame" x="15" y="807" width="384" height="35"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2O-nS-64u">
+                    <rect key="frame" x="0.0" y="787" width="414" height="75"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cR8-dk-WtI">
-                            <rect key="frame" x="0.0" y="0.0" width="182" height="35"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Beli"/>
-                            <connections>
-                                <action selector="buyButtonTapped:" destination="-1" eventType="touchUpInside" id="qvl-o9-bMF"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebr-Ya-eeO">
-                            <rect key="frame" x="202" y="0.0" width="182" height="35"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="+ Keranjang"/>
-                            <connections>
-                                <action selector="addToCartButtonTapped:" destination="-1" eventType="touchUpInside" id="XXR-Lr-PaO"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YRv-Jh-x9E">
+                            <rect key="frame" x="15" y="20" width="384" height="35"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cR8-dk-WtI">
+                                    <rect key="frame" x="0.0" y="0.0" width="187" height="35"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Beli"/>
+                                    <connections>
+                                        <action selector="buyButtonTapped:" destination="-1" eventType="touchUpInside" id="qvl-o9-bMF"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebr-Ya-eeO">
+                                    <rect key="frame" x="197" y="0.0" width="187" height="35"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="+ Keranjang"/>
+                                    <connections>
+                                        <action selector="addToCartButtonTapped:" destination="-1" eventType="touchUpInside" id="XXR-Lr-PaO"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="v6s-Pm-9v9"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="v6s-Pm-9v9"/>
+                        <constraint firstAttribute="trailing" secondItem="YRv-Jh-x9E" secondAttribute="trailing" constant="15" id="6in-Op-o9s"/>
+                        <constraint firstAttribute="bottom" secondItem="YRv-Jh-x9E" secondAttribute="bottom" constant="20" id="J2G-57-D5f"/>
+                        <constraint firstItem="YRv-Jh-x9E" firstAttribute="top" secondItem="X2O-nS-64u" secondAttribute="top" constant="20" id="b5j-Ys-Dpz"/>
+                        <constraint firstItem="YRv-Jh-x9E" firstAttribute="leading" secondItem="X2O-nS-64u" secondAttribute="leading" constant="15" id="jUe-9I-4wZ"/>
                     </constraints>
-                </stackView>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="YRv-Jh-x9E" firstAttribute="top" secondItem="o1h-Ux-yoh" secondAttribute="bottom" constant="20" id="DcU-NA-j4o"/>
-                <constraint firstItem="YRv-Jh-x9E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Fox-wf-MdE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YRv-Jh-x9E" secondAttribute="trailing" constant="15" id="JCu-qK-ur3"/>
                 <constraint firstItem="o1h-Ux-yoh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tnk-is-jfX"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YRv-Jh-x9E" secondAttribute="bottom" constant="20" id="V5g-Yp-zqL"/>
+                <constraint firstItem="X2O-nS-64u" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WyX-n8-QqJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o1h-Ux-yoh" secondAttribute="trailing" id="XDs-tn-KLs"/>
+                <constraint firstItem="X2O-nS-64u" firstAttribute="top" secondItem="o1h-Ux-yoh" secondAttribute="bottom" id="eaf-k5-bi3"/>
                 <constraint firstItem="o1h-Ux-yoh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pUZ-bn-OBU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X2O-nS-64u" secondAttribute="trailing" id="sdq-qc-mA4"/>
+                <constraint firstItem="X2O-nS-64u" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="ug4-Rv-oPi"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="44"/>
+            <point key="canvasLocation" x="131.8840579710145" y="43.526785714285715"/>
         </view>
     </objects>
     <resources>

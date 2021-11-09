@@ -11,20 +11,29 @@ import UIKit
 class CartController: BaseUIViewController {
     private enum Constant {
         static let title = "Keranjang"
+        static let totalPrice = "Total Harga"
+        static let buyButtonTittle = "Beli"
     }
     
+    @IBOutlet private weak var priceBarView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var totalPriceHeader: UILabel!
+    @IBOutlet private weak var price: UILabel!
+    @IBOutlet private weak var buyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
         self.setupNavigationBar()
+        self.setupPriceBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let navigation = self.navigationController else { return }
+        guard let navigation = self.navigationController,
+              let tabBarController = self.tabBarController else { return }
         navigation.navigationBar.prefersLargeTitles = true
+        tabBarController.tabBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,6 +55,16 @@ class CartController: BaseUIViewController {
         self.tableView.registerNib(forCell: CartProductCell.self)
     }
     
+    private func setupPriceBar() {
+        self.price.textColor = .alert
+        self.totalPriceHeader.text = Constant.totalPrice
+        self.buyButton.layer.cornerRadius = 10
+        self.buyButton.backgroundColor = .primaryGreen
+        self.buyButton.setTitleColor(.systemBackground, for: .normal)
+        self.buyButton.setTitle(Constant.buyButtonTittle, for: .normal)
+        self.priceBarView.addShadow()
+    }
+    
     private func getCellForHeader(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: CartHeaderCell.self, for: indexPath)
         return cell
@@ -65,6 +84,9 @@ class CartController: BaseUIViewController {
             }
             return cell
         }
+    }
+    
+    @IBAction func buyButtonTapped(_ sender: UIButton) {
     }
 }
 

@@ -58,7 +58,7 @@ extension HotProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
         let product = self.productTrends[indexPath.item]
         cell.representedIdentifier = product.id
-        cell.configure(product: product, location: "Surabaya")
+        cell.configure(product: product)
         return cell
     }
     
