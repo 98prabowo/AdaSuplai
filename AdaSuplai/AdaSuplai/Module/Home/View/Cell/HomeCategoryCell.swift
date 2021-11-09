@@ -7,18 +7,22 @@
 
 import UIKit
 import Combine
+import SwiftUI
 
 class HomeCategoryCell: UITableViewCell {
+    @IBOutlet private weak var header: UILabel!
+    @IBOutlet private weak var seeMore: UIButton!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var categories = [DummyCategory]()
-    let categoryPublisher = PassthroughSubject<Int, Never>()
+    let categoryPublisher = PassthroughSubject<HomeCategoryAction, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupBackgroundView()
         self.setUpCollectionView()
+        self.setupButton()
     }
     
     private func setupBackgroundView() {
@@ -31,8 +35,15 @@ class HomeCategoryCell: UITableViewCell {
         self.collectionView.registerNib(forCell: HomeCategoryCollectionCell.self)
     }
     
+    private func setupButton() {
+        self.seeMore.setTitleColor(.primaryGreen, for: .normal)
+    }
+    
     func configure(categories: [DummyCategory]) {
         self.categories = categories
+    }
+    @IBAction func seeMoreTapped(_ sender: UIButton) {
+        self.categoryPublisher.send(.seeMore)
     }
 }
 
@@ -49,6 +60,11 @@ extension HomeCategoryCell: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(categories[indexPath.item].category)
-        self.categoryPublisher.send(indexPath.item)
+        self.categoryPublisher.send(.category(index: indexPath.item))
     }
+}
+
+enum HomeCategoryAction {
+    case category(index: Int)
+    case seeMore
 }

@@ -35,8 +35,9 @@
                                     <action selector="wishlistButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="r70-IN-epO"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-hx-O1M">
-                                <rect key="frame" x="0.0" y="1" width="175" height="140.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-hx-O1M">
+                                <rect key="frame" x="0.0" y="0.0" width="175" height="143"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="143" id="chT-Xl-KQa"/>
                                 </constraints>
@@ -197,10 +198,12 @@
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
-        <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

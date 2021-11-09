@@ -33,4 +33,10 @@ class ProductAttributesDetailCell: UITableViewCell {
         self.productWindow.setTitleColor(.primaryGreen, for: .normal)
     }
     
+    func configure(with product: Product) {
+        self.minimumOrder.text = "\(product.minOrder)"
+        self.netWeight.text = "\(product.neto)"
+        self.grossWeight.text = "\(product.bruto)"
+        self.size.text = "\(product.dimension)"
+    }
 }

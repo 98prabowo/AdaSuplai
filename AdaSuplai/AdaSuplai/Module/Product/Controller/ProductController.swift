@@ -32,8 +32,8 @@ class ProductController: BaseUIViewController {
     private var attribute: ProductAttribute = .description
     private let viewModel: ProductViewModel
     
-    init() {
-        self.viewModel = ProductViewModel()
+    init(product: Product) {
+        self.viewModel = ProductViewModel(product: product)
         super.init(nibName: Self.identifier, bundle: nil)
     }
     
@@ -150,13 +150,13 @@ extension ProductController: UITableViewDelegate, UITableViewDataSource {
 extension ProductController {
     private func setupImagePriceCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: ProductImagePriceCell.self, for: indexPath)
-        cell.configure()
+        cell.configure(with: self.viewModel.product)
         return cell
     }
     
     private func setupStatusCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: StaticStatusProductCell.self, for: indexPath)
-        cell.configure()
+        cell.configure(with: self.viewModel.product)
         return cell
     }
     
@@ -204,13 +204,15 @@ extension ProductController {
         switch attribute {
         case .description:
             let cell = tableView.dequeueReusableCell(withCell: ProductAttributesDescriptionCell.self, for: indexPath)
-            cell.configure(with: self.viewModel.dummyDescription)
+            cell.configure(with: self.viewModel.product)
             return cell
         case .detail:
             let cell = tableView.dequeueReusableCell(withCell: ProductAttributesDetailCell.self, for: indexPath)
+            cell.configure(with: self.viewModel.product)
             return cell
         case .delivary:
             let cell = tableView.dequeueReusableCell(withCell: ProductAttributesDeliveryCell.self, for: indexPath)
+            cell.configure(with: self.viewModel.product)
             return cell
         }
     }

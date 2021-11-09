@@ -6,11 +6,12 @@
 //
 
 import Foundation
-import UIKit
 import Combine
+import UIKit
 
 class HomeController: BaseUIViewController {
     private enum Constant {
+        static let loading = "Loading..."
         static let searchPlaceholder = "Cari Penawaran"
         static let productTrend = "Trending Hari Ini"
     }
@@ -18,12 +19,15 @@ class HomeController: BaseUIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel = HomeViewModel()
+    private let loading = LoadingController().createLoading(with: Constant.loading)
     private var subscribers = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupLoading()
         self.setupNavigationBar()
         self.setupTableView()
+        self.bindToViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,12 +47,32 @@ class HomeController: BaseUIViewController {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.backgroundColor = .blueBackground
         self.tableView.registerNib(forCell: HomeCategoryCell.self)
         self.tableView.registerNib(forCell: BannerPromoCell.self)
         self.tableView.registerNib(forCell: HotProductCell.self)
     }
     
-    private func goToCategoryController() {
+    private func setupLoading() {
+        self.present(self.loading, animated: true)
+    }
+    
+    private func bindToViewModel() {
+        self.viewModel.productTrends
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.tableView.reloadData()
+                self.loading.dismiss(animated: true)
+            }.store(in: &subscribers)
+        self.viewModel.suppliers
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.tableView.reloadData()
+                self.loading.dismiss(animated: true)
+            }.store(in: &subscribers)
+    }
+    
+    private func goToCategoryController(index: Int) {
         let nextVC = CategoryController()
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
@@ -70,8 +94,8 @@ class HomeController: BaseUIViewController {
 //        }
     }
     
-    private func goToProductController() {
-        let nextVC = ProductController()
+    private func goToProductController(with product: Product) {
+        let nextVC = ProductController(product: product)
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
@@ -89,11 +113,12 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withCell: HomeCategoryCell.self, for: indexPath)
             cell.configure(categories: self.viewModel.categories)
             cell.categoryPublisher
-                .sink { [unowned self] index in
-                    if index == self.viewModel.categories.count - 1 {
+                .sink { [unowned self] value in
+                    switch value {
+                    case .seeMore:
                         self.goToMoreCategoryController()
-                    } else {
-                        self.goToCategoryController()
+                    case .category(index: let index):
+                        self.goToCategoryController(index: index)
                     }
                 }
                 .store(in: &subscribers)
@@ -108,10 +133,12 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withCell: HotProductCell.self, for: indexPath)
-            cell.configure(with: self.viewModel.todayTrends, title: Constant.productTrend)
+            cell.configure(with: self.viewModel.productTrends.value,
+                           suppliers: self.viewModel.suppliers.value,
+                           title: Constant.productTrend)
             cell.productPublisher
-                .sink { [unowned self] in
-                    self.goToProductController()
+                .sink { [unowned self] product in
+                    self.goToProductController(with: product)
                 }
                 .store(in: &subscribers)
             return cell

@@ -6,16 +6,20 @@
 //
 
 import Foundation
+import Combine
 import UIKit
 
 class HomeViewModel: BaseViewModel {
+    let productTrends = CurrentValueSubject<[Product], Never>([Product]())
+    var suppliers = CurrentValueSubject<[Supplier], Never>([Supplier]())
+    let service: RemoteDataService
     let categories: [DummyCategory] = [
         DummyCategory(image: UIImage(named: "Kopi"),
                       category: "Biji Kopi"),
         DummyCategory(image: UIImage(named: "Sirup"),
                       category: "Sirup"),
         DummyCategory(image: UIImage(named: "Susu"),
-                      category: "Susu"),
+                      category: "Susu"),    
         DummyCategory(image: UIImage(named: "Bubuk"),
                       category: "Bubuk"),
         DummyCategory(image: UIImage(named: "Es Batu"),
@@ -25,35 +29,31 @@ class HomeViewModel: BaseViewModel {
         DummyCategory(image: UIImage(named: "Kemasan"),
                       category: "Kemasan"),
         DummyCategory(image: UIImage(named: "Lihat Lebih"),
-                      category: "Lihat Lebih")]
+                      category: "Teh")]
     
-    let todayTrends: [DummyProduct] = [
-        DummyProduct(productName: "Gula Pasir Tanpa Pemutih Pack Karung",
-                     image: UIImage(named: "gula_2"),
-                     rating: 4.7,
-                     productSold: 300,
-                     location: "Madura",
-                     minimumOrder: "50 Kg",
-                     realPrice: 510_000,
-                     uomPrice: "50 Kg",
-                     discount: 2),
-        DummyProduct(productName: "Bubuk Pure Matcha Impor Jepang",
-                     image: UIImage(named: "matcha_powder"),
-                     rating: 4.7,
-                     productSold: 300,
-                     location: "Surabaya",
-                     minimumOrder: "5 Kg",
-                     realPrice: 355_000,
-                     uomPrice: "5 Kg",
-                     discount: 1.5),
-        DummyProduct(productName: "Biji Kopi Pak Gundul",
-                     image: UIImage(named: "coffee_2"),
-                     rating: 4.7,
-                     productSold: 300,
-                     location: "Lumajang",
-                     minimumOrder: "50 Kg",
-                     realPrice: 510_000,
-                     uomPrice: "50 Kg",
-                     discount: 2)
-    ]
+    override init() {
+        self.service = RemoteDataService()
+        super.init()
+        self.fetchProductTrends()
+    }
+    
+    private func fetchProductTrends() {
+        Task {
+            do {
+                self.productTrends.value = try await service.getData([Product].self, url: .product)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func fetchSupplier() {
+        Task {
+            do {
+                self.suppliers.value = try await service.getData([Supplier].self, url: .supplier)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

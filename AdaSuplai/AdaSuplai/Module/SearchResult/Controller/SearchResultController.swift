@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class SearchResultController: BaseUIViewController {
     private enum Constant {
         static let wishlistButtonImage = "slider.horizontal.3"
+        static let loading = "Loading..."
     }
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -17,6 +19,7 @@ class SearchResultController: BaseUIViewController {
     private let isItemsDiscount = [true, false, false, true, true, true, false, true, false, false]
     
     private let viewModel: SearchResultViewModel
+    private var subscribers = Set<AnyCancellable>()
     
     init(keyword: String) {
         self.viewModel = SearchResultViewModel(keyword: keyword)
@@ -31,6 +34,7 @@ class SearchResultController: BaseUIViewController {
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupCollectionView()
+        self.bindToViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,8 +77,16 @@ class SearchResultController: BaseUIViewController {
         self.collectionView.registerNib(forCell: ProductCell.self)
     }
     
-    private func goToProduct(with indexPath: IndexPath) {
-        let nextVC = ProductController()
+    private func bindToViewModel() {
+        self.viewModel.products
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.collectionView.reloadData()
+            }.store(in: &subscribers)
+    }
+    
+    private func goToProduct(with product: Product) {
+        let nextVC = ProductController(product: product)
         if let navigation = navigationController {
             navigation.pushViewController(nextVC, animated: true)
         }
@@ -83,19 +95,23 @@ class SearchResultController: BaseUIViewController {
 
 extension SearchResultController: UICollectionViewDelegate, UICollectionViewDataSource, WaterfallLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.isItemsDiscount.count
+        return self.viewModel.products.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
+        let product = self.viewModel.products.value[indexPath.item]
+        cell.configure(product: product, location: "Surabaya")
         if self.isItemsDiscount[indexPath.item] {
-            cell.isDiscount()
+            cell.isDiscount(product: product)
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.goToProduct(with: indexPath)
+        self.collectionView.deselectItem(at: indexPath, animated: true)
+        let product = self.viewModel.products.value[indexPath.item]
+        self.goToProduct(with: product)
     }
     
     func collectionView(collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {

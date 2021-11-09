@@ -17,8 +17,8 @@ class RemoteDataService {
     /// - throws: An error if url have wrong format or url is wrong.
     /// - throws: An error when server can't be reach for certains condition.
     /// - throws: An error if any value throws an error during decoding.
-    func getData<T: Codable>(url: RemoteURL) async throws -> T {
-        guard let url = URL(string: url.rawValue) else {
+    func getData<T: Codable>(_ type: T.Type, url: RemoteURL, keyword: String = "") async throws -> T {
+        guard let url = URL(string: url.rawValue + keyword) else {
             throw RemoteServiceError.badURL }
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse else {
@@ -127,6 +127,15 @@ class RemoteDataService {
             throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
         let decodedData = try JSONDecoder().decode(T.self, from: data)
         print(decodedData)
+    }
+    
+    func downloadData(url: String) async throws -> Data {
+        guard let url = URL(string: url) else { throw RemoteServiceError.badURL }
+        let (localURL, response) = try await URLSession.shared.download(from: url)
+        guard let httpResponse = response as? HTTPURLResponse else { throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else { throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
+        let data = try Data(contentsOf: localURL)
+        return data
     }
     
     /// Upload image data to remote directory. This method is call in async condition.

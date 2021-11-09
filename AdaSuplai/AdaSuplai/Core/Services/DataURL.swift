@@ -12,5 +12,10 @@ enum LocalFile: String {
 }
 
 enum RemoteURL: String {
-    case home
+    case product = "https://adasuplai-api-env-staging.herokuapp.com/product/fetch"
+    case searchProduct = "https://adasuplai-api-env-staging.herokuapp.com/product/search/"
+    case image = "https://adasuplai-api-env-staging.herokuapp.com/image/"
+    case category = "https://adasuplai-api-env-staging.herokuapp.com/category/fetch"
+    case supplier = "https://adasuplai-api-env-staging.herokuapp.com/supplier/fetch"
+    case searchSupplier = "https://adasuplai-api-env-staging.herokuapp.com/supplier/info/"
 }

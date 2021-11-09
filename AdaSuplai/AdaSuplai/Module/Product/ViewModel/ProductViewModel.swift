@@ -8,13 +8,11 @@
 import Foundation
 
 class ProductViewModel: BaseViewModel {
-    let dummyDescription = """
-        Di rekomendasikan untuk menu es kopi susu aren (atau pemanis lainnya), Kopi Hotel, atau Campuran Minuman Kopi 100% Robusta dengan budget ekonomis.
-
-        Species : Robusta
-        Origin     : Lampung
-        Roast Level : FullCity
-        Process : Natural
-        Notes on Kopi Susu : Chocolaty, nutty, and Bold
-        """
+    let product: Product
+    var suppliers = [Supplier]()
+    
+    init(product: Product) {
+        self.product = product
+    }
+    
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class ProductImagePriceCell: UITableViewCell {
     private enum Constant {
+        static let idr = "Rp. "
         static let wishlisted = "heart.fill"
         static let notwishlist = "heart"
     }
@@ -23,6 +24,7 @@ class ProductImagePriceCell: UITableViewCell {
     @IBOutlet private weak var reviewQuantity: UILabel!
     @IBOutlet private weak var containerView: UIView!
     
+    private var product: Product?
     private var isWishlist: Bool = false {
         didSet {
             if self.isWishlist {
@@ -70,20 +72,25 @@ class ProductImagePriceCell: UITableViewCell {
         self.isWishlist = !self.isWishlist
     }
     
-    func configure() {
-        self.productName.text = "Biji Kopi Robusta - Dark Roast"
-        self.rating.text = "5"
+    func configure(with product: Product) {
+        self.product = product
+        self.productName.text = product.name
+        self.rating.text = "\(product.rating)"
+        self.price.text = Constant.idr + product.price.toIDR
         self.reviewQuantity.text = "102 Ulasan"
     }
 }
 
 extension ProductImagePriceCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductImageCollectionCell.self, for: indexPath)
+        if let product = self.product {
+            cell.configure(product: product)
+        }
         return cell
     }
     

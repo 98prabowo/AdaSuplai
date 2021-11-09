@@ -20,7 +20,7 @@ class ProductAttributesDescriptionCell: UITableViewCell {
         self.containerView.addShadow()
     }
     
-    func configure(with description: String) {
-        self.productDescription.text = description
+    func configure(with product: Product) {
+        self.productDescription.text = product.description
     }
 }

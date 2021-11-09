@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProductCell: UICollectionViewCell {
+    private enum Constant {
+        static let idr = "Rp."
+        static let minOrder = "Min. Order"
+    }
+    
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var productImage: UIImageView!
     @IBOutlet private weak var productName: UILabel!
@@ -23,6 +29,9 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet private weak var realPrice: UILabel!
     @IBOutlet private weak var discountStack: UIStackView!
     
+    let service = RemoteDataService()
+    let cacheImage = CacheImage()
+    var representedIdentifier: String = ""
     private var buttonTapped: Bool = false {
         didSet {
             wishlistButton.isSelected = buttonTapped
@@ -61,21 +70,33 @@ class ProductCell: UICollectionViewCell {
         print("phew")
     }
     
-    func configure(product: DummyProduct) {
-        self.productName.text = product.productName
+    func configure(product: Product, location: String) {
+        self.productName.text = product.name
         self.rating.text = "\(product.rating)"
-        self.soldCount.text = "\(product.productSold) terjual"
-        self.address.text = product.location
-        self.unitOfPrice.text = "/ " + product.uomPrice
-        self.minimumOrder.text = "Min. Order " + product.minimumOrder
-        self.productPrice.text = "Rp. \(self.createDiscountPrice(product.discount, from: product.realPrice).toIDR)"
-        if let image = product.image {
-            self.productImage.image = image
-        }
+        self.soldCount.text = "\(product.sales) terjual"
+        self.address.text = location
+        self.unitOfPrice.text = "/ " + product.unit
+        self.minimumOrder.text = Constant.minOrder + String(product.minOrder)
+        self.productPrice.text = Constant.idr + self.createDiscountPrice(10, from: product.price).toIDR
+        guard let url = URL(string: RemoteURL.image.rawValue + product.image) else { return }
+        self.setupImage(url: url)
     }
     
-    func isDiscount() {
-        let price = "Rp. 100.000"
+    private func setupImage(url: URL) {
+        let processor = DownsamplingImageProcessor(size: productImage.bounds.size)
+        productImage.kf.indicatorType = .activity
+        productImage.kf.setImage(
+            with: url,
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+    }
+    
+    func isDiscount(product: Product) {
+        let price = Constant.idr + product.price.toIDR
         self.realPrice.attributedText = price.strikethroughText
         self.realPrice.textColor = .alert
         self.discountPercentage.text = " 10% "

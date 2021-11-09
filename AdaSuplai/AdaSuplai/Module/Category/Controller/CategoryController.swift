@@ -38,10 +38,11 @@ class CategoryController: BaseUIViewController {
     
     // MARK: - Navigate
     private func goToProductController() {
-        let nextVC = ProductController()
-        if let navigationController = self.navigationController {
-            navigationController.pushViewController(nextVC, animated: true)
-        }
+        // TODO: create product data then input to ProductController
+//        let nextVC = ProductController()
+//        if let navigationController = self.navigationController {
+//            navigationController.pushViewController(nextVC, animated: true)
+//        }
         print("Test Product")
     }
 }

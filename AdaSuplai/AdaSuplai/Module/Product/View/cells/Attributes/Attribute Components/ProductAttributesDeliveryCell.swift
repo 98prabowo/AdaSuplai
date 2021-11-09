@@ -33,6 +33,10 @@ class ProductAttributesDeliveryCell: UITableViewCell {
         self.chevron.tintColor = .primaryGreen
     }
     
+    func configure(with product: Product) {
+        
+    }
+    
     @IBAction func branchsButtonTapped(_ sender: Any) {
     }
     

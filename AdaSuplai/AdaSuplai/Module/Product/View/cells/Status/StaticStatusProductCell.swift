@@ -36,10 +36,10 @@ class StaticStatusProductCell: UITableViewCell {
         self.headerD.text = Constant.minOrder
     }
     
-    func configure() {
-        self.statusA.text = "156"
-        self.statusB.text = "500"
-        self.statusC.text = "10 ONS"
-        self.statusD.text = "120 ONS"
+    func configure(with product: Product) {
+        self.statusA.text = "\(product.sales)"
+        self.statusB.text = "\(product.stock)"
+        self.statusC.text = "\(product.bruto)"
+        self.statusD.text = "\(product.minOrder)"
     }
 }

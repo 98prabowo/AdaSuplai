@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,17 +11,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HomeCategoryCell" customModule="AdaSuplai" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="428" height="197"/>
+            <rect key="frame" x="0.0" y="0.0" width="428" height="232"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="428" height="197"/>
+                <rect key="frame" x="0.0" y="0.0" width="428" height="232"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9Q-gJ-pD5">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="197"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="232"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0sN-EK-crn">
-                                <rect key="frame" x="0.0" y="25" width="428" height="172"/>
+                                <rect key="frame" x="0.0" y="60" width="428" height="172"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="172" id="aVY-WW-9OK"/>
@@ -33,13 +33,36 @@
                                     <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="l4a-ui-h5T">
+                                <rect key="frame" x="15" y="15" width="398" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kategori Produk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYv-RQ-EjX">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drP-Sv-crm">
+                                        <rect key="frame" x="289" y="0.0" width="109" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Lihat Semuanya"/>
+                                        <connections>
+                                            <action selector="seeMoreTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3zb-m3-UmE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="0sN-EK-crn" secondAttribute="bottom" id="0IS-Rh-wK8"/>
+                            <constraint firstItem="l4a-ui-h5T" firstAttribute="leading" secondItem="l9Q-gJ-pD5" secondAttribute="leading" constant="15" id="1l6-Iq-enf"/>
                             <constraint firstItem="0sN-EK-crn" firstAttribute="leading" secondItem="l9Q-gJ-pD5" secondAttribute="leading" id="4tE-ia-6Lz"/>
+                            <constraint firstAttribute="bottom" secondItem="0sN-EK-crn" secondAttribute="bottom" id="LXe-1k-7FP"/>
+                            <constraint firstAttribute="trailing" secondItem="l4a-ui-h5T" secondAttribute="trailing" constant="15" id="Z2N-eK-XiL"/>
                             <constraint firstAttribute="trailing" secondItem="0sN-EK-crn" secondAttribute="trailing" id="don-nM-3Pb"/>
-                            <constraint firstItem="0sN-EK-crn" firstAttribute="top" secondItem="l9Q-gJ-pD5" secondAttribute="top" constant="25" id="fkb-Is-Bxi"/>
+                            <constraint firstItem="l4a-ui-h5T" firstAttribute="top" secondItem="l9Q-gJ-pD5" secondAttribute="top" constant="15" id="koI-2D-0LY"/>
+                            <constraint firstItem="0sN-EK-crn" firstAttribute="top" secondItem="l4a-ui-h5T" secondAttribute="bottom" constant="15" id="rYt-4o-dsk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -54,8 +77,10 @@
             <connections>
                 <outlet property="collectionView" destination="0sN-EK-crn" id="ilh-LF-yyH"/>
                 <outlet property="containerView" destination="l9Q-gJ-pD5" id="ycQ-9d-Dwt"/>
+                <outlet property="header" destination="NYv-RQ-EjX" id="16E-13-igx"/>
+                <outlet property="seeMore" destination="drP-Sv-crm" id="Dmk-7d-rg2"/>
             </connections>
-            <point key="canvasLocation" x="-103" y="7"/>
+            <point key="canvasLocation" x="-103.73831775700934" y="6.8034557235421174"/>
         </tableViewCell>
     </objects>
     <resources>

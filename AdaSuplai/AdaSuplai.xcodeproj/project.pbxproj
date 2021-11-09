@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4DB9FA7C270592E400B36E98 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7B270592E400B36E98 /* Alamofire */; };
-		4DB9FA7F2705930A00B36E98 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB9FA7E2705930A00B36E98 /* AlamofireImage */; };
 		852019F32733CD45002F34BC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019D02733CD45002F34BC /* ProfileViewModel.swift */; };
 		852019F42733CD45002F34BC /* ProfileAllOrderStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019D22733CD45002F34BC /* ProfileAllOrderStatusController.swift */; };
 		852019F52733CD45002F34BC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019D32733CD45002F34BC /* ProfileViewController.swift */; };
@@ -42,8 +40,6 @@
 		85201A1D2733CD94002F34BC /* SearchUpdaterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A132733CD94002F34BC /* SearchUpdaterController.swift */; };
 		85201A1E2733CD94002F34BC /* SearchUpdaterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85201A152733CD94002F34BC /* SearchUpdaterController.xib */; };
 		85201A1F2733CD94002F34BC /* SearchResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85201A162733CD94002F34BC /* SearchResultController.xib */; };
-		85201A202733CD94002F34BC /* SearchUpdaterLastSeenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85201A182733CD94002F34BC /* SearchUpdaterLastSeenCell.xib */; };
-		85201A212733CD94002F34BC /* SearchUpdaterLastSeenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A192733CD94002F34BC /* SearchUpdaterLastSeenCell.swift */; };
 		85201A372733CDAB002F34BC /* ListDeliveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A232733CDAB002F34BC /* ListDeliveryController.swift */; };
 		85201A382733CDAB002F34BC /* TransactionDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A242733CDAB002F34BC /* TransactionDetailController.swift */; };
 		85201A392733CDAB002F34BC /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A262733CDAB002F34BC /* TransactionViewModel.swift */; };
@@ -111,7 +107,6 @@
 		C30EA0692710492A00832135 /* FilterHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA0672710492A00832135 /* FilterHeaderCell.xib */; };
 		C30EA06C2710494600832135 /* SubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA06A2710494600832135 /* SubmitButtonCell.swift */; };
 		C30EA06D2710494600832135 /* SubmitButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30EA06B2710494600832135 /* SubmitButtonCell.xib */; };
-		C30EA06F27104D3100832135 /* Extension-UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA06E27104D3100832135 /* Extension-UITableView.swift */; };
 		C30EA072271052B600832135 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C30EA05C2710436100832135 /* Info.plist */; };
 		C32BF89E2718059500658994 /* ProductAttributesHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BF89C2718059500658994 /* ProductAttributesHeaderCell.swift */; };
 		C32BF89F2718059500658994 /* ProductAttributesHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32BF89D2718059500658994 /* ProductAttributesHeaderCell.xib */; };
@@ -173,6 +168,11 @@
 		C3B2765E27271C9E002E8CC7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = C3B2765D27271C9E002E8CC7 /* regions.json */; };
 		C3B2766027271E07002E8CC7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2765F27271E07002E8CC7 /* Location.swift */; };
 		C3B2766227271ECF002E8CC7 /* DataURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2766127271ECF002E8CC7 /* DataURL.swift */; };
+		C3B49645273A6BFD006B25FF /* Extension-UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EA06E27104D3100832135 /* Extension-UITableView.swift */; };
+		C3B49646273A6BFD006B25FF /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4963D273A6B51006B25FF /* SearchHistoryCell.swift */; };
+		C3B49647273A6BFD006B25FF /* SearchHistoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4963F273A6B51006B25FF /* SearchHistoryHeaderCell.swift */; };
+		C3B49648273A6C0D006B25FF /* SearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B4963E273A6B51006B25FF /* SearchHistoryCell.xib */; };
+		C3B49649273A6C0D006B25FF /* SearchHistoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B49640273A6B51006B25FF /* SearchHistoryHeaderCell.xib */; };
 		C3C084E12722BAD1007F0762 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */; };
 		C3C94D8927059ABE00688485 /* AdaSuplaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */; };
 		C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */; };
@@ -203,6 +203,15 @@
 		C3E584B7273191940050CE3E /* Extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E584B6273191940050CE3E /* Extension-Data.swift */; };
 		C3E584B9273191D80050CE3E /* RemoteServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E584B8273191D80050CE3E /* RemoteServiceError.swift */; };
 		C3E584BB273191F70050CE3E /* LocalServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E584BA273191F70050CE3E /* LocalServiceError.swift */; };
+		C3E584CA2733DC4F0050CE3E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E584C92733DC4F0050CE3E /* Product.swift */; };
+		C3E584CC273519170050CE3E /* Extension-Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E584CB273519170050CE3E /* Extension-Publisher.swift */; };
+		C3E584CE273539580050CE3E /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E584CD273539580050CE3E /* LoadingController.swift */; };
+		C3E58505273934B30050CE3E /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E58504273934B30050CE3E /* CacheImage.swift */; };
+		C3E58508273962BA0050CE3E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C3E58507273962BA0050CE3E /* Kingfisher */; };
+		C3E5850A273969720050CE3E /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E58509273969720050CE3E /* Supplier.swift */; };
+		C3E5850D27396E130050CE3E /* AdaSuplai.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3E5850B27396E130050CE3E /* AdaSuplai.xcdatamodeld */; };
+		C3E5851C273979FE0050CE3E /* SearchHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5851A273979FE0050CE3E /* SearchHistory+CoreDataClass.swift */; };
+		C3E5851D273979FE0050CE3E /* SearchHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5851B273979FE0050CE3E /* SearchHistory+CoreDataProperties.swift */; };
 		C3F68F11272A92CF00F8A5A4 /* StaticStatusProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F68F0F272A92CF00F8A5A4 /* StaticStatusProductCell.swift */; };
 		C3F68F12272A92CF00F8A5A4 /* StaticStatusProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F68F10272A92CF00F8A5A4 /* StaticStatusProductCell.xib */; };
 		C3F68F16272C4A9A00F8A5A4 /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F68F15272C4A9A00F8A5A4 /* RemoteDataService.swift */; };
@@ -253,8 +262,6 @@
 		85201A132733CD94002F34BC /* SearchUpdaterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUpdaterController.swift; sourceTree = "<group>"; };
 		85201A152733CD94002F34BC /* SearchUpdaterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUpdaterController.xib; sourceTree = "<group>"; };
 		85201A162733CD94002F34BC /* SearchResultController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultController.xib; sourceTree = "<group>"; };
-		85201A182733CD94002F34BC /* SearchUpdaterLastSeenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUpdaterLastSeenCell.xib; sourceTree = "<group>"; };
-		85201A192733CD94002F34BC /* SearchUpdaterLastSeenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUpdaterLastSeenCell.swift; sourceTree = "<group>"; };
 		85201A232733CDAB002F34BC /* ListDeliveryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDeliveryController.swift; sourceTree = "<group>"; };
 		85201A242733CDAB002F34BC /* TransactionDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetailController.swift; sourceTree = "<group>"; };
 		85201A262733CDAB002F34BC /* TransactionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
@@ -357,6 +364,8 @@
 		C366D2E92706FD5500EF1E0C /* BannerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionCell.swift; sourceTree = "<group>"; };
 		C366D2EA2706FD5500EF1E0C /* BannerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerCollectionCell.xib; sourceTree = "<group>"; };
 		C378E48627183006008288B9 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		C378E4922719FC79008288B9 /* SearchHistoryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryHeaderCell.swift; sourceTree = "<group>"; };
+		C378E4932719FC79008288B9 /* SearchHistoryHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHistoryHeaderCell.xib; sourceTree = "<group>"; };
 		C381C12E27182C4700FDD5D4 /* ProductImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageCollectionCell.swift; sourceTree = "<group>"; };
 		C381C12F27182C4700FDD5D4 /* ProductImageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductImageCollectionCell.xib; sourceTree = "<group>"; };
 		C3963BC327217D950017AAB6 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -385,6 +394,10 @@
 		C3B2765D27271C9E002E8CC7 /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
 		C3B2765F27271E07002E8CC7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C3B2766127271ECF002E8CC7 /* DataURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataURL.swift; sourceTree = "<group>"; };
+		C3B4963D273A6B51006B25FF /* SearchHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
+		C3B4963E273A6B51006B25FF /* SearchHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHistoryCell.xib; sourceTree = "<group>"; };
+		C3B4963F273A6B51006B25FF /* SearchHistoryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryHeaderCell.swift; sourceTree = "<group>"; };
+		C3B49640273A6B51006B25FF /* SearchHistoryHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHistoryHeaderCell.xib; sourceTree = "<group>"; };
 		C3C94D8627059ABE00688485 /* AdaSuplaiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdaSuplaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaSuplaiTests.swift; sourceTree = "<group>"; };
 		C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -416,6 +429,16 @@
 		C3E584B6273191940050CE3E /* Extension-Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-Data.swift"; sourceTree = "<group>"; };
 		C3E584B8273191D80050CE3E /* RemoteServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServiceError.swift; sourceTree = "<group>"; };
 		C3E584BA273191F70050CE3E /* LocalServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalServiceError.swift; sourceTree = "<group>"; };
+		C3E584C92733DC4F0050CE3E /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		C3E584CB273519170050CE3E /* Extension-Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-Publisher.swift"; sourceTree = "<group>"; };
+		C3E584CD273539580050CE3E /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
+		C3E58504273934B30050CE3E /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImage.swift; sourceTree = "<group>"; };
+		C3E58509273969720050CE3E /* Supplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
+		C3E5850C27396E130050CE3E /* AdaSuplai.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AdaSuplai.xcdatamodel; sourceTree = "<group>"; };
+		C3E58516273972610050CE3E /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
+		C3E58517273972610050CE3E /* SearchHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryCell.xib; sourceTree = "<group>"; };
+		C3E5851A273979FE0050CE3E /* SearchHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3E5851B273979FE0050CE3E /* SearchHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C3F68F0F272A92CF00F8A5A4 /* StaticStatusProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticStatusProductCell.swift; sourceTree = "<group>"; };
 		C3F68F10272A92CF00F8A5A4 /* StaticStatusProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StaticStatusProductCell.xib; sourceTree = "<group>"; };
 		C3F68F15272C4A9A00F8A5A4 /* RemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataService.swift; sourceTree = "<group>"; };
@@ -427,8 +450,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DB9FA7C270592E400B36E98 /* Alamofire in Frameworks */,
-				4DB9FA7F2705930A00B36E98 /* AlamofireImage in Frameworks */,
+				C3E58508273962BA0050CE3E /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,8 +603,10 @@
 		85201A172733CD94002F34BC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				85201A182733CD94002F34BC /* SearchUpdaterLastSeenCell.xib */,
-				85201A192733CD94002F34BC /* SearchUpdaterLastSeenCell.swift */,
+				C3B4963D273A6B51006B25FF /* SearchHistoryCell.swift */,
+				C3B4963E273A6B51006B25FF /* SearchHistoryCell.xib */,
+				C3B4963F273A6B51006B25FF /* SearchHistoryHeaderCell.swift */,
+				C3B49640273A6B51006B25FF /* SearchHistoryHeaderCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -742,6 +766,7 @@
 				B9D64CFC27030340000DDB95 /* AdaSuplai */,
 				C3C94D8727059ABE00688485 /* AdaSuplaiTests */,
 				B9D64CFB27030340000DDB95 /* Products */,
+				C3B4963C273A6B12006B25FF /* Recovered References */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 0;
@@ -1090,6 +1115,17 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C3B4963C273A6B12006B25FF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C378E4922719FC79008288B9 /* SearchHistoryHeaderCell.swift */,
+				C3E58516273972610050CE3E /* SearchHistoryCell.swift */,
+				C378E4932719FC79008288B9 /* SearchHistoryHeaderCell.xib */,
+				C3E58517273972610050CE3E /* SearchHistoryCell.xib */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		C3C94D8727059ABE00688485 /* AdaSuplaiTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,6 +1141,7 @@
 				B9D64D0827030341000DDB95 /* LaunchScreen.storyboard */,
 				B9D64D0627030341000DDB95 /* Assets.xcassets */,
 				C30EA05C2710436100832135 /* Info.plist */,
+				C3E5850B27396E130050CE3E /* AdaSuplai.xcdatamodeld */,
 			);
 			path = MainResource;
 			sourceTree = "<group>";
@@ -1214,6 +1251,8 @@
 				C3C94DA127059F2700688485 /* Extension-UIView.swift */,
 				C3E584B4273191830050CE3E /* Extension-URLSession.swift */,
 				859DD87827313D15000FFD53 /* Extension-UIViewController.swift */,
+				C3E584CB273519170050CE3E /* Extension-Publisher.swift */,
+				C3E58504273934B30050CE3E /* CacheImage.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1221,10 +1260,13 @@
 		C3C94DA52705A06600688485 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C3B2765D27271C9E002E8CC7 /* regions.json */,
+				C3E5851327396ED20050CE3E /* JSONFile */,
+				C3E5851227396EC00050CE3E /* SearchHistory */,
 				C3C94DA62705A07100688485 /* DummyProduct.swift */,
 				C3CBECA42716BBBD00622FE1 /* DummyCategory.swift */,
 				C3B2765F27271E07002E8CC7 /* Location.swift */,
+				C3E584C92733DC4F0050CE3E /* Product.swift */,
+				C3E58509273969720050CE3E /* Supplier.swift */,
 				85201A4A2733CEEC002F34BC /* Category.swift */,
 				85C2D60C273825E400E3CED7 /* Observable.swift */,
 			);
@@ -1278,8 +1320,26 @@
 			children = (
 				C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */,
 				C3963BDC27217F710017AAB6 /* AdaSuplaiStepper.swift */,
+				C3E584CD273539580050CE3E /* LoadingController.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		C3E5851227396EC00050CE3E /* SearchHistory */ = {
+			isa = PBXGroup;
+			children = (
+				C3E5851A273979FE0050CE3E /* SearchHistory+CoreDataClass.swift */,
+				C3E5851B273979FE0050CE3E /* SearchHistory+CoreDataProperties.swift */,
+			);
+			path = SearchHistory;
+			sourceTree = "<group>";
+		};
+		C3E5851327396ED20050CE3E /* JSONFile */ = {
+			isa = PBXGroup;
+			children = (
+				C3B2765D27271C9E002E8CC7 /* regions.json */,
+			);
+			path = JSONFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1300,8 +1360,7 @@
 			);
 			name = AdaSuplai;
 			packageProductDependencies = (
-				4DB9FA7B270592E400B36E98 /* Alamofire */,
-				4DB9FA7E2705930A00B36E98 /* AlamofireImage */,
+				C3E58507273962BA0050CE3E /* Kingfisher */,
 			);
 			productName = AdaSuplai;
 			productReference = B9D64CFA27030340000DDB95 /* AdaSuplai.app */;
@@ -1354,8 +1413,7 @@
 			);
 			mainGroup = B9D64CF127030340000DDB95;
 			packageReferences = (
-				4DB9FA7A270592E400B36E98 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				4DB9FA7D2705930A00B36E98 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				C3E58506273962BA0050CE3E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = B9D64CFB27030340000DDB95 /* Products */;
 			projectDirPath = "";
@@ -1372,6 +1430,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B49648273A6C0D006B25FF /* SearchHistoryCell.xib in Resources */,
+				C3B49649273A6C0D006B25FF /* SearchHistoryHeaderCell.xib in Resources */,
 				C32BF8A7271805D500658994 /* ProductAttributesDescriptionCell.xib in Resources */,
 				852019FB2733CD45002F34BC /* StatusOrderCollectionCell.xib in Resources */,
 				85201A432733CDAB002F34BC /* AllProductTransactionCell.xib in Resources */,
@@ -1408,7 +1468,6 @@
 				85AF8082272F00C300035658 /* OTPController.xib in Resources */,
 				852019FC2733CD45002F34BC /* TextCell.xib in Resources */,
 				85201A462733CDAB002F34BC /* ProductTransactionCell.xib in Resources */,
-				85201A202733CD94002F34BC /* SearchUpdaterLastSeenCell.xib in Resources */,
 				C381C13127182C4700FDD5D4 /* ProductImageCollectionCell.xib in Resources */,
 				852019F82733CD45002F34BC /* ProfileAllOrderStatusController.xib in Resources */,
 				85201A0A2733CD45002F34BC /* ProfileOrderStatusCell.xib in Resources */,
@@ -1490,6 +1549,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B49645273A6BFD006B25FF /* Extension-UITableView.swift in Sources */,
+				C3B49646273A6BFD006B25FF /* SearchHistoryCell.swift in Sources */,
+				C3B49647273A6BFD006B25FF /* SearchHistoryHeaderCell.swift in Sources */,
 				852019FD2733CD45002F34BC /* SeparatorCell.swift in Sources */,
 				85201A412733CDAB002F34BC /* DeliveryCell.swift in Sources */,
 				85201A492733CDD5002F34BC /* WishlistController.swift in Sources */,
@@ -1527,9 +1589,11 @@
 				C3CBECA72716D19000622FE1 /* CurrencyFormatter.swift in Sources */,
 				85201A0D2733CD45002F34BC /* OrderSmallCell.swift in Sources */,
 				C3B2765C272714F5002E8CC7 /* LocalDataService.swift in Sources */,
+				C3E584CC273519170050CE3E /* Extension-Publisher.swift in Sources */,
 				C3E584BB273191F70050CE3E /* LocalServiceError.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
-				C30EA06F27104D3100832135 /* Extension-UITableView.swift in Sources */,
+				C3E5850A273969720050CE3E /* Supplier.swift in Sources */,
+				C3E5851D273979FE0050CE3E /* SearchHistory+CoreDataProperties.swift in Sources */,
 				852019FF2733CD45002F34BC /* TextCell.swift in Sources */,
 				C3F68F3A2730703900F8A5A4 /* HTTPMethod.swift in Sources */,
 				C30EA060271043A000832135 /* FilterPriceRangeCell.swift in Sources */,
@@ -1537,7 +1601,6 @@
 				C3B2765727270BA5002E8CC7 /* MoreSortFilterCategoryViewModel.swift in Sources */,
 				C3318D6C2706EF4E002294EC /* HomeViewModel.swift in Sources */,
 				C3B2766227271ECF002E8CC7 /* DataURL.swift in Sources */,
-				85201A212733CD94002F34BC /* SearchUpdaterLastSeenCell.swift in Sources */,
 				C3963BD027217DD00017AAB6 /* ProductCell.swift in Sources */,
 				8576EFD827208D8B00F69D29 /* SeeMoreCategoryCollectionCell.swift in Sources */,
 				85201A062733CD45002F34BC /* ProfileUserCell.swift in Sources */,
@@ -1552,6 +1615,7 @@
 				85AF808F272F019100035658 /* AuthenticationController.swift in Sources */,
 				85201A4B2733CEEC002F34BC /* Category.swift in Sources */,
 				C366D2EB2706FD5500EF1E0C /* BannerCollectionCell.swift in Sources */,
+				C3E5850D27396E130050CE3E /* AdaSuplai.xcdatamodeld in Sources */,
 				85201A1D2733CD94002F34BC /* SearchUpdaterController.swift in Sources */,
 				85201A1A2733CD94002F34BC /* SearchUpdaterViewModel.swift in Sources */,
 				85201A392733CDAB002F34BC /* TransactionViewModel.swift in Sources */,
@@ -1565,8 +1629,12 @@
 				C32BF8C2271826B500658994 /* ProductReviewDetailCell.swift in Sources */,
 				C32BF8B22718062900658994 /* ProductSupplierCell.swift in Sources */,
 				85AF8088272F013700035658 /* SignUpController.swift in Sources */,
+				C3E584CA2733DC4F0050CE3E /* Product.swift in Sources */,
 				C32BF8B62718063900658994 /* ProductReviewCell.swift in Sources */,
+				C3E5851C273979FE0050CE3E /* SearchHistory+CoreDataClass.swift in Sources */,
+				C3E58505273934B30050CE3E /* CacheImage.swift in Sources */,
 				C3963BD227217DD00017AAB6 /* ProductDelegate.swift in Sources */,
+				C3E584CE273539580050CE3E /* LoadingController.swift in Sources */,
 				C3B2766027271E07002E8CC7 /* Location.swift in Sources */,
 				85AF8080272F00C300035658 /* TextFieldCell.swift in Sources */,
 				C30EA04E27103D2400832135 /* FilterController.swift in Sources */,
@@ -1899,36 +1967,36 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4DB9FA7A270592E400B36E98 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		C3E58506273962BA0050CE3E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		4DB9FA7D2705930A00B36E98 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4DB9FA7B270592E400B36E98 /* Alamofire */ = {
+		C3E58507273962BA0050CE3E /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4DB9FA7A270592E400B36E98 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		4DB9FA7E2705930A00B36E98 /* AlamofireImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4DB9FA7D2705930A00B36E98 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
-			productName = AlamofireImage;
+			package = C3E58506273962BA0050CE3E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		C3E5850B27396E130050CE3E /* AdaSuplai.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C3E5850C27396E130050CE3E /* AdaSuplai.xcdatamodel */,
+			);
+			currentVersion = C3E5850C27396E130050CE3E /* AdaSuplai.xcdatamodel */;
+			path = AdaSuplai.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B9D64CF227030340000DDB95 /* Project object */;
 }

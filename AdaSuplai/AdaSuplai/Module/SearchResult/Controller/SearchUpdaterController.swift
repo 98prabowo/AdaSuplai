@@ -16,6 +16,8 @@ class SearchUpdaterController: UIViewController, Identifiable {
     private enum Constant {
         static let cancelButton = "Batal"
         static let cancelButtonKey = "cancelButtonText"
+        static let searchHistoryEntity = "SearchHistory"
+        static let searchHistoryHeader = "Terakhir Dicari"
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -64,7 +66,8 @@ class SearchUpdaterController: UIViewController, Identifiable {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.registerNib(forCell: SearchUpdaterLastSeenCell.self)
+        self.tableView.registerNib(forCell: SearchHistoryHeaderCell.self)
+        self.tableView.registerNib(forCell: SearchHistoryCell.self)
     }
     
     private func searchTextFieldListener() {
@@ -79,7 +82,6 @@ class SearchUpdaterController: UIViewController, Identifiable {
             .sink { [unowned self] value in
                 self.viewModel.keyword = value
                 self.tableView.reloadData()
-                print(value)
             }
             .store(in: &searchSubscriber)
     }
@@ -87,14 +89,45 @@ class SearchUpdaterController: UIViewController, Identifiable {
 
 extension SearchUpdaterController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.viewModel.searchHistory.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withCell: SearchUpdaterLastSeenCell.self, for: indexPath)
-        cell.selectionStyle = .none
-        cell.configure(history: self.viewModel.keyword)
-        return cell
+        switch indexPath.item {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withCell: SearchHistoryHeaderCell.self, for: indexPath)
+            cell.selectionStyle = .none
+            cell.configure(header: Constant.searchHistoryHeader)
+            cell.deleteAllHistory = { [unowned self] in
+                self.viewModel.resetAllRecords(in: Constant.searchHistoryEntity)
+                self.viewModel.fetchSearchHistory()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withCell: SearchHistoryCell.self, for: indexPath)
+            let history = self.viewModel.searchHistory[indexPath.row - 1]
+            cell.configure(history: history.searchKey)
+            cell.deleteHistory = { [unowned self] in
+                self.viewModel.deleteData(history)
+                self.viewModel.fetchSearchHistory()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        self.dismiss(animated: false)
+        self.dismiss(animated: false) { [weak self] in
+            guard let keyword = self?.viewModel.searchHistory[indexPath.row - 1].searchKey else { return }
+            self?.searchPublisher.send(keyword)
+        }
     }
 }
 

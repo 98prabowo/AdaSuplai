@@ -12,9 +12,15 @@ class HotProductCell: UITableViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    let productPublisher = PassthroughSubject<Void, Never>()
+    let productPublisher = PassthroughSubject<Product, Never>()
     
-    private var productTrends = [DummyProduct]() {
+    private var productTrends = [Product]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private var suppliers = [Supplier]() {
         didSet {
             self.collectionView.reloadData()
         }
@@ -31,7 +37,8 @@ class HotProductCell: UITableViewCell {
         self.collectionView.registerNib(forCell: ProductCell.self)
     }
     
-    func configure(with products: [DummyProduct], title: String) {
+    func configure(with products: [Product], suppliers: [Supplier], title: String) {
+        self.suppliers = suppliers
         self.productTrends = products
         self.header.text = title
     }
@@ -44,11 +51,13 @@ extension HotProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
-        cell.configure(product: self.productTrends[indexPath.item])
+        let product = self.productTrends[indexPath.item]
+        cell.representedIdentifier = product.id
+        cell.configure(product: product, location: "Surabaya")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.productPublisher.send()
+        self.productPublisher.send(self.productTrends[indexPath.item])
     }
 }
