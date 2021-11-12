@@ -6,17 +6,26 @@
 //
 
 import UIKit
+import Combine
 
 class SimilarProductCell: UITableViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var seeMoreButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    private var products = [Product]()
+    var publisher = PassthroughSubject<Product, Never>()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupButton()
         self.setupCollectionView()
     }
+    
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        self.publisher = PassthroughSubject<Product, Never>()
+//    }
     
     private func setupButton() {
         self.seeMoreButton.setTitleColor(.primaryGreen, for: .normal)
@@ -28,17 +37,34 @@ class SimilarProductCell: UITableViewCell {
         self.collectionView.registerNib(forCell: ProductCell.self)
     }
     
+    func configure(with products: [Product]) {
+        self.products = products
+    }
+    
     @IBAction func seeMoreButtonTapped(_ sender: Any) {
     }
 }
 
 extension SimilarProductCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        var count = self.products.count
+        if count >= 4 {
+            count = 4
+        }
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
+        let product = self.products[indexPath.item]
+        cell.configure(product: product)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.collectionView.deselectItem(at: indexPath, animated: true)
+//        guard let publisher = self.pub lisher else { return }
+        let product = self.products[indexPath.item]
+        publisher.send(product)
     }
 }

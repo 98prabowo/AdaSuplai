@@ -15,7 +15,7 @@ class HomeCategoryCell: UITableViewCell {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private var categories = [DummyCategory]()
+    private var categories = [HomeCategory]()
     var categoryPublisher: PassthroughSubject<HomeCategoryAction, Never>?
     
     override func awakeFromNib() {
@@ -44,7 +44,7 @@ class HomeCategoryCell: UITableViewCell {
         self.seeMore.setTitleColor(.primaryGreen, for: .normal)
     }
     
-    func configure(categories: [DummyCategory]) {
+    func configure(categories: [HomeCategory]) {
         self.categories = categories
     }
     @IBAction func seeMoreTapped(_ sender: UIButton) {

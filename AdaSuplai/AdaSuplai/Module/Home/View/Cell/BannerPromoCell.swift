@@ -36,7 +36,7 @@ class BannerPromoCell: UITableViewCell {
     
     private func setupSlideTimer() {
         DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.changeBanner), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.changeBanner), userInfo: nil, repeats: true)
         }
     }
     

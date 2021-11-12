@@ -21,6 +21,20 @@ extension Int {
     }
 }
 
+extension Int64 {
+    /// Return string with `.` format that follor IDR currency format
+    var toIDR: String {
+        var result = String(self)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.groupingSeparator = "."
+        if let formattedNumber = numberFormatter.string(from: NSNumber(value: self)) {
+            result = formattedNumber
+        }
+        return result
+    }
+}
+
 extension Float {
     /// Return string with `.` format that follor IDR currency format
     var toIDR: String {

@@ -16,7 +16,11 @@ class FilterCell: UITableViewCell {
     var publisher = PassthroughSubject<Void, Never>()
     private var isRating: Bool = false
     private var type: Int?
-    private var filterKeys = [String]()
+    private var filterKeys = [String]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

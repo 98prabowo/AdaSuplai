@@ -6,17 +6,21 @@
 //
 
 import Foundation
+import Combine
 import UIKit
+
+protocol AdaSuplaiStepperDelegate: AnyObject {
+    func valueDidChange(value: Double)
+}
 
 @IBDesignable public class AdaSuplaiStepper: UIControl {
     /// Get current value of stepper.
-    public func getValue() -> Double {
-        return self.value
-    }
+    weak var delegate: AdaSuplaiStepperDelegate?
     
-    private var value: Double = 0 {
+    public var value: Double = 0 {
         didSet {
-            valueLabel.text = String(Int(value))
+            self.delegate?.valueDidChange(value: value)
+            self.valueLabel.text = String(Int(value))
             self.setLeftButtonColor(enableColor: buttonEnableColor,
                                     disableColor: buttonDisableColor)
             self.setRightButtonColor(enableColor: buttonEnableColor,

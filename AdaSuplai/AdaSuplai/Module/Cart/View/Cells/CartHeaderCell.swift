@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import Combine
 
 class CartHeaderCell: UITableViewCell {
-    @IBOutlet private weak var checkMark: UIImageView!
+    @IBOutlet private weak var checkmark: UIButton!
     @IBOutlet private weak var checkAllLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
+    
+    weak var delegate: CartCellDelegate?
+    private var indexPath: IndexPath?
     
     private var checkLabel = "Pilih Semua" {
         didSet {
@@ -28,6 +32,16 @@ class CartHeaderCell: UITableViewCell {
         }
     }
     
+    private var isMarked: Bool = false {
+        didSet {
+            if isMarked {
+                self.checkmark.setImage(UIImage(systemName: "square.fill"), for: .normal)
+            } else {
+                self.checkmark.setImage(UIImage(systemName: "square"), for: .normal)
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupButton()
@@ -35,13 +49,39 @@ class CartHeaderCell: UITableViewCell {
     
     private func setupButton() {
         self.checkAllLabel.text = self.checkLabel
-        self.checkMark.tintColor = .primaryGreen
+        self.checkmark.tintColor = .primaryGreen
         self.deleteButton.setTitleColor(.alert, for: .normal)
         self.deleteButton.setTitle(self.deleteLabel, for: .normal)
     }
     
-    func configure(checkLabel: String, deleteLabel: String) {
+    func configure(checkLabel: String, deleteLabel: String, indexPath: IndexPath) {
+        self.indexPath = indexPath
         self.checkLabel = checkLabel
         self.deleteButton.setTitle(deleteLabel, for: .normal)
     }
+    
+    func checkmarkHeader() {
+        self.isMarked = true
+    }
+    
+    func unCheckmarkHeader() {
+        self.isMarked = false
+    }
+    
+    @IBAction func checkmarkTapped(_ sender: UIButton) {
+        self.isMarked = !self.isMarked
+        guard let delegate = self.delegate,
+        let indexPath = self.indexPath else { return }
+        delegate.cartHeaderAction(actions: .select(indexPath: indexPath, state: isMarked))
+    }
+    
+    @IBAction func deleteTapped(_ sender: UIButton) {
+        guard let delegate = self.delegate else { return }
+        delegate.cartHeaderAction(actions: .delete)
+    }
+}
+
+enum CartHeaderCellAction {
+    case select(indexPath: IndexPath, state: Bool)
+    case delete
 }

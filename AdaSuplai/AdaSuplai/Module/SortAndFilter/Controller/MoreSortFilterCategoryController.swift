@@ -10,7 +10,6 @@ import Combine
 
 class MoreSortFilterCategoryController: UIViewController, Identifiable {
     private enum Constant {
-        static let header = "Lokasi Suplier"
         static let implementButton = "Terapkan"
         static let searchPlaceholder = "Cari"
     }
@@ -20,8 +19,10 @@ class MoreSortFilterCategoryController: UIViewController, Identifiable {
     private let searchController = UISearchController(searchResultsController: nil)
     private var subscribers = Set<AnyCancellable>()
     private let viewModel: MoreSortFilterCategoryViewModel
+    private var header: String = ""
     
-    init(keys: [String]) {
+    init(title: String, keys: [String]) {
+        self.header = title
         self.viewModel = MoreSortFilterCategoryViewModel(keys: keys)
         super.init(nibName: Self.identifier, bundle: nil)
     }
@@ -38,7 +39,7 @@ class MoreSortFilterCategoryController: UIViewController, Identifiable {
     }
     
     private func setupNavigationBar() {
-        self.title = Constant.header
+        self.title = self.header
         self.navigationItem.rightBarButtonItems = self.getBarButtons()
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false

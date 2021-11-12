@@ -34,7 +34,7 @@ class ProductSupplierCell: UITableViewCell {
     }
     
     func configure(with product: Product) {
-        self.supplierName.text = product.supplierID.supplierName
+        self.supplierName.text = product.supplier.supplierName
     }
     
     private func setupImage(url: URL) {

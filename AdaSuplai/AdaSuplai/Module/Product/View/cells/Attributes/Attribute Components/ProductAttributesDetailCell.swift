@@ -37,7 +37,9 @@ class ProductAttributesDetailCell: UITableViewCell {
         self.minimumOrder.text = "\(product.minOrder)"
         self.netWeight.text = "\(product.neto)"
         self.grossWeight.text = "\(product.bruto)"
-        self.tradeMark.text = product.brandID.brand
+        self.tradeMark.text = product.brand.brand
         self.size.text = "\(product.dimension)"
+        self.category.setTitle(product.category.name, for: .normal)
+        self.productWindow.setTitle(product.etalase, for: .normal)
     }
 }

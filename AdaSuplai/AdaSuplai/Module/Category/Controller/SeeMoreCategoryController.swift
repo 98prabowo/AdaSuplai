@@ -31,8 +31,6 @@ class SeeMoreCategoryController: UIViewController, Identifiable {
                 self?.collectionView.reloadData()
             }
         }
-        
-        viewModel.fetchCategory()
     }
     
     // MARK: - Navigation Bar
@@ -104,12 +102,9 @@ extension SeeMoreCategoryController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: SeeMoreCategoryCollectionCell.self, for: indexPath)
-        
-        let dataCell = viewModel.categoryData.value?[indexPath.row]
-        cell.categoryName.text = dataCell?.name
-        
-        let url = URL(string: "https://adasuplai-api-env-staging.herokuapp.com/image/\(dataCell?.image ?? "")")
-        if let data = try? Data(contentsOf: url!) { cell.categoryImage.image = UIImage(data: data) } else { cell.categoryImage.backgroundColor = .primaryGreen }
+        if let category = viewModel.categoryData.value?[indexPath.row] {
+            cell.configure(with: category)
+        }
         return cell
     }
     

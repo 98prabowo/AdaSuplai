@@ -9,20 +9,35 @@ import Foundation
 import UIKit
 
 class CategoryViewModel: BaseViewModel {
+    let service = RemoteDataService()
     var categoryData: Observable<[Category]> = Observable([])
     var allCategoryData: Observable<[Category]> = Observable([])
     
+    override init() {
+        super.init()
+        self.fetchCategory()
+    }
+    
     func fetchCategory() {
-        let url = URL(string: "https://adasuplai-api-env-staging.herokuapp.com/category/fetch")!
-        URLSession.shared.fetchDataCategory(at: url) { result in
-            switch result {
-            case .success(let data):
-                self.categoryData.value = data
-                self.allCategoryData.value = data
-            case .failure(let error):
-                print("\(error)")
+        Task {
+            do {
+                let parent = try await service.getData(InitialCategory.self, url: .category)
+                self.categoryData.value = parent.data
+                self.allCategoryData.value = parent.data
+            } catch {
+                print("Fetch Category in CategoryViewModel error: \(error.localizedDescription)")
             }
         }
+//        let url = URL(string: "https://adasuplai-api-env-staging.herokuapp.com/category/fetch")!
+//        URLSession.shared.fetchDataCategory(at: url) { result in
+//            switch result {
+//            case .success(let data):
+//                self.categoryData.value = data
+//                self.allCategoryData.value = data
+//            case .failure(let error):
+//                print("\(error)")
+//            }
+//        }
     }
     
 }

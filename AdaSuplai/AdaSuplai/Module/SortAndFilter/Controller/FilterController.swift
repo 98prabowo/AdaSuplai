@@ -50,6 +50,7 @@ class FilterController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        self.bindViewModel()
     }
     
     private func setupTableView() {
@@ -62,19 +63,30 @@ class FilterController: BaseUIViewController {
         self.tableView.registerNib(forCell: SubmitButtonCell.self)
     }
     
+    private func bindViewModel() {
+        self.viewModel.categories
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.tableView.reloadData()
+            }.store(in: &subscribers)
+    }
+    
     private func goToMoreFilter(from type: Int) {
+        var title: String = ""
         var filterKeys = [String]()
         switch type {
         case FilterCellIndex.location:
+            title = Constant.location
             filterKeys = self.viewModel.locations
         case FilterCellIndex.category:
-            // TODO: add more category in view model then change filter keys in here
-            break
+            title = Constant.category
+            filterKeys = self.viewModel.categories.value
         default:
             break
         }
         
-        let nextVC = MoreSortFilterCategoryController(keys: filterKeys)
+        let nextVC = MoreSortFilterCategoryController(title: title,
+                                                      keys: filterKeys)
         let navController = UINavigationController(rootViewController: nextVC)
         navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: true)
@@ -176,12 +188,11 @@ extension FilterController {
         let cell = tableView.dequeueReusableCell(withCell: FilterCell.self, for: indexPath)
         cell.showSeeMore()
         cell.configure(title: Constant.category,
-                       filterKeys: ["Biji Kopi", "Bubuk", "Susu", "Gula", "Cokelat"])
+                       filterKeys: self.viewModel.categories.value)
         cell.publisher
             .sink { [unowned self] in
                 self.goToMoreFilter(from: FilterCellIndex.category)
-            }
-            .store(in: &subscribers)
+            }.store(in: &subscribers)
         return cell
     }
     

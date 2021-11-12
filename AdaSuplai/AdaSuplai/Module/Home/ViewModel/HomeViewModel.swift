@@ -13,26 +13,11 @@ class HomeViewModel: BaseViewModel {
     let productTrends = CurrentValueSubject<[Product], Never>([Product]())
     var suppliers = CurrentValueSubject<[Supplier], Never>([Supplier]())
     let service: RemoteDataService
-    let categories: [DummyCategory] = [
-        DummyCategory(image: UIImage(named: "Kopi"),
-                      category: "Biji Kopi"),
-        DummyCategory(image: UIImage(named: "Sirup"),
-                      category: "Sirup"),
-        DummyCategory(image: UIImage(named: "Susu"),
-                      category: "Susu"),    
-        DummyCategory(image: UIImage(named: "Bubuk"),
-                      category: "Bubuk"),
-        DummyCategory(image: UIImage(named: "Es Batu"),
-                      category: "Es Batu"),
-        DummyCategory(image: UIImage(named: "Gula"),
-                      category: "Gula"),
-        DummyCategory(image: UIImage(named: "Kemasan"),
-                      category: "Kemasan"),
-        DummyCategory(image: UIImage(named: "Lihat Lebih"),
-                      category: "Teh")]
+    var categories = [HomeCategory]()
     
     override init() {
         self.service = RemoteDataService()
+        self.categories = HomeCategoryData().getHomeCategories()
         super.init()
         self.fetchProductTrends()
     }

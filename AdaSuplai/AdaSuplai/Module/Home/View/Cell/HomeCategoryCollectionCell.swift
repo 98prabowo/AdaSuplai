@@ -15,7 +15,7 @@ class HomeCategoryCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func configure(category: DummyCategory) {
+    func configure(category: HomeCategory) {
         self.categoryName.text = category.category
         if let image = category.image {
             self.categoryImage.image = image

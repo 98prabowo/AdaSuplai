@@ -18,6 +18,7 @@
                 <outlet property="productName" destination="ayU-HQ-4Wj" id="f42-HO-op0"/>
                 <outlet property="productQuantity" destination="rlK-Yp-BQh" id="JYk-F8-0Ae"/>
                 <outlet property="productVariant" destination="ar1-ja-og4" id="fXS-Aq-VVp"/>
+                <outlet property="successLabel" destination="ZM6-TA-aM6" id="uUs-M0-Mok"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,9 +31,9 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EFj-fa-LA5">
-                            <rect key="frame" x="20" y="75" width="374" height="120"/>
+                            <rect key="frame" x="20" y="74.5" width="374" height="120"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EbV-xE-YCT">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EbV-xE-YCT">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="120" id="AMW-99-vkn"/>
@@ -88,7 +89,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlK-Yp-BQh" customClass="AdaSuplaiStepper" customModule="AdaSuplai" customModuleProvider="target">
-                            <rect key="frame" x="244" y="230" width="150" height="30"/>
+                            <rect key="frame" x="244" y="229.5" width="150" height="30"/>
                             <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="XBI-YD-xdh"/>
@@ -96,7 +97,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRj-eh-3F3">
-                            <rect key="frame" x="20" y="290" width="374" height="50"/>
+                            <rect key="frame" x="20" y="289.5" width="374" height="50"/>
                             <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="W6A-HV-JDa"/>
@@ -108,17 +109,25 @@
                                 <action selector="addToCartTapped:" destination="-1" eventType="touchUpInside" id="RdR-n3-qmQ"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produk berhasil ditambahkan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZM6-TA-aM6">
+                            <rect key="frame" x="20" y="30" width="227" height="19.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="EFj-fa-LA5" firstAttribute="leading" secondItem="AGb-9D-wxw" secondAttribute="leading" constant="20" id="4PP-d8-N1S"/>
                         <constraint firstAttribute="trailing" secondItem="rlK-Yp-BQh" secondAttribute="trailing" constant="20" id="9AA-13-S07"/>
+                        <constraint firstItem="ZM6-TA-aM6" firstAttribute="leading" secondItem="AGb-9D-wxw" secondAttribute="leading" constant="20" id="Ak5-7f-mRW"/>
                         <constraint firstItem="rlK-Yp-BQh" firstAttribute="top" secondItem="EFj-fa-LA5" secondAttribute="bottom" constant="35" id="HFc-XE-hah"/>
-                        <constraint firstItem="EFj-fa-LA5" firstAttribute="top" secondItem="AGb-9D-wxw" secondAttribute="top" constant="75" id="Tu2-kl-qAX"/>
                         <constraint firstItem="FRj-eh-3F3" firstAttribute="top" secondItem="rlK-Yp-BQh" secondAttribute="bottom" constant="30" id="fDP-oe-Wie"/>
+                        <constraint firstItem="EFj-fa-LA5" firstAttribute="top" secondItem="ZM6-TA-aM6" secondAttribute="bottom" constant="25" id="g9Z-em-W2o"/>
                         <constraint firstAttribute="trailing" secondItem="FRj-eh-3F3" secondAttribute="trailing" constant="20" id="htJ-uY-VdG"/>
                         <constraint firstItem="FRj-eh-3F3" firstAttribute="leading" secondItem="AGb-9D-wxw" secondAttribute="leading" constant="20" id="nwB-jV-viv"/>
                         <constraint firstAttribute="trailing" secondItem="EFj-fa-LA5" secondAttribute="trailing" constant="20" id="orT-xT-X04"/>
+                        <constraint firstItem="ZM6-TA-aM6" firstAttribute="top" secondItem="AGb-9D-wxw" secondAttribute="top" constant="30" id="rTT-Y9-IQp"/>
                     </constraints>
                 </view>
             </subviews>

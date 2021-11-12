@@ -48,6 +48,7 @@ class ProductController: BaseUIViewController {
         self.setupButton()
         self.setupTableView()
         self.setupBackground()
+        self.bindToViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +111,14 @@ class ProductController: BaseUIViewController {
         self.tableView.registerNib(forCell: SimilarProductCell.self)
     }
     
+    private func bindToViewModel() {
+        self.viewModel.similarProducts
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.tableView.reloadData()
+            }.store(in: &subscribers)
+    }
+    
     @objc private func wishlistButtonTapped(_ sender: UIBarButtonItem) {
         print("Go To Wishlist")
     }
@@ -127,14 +136,6 @@ class ProductController: BaseUIViewController {
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
         let nextVC = AddToCartBottomSheetController(product: self.viewModel.product)
-        nextVC.publisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                guard let navigation = self?.navigationController,
-                      let tabBarController = self?.tabBarController else { return }
-                navigation.popViewController(animated: false)
-                tabBarController.selectedIndex = 1
-            }.store(in: &subscribers)
         
         if let sheet = nextVC.presentationController as? UISheetPresentationController {
             sheet.detents = [.medium(), .large()]
@@ -143,6 +144,20 @@ class ProductController: BaseUIViewController {
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+            nextVC.publisher
+                .sink { [weak self] value in
+                    switch value {
+                    case .keyboaardShow:
+                        sheet.selectedDetentIdentifier = .large
+                    case .goToCart:
+                        guard let navigation = self?.navigationController,
+                              let tabBarController = self?.tabBarController else { return }
+                        navigation.popViewController(animated: false)
+                        tabBarController.selectedIndex = 1
+                    case .addedToCart:
+                        break
+                    }
+                }.store(in: &subscribers)
         }
         
         self.present(nextVC, animated: true)
@@ -229,6 +244,14 @@ extension ProductController {
     
     private func setupSimilarCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: SimilarProductCell.self, for: indexPath)
+        cell.configure(with: self.viewModel.similarProducts.value)
+        if let navigation = self.navigationController {
+            cell.publisher
+                .sink { product in
+                    let nextVC = ProductController(product: product)
+                    navigation.pushViewController(nextVC, animated: true)
+                }.store(in: &subscribers)
+        }
         return cell
     }
     
