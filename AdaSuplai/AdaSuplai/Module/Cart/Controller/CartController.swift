@@ -61,7 +61,6 @@ class CartController: BaseUIViewController {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.backgroundColor = .blueBackground
         self.tableView.registerNib(forCell: CartHeaderCell.self)
         self.tableView.registerNib(forCell: CartSupplierCell.self)
         self.tableView.registerNib(forCell: CartProductCell.self)
@@ -87,55 +86,11 @@ class CartController: BaseUIViewController {
             }.store(in: &subscriber)
     }
     
-    private func getCellForHeader(indexPath: IndexPath) -> UITableViewCell {
-        if self.viewModel.isNoProduct() {
-            // TODO: Add Empty State Cell
-            return UITableViewCell()
-        } else {
-            let cell = tableView.dequeueReusableCell(withCell: CartHeaderCell.self, for: indexPath)
-            cell.delegate = self
-            cell.configure(checkLabel: Constant.checkHeader,
-                           deleteLabel: Constant.deleteText)
-            if self.viewModel.isAllProductMarked() {
-                cell.checkmarkHeader()
-            } else {
-                cell.unCheckmarkHeader()
-            }
-            return cell
-        }
-    }
-    
-    private func getCellForBody(indexPath: IndexPath) -> UITableViewCell {
-        let supplier = self.viewModel.suppliers[indexPath.section - 1]
-        let products = self.viewModel.getProductPerSection(with: supplier.id)
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withCell: CartSupplierCell.self, for: indexPath)
-            cell.delegate = self
-            cell.configure(with: supplier)
-            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.frame.width, bottom: 0, right: 0)
-            if self.viewModel.isAllProductInSectionMarked(supplier.id) {
-                cell.checkmarkSupplier()
-            } else {
-                cell.unCheckmarkSupplier()
-            }
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withCell: CartProductCell.self, for: indexPath)
-            let product = products[indexPath.row - 1]
-            cell.delegate = self
-            cell.configure(with: product)
-            if product.isMarked {
-                cell.checkmarkProduct()
-            } else {
-                cell.unCheckmarkProduct()
-            }
-            return cell
-        }
-    }
-    
     @IBAction func buyButtonTapped(_ sender: UIButton) {
-        print("BUY ITEM")
+        let nextVC = TransactionDetailController()
+        if let navigation = self.navigationController {
+            navigation.pushViewController(nextVC, animated: true)
+        }
     }
 }
 
@@ -164,6 +119,59 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: Setup Table Cell
+extension CartController {
+    private func getCellForHeader(indexPath: IndexPath) -> UITableViewCell {
+        if self.viewModel.isNoProduct() {
+            // TODO: Add Empty State Cell
+            let cell = UITableViewCell()
+            cell.backgroundColor = .clear
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withCell: CartHeaderCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(checkLabel: Constant.checkHeader,
+                           deleteLabel: Constant.deleteText)
+            if self.viewModel.isAllProductMarked() {
+                cell.checkmarkHeader()
+            } else {
+                cell.unCheckmarkHeader()
+            }
+            return cell
+        }
+    }
+    
+    private func getCellForBody(indexPath: IndexPath) -> UITableViewCell {
+        let supplier = self.viewModel.suppliers[indexPath.section - 1]
+        let products = self.viewModel.getProductPerSection(with: supplier.id)
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withCell: CartSupplierCell.self, for: indexPath)
+            cell.delegate = self
+            cell.configure(with: supplier)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+            if self.viewModel.isAllProductInSectionMarked(supplier.id) {
+                cell.checkmarkSupplier()
+            } else {
+                cell.unCheckmarkSupplier()
+            }
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withCell: CartProductCell.self, for: indexPath)
+            let product = products[indexPath.row - 1]
+            cell.delegate = self
+            cell.configure(with: product)
+            if product.isMarked {
+                cell.checkmarkProduct()
+            } else {
+                cell.unCheckmarkProduct()
+            }
+            return cell
+        }
+    }
+}
+
+// MARK: Delegate
 extension CartController: CartCellDelegate {
     func cartHeaderAction(actions: CartHeaderCellAction) {
         switch actions {

@@ -7,20 +7,29 @@
 
 import UIKit
 
-class ListDeliveryController: UIViewController, Identifiable {
+class ListDeliveryController: BaseUIViewController {
+    private enum Constant {
+        static let title = "Pilihan Pengiriman"
+    }
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private weak var header: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+    
+    private var selectedIndex: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setUpTable()
+        self.setupTableView()
+    }
+    
+    private func setupBackground() {
+        self.title = Constant.title
     }
 
-    private func setUpTable() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.registerNib(forCell: DeliveryCell.self)
+    private func setupTableView() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.registerNib(forCell: DeliveryCell.self)
     }
 }
 
@@ -31,12 +40,20 @@ extension ListDeliveryController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: DeliveryCell.self, for: indexPath)
-        cell.deliveryName.text = "Delivery Option \(indexPath.row + 1)"
-        cell.deliveryPrice.text = "Rp. 56.000"
+        cell.configure()
+        if let selected = self.selectedIndex,
+           selected == indexPath {
+            cell.configureSelected()
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected == \(indexPath.row+1)")
+        self.selectedIndex = indexPath
+        self.tableView.deselectRow(at: indexPath, animated: false)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        self.dismiss(animated: true)
     }
 }

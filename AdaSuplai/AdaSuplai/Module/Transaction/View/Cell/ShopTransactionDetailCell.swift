@@ -8,20 +8,16 @@
 import UIKit
 
 class ShopTransactionDetailCell: UITableViewCell {
-    
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var locationLabel: UILabel!
-    @IBOutlet var etaLabel: UILabel!
+    @IBOutlet private var supplierNameLabel: UILabel!
+    @IBOutlet private var locationLabel: UILabel!
+    @IBOutlet private var etaLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    func configure(with supplier: Supplier) {
+        self.supplierNameLabel.text = supplier.supplierName
+        self.locationLabel.text = supplier.address?.first ?? "-"
+    }
 }

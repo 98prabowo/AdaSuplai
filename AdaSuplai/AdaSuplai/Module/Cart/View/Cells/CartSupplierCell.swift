@@ -25,7 +25,7 @@ class CartSupplierCell: UITableViewCell {
     }
     
     weak var delegate: CartCellDelegate?
-    private var supplier: SupplierCart?
+    private var supplier: Supplier?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,9 +42,9 @@ class CartSupplierCell: UITableViewCell {
         self.reorderButton.tintColor = .primaryGreen
     }
     
-    func configure(with supplier: SupplierCart) {
+    func configure(with supplier: Supplier) {
         self.supplier = supplier
-        self.supplierName.text = supplier.name
+        self.supplierName.text = supplier.supplierName
     }
     
     @IBAction func checkmarkTapped(_ sender: UIButton) {
@@ -67,5 +67,5 @@ class CartSupplierCell: UITableViewCell {
 }
 
 enum CartSupplierCellAction {
-    case select(supplier: SupplierCart, state: Bool)
+    case select(supplier: Supplier, state: Bool)
 }

@@ -6,128 +6,164 @@
 //
 
 import UIKit
+import Combine
 
-class TransactionDetailController: UIViewController, Identifiable, UIGestureRecognizerDelegate {
+class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDelegate {
+    private enum Constant {
+        static let header = "Pengiriman"
+        static let paymentButtonTitle = "Lanjut ke Pembayaran"
+    }
     
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var nextButton: UIButton!
-    @IBOutlet var subTotalLabel: UILabel!
-    @IBOutlet var deliveryTotalLabel: UILabel!
-    @IBOutlet var totalLabel: UILabel!
-    @IBOutlet var viewer: UIView!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var paymentButton: UIButton!
+    @IBOutlet private var subTotalLabel: UILabel!
+    @IBOutlet private var deliveryTotalLabel: UILabel!
+    @IBOutlet private var totalLabel: UILabel!
+    @IBOutlet private var priceBar: UIView!
+    
+    private let viewModel = TransactionViewModel()
+    private var subscriber = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTable()
-        
-        title = "Pengiriman"
-        
+        self.setupBackground()
+        self.setupNavigationBar()
+        self.setupTableView()
+        self.setupButton()
+        self.bindViewModel()
+    }
+    
+    private func setupBackground() {
+        self.title = Constant.header
+        self.priceBar.addShadow()
+    }
+    
+    private func setupNavigationBar() {
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .white
         navigation.navigationBar.barTintColor = .white
         navigation.navigationBar.tintColor = .primaryGreen
-        self.view.backgroundColor = .white
-        navigationItem.hidesBackButton = false
         navigation.setNavigationBarHidden(false, animated: false)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: .some(#selector(clickView(_:))))
-        tapGesture.delegate = self
-        viewer.addGestureRecognizer(tapGesture)
-        
+        self.addBackButton()
     }
     
-    @objc func clickView(_ sender: UIView) {
-        print("ViewClick")
+    private func setupTableView() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.allowsSelection = false
+        self.tableView.registerNib(forCell: DeliveryAddressCell.self)
+        self.tableView.registerNib(forCell: ShopTransactionDetailCell.self)
+        self.tableView.registerNib(forCell: ProductTransactionCell.self)
+        self.tableView.registerNib(forCell: ShopTransactionPriceCell.self)
     }
     
-    private func setUpTable() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.allowsSelection = false
-        
-        tableView.registerNib(forCell: TextCell.self)
-        tableView.registerNib(forCell: SeparatorCell.self)
-        tableView.registerNib(forCell: InformationCell.self)
-        tableView.registerNib(forCell: ShopTransactionDetailCell.self)
-        tableView.registerNib(forCell: AllProductTransactionCell.self)
-        tableView.registerNib(forCell: ShopTransactionPriceCell.self)
+    private func setupButton() {
+        self.paymentButton.tintColor = .white
+        self.paymentButton.backgroundColor = .primaryGreen
+        self.paymentButton.layer.cornerRadius = 10
+        self.paymentButton.setTitle(Constant.paymentButtonTitle, for: .normal)
+    }
+    
+    private func bindViewModel() {
+        self.viewModel.cart
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] cart in
+                self.viewModel.getSupplier()
+                self.tableView.reloadData()
+                print(cart)
+            }.store(in: &subscriber)
+    }
+    
+    @IBAction func paymentButtonTapped(_ sender: UIButton) {
+        print("BAYAR BOSS")
     }
 }
 
 extension TransactionDetailController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return self.viewModel.suppliers.count + 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0 :
-            return 3
-            
-        default :
-            return 3
+        case 0:
+            return 1
+        default:
+            let supplierID = self.viewModel.suppliers[section - 1].id
+            return self.viewModel.getProductCountPerSection(with: supplierID) + 2
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0 :
-            switch indexPath.row {
-            case 0 :
-                let cell = tableView.dequeueReusableCell(withCell: TextCell.self, for: indexPath)
-                cell.backgroundColor = UIColor.white
-                cell.title.text = "Alamat Pengiriman"
-                cell.title.font = UIFont.boldSystemFont(ofSize: 17.0)
-                cell.cellButton.isHidden = true
-                cell.separatorInset = UIEdgeInsets.init(top: 0, left: 16, bottom: 0, right: 16)
-                cell.selectionStyle = .none
-                return cell
-                
-            case 2 :
-                let cell = tableView.dequeueReusableCell(withCell: InformationCell.self, for: indexPath)
-                cell.backgroundColor = .white
-                cell.title.text = "Cabang Barat"
-                cell.desc.font = UIFont.systemFont(ofSize: 13)
-                cell.title.textColor = .systemGreen
-                
-                cell.desc.text = "Theresa | 081234564888 \nJl. Sulawesi No. 21 , Surabaya"
-                cell.desc.textColor = .systemGray3
-                cell.desc.font = UIFont.systemFont(ofSize: 13)
-                return cell
-                
-            default :
-                let cell = tableView.dequeueReusableCell(withCell: SeparatorCell.self, for: indexPath)
-                cell.separatorView.backgroundColor = .inactive
-                return cell
-            }
-            
-        default :
-            switch indexPath.row {
-            case 0 :
-                let cell = tableView.dequeueReusableCell(withCell: ShopTransactionDetailCell.self, for: indexPath)
-                return cell
-                
-            case 1 :
-                let cell = tableView.dequeueReusableCell(withCell: AllProductTransactionCell.self, for: indexPath)
-                cell.mainTableView = tableView
-                return cell
-                
-            case 2 :
-                let cell = tableView.dequeueReusableCell(withCell: ShopTransactionPriceCell.self, for: indexPath)
-                return cell
-                
-            default :
-                return UITableViewCell()
-            }
+        case 0:
+            return self.getHeaderCell(for: indexPath)
+        default:
+            return self.getBodyCell(for: indexPath)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section > 0 && indexPath.row == 2 {
-            let nextVC = ListDeliveryController(nibName: ListDeliveryController.identifier, bundle: nil)
-            let navController = UINavigationController(rootViewController: nextVC)
-            navController.modalPresentationStyle = .automatic
-            self.present(navController, animated: true, completion: nil)
+            
         }
+    }
+}
+
+// MARK: Setup Table Cell
+extension TransactionDetailController {
+    private func getHeaderCell(for indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withCell: DeliveryAddressCell.self, for: indexPath)
+        cell.delegate = self
+        cell.configure()
+        return cell
+    }
+    
+    private func getBodyCell(for indexPath: IndexPath) -> UITableViewCell {
+        let supplier = self.viewModel.suppliers[indexPath.section - 1]
+        let products = self.viewModel.getProductPerSection(with: supplier.id)
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withCell: ShopTransactionDetailCell.self, for: indexPath)
+            cell.configure(with: supplier)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+            return cell
+        case products.count:
+            let cell = tableView.dequeueReusableCell(withCell: ProductTransactionCell.self, for: indexPath)
+            let product = products[indexPath.row - 1]
+            cell.configure(with: product)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+            return cell
+        case products.count + 1:
+            let cell = tableView.dequeueReusableCell(withCell: ShopTransactionPriceCell.self, for: indexPath)
+            cell.configure(with: 1_170_000)
+            cell.delegate = self
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withCell: ProductTransactionCell.self, for: indexPath)
+            let product = products[indexPath.row - 1]
+            cell.configure(with: product)
+            return cell
+        }
+    }
+}
+
+// MARK: Delegate
+extension TransactionDetailController: TransactionCellDelegate {
+    func setDeliveryAddress() {
+        print("PILIH ALAMAT")
+    }
+    
+    func setDeliveryService() {
+        let nextVC = ListDeliveryController()
+        if let sheet = nextVC.presentationController as? UISheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+        self.present(nextVC, animated: true)
     }
 }

@@ -7,20 +7,41 @@
 
 import UIKit
 
-class DeliveryAddressCell: UITableViewCell {
+protocol TransactionCellDelegate: AnyObject {
+    func setDeliveryAddress()
     
-    @IBOutlet var addressLabel: UILabel!
-    @IBOutlet var addressDetailLabel: UILabel!
+    func setDeliveryService()
+}
 
+class DeliveryAddressCell: UITableViewCell {
+    @IBOutlet private weak var header: UILabel!
+    @IBOutlet private weak var pickAddressButton: UIView!
+    @IBOutlet private weak var address: UILabel!
+    @IBOutlet private weak var contact: UILabel!
+    @IBOutlet private weak var adressDetail: UILabel!
+    @IBOutlet private weak var chevron: UIImageView!
+    
+    weak var delegate: TransactionCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        self.setupButton()
     }
     
+    private func setupButton() {
+        let pickAddressGesture = UITapGestureRecognizer(target: self, action: #selector(pickAddressButtonTapped(_:)))
+        self.pickAddressButton.addGestureRecognizer(pickAddressGesture)
+        self.pickAddressButton.backgroundColor = .clear
+        self.address.textColor = .primaryGreen
+        self.chevron.tintColor = .black
+    }
+    
+    // TODO: Add user data in here
+    func configure() {
+    }
+    
+    @objc private func pickAddressButtonTapped(_ sender: UITapGestureRecognizer) {
+        guard let delegate = self.delegate else { return }
+        delegate.setDeliveryAddress()
+    }
 }

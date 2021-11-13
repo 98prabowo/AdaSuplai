@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListDeliveryController" customModule="AdaSuplai" customModuleProvider="target">
             <connections>
+                <outlet property="header" destination="SHd-3e-Edf" id="lXq-jB-Gfh"/>
                 <outlet property="tableView" destination="FW8-6x-riC" id="zEP-ay-nee"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pilihan Pengiriman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHd-3e-Edf">
-                    <rect key="frame" x="16" y="52" width="382" height="20.5"/>
+                    <rect key="frame" x="16" y="64" width="382" height="20.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FW8-6x-riC">
-                    <rect key="frame" x="0.0" y="80.5" width="414" height="300"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FW8-6x-riC">
+                    <rect key="frame" x="0.0" y="109.5" width="414" height="300"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="cqs-3o-3gP"/>
@@ -39,8 +40,8 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SHd-3e-Edf" secondAttribute="trailing" constant="16" id="K9J-UU-QuQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FW8-6x-riC" secondAttribute="trailing" id="LRa-KY-AKS"/>
                 <constraint firstItem="SHd-3e-Edf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="OGh-3e-eIA"/>
-                <constraint firstItem="FW8-6x-riC" firstAttribute="top" secondItem="SHd-3e-Edf" secondAttribute="bottom" constant="8" id="Ru2-CB-yYc"/>
-                <constraint firstItem="SHd-3e-Edf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Vsh-ri-SaZ"/>
+                <constraint firstItem="FW8-6x-riC" firstAttribute="top" secondItem="SHd-3e-Edf" secondAttribute="bottom" constant="25" id="Ru2-CB-yYc"/>
+                <constraint firstItem="SHd-3e-Edf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Vsh-ri-SaZ"/>
                 <constraint firstItem="FW8-6x-riC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hQv-Ai-byf"/>
             </constraints>
             <point key="canvasLocation" x="132" y="108"/>

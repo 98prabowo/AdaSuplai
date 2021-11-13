@@ -131,7 +131,10 @@ class ProductController: BaseUIViewController {
     }
     
     @IBAction func buyButtonTapped(_ sender: UIButton) {
-        print("Buy")
+        let nextVC = TransactionDetailController()
+        if let navigation = self.navigationController {
+            navigation.pushViewController(nextVC, animated: true)
+        }
     }
     
     @IBAction func addToCartButtonTapped(_ sender: UIButton) {
