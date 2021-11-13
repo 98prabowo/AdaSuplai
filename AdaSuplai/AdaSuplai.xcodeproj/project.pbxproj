@@ -811,9 +811,9 @@
 		C30EA04A27103CED00832135 /* SortAndFilter */ = {
 			isa = PBXGroup;
 			children = (
-				C30EA05127103E4100832135 /* View */,
 				C30EA05027103D2E00832135 /* ViewModel */,
 				C30EA04B27103D0600832135 /* Controller */,
+				C30EA05127103E4100832135 /* View */,
 			);
 			path = SortAndFilter;
 			sourceTree = "<group>";
@@ -923,9 +923,9 @@
 		C366D36C270DBBFF00EF1E0C /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
+				85201A0E2733CD94002F34BC /* ViewModel */,
 				85201A112733CD94002F34BC /* Controller */,
 				85201A142733CD94002F34BC /* View */,
-				85201A0E2733CD94002F34BC /* ViewModel */,
 			);
 			path = SearchResult;
 			sourceTree = "<group>";
@@ -1280,13 +1280,13 @@
 				C3963BC227217D950017AAB6 /* OnBoarding */,
 				C3963BE92721802D0017AAB6 /* Wishlist */,
 				C3963BD327217F710017AAB6 /* Cart */,
+				8576F00127209EA800F69D29 /* Transaction */,
 				C3CBECAA2716E04200622FE1 /* Product */,
 				C30EA04A27103CED00832135 /* SortAndFilter */,
 				C366D36C270DBBFF00EF1E0C /* SearchResult */,
 				C3318D6A2706EF37002294EC /* Home */,
 				852019CE2733CD45002F34BC /* Profile */,
 				8576EFBD27208D8B00F69D29 /* Category */,
-				8576F00127209EA800F69D29 /* Transaction */,
 				C3C94D9127059C1800688485 /* Authentication */,
 			);
 			path = Module;

@@ -9,10 +9,6 @@ import UIKit
 import Kingfisher
 
 class ProductTransactionCell: UITableViewCell {
-    private enum Constant {
-        static let idr = "Rp. "
-    }
-    
     @IBOutlet private var productImage: UIImageView!
     @IBOutlet private var productName: UILabel!
     @IBOutlet private var productPrice: UILabel!
@@ -25,7 +21,7 @@ class ProductTransactionCell: UITableViewCell {
     
     func configure(with product: ProductCart) {
         self.productName.text = product.productName
-        self.productPrice.text = Constant.idr + product.productPrice.toIDR
+        self.productPrice.text = product.productPrice.toIDR
         self.productTotal.text = "x \(product.quantity)"
         self.productWeight.text = "| @ 10 ons"
         self.productImage.layer.cornerRadius = 5

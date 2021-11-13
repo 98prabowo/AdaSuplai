@@ -17,13 +17,6 @@ class DeliveryCell: UITableViewCell {
         self.setupBackground()
     }
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//        self.containerView.layer.borderColor = UIColor.primaryGreen.cgColor
-//        self.deliveryName.textColor = .primaryGreen
-//        self.deliveryPrice.textColor = .black
-//    }
-    
     private func setupBackground() {
         self.containerView.addBorderAndCornerRadius(withBorderWidth: 0.5, borderColor: .black, cornerRadius: 10)
         self.deliveryName.textColor = .black

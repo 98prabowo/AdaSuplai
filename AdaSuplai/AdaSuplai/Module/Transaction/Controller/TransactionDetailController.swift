@@ -16,7 +16,7 @@ class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDele
     
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var paymentButton: UIButton!
-    @IBOutlet private var subTotalLabel: UILabel!
+    @IBOutlet private var productTotalLabel: UILabel!
     @IBOutlet private var deliveryTotalLabel: UILabel!
     @IBOutlet private var totalLabel: UILabel!
     @IBOutlet private var priceBar: UIView!
@@ -67,11 +67,27 @@ class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDele
     private func bindViewModel() {
         self.viewModel.cart
             .receive(on: DispatchQueue.main)
-            .sink { [unowned self] cart in
+            .sink { [unowned self] _ in
                 self.viewModel.getSupplier()
+                self.setTotalPrice(productPrice: self.viewModel.getTotalProductPrice())
                 self.tableView.reloadData()
-                print(cart)
             }.store(in: &subscriber)
+    }
+    
+    private func setTotalPrice(productPrice: Int? = nil, deliveryPrice: Int? = nil) {
+        if let productPrice = productPrice {
+            self.productTotalLabel.text = productPrice.toIDR
+        }
+        
+        if let deliveryPrice = deliveryPrice {
+            self.deliveryTotalLabel.text = deliveryPrice.toIDR
+        }
+        
+        if let productPrice = self.productTotalLabel.text,
+           let deliveryPrice = self.deliveryTotalLabel.text {
+            let totalPrice = productPrice.toIntRemoveIDR + deliveryPrice.toIntRemoveIDR
+            self.totalLabel.text = totalPrice.toIDR
+        }
     }
     
     @IBAction func paymentButtonTapped(_ sender: UIButton) {
@@ -136,7 +152,8 @@ extension TransactionDetailController {
             return cell
         case products.count + 1:
             let cell = tableView.dequeueReusableCell(withCell: ShopTransactionPriceCell.self, for: indexPath)
-            cell.configure(with: 1_170_000)
+            let subtotalPrice = self.viewModel.getTotalProductPricePerSection(with: supplier.id)
+            cell.configure(with: subtotalPrice)
             cell.delegate = self
             return cell
         default:

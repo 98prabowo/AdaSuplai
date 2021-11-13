@@ -11,7 +11,6 @@ import UIKit
 
 class CartController: BaseUIViewController {
     private enum Constant {
-        static let idr = "Rp. "
         static let title = "Keranjang"
         static let totalPrice = "Total Harga"
         static let checkHeader = "Pilih Semua"
@@ -30,6 +29,7 @@ class CartController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel.reloadData()
         self.setupTableView()
         self.setupNavigationBar()
         self.setupPriceBar()
@@ -74,7 +74,7 @@ class CartController: BaseUIViewController {
         self.buyButton.backgroundColor = .primaryGreen
         self.buyButton.setTitleColor(.systemBackground, for: .normal)
         self.buyButton.setTitle(Constant.buyButtonTittle, for: .normal)
-        self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
+        self.price.text = self.viewModel.getViewTotalPrice().toIDR
     }
     
     private func bindToViewModel() {
@@ -82,7 +82,14 @@ class CartController: BaseUIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] _ in
                 self.viewModel.getSupplier()
-                self.price.text = Constant.idr + self.viewModel.getViewTotalPrice().toIDR
+                self.price.text = self.viewModel.getViewTotalPrice().toIDR
+                if self.viewModel.isBuyEnable() {
+                    self.buyButton.isEnabled = true
+                    self.buyButton.backgroundColor = .primaryGreen
+                } else {
+                    self.buyButton.isEnabled = false
+                    self.buyButton.backgroundColor = .gray
+                }
             }.store(in: &subscriber)
     }
     
@@ -181,7 +188,7 @@ extension CartController: CartCellDelegate {
             } else {
                 self.viewModel.uncheckedAll()
             }
-            self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
+            self.price.text = self.viewModel.getViewTotalPrice().toIDR
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -201,7 +208,7 @@ extension CartController: CartCellDelegate {
             } else {
                 self.viewModel.uncheckedSupplier(supplier.id)
             }
-            self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
+            self.price.text = self.viewModel.getViewTotalPrice().toIDR
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -218,7 +225,7 @@ extension CartController: CartCellDelegate {
             } else {
                 self.viewModel.uncheckedProduct(product)
             }
-            self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
+            self.price.text = self.viewModel.getViewTotalPrice().toIDR
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

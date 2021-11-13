@@ -22,11 +22,6 @@ class SimilarProductCell: UITableViewCell {
         self.setupCollectionView()
     }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.publisher = PassthroughSubject<Product, Never>()
-//    }
-    
     private func setupButton() {
         self.seeMoreButton.setTitleColor(.primaryGreen, for: .normal)
     }
@@ -63,7 +58,6 @@ extension SimilarProductCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.collectionView.deselectItem(at: indexPath, animated: true)
-//        guard let publisher = self.pub lisher else { return }
         let product = self.products[indexPath.item]
         publisher.send(product)
     }

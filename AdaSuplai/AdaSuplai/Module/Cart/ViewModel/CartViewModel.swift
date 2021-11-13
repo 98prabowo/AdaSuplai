@@ -10,7 +10,7 @@ import Combine
 import CoreData
 
 class CartViewModel: BaseViewModel {
-    var cart = CurrentValueSubject<Cart, Never>(Cart())
+    var cart = CurrentValueSubject<[Cart], Never>([Cart]())
     var suppliers = [Supplier]()
     
     override init() {
@@ -22,9 +22,7 @@ class CartViewModel: BaseViewModel {
         guard let context = self.context else { return }
         do {
             let request = Cart.fetchRequest() as NSFetchRequest
-            if let cart = try context.fetch(request).first {
-                self.cart.value = cart
-            }
+            self.cart.value = try context.fetch(request)
         } catch {
             print("Fetch Cart in CartViewModel error: \(error.localizedDescription)")
         }
@@ -45,7 +43,7 @@ class CartViewModel: BaseViewModel {
     }
     
     func removeProduct() {
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for productCart in productCarts
             where productCart.isMarked {
                 self.deleteData(productCart)
@@ -56,7 +54,7 @@ class CartViewModel: BaseViewModel {
     }
     
     func getSupplier() {
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in productCarts {
                 let supplierIDs = suppliers.map { $0.id }
                 if let supplierID = product.supplierID,
@@ -72,7 +70,7 @@ class CartViewModel: BaseViewModel {
     
     func getProductPerSection(with supplierID: String) -> [ProductCart] {
         var products = [ProductCart]()
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in productCarts
             where product.supplierID == supplierID {
                 products.append(product)
@@ -94,16 +92,27 @@ class CartViewModel: BaseViewModel {
     
     func isNoProduct() -> Bool {
         var result: Bool = true
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart],
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart],
            !productCarts.isEmpty {
             result = false
         }
         return result
     }
     
+    func isBuyEnable() -> Bool {
+        var result: Bool = false
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
+            for productCart in productCarts
+            where productCart.isMarked {
+                result = true
+            }
+        }
+        return result
+    }
+    
     // MARK: Price Data
     func setSubTotalPrice(from product: ProductCart, and quantity: Int) {
-        if let products = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let products = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for productCart in products
             where productCart.productID == product.productID {
                 productCart.subtotal = product.productPrice * Int64(quantity)
@@ -117,18 +126,18 @@ class CartViewModel: BaseViewModel {
     
     private func setTotalPrice() {
         var result: Int64 = 0
-        if let products = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let products = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in products {
                 result += product.subtotal
             }
-            cart.value.totalPrice = result
+            self.cart.value.first?.totalPrice = result
             self.saveData()
         }
     }
     
     func getViewTotalPrice() -> Int {
         var result: Int = 0
-        if let products = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let products = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in products
             where product.isMarked {
                 result += Int(product.productPrice * product.quantity)
@@ -140,7 +149,7 @@ class CartViewModel: BaseViewModel {
     // MARK: Checkmark Data
     func isAllProductMarked() -> Bool {
         var result: Bool = true
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             if productCarts.isEmpty {
                 result = false
             }
@@ -176,7 +185,7 @@ class CartViewModel: BaseViewModel {
     }
     
     func checkedSupplier(_ supplierID: String) {
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in productCarts
             where product.supplierID == supplierID {
                 self.checkedProduct(product)
@@ -185,7 +194,7 @@ class CartViewModel: BaseViewModel {
     }
     
     func uncheckedSupplier(_ supplierID: String) {
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in productCarts
             where product.supplierID == supplierID {
                 self.uncheckedProduct(product)
