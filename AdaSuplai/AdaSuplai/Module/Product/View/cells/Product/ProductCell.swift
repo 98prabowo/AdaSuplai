@@ -73,7 +73,7 @@ class ProductCell: UICollectionViewCell {
         self.productName.text = product.name
         self.rating.text = "\(product.rating)"
         self.soldCount.text = "\(product.sales) terjual"
-        self.address.text = product.supplier.address.first
+        self.address.text = product.supplier.address?.first ?? ""
         self.unitOfPrice.text = "/ " + product.unit
         self.minimumOrder.text = Constant.minOrder + String(product.minOrder)
         self.productPrice.text = Constant.idr + self.createDiscountPrice(10, from: product.price).toIDR

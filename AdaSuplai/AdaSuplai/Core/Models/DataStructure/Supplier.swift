@@ -9,8 +9,9 @@ import Foundation
 
 struct Supplier: Codable {
     let id, supplierName: String
-    let address: [String]
-    let v: Int
+    let address: [String]?
+    var delivery: Delivery?
+    let v: Int?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

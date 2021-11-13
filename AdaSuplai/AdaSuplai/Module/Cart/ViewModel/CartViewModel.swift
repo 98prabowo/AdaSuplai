@@ -8,14 +8,10 @@
 import Foundation
 import Combine
 import CoreData
-import SwiftUI
-
-typealias SupplierCart = (id: String, name: String)
 
 class CartViewModel: BaseViewModel {
-    let service = RemoteDataService()
     var cart = CurrentValueSubject<Cart, Never>(Cart())
-    var suppliers = [SupplierCart]()
+    var suppliers = [Supplier]()
     
     override init() {
         super.init()
@@ -66,7 +62,7 @@ class CartViewModel: BaseViewModel {
                 if let supplierID = product.supplierID,
                    let supplierName = product.supplierName,
                    !supplierIDs.contains(supplierID) {
-                    let supplier = (supplierID, supplierName)
+                    let supplier = Supplier(id: supplierID, supplierName: supplierName, address: nil, delivery: nil, v: nil)
                     self.suppliers.append(supplier)
                 }
             }

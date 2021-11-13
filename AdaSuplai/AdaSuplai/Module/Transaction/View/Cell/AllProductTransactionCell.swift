@@ -8,42 +8,41 @@
 import UIKit
 
 class AllProductTransactionCell: UITableViewCell {
+    @IBOutlet private var mainTableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var tableViewHeight: NSLayoutConstraint!
     
-    @IBOutlet var mainTableView: UITableView!
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var tableViewHeight: NSLayoutConstraint!
-    var isLast: Bool = false
+    private var products = [ProductCart]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setUpTable()
+        self.setupTableView()
     }
     
-    private func setUpTable() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.allowsSelection = false
-        tableView.isScrollEnabled = false
-        
-        tableView.register(ProductTransactionCell.nib(), forCellReuseIdentifier: ProductTransactionCell.identifier)
-        tableViewHeight.constant = CGFloat(tableView.numberOfRows(inSection: 0) * 70)
+    private func setupTableView() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.allowsSelection = false
+        self.tableView.isScrollEnabled = false
+        self.tableView.registerNib(forCell: ProductTransactionCell.self)
+        self.tableViewHeight.constant = CGFloat(tableView.numberOfRows(inSection: 0) * 70)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
+    func configure(with products: [ProductCart]) {
+        self.products = products
     }
 }
 
 extension AllProductTransactionCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: ProductTransactionCell.self, for: indexPath)
-        cell.productTotal.text = "x \(indexPath.row + 1)"
+        let product = self.products[indexPath.row]
+        cell.configure(with: product)
         return cell
     }
     

@@ -186,6 +186,7 @@
 		C3B49651273AC438006B25FF /* AddToCartBottomSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B4964F273AC438006B25FF /* AddToCartBottomSheetController.xib */; };
 		C3B49653273AD2BE006B25FF /* AddToCartBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B49652273AD2BE006B25FF /* AddToCartBottomSheetViewModel.swift */; };
 		C3B49663273BC7BC006B25FF /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B49662273BC7BC006B25FF /* CartViewModel.swift */; };
+		C3BA70EE2740495A00939CE6 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA70ED2740495A00939CE6 /* Delivery.swift */; };
 		C3C084E12722BAD1007F0762 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */; };
 		C3C94D8927059ABE00688485 /* AdaSuplaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */; };
 		C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */; };
@@ -419,6 +420,7 @@
 		C3B4964F273AC438006B25FF /* AddToCartBottomSheetController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToCartBottomSheetController.xib; sourceTree = "<group>"; };
 		C3B49652273AD2BE006B25FF /* AddToCartBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		C3B49662273BC7BC006B25FF /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		C3BA70ED2740495A00939CE6 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		C3C94D8627059ABE00688485 /* AdaSuplaiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdaSuplaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaSuplaiTests.swift; sourceTree = "<group>"; };
 		C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -630,8 +632,8 @@
 		85201A222733CDAB002F34BC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				85201A232733CDAB002F34BC /* ListDeliveryController.swift */,
 				85201A242733CDAB002F34BC /* TransactionDetailController.swift */,
+				85201A232733CDAB002F34BC /* ListDeliveryController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -648,8 +650,8 @@
 			isa = PBXGroup;
 			children = (
 				85201A282733CDAB002F34BC /* TransactionDetailController.xib */,
-				85201A292733CDAB002F34BC /* Cell */,
 				85201A362733CDAB002F34BC /* ListDeliveryController.xib */,
+				85201A292733CDAB002F34BC /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -657,18 +659,18 @@
 		85201A292733CDAB002F34BC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				85201A2A2733CDAB002F34BC /* ShopTransactionPriceCell.xib */,
 				85201A2B2733CDAB002F34BC /* DeliveryAddressCell.swift */,
+				85201A332733CDAB002F34BC /* DeliveryAddressCell.xib */,
 				85201A2C2733CDAB002F34BC /* ShopTransactionDetailCell.swift */,
-				85201A2D2733CDAB002F34BC /* ShopTransactionPriceCell.swift */,
 				85201A2E2733CDAB002F34BC /* ShopTransactionDetailCell.xib */,
 				85201A2F2733CDAB002F34BC /* ProductTransactionCell.swift */,
+				85201A352733CDAB002F34BC /* ProductTransactionCell.xib */,
+				85201A2D2733CDAB002F34BC /* ShopTransactionPriceCell.swift */,
+				85201A2A2733CDAB002F34BC /* ShopTransactionPriceCell.xib */,
 				85201A302733CDAB002F34BC /* DeliveryCell.swift */,
 				85201A312733CDAB002F34BC /* DeliveryCell.xib */,
-				85201A322733CDAB002F34BC /* AllProductTransactionCell.xib */,
-				85201A332733CDAB002F34BC /* DeliveryAddressCell.xib */,
 				85201A342733CDAB002F34BC /* AllProductTransactionCell.swift */,
-				85201A352733CDAB002F34BC /* ProductTransactionCell.xib */,
+				85201A322733CDAB002F34BC /* AllProductTransactionCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -742,9 +744,9 @@
 		8576F00127209EA800F69D29 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				85201A252733CDAB002F34BC /* ViewModel */,
 				85201A222733CDAB002F34BC /* Controller */,
 				85201A272733CDAB002F34BC /* View */,
-				85201A252733CDAB002F34BC /* ViewModel */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -1062,8 +1064,8 @@
 		C3963BD627217F710017AAB6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C3963BD727217F710017AAB6 /* Cells */,
 				C3963BDF27217F710017AAB6 /* Cart.storyboard */,
+				C3963BD727217F710017AAB6 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1402,6 +1404,7 @@
 				C308FAF1273E7E1700301A1C /* Product.swift */,
 				C308FAF6273E7E1700301A1C /* Supplier.swift */,
 				C308FAEF273E75C400301A1C /* CDPublisher.swift */,
+				C3BA70ED2740495A00939CE6 /* Delivery.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -1675,6 +1678,7 @@
 				85201A062733CD45002F34BC /* ProfileUserCell.swift in Sources */,
 				C3963BE627217F710017AAB6 /* CartHeaderCell.swift in Sources */,
 				C3E584B7273191940050CE3E /* Extension-Data.swift in Sources */,
+				C3BA70EE2740495A00939CE6 /* Delivery.swift in Sources */,
 				C32BF8BA2718066F00658994 /* ProductAttributesCollectionCell.swift in Sources */,
 				C3CBECBC2716E33B00622FE1 /* SimilarProductCell.swift in Sources */,
 				C308FAFB273E7E1700301A1C /* Category.swift in Sources */,
