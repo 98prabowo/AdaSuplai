@@ -14,7 +14,6 @@ class CartHeaderCell: UITableViewCell {
     @IBOutlet private weak var deleteButton: UIButton!
     
     weak var delegate: CartCellDelegate?
-    private var indexPath: IndexPath?
     
     private var checkLabel = "Pilih Semua" {
         didSet {
@@ -54,8 +53,7 @@ class CartHeaderCell: UITableViewCell {
         self.deleteButton.setTitle(self.deleteLabel, for: .normal)
     }
     
-    func configure(checkLabel: String, deleteLabel: String, indexPath: IndexPath) {
-        self.indexPath = indexPath
+    func configure(checkLabel: String, deleteLabel: String) {
         self.checkLabel = checkLabel
         self.deleteButton.setTitle(deleteLabel, for: .normal)
     }
@@ -70,9 +68,8 @@ class CartHeaderCell: UITableViewCell {
     
     @IBAction func checkmarkTapped(_ sender: UIButton) {
         self.isMarked = !self.isMarked
-        guard let delegate = self.delegate,
-        let indexPath = self.indexPath else { return }
-        delegate.cartHeaderAction(actions: .select(indexPath: indexPath, state: isMarked))
+        guard let delegate = self.delegate else { return }
+        delegate.cartHeaderAction(actions: .select(state: isMarked))
     }
     
     @IBAction func deleteTapped(_ sender: UIButton) {
@@ -82,6 +79,6 @@ class CartHeaderCell: UITableViewCell {
 }
 
 enum CartHeaderCellAction {
-    case select(indexPath: IndexPath, state: Bool)
+    case select(state: Bool)
     case delete
 }

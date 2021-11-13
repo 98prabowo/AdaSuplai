@@ -15,8 +15,12 @@ typealias SupplierCart = (id: String, name: String)
 class CartViewModel: BaseViewModel {
     let service = RemoteDataService()
     var cart = CurrentValueSubject<Cart, Never>(Cart())
-//    var products = CurrentValueSubject<[Product], Never>([Product]())
     var suppliers = [SupplierCart]()
+    
+    override init() {
+        super.init()
+        self.fetchCart()
+    }
     
     private func fetchCart() {
         guard let context = self.context else { return }
@@ -30,29 +34,6 @@ class CartViewModel: BaseViewModel {
         }
     }
     
-//    func getProduct() async {
-//        guard let products = self.cart.value.products,
-//              let productArray = products.allObjects as? [ProductCart] else { return }
-//        var productsTemp = [Product]()
-//        for product in productArray {
-//            if let id = product.productID,
-//               let product = await self.fetchProduct(by: id) {
-//                productsTemp.append(product)
-//            }
-//        }
-//        self.products.value = productsTemp.sorted { $0.id < $1.id }
-//    }
-//
-//    private func fetchProduct(by id: String) async -> Product? {
-//        do {
-//            let product = try await self.service.getData(Product.self, url: .searchProductByID, keyword: id)
-//            return product
-//        } catch {
-//            print("Fetch Product in CartViewModel error: \(error.localizedDescription)")
-//        }
-//        return nil
-//    }
-    
     private func cleanSupplierData() {
         for (index, supplier) in self.suppliers.enumerated() {
             let products = self.getProductPerSection(with: supplier.id)
@@ -65,9 +46,6 @@ class CartViewModel: BaseViewModel {
     // MARK: Communication Data
     func reloadData() {
         self.fetchCart()
-//        Task {
-//            await self.getProduct()
-//        }
     }
     
     func removeProduct() {
@@ -127,25 +105,13 @@ class CartViewModel: BaseViewModel {
         return result
     }
     
-//    func getQuantity(of product: Product) -> Int {
-//        var result: Int = 0
-//        if let productCarts = self.cart.value.products,
-//           let productArray = productCarts.allObjects as? [ProductCart] {
-//            for productInCart in productArray
-//            where productInCart.productID == product.id {
-//                result = Int(productInCart.quantity)
-//            }
-//        }
-//        return result
-//    }
-    
     // MARK: Price Data
-    func setSubTotalPrice(from product: ProductCart) {
+    func setSubTotalPrice(from product: ProductCart, and quantity: Int) {
         if let products = self.cart.value.products?.allObjects as? [ProductCart] {
             for productCart in products
             where productCart.productID == product.productID {
-                productCart.subtotal = product.productPrice * Int64(product.quantity)
-                productCart.quantity = Int64(product.quantity)
+                productCart.subtotal = product.productPrice * Int64(quantity)
+                productCart.quantity = Int64(quantity)
                 self.saveData()
             }
         }
@@ -166,12 +132,12 @@ class CartViewModel: BaseViewModel {
     
     func getViewTotalPrice() -> Int {
         var result: Int = 0
-//        if let products = self.cart.value.products?.allObjects as? [ProductCart] {
-//            for product in products
-//            where product.isMarked {
-//                result += Int(product.productPrice * product.quantity)
-//            }
-//        }
+        if let products = self.cart.value.products?.allObjects as? [ProductCart] {
+            for product in products
+            where product.isMarked {
+                result += Int(product.productPrice * product.quantity)
+            }
+        }
         return result
     }
     
@@ -198,30 +164,8 @@ class CartViewModel: BaseViewModel {
         where !product.isMarked {
             result = false
         }
-        
-//        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
-//            for product in products {
-//                for productCart in productCarts
-//                where product.id == productCart.productID &&
-//                      !productCart.isMarked {
-//                    result = false
-//                }
-//            }
-//        }
         return result
     }
-    
-//    func isProductMarked(_ product: Product) -> Bool {
-//        var result: Bool = false
-//        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
-//            for productCart in productCarts
-//            where productCart.productID == product.id &&
-//                  productCart.isMarked {
-//                result = true
-//            }
-//        }
-//        return result
-//    }
     
     func checkedAll() {
         for supplier in suppliers {
@@ -256,36 +200,10 @@ class CartViewModel: BaseViewModel {
     func checkedProduct(_ product: ProductCart) {
         product.isMarked = true
         self.saveData()
-//        if let cartProducts = self.cart.value.products?.allObjects as? [ProductCart] {
-//            for cartProduct in cartProducts
-//            where cartProduct.productID == product.id {
-//                cartProduct.isMarked = true
-//                self.saveData()
-//            }
-//        }
     }
     
     func uncheckedProduct(_ product: ProductCart) {
         product.isMarked = false
         self.saveData()
-//        if let cartProducts = self.cart.value.products?.allObjects as? [ProductCart] {
-//            for cartProduct in cartProducts
-//            where cartProduct.productID == product.id {
-//                cartProduct.isMarked = false
-//                self.saveData()
-//            }
-//        }
-    }
-    
-    func dataCheck() {
-        if let cartProducts = self.cart.value.products?.allObjects as? [ProductCart] {
-            var counter = 0
-            let checks = cartProducts.map { $0.isMarked }
-            for checked in checks
-            where checked {
-                counter += 1
-            }
-            print(counter)
-        }
     }
 }

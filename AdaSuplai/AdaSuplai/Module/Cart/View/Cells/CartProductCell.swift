@@ -26,10 +26,8 @@ class CartProductCell: UITableViewCell {
     @IBOutlet private weak var quantityCounter: AdaSuplaiStepper!
     @IBOutlet private weak var bottomSpace: NSLayoutConstraint!
     
-    var publisher: PassthroughSubject<CartProductCellAction, Never>?
     weak var delegate: CartCellDelegate?
     private var product: ProductCart?
-    private var indexPath: IndexPath?
     
     private var isMarked: Bool = false {
         didSet {
@@ -47,11 +45,6 @@ class CartProductCell: UITableViewCell {
         self.setupButton()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.publisher = PassthroughSubject<CartProductCellAction, Never>()
-    }
-    
     private func setupBackground() {
         self.containerView.addShadow()
         self.productImage.layer.cornerRadius = 10
@@ -64,8 +57,7 @@ class CartProductCell: UITableViewCell {
         self.quantityCounter.delegate = self
     }
     
-    func configure(with product: ProductCart, indexPath: IndexPath) {
-        self.indexPath = indexPath
+    func configure(with product: ProductCart) {
         self.product = product
         self.productPrice.text = product.productPrice.toIDR
         self.productName.text = product.productName
@@ -100,9 +92,8 @@ class CartProductCell: UITableViewCell {
     @IBAction func checkmarkTapped(_ sender: UIButton) {
         self.isMarked = !self.isMarked
         guard let delegate = self.delegate,
-              let product = self.product,
-              let indexPath = self.indexPath else { return }
-        delegate.cartProductActions(actions: .select(product: product, indexPath: indexPath, state: isMarked))
+              let product = self.product else { return }
+        delegate.cartProductActions(actions: .select(product: product, state: isMarked))
     }
     
     @IBAction func addNoteButtonTapped(_ sender: UIButton) {
@@ -113,12 +104,13 @@ extension CartProductCell: AdaSuplaiStepperDelegate {
     func valueDidChange(value: Double) {
         guard let delegate = delegate,
               let product = self.product else { return }
-        delegate.cartProductActions(actions: .stepperChange(product: product))
+        delegate.cartProductActions(actions: .stepperChange(product: product,
+                                                            quantity: Int(value)))
     }
 }
 
 enum CartProductCellAction {
-    case stepperChange(product: ProductCart)
-    case select(product: ProductCart, indexPath: IndexPath, state: Bool)
+    case stepperChange(product: ProductCart, quantity: Int)
+    case select(product: ProductCart, state: Bool)
     case addNotes
 }

@@ -27,7 +27,6 @@ class CartController: BaseUIViewController {
     
     private let viewModel = CartViewModel()
     private var subscriber = Set<AnyCancellable>()
-    private var indexPaths = [IndexPath]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,23 +79,12 @@ class CartController: BaseUIViewController {
     }
     
     private func bindToViewModel() {
-        var i = 0
         self.viewModel.cart
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] _ in
-                i += 1
-                print(i)
                 self.viewModel.getSupplier()
-                self.tableView.reloadData()
-                self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
+                self.price.text = Constant.idr + self.viewModel.getViewTotalPrice().toIDR
             }.store(in: &subscriber)
-        
-//        self.viewModel.products
-//            .receive(on: DispatchQueue.main)
-//            .sink { [unowned self] _ in
-//                self.viewModel.getSupplier()
-//                self.tableView.reloadData()
-//            }.store(in: &subscriber)
     }
     
     private func getCellForHeader(indexPath: IndexPath) -> UITableViewCell {
@@ -107,8 +95,7 @@ class CartController: BaseUIViewController {
             let cell = tableView.dequeueReusableCell(withCell: CartHeaderCell.self, for: indexPath)
             cell.delegate = self
             cell.configure(checkLabel: Constant.checkHeader,
-                           deleteLabel: Constant.deleteText,
-                           indexPath: indexPath)
+                           deleteLabel: Constant.deleteText)
             if self.viewModel.isAllProductMarked() {
                 cell.checkmarkHeader()
             } else {
@@ -125,7 +112,7 @@ class CartController: BaseUIViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withCell: CartSupplierCell.self, for: indexPath)
             cell.delegate = self
-            cell.configure(with: supplier, indexPath: indexPath)
+            cell.configure(with: supplier)
             cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.frame.width, bottom: 0, right: 0)
             if self.viewModel.isAllProductInSectionMarked(supplier.id) {
                 cell.checkmarkSupplier()
@@ -137,8 +124,7 @@ class CartController: BaseUIViewController {
             let cell = tableView.dequeueReusableCell(withCell: CartProductCell.self, for: indexPath)
             let product = products[indexPath.row - 1]
             cell.delegate = self
-            cell.configure(with: product,
-                           indexPath: indexPath)
+            cell.configure(with: product)
             if product.isMarked {
                 cell.checkmarkProduct()
             } else {
@@ -148,13 +134,6 @@ class CartController: BaseUIViewController {
         }
     }
     
-//    private func deleteIndexPath(at indexPath: IndexPath) {
-//        for (index, path) in self.indexPaths.enumerated()
-//        where path.row == indexPath.row && path.section == indexPath.section {
-//            self.indexPaths.remove(at: index)
-//        }
-//    }
-    
     @IBAction func buyButtonTapped(_ sender: UIButton) {
         print("BUY ITEM")
     }
@@ -162,7 +141,6 @@ class CartController: BaseUIViewController {
 
 extension CartController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("Count Supplier: \(self.viewModel.suppliers.count)")
         return self.viewModel.suppliers.count + 1
     }
     
@@ -172,7 +150,6 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
             return 1
         default:
             let supplierID = self.viewModel.suppliers[section - 1].id
-            print("Count \(section): \(self.viewModel.getProductCountPerSection(with: supplierID))")
             return self.viewModel.getProductCountPerSection(with: supplierID) + 1
         }
     }
@@ -190,13 +167,11 @@ extension CartController: UITableViewDelegate, UITableViewDataSource {
 extension CartController: CartCellDelegate {
     func cartHeaderAction(actions: CartHeaderCellAction) {
         switch actions {
-        case .select(let indexPath, let isMarked):
+        case .select(let isMarked):
             if isMarked {
                 self.viewModel.checkedAll()
-                self.indexPaths.append(indexPath)
             } else {
                 self.viewModel.uncheckedAll()
-//                self.deleteIndexPath(at: indexPath)
             }
             self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
             DispatchQueue.main.async {
@@ -204,22 +179,19 @@ extension CartController: CartCellDelegate {
             }
         case .delete:
             self.viewModel.removeProduct()
-//            DispatchQueue.main.async {
-//                self.tableView.deleteRows(at: self.indexPaths,
-//                                          with: .automatic)
-//            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
     func cartSupplierAction(actions: CartSupplierCellAction) {
         switch actions {
-        case .select(let supplier, let indexPath, let isMarked):
+        case .select(let supplier, let isMarked):
             if isMarked {
                 self.viewModel.checkedSupplier(supplier.id)
-                self.indexPaths.append(indexPath)
             } else {
                 self.viewModel.uncheckedSupplier(supplier.id)
-//                self.deleteIndexPath(at: indexPath)
             }
             self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
             DispatchQueue.main.async {
@@ -230,15 +202,13 @@ extension CartController: CartCellDelegate {
     
     func cartProductActions(actions: CartProductCellAction) {
         switch actions {
-        case .stepperChange(let product):
-            self.viewModel.setSubTotalPrice(from: product)
-        case .select(let product, let indexPath, let isMarked):
+        case .stepperChange(let product, let quantity):
+            self.viewModel.setSubTotalPrice(from: product, and: quantity)
+        case .select(let product, let isMarked):
             if isMarked {
                 self.viewModel.checkedProduct(product)
-                self.indexPaths.append(indexPath)
             } else {
                 self.viewModel.uncheckedProduct(product)
-//                self.deleteIndexPath(at: indexPath)
             }
             self.price.text = Constant.idr +  self.viewModel.getViewTotalPrice().toIDR
             DispatchQueue.main.async {
