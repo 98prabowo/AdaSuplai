@@ -13,7 +13,7 @@
                 <outlet property="deliveryTotalLabel" destination="O7P-L6-6aJ" id="P7R-tk-yBd"/>
                 <outlet property="paymentButton" destination="Y5X-Z6-TvD" id="7kG-PH-akb"/>
                 <outlet property="priceBar" destination="UcQ-c5-IRe" id="Wzf-xK-qga"/>
-                <outlet property="subTotalLabel" destination="eL8-vD-vfF" id="G5y-F6-xGs"/>
+                <outlet property="productTotalLabel" destination="eL8-vD-vfF" id="G5y-F6-xGs"/>
                 <outlet property="tableView" destination="pdj-7x-6GE" id="lNI-yl-qe0"/>
                 <outlet property="totalLabel" destination="HgS-1P-rL3" id="avT-Ml-qb1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -43,8 +43,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp.  2.340.000,-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL8-vD-vfF">
-                                            <rect key="frame" x="235.5" y="0.0" width="118.5" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp.  2.340.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL8-vD-vfF">
+                                            <rect key="frame" x="246.5" y="0.0" width="107.5" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -60,8 +60,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp.  50.000,-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7P-L6-6aJ">
-                                            <rect key="frame" x="258.5" y="0.0" width="95.5" height="19"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp.  50.000,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7P-L6-6aJ">
+                                            <rect key="frame" x="247" y="0.0" width="107" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -77,8 +77,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp.  2.390.000,-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgS-1P-rL3">
-                                            <rect key="frame" x="220" y="0.0" width="134" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp.  2.390.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgS-1P-rL3">
+                                            <rect key="frame" x="232.5" y="0.0" width="121.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

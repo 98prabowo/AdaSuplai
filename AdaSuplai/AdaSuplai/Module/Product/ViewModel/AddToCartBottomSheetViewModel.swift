@@ -74,11 +74,12 @@ class AddToCartBottomSheetViewModel: BaseViewModel {
                 cart.addToProducts(productCart)
             }
             cart.totalPrice = self.getTotalPrice()
+            self.saveData()
         } else {
             let cart = Cart(context: context)
             cart.addToProducts(productCart)
             cart.totalPrice = self.getTotalPrice()
+            self.saveData()
         }
-        self.saveData()
     }
 }

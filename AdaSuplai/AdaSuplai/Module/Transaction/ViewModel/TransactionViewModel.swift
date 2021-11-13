@@ -10,7 +10,7 @@ import Combine
 import CoreData
 
 class TransactionViewModel: BaseViewModel {
-    var cart = CurrentValueSubject<Cart, Never>(Cart())
+    var cart = CurrentValueSubject<[Cart], Never>([Cart]())
     var suppliers = [Supplier]()
     
     override init() {
@@ -22,9 +22,7 @@ class TransactionViewModel: BaseViewModel {
         guard let context = self.context else { return }
         do {
             let request = Cart.fetchRequest() as NSFetchRequest
-            if let cart = try context.fetch(request).first {
-                self.cart.value = cart
-            }
+            self.cart.value = try context.fetch(request)
         } catch {
             print("Fetch Cart in CartViewModel error: \(error.localizedDescription)")
         }
@@ -36,7 +34,7 @@ class TransactionViewModel: BaseViewModel {
     }
     
     func getSupplier() {
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in productCarts {
                 let supplierIDs = suppliers.map { $0.id }
                 if let supplierID = product.supplierID,
@@ -51,9 +49,9 @@ class TransactionViewModel: BaseViewModel {
     
     func getProductPerSection(with supplierID: String) -> [ProductCart] {
         var products = [ProductCart]()
-        if let productCarts = self.cart.value.products?.allObjects as? [ProductCart] {
+        if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in productCarts
-            where product.supplierID == supplierID {
+            where product.supplierID == supplierID && product.isMarked {
                 products.append(product)
             }
             
@@ -71,9 +69,18 @@ class TransactionViewModel: BaseViewModel {
         return products.count
     }
     
-    func getViewTotalPrice() -> Int {
+    func getTotalProductPricePerSection(with supplierID: String) -> Int {
         var result: Int = 0
-        if let products = self.cart.value.products?.allObjects as? [ProductCart] {
+        let products = self.getProductPerSection(with: supplierID)
+        for product in products {
+            result += Int(product.productPrice * product.quantity)
+        }
+        return result
+    }
+    
+    func getTotalProductPrice() -> Int {
+        var result: Int = 0
+        if let products = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in products
             where product.isMarked {
                 result += Int(product.productPrice * product.quantity)

@@ -87,16 +87,18 @@ class AddToCartBottomSheetController: BaseUIViewController {
         if isAdded {
             self.dismiss(animated: false) { [unowned self] in
                 self.publisher.send(.goToCart)
-                let product = self.viewModel.product
-                let quantity = Int(self.productQuantity.value)
-                self.viewModel.addToCartData(product: product,
-                                             quantity: quantity)
             }
         } else {
+            let product = self.viewModel.product
+            let quantity = Int(self.productQuantity.value)
+            self.viewModel.addToCartData(product: product,
+                                         quantity: quantity)
+            
             self.successLabel.isHidden = false
             self.productQuantity.isHidden = true
             self.isAdded = true
-            self.addToCartButton.setTitle(Constant.showCartButton, for: .normal)
+            self.addToCartButton.setTitle(Constant.showCartButton,
+                                          for: .normal)
         }
     }
 }

@@ -10,7 +10,6 @@ import Kingfisher
 
 class ProductCell: UICollectionViewCell {
     private enum Constant {
-        static let idr = "Rp."
         static let minOrder = "Min. Order"
     }
     
@@ -76,7 +75,7 @@ class ProductCell: UICollectionViewCell {
         self.address.text = product.supplier.address?.first ?? ""
         self.unitOfPrice.text = "/ " + product.unit
         self.minimumOrder.text = Constant.minOrder + String(product.minOrder)
-        self.productPrice.text = Constant.idr + self.createDiscountPrice(10, from: product.price).toIDR
+        self.productPrice.text = self.createDiscountPrice(10, from: product.price).toIDR
         guard let url = URL(string: RemoteURL.image.rawValue + product.image) else { return }
         self.setupImage(url: url)
     }
@@ -95,7 +94,7 @@ class ProductCell: UICollectionViewCell {
     }
     
     func isDiscount(product: Product) {
-        let price = Constant.idr + product.price.toIDR
+        let price = product.price.toIDR
         self.realPrice.attributedText = price.strikethroughText
         self.realPrice.textColor = .alert
         self.discountPercentage.text = " 10% "

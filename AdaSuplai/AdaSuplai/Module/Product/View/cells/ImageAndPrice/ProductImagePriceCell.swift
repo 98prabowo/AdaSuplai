@@ -9,7 +9,6 @@ import UIKit
 
 class ProductImagePriceCell: UITableViewCell {
     private enum Constant {
-        static let idr = "Rp. "
         static let wishlisted = "heart.fill"
         static let notwishlist = "heart"
     }
@@ -76,7 +75,7 @@ class ProductImagePriceCell: UITableViewCell {
         self.product = product
         self.productName.text = product.name
         self.rating.text = "\(product.rating)"
-        self.price.text = Constant.idr + product.price.toIDR
+        self.price.text = product.price.toIDR
         self.reviewQuantity.text = "102 Ulasan"
     }
 }

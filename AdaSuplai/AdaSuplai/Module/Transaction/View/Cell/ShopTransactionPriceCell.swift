@@ -9,7 +9,6 @@ import UIKit
 
 class ShopTransactionPriceCell: UITableViewCell {
     private enum Constant {
-        static let idr = "Rp. "
         static let productSubtotal = "Subtotal Produk"
         static let deliverySubtotal = "Subtotal Pengiriman"
         static let delivaryButton = "Pilihan Pengiriman"
@@ -51,7 +50,7 @@ class ShopTransactionPriceCell: UITableViewCell {
     }
     
     func configure(with subTotalPrice: Int) {
-        self.subTotalProductPrice.text = Constant.idr + subTotalPrice.toIDR
+        self.subTotalProductPrice.text = subTotalPrice.toIDR
     }
     
     @objc private func deliveryButtonClicked(_ sender: UITapGestureRecognizer) {
