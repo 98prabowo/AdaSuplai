@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6Q-mw-5YG">
-                        <rect key="frame" x="15" y="30" width="290" height="50"/>
+                        <rect key="frame" x="15" y="16" width="290" height="50"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="1hJ-Sn-drA">
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
@@ -66,7 +66,7 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pK9-de-cIU">
-                        <rect key="frame" x="15" y="100" width="290" height="44"/>
+                        <rect key="frame" x="15" y="86" width="290" height="44"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bh9-gi-zlh">
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="19.5"/>
@@ -116,7 +116,7 @@
                     <constraint firstAttribute="trailing" secondItem="b6Q-mw-5YG" secondAttribute="trailing" constant="15" id="II3-eM-KHX"/>
                     <constraint firstItem="b6Q-mw-5YG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="IT4-rn-rq6"/>
                     <constraint firstAttribute="bottom" secondItem="pK9-de-cIU" secondAttribute="bottom" constant="16" id="YqJ-3O-G9k"/>
-                    <constraint firstItem="b6Q-mw-5YG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="a14-TE-64G"/>
+                    <constraint firstItem="b6Q-mw-5YG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="a14-TE-64G"/>
                     <constraint firstAttribute="trailing" secondItem="pK9-de-cIU" secondAttribute="trailing" constant="15" id="i2m-ZS-oBe"/>
                     <constraint firstItem="pK9-de-cIU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mhd-FT-LIP"/>
                 </constraints>
@@ -132,7 +132,7 @@
                 <outlet property="subTotalProductPrice" destination="gWi-S0-Yez" id="pCF-Iw-Scl"/>
                 <outlet property="subTotalProductText" destination="bWr-3k-gt4" id="F2w-4Y-tlH"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="153.68303571428569"/>
+            <point key="canvasLocation" x="131.8840579710145" y="153.01339285714286"/>
         </tableViewCell>
     </objects>
     <resources>
