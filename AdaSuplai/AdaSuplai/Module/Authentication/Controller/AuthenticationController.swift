@@ -108,7 +108,6 @@ class AuthenticationController: BaseUIViewController {
     
     // MARK: - Action
     @IBAction func forgotPasswordClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
         print("Forgot Password")
     }
     
