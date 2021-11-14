@@ -30,10 +30,14 @@ class AuthenticationController: BaseUIViewController {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var warningLabel: UILabel!
+    
+    private var AuthVM = AuthenticationViewModel()
+    private var userDefault = UserDefaults()
+    private var isSuccess = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initializeHideKeyboard()
         setUpView()
         setupTextField()
         setupKeyboard()
@@ -43,7 +47,26 @@ class AuthenticationController: BaseUIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUpNavigationBar(isHidden: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setUpNavigationBar(isHidden: false)
+    }
+    
+    private func setUpView() {
+        view.backgroundColor = .primaryGreen
+        bottomContainerView.backgroundColor = .blueBackground
+        forgotPasswordButton.tintColor = .white
+        loginButton.tintColor = .primaryGreen
+        signupButton.tintColor = .primaryGreen
+        warningLabel.textColor = .alert
+        warningLabel.text = ""
+    }
+    
     private func setupKeyboard() {
+        self.initializeHideKeyboard()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -55,9 +78,97 @@ class AuthenticationController: BaseUIViewController {
                                                object: nil)
     }
     
+    private func setupTextField() {
+        usernameTextField.placeholder = Constant.usernamePlaceholder
+        passwordTextField.placeholder = Constant.passwordPlaceholder
+        
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        stackView.layer.cornerRadius = 8
+        stackView.layoutMargins = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
+        stackView.isLayoutMarginsRelativeArrangement = true
+    }
+    
+    private func checkIsLogin() {
+        if userDefault.bool(forKey: "isLogin") {
+            self.tabBarController?.selectedIndex = 0
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    // MARK: - Navigation Bar
+    private func setUpNavigationBar(isHidden: Bool) {
+        navigationController?.navigationBar.isHidden = true
+        guard let navigation = self.navigationController else { return }
+        navigation.navigationBar.isHidden = isHidden
+        navigation.navigationItem.hidesBackButton = true
+        navigation.navigationBar.tintColor = .white
+    }
+    
+    // MARK: - Action
+    @IBAction func forgotPasswordClicked(_ sender: Any) {
+        print("Forgot Password")
+    }
+    
+    @IBAction func loginClicked(_ sender: Any) {
+        self.warningLabel.text = ""
+        if !usernameTextField.text!.isEmpty && !passwordTextField.text!.isEmpty {
+        AuthVM.loginUser(phone: usernameTextField.text!, password: passwordTextField.text!) { result in
+                if result {
+                    print("Masuk Profile")
+                    self.userDefault.set(true, forKey: "isLogin")
+                    
+                    DispatchQueue.main.async { () -> Void in
+                        self.checkIsLogin()
+                    }
+                    
+                } else {
+                    DispatchQueue.main.async { () -> Void in
+                        self.warningLabel.text = self.AuthVM.response
+                    }
+                    print("Failed")
+                }
+            }
+        } else {
+            warningLabel.text = "Please fill all field"
+        }
+    }
+    
+    @IBAction func signupClicked(_ sender: Any) {
+        print("Signup")
+        let nextVC = SignUpController()
+        nextVC.hidesBottomBarWhenPushed = true
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
+    }
+}
+
+// MARK: - Textfield
+extension AuthenticationController: UITextFieldDelegate {
+    private func switchTextField(_ textField: UITextField) {
+        switch textField {
+        case self.usernameTextField:
+            self.passwordTextField.becomeFirstResponder()
+        case self.passwordTextField:
+            self.passwordTextField.resignFirstResponder()
+        default:
+            self.usernameTextField.becomeFirstResponder()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.switchTextField(textField)
+        return true
+    }
+}
+
+// MARK: - Keyboard
+extension AuthenticationController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue? {
-            let height = (frame?.cgRectValue.height)! / 1.35
+            let height = (frame?.cgRectValue.height)! - (tabBarController?.tabBar.frame.height)!
             stackViewTop.spacing = 16
             bottomConstraint.constant = height
             keyboradCount += 1
@@ -71,40 +182,5 @@ class AuthenticationController: BaseUIViewController {
         bottomConstraint.constant = 0
         containerViewHeight.constant = 0
         keyboradCount = 0
-    }
-    
-    private func setUpView() {
-        view.backgroundColor = .primaryGreen
-        bottomContainerView.backgroundColor = .blueBackground
-        forgotPasswordButton.tintColor = .white
-        loginButton.tintColor = .primaryGreen
-        signupButton.tintColor = .primaryGreen
-        navigationController?.navigationBar.isHidden = true
-    }
-    
-    private func setupTextField() {
-        usernameTextField.placeholder = Constant.usernamePlaceholder
-        passwordTextField.placeholder = Constant.passwordPlaceholder
-        stackView.layer.cornerRadius = 8
-        stackView.layoutMargins = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
-        stackView.isLayoutMarginsRelativeArrangement = true
-    }
-    
-    @IBAction func forgotPasswordClicked(_ sender: Any) {
-        print("Forgot Password")
-    }
-    
-    @IBAction func loginClicked(_ sender: Any) {
-        if !usernameTextField.text!.isEmpty && !passwordTextField.text!.isEmpty {
-            print("Login")
-        }
-    }
-    
-    @IBAction func signupClicked(_ sender: Any) {
-        print("Signup")
-        let nextVC = SignUpController()
-        if let navigationController = self.navigationController {
-            navigationController.pushViewController(nextVC, animated: true)
-        }
     }
 }

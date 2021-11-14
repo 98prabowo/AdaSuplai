@@ -21,4 +21,8 @@ enum RemoteURL: String {
     case supplier = "https://adasuplai-api-env-staging.herokuapp.com/supplier/fetch"
     case searchSupplier = "https://adasuplai-api-env-staging.herokuapp.com/supplier/info/"
     case virtualAccount = "https://adasuplai-api-env-staging.herokuapp.com/payment/va/list"
+    case verifyOtp = "https://adasuplai-api-env-staging.herokuapp.com/api/user/verifyOTP"
+    case login = "https://adasuplai-api-env-staging.herokuapp.com/api/user/login"
+    case register = "https://adasuplai-api-env-staging.herokuapp.com/api/user/register"
+    case resendOtp = "https://adasuplai-api-env-staging.herokuapp.com/api/user/generateOTP"
 }

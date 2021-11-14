@@ -7,33 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		852019F32733CD45002F34BC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019D02733CD45002F34BC /* ProfileViewModel.swift */; };
-		852019F42733CD45002F34BC /* ProfileAllOrderStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019D22733CD45002F34BC /* ProfileAllOrderStatusController.swift */; };
-		852019F52733CD45002F34BC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019D32733CD45002F34BC /* ProfileViewController.swift */; };
-		852019F62733CD45002F34BC /* ProfileSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019D42733CD45002F34BC /* ProfileSettingController.swift */; };
-		852019F72733CD45002F34BC /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852019D62733CD45002F34BC /* Profile.storyboard */; };
-		852019F82733CD45002F34BC /* ProfileAllOrderStatusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019D72733CD45002F34BC /* ProfileAllOrderStatusController.xib */; };
-		852019F92733CD45002F34BC /* ProfileSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019D82733CD45002F34BC /* ProfileSettingController.xib */; };
-		852019FA2733CD45002F34BC /* StatusOrderCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019DA2733CD45002F34BC /* StatusOrderCollectionCell.swift */; };
-		852019FB2733CD45002F34BC /* StatusOrderCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019DB2733CD45002F34BC /* StatusOrderCollectionCell.xib */; };
-		852019FC2733CD45002F34BC /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019DC2733CD45002F34BC /* TextCell.xib */; };
-		852019FD2733CD45002F34BC /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019DD2733CD45002F34BC /* SeparatorCell.swift */; };
-		852019FE2733CD45002F34BC /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019DE2733CD45002F34BC /* SeparatorCell.xib */; };
-		852019FF2733CD45002F34BC /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019DF2733CD45002F34BC /* TextCell.swift */; };
-		85201A002733CD45002F34BC /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019E02733CD45002F34BC /* InformationCell.xib */; };
-		85201A012733CD45002F34BC /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019E12733CD45002F34BC /* InformationCell.swift */; };
-		85201A022733CD45002F34BC /* ProfileTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019E42733CD45002F34BC /* ProfileTransactionCell.xib */; };
-		85201A032733CD45002F34BC /* ProfileTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019E52733CD45002F34BC /* ProfileTransactionCell.swift */; };
-		85201A042733CD45002F34BC /* TransactionActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019E62733CD45002F34BC /* TransactionActivityCell.swift */; };
-		85201A052733CD45002F34BC /* TransactionActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019E72733CD45002F34BC /* TransactionActivityCell.xib */; };
-		85201A062733CD45002F34BC /* ProfileUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019E92733CD45002F34BC /* ProfileUserCell.swift */; };
-		85201A072733CD45002F34BC /* ProfileUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019EA2733CD45002F34BC /* ProfileUserCell.xib */; };
-		85201A082733CD45002F34BC /* ProfileInformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019EC2733CD45002F34BC /* ProfileInformationsCell.swift */; };
-		85201A092733CD45002F34BC /* ProfileInformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019ED2733CD45002F34BC /* ProfileInformationsCell.xib */; };
-		85201A0A2733CD45002F34BC /* ProfileOrderStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019EF2733CD45002F34BC /* ProfileOrderStatusCell.xib */; };
-		85201A0B2733CD45002F34BC /* OrderSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852019F02733CD45002F34BC /* OrderSmallCell.xib */; };
-		85201A0C2733CD45002F34BC /* ProfileOrderStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019F12733CD45002F34BC /* ProfileOrderStatusCell.swift */; };
-		85201A0D2733CD45002F34BC /* OrderSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019F22733CD45002F34BC /* OrderSmallCell.swift */; };
 		85201A1A2733CD94002F34BC /* SearchUpdaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A0F2733CD94002F34BC /* SearchUpdaterViewModel.swift */; };
 		85201A1B2733CD94002F34BC /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A102733CD94002F34BC /* SearchResultViewModel.swift */; };
 		85201A1C2733CD94002F34BC /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201A122733CD94002F34BC /* SearchResultController.swift */; };
@@ -70,22 +43,51 @@
 		8576EFD827208D8B00F69D29 /* SeeMoreCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8576EFCD27208D8B00F69D29 /* SeeMoreCategoryCollectionCell.swift */; };
 		8576EFD927208D8B00F69D29 /* CategoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8576EFCE27208D8B00F69D29 /* CategoryController.xib */; };
 		859DD87927313D15000FFD53 /* Extension-UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859DD87827313D15000FFD53 /* Extension-UIViewController.swift */; };
-		85AF807E272F00C300035658 /* SignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8077272F00C200035658 /* SignUpController.xib */; };
-		85AF807F272F00C300035658 /* SignUpPageRouteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8078272F00C200035658 /* SignUpPageRouteController.xib */; };
-		85AF8080272F00C300035658 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF807A272F00C200035658 /* TextFieldCell.swift */; };
-		85AF8081272F00C300035658 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF807B272F00C200035658 /* TextFieldCell.xib */; };
-		85AF8082272F00C300035658 /* OTPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF807C272F00C200035658 /* OTPController.xib */; };
-		85AF8083272F00C300035658 /* AccountInformationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AF807D272F00C300035658 /* AccountInformationController.xib */; };
-		85AF8088272F013700035658 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8084272F013700035658 /* SignUpController.swift */; };
-		85AF8089272F013700035658 /* OTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8085272F013700035658 /* OTPController.swift */; };
-		85AF808A272F013700035658 /* AccountInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8086272F013700035658 /* AccountInformationController.swift */; };
-		85AF808B272F013700035658 /* SignUpPageRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF8087272F013700035658 /* SignUpPageRouteController.swift */; };
-		85AF808F272F019100035658 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF808E272F019100035658 /* AuthenticationController.swift */; };
-		85AF8091272F01A200035658 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85AF8090272F01A200035658 /* Authentication.storyboard */; };
-		85C2D61027382D3D00E3CED7 /* ProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C2D60E27382D3D00E3CED7 /* ProfileEditController.swift */; };
-		85C2D61127382D3D00E3CED7 /* ProfileEditController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85C2D60F27382D3D00E3CED7 /* ProfileEditController.xib */; };
-		85C2D61627383E3100E3CED7 /* ProfileEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C2D61427383E3100E3CED7 /* ProfileEditCell.swift */; };
-		85C2D61727383E3100E3CED7 /* ProfileEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85C2D61527383E3100E3CED7 /* ProfileEditCell.xib */; };
+		85F8D71B274172CC00D0D326 /* SignUpPageRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D70B274172CC00D0D326 /* SignUpPageRouteController.swift */; };
+		85F8D71C274172CC00D0D326 /* OTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D70C274172CC00D0D326 /* OTPController.swift */; };
+		85F8D71D274172CC00D0D326 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D70D274172CC00D0D326 /* SignUpController.swift */; };
+		85F8D71E274172CC00D0D326 /* AccountInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D70E274172CC00D0D326 /* AccountInformationController.swift */; };
+		85F8D71F274172CC00D0D326 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D70F274172CC00D0D326 /* AuthenticationController.swift */; };
+		85F8D720274172CC00D0D326 /* SignUpPageRouteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D711274172CC00D0D326 /* SignUpPageRouteController.xib */; };
+		85F8D721274172CC00D0D326 /* AccountInformationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D712274172CC00D0D326 /* AccountInformationController.xib */; };
+		85F8D722274172CC00D0D326 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D714274172CC00D0D326 /* TextFieldCell.swift */; };
+		85F8D723274172CC00D0D326 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D715274172CC00D0D326 /* TextFieldCell.xib */; };
+		85F8D724274172CC00D0D326 /* SignUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D716274172CC00D0D326 /* SignUpController.xib */; };
+		85F8D725274172CC00D0D326 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D717274172CC00D0D326 /* Authentication.storyboard */; };
+		85F8D726274172CC00D0D326 /* OTPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D718274172CC00D0D326 /* OTPController.xib */; };
+		85F8D727274172CC00D0D326 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D71A274172CC00D0D326 /* AuthenticationViewModel.swift */; };
+		85F8D752274172DF00D0D326 /* ProfileAllOrderStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D729274172DE00D0D326 /* ProfileAllOrderStatusController.swift */; };
+		85F8D753274172DF00D0D326 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D72A274172DE00D0D326 /* ProfileViewController.swift */; };
+		85F8D754274172DF00D0D326 /* ProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D72B274172DE00D0D326 /* ProfileEditController.swift */; };
+		85F8D755274172DF00D0D326 /* ProfileSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D72C274172DE00D0D326 /* ProfileSettingController.swift */; };
+		85F8D756274172DF00D0D326 /* ProfileEditController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D72E274172DE00D0D326 /* ProfileEditController.xib */; };
+		85F8D757274172DF00D0D326 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D72F274172DE00D0D326 /* Profile.storyboard */; };
+		85F8D758274172DF00D0D326 /* ProfileAllOrderStatusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D730274172DE00D0D326 /* ProfileAllOrderStatusController.xib */; };
+		85F8D759274172DF00D0D326 /* ProfileSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D731274172DE00D0D326 /* ProfileSettingController.xib */; };
+		85F8D75A274172DF00D0D326 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D733274172DE00D0D326 /* TextCell.xib */; };
+		85F8D75B274172DF00D0D326 /* StatusOrderCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D735274172DE00D0D326 /* StatusOrderCollectionCell.swift */; };
+		85F8D75C274172DF00D0D326 /* StatusOrderCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D736274172DE00D0D326 /* StatusOrderCollectionCell.xib */; };
+		85F8D75D274172DF00D0D326 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D737274172DE00D0D326 /* SeparatorCell.swift */; };
+		85F8D75E274172DF00D0D326 /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D738274172DE00D0D326 /* SeparatorCell.xib */; };
+		85F8D75F274172DF00D0D326 /* ProfileEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D73A274172DE00D0D326 /* ProfileEditCell.xib */; };
+		85F8D760274172DF00D0D326 /* ProfileEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D73B274172DE00D0D326 /* ProfileEditCell.swift */; };
+		85F8D761274172DF00D0D326 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D73C274172DE00D0D326 /* TextCell.swift */; };
+		85F8D762274172DF00D0D326 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D73D274172DE00D0D326 /* InformationCell.xib */; };
+		85F8D763274172DF00D0D326 /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D73E274172DE00D0D326 /* InformationCell.swift */; };
+		85F8D764274172DF00D0D326 /* ProfileTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D741274172DE00D0D326 /* ProfileTransactionCell.xib */; };
+		85F8D765274172DF00D0D326 /* ProfileTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D742274172DE00D0D326 /* ProfileTransactionCell.swift */; };
+		85F8D766274172DF00D0D326 /* TransactionActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D743274172DE00D0D326 /* TransactionActivityCell.swift */; };
+		85F8D767274172DF00D0D326 /* TransactionActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D744274172DE00D0D326 /* TransactionActivityCell.xib */; };
+		85F8D768274172DF00D0D326 /* ProfileUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D746274172DE00D0D326 /* ProfileUserCell.swift */; };
+		85F8D769274172DF00D0D326 /* ProfileUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D747274172DE00D0D326 /* ProfileUserCell.xib */; };
+		85F8D76A274172DF00D0D326 /* ProfileInformationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D749274172DE00D0D326 /* ProfileInformationsCell.swift */; };
+		85F8D76B274172DF00D0D326 /* ProfileInformationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D74A274172DE00D0D326 /* ProfileInformationsCell.xib */; };
+		85F8D76C274172DF00D0D326 /* ProfileOrderStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D74C274172DE00D0D326 /* ProfileOrderStatusCell.xib */; };
+		85F8D76D274172DF00D0D326 /* OrderSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8D74D274172DE00D0D326 /* OrderSmallCell.xib */; };
+		85F8D76E274172DF00D0D326 /* ProfileOrderStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D74E274172DE00D0D326 /* ProfileOrderStatusCell.swift */; };
+		85F8D76F274172DF00D0D326 /* OrderSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D74F274172DE00D0D326 /* OrderSmallCell.swift */; };
+		85F8D770274172DF00D0D326 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D751274172DE00D0D326 /* ProfileViewModel.swift */; };
+		85F8D7722741730200D0D326 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D7712741730200D0D326 /* User.swift */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
 		B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFF27030340000DDB95 /* SceneDelegate.swift */; };
 		B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0627030341000DDB95 /* Assets.xcassets */; };
@@ -189,7 +191,6 @@
 		C3BA70EE2740495A00939CE6 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BA70ED2740495A00939CE6 /* Delivery.swift */; };
 		C3C084E12722BAD1007F0762 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CBECA2271568B500622FE1 /* WaterfallLayout.swift */; };
 		C3C94D8927059ABE00688485 /* AdaSuplaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */; };
-		C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */; };
 		C3C94D9A27059CF000688485 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9927059CF000688485 /* BaseViewModel.swift */; };
 		C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9C27059D7C00688485 /* BaseUIViewController.swift */; };
 		C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */; };
@@ -238,33 +239,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		852019D02733CD45002F34BC /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		852019D22733CD45002F34BC /* ProfileAllOrderStatusController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAllOrderStatusController.swift; sourceTree = "<group>"; };
-		852019D32733CD45002F34BC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		852019D42733CD45002F34BC /* ProfileSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingController.swift; sourceTree = "<group>"; };
-		852019D62733CD45002F34BC /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		852019D72733CD45002F34BC /* ProfileAllOrderStatusController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileAllOrderStatusController.xib; sourceTree = "<group>"; };
-		852019D82733CD45002F34BC /* ProfileSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSettingController.xib; sourceTree = "<group>"; };
-		852019DA2733CD45002F34BC /* StatusOrderCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusOrderCollectionCell.swift; sourceTree = "<group>"; };
-		852019DB2733CD45002F34BC /* StatusOrderCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusOrderCollectionCell.xib; sourceTree = "<group>"; };
-		852019DC2733CD45002F34BC /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
-		852019DD2733CD45002F34BC /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
-		852019DE2733CD45002F34BC /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
-		852019DF2733CD45002F34BC /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
-		852019E02733CD45002F34BC /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
-		852019E12733CD45002F34BC /* InformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
-		852019E42733CD45002F34BC /* ProfileTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTransactionCell.xib; sourceTree = "<group>"; };
-		852019E52733CD45002F34BC /* ProfileTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTransactionCell.swift; sourceTree = "<group>"; };
-		852019E62733CD45002F34BC /* TransactionActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActivityCell.swift; sourceTree = "<group>"; };
-		852019E72733CD45002F34BC /* TransactionActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionActivityCell.xib; sourceTree = "<group>"; };
-		852019E92733CD45002F34BC /* ProfileUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserCell.swift; sourceTree = "<group>"; };
-		852019EA2733CD45002F34BC /* ProfileUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileUserCell.xib; sourceTree = "<group>"; };
-		852019EC2733CD45002F34BC /* ProfileInformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationsCell.swift; sourceTree = "<group>"; };
-		852019ED2733CD45002F34BC /* ProfileInformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInformationsCell.xib; sourceTree = "<group>"; };
-		852019EF2733CD45002F34BC /* ProfileOrderStatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileOrderStatusCell.xib; sourceTree = "<group>"; };
-		852019F02733CD45002F34BC /* OrderSmallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderSmallCell.xib; sourceTree = "<group>"; };
-		852019F12733CD45002F34BC /* ProfileOrderStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOrderStatusCell.swift; sourceTree = "<group>"; };
-		852019F22733CD45002F34BC /* OrderSmallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSmallCell.swift; sourceTree = "<group>"; };
 		85201A0F2733CD94002F34BC /* SearchUpdaterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUpdaterViewModel.swift; sourceTree = "<group>"; };
 		85201A102733CD94002F34BC /* SearchResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		85201A122733CD94002F34BC /* SearchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
@@ -301,22 +275,51 @@
 		8576EFCD27208D8B00F69D29 /* SeeMoreCategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeMoreCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		8576EFCE27208D8B00F69D29 /* CategoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryController.xib; sourceTree = "<group>"; };
 		859DD87827313D15000FFD53 /* Extension-UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIViewController.swift"; sourceTree = "<group>"; };
-		85AF8077272F00C200035658 /* SignUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpController.xib; sourceTree = "<group>"; };
-		85AF8078272F00C200035658 /* SignUpPageRouteController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpPageRouteController.xib; sourceTree = "<group>"; };
-		85AF807A272F00C200035658 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		85AF807B272F00C200035658 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
-		85AF807C272F00C200035658 /* OTPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OTPController.xib; sourceTree = "<group>"; };
-		85AF807D272F00C300035658 /* AccountInformationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountInformationController.xib; sourceTree = "<group>"; };
-		85AF8084272F013700035658 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
-		85AF8085272F013700035658 /* OTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPController.swift; sourceTree = "<group>"; };
-		85AF8086272F013700035658 /* AccountInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInformationController.swift; sourceTree = "<group>"; };
-		85AF8087272F013700035658 /* SignUpPageRouteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPageRouteController.swift; sourceTree = "<group>"; };
-		85AF808E272F019100035658 /* AuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
-		85AF8090272F01A200035658 /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
-		85C2D60E27382D3D00E3CED7 /* ProfileEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditController.swift; sourceTree = "<group>"; };
-		85C2D60F27382D3D00E3CED7 /* ProfileEditController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditController.xib; sourceTree = "<group>"; };
-		85C2D61427383E3100E3CED7 /* ProfileEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCell.swift; sourceTree = "<group>"; };
-		85C2D61527383E3100E3CED7 /* ProfileEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditCell.xib; sourceTree = "<group>"; };
+		85F8D70B274172CC00D0D326 /* SignUpPageRouteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpPageRouteController.swift; sourceTree = "<group>"; };
+		85F8D70C274172CC00D0D326 /* OTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPController.swift; sourceTree = "<group>"; };
+		85F8D70D274172CC00D0D326 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		85F8D70E274172CC00D0D326 /* AccountInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInformationController.swift; sourceTree = "<group>"; };
+		85F8D70F274172CC00D0D326 /* AuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		85F8D711274172CC00D0D326 /* SignUpPageRouteController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpPageRouteController.xib; sourceTree = "<group>"; };
+		85F8D712274172CC00D0D326 /* AccountInformationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountInformationController.xib; sourceTree = "<group>"; };
+		85F8D714274172CC00D0D326 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		85F8D715274172CC00D0D326 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		85F8D716274172CC00D0D326 /* SignUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpController.xib; sourceTree = "<group>"; };
+		85F8D717274172CC00D0D326 /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		85F8D718274172CC00D0D326 /* OTPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OTPController.xib; sourceTree = "<group>"; };
+		85F8D71A274172CC00D0D326 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		85F8D729274172DE00D0D326 /* ProfileAllOrderStatusController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAllOrderStatusController.swift; sourceTree = "<group>"; };
+		85F8D72A274172DE00D0D326 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		85F8D72B274172DE00D0D326 /* ProfileEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditController.swift; sourceTree = "<group>"; };
+		85F8D72C274172DE00D0D326 /* ProfileSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingController.swift; sourceTree = "<group>"; };
+		85F8D72E274172DE00D0D326 /* ProfileEditController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileEditController.xib; sourceTree = "<group>"; };
+		85F8D72F274172DE00D0D326 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		85F8D730274172DE00D0D326 /* ProfileAllOrderStatusController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileAllOrderStatusController.xib; sourceTree = "<group>"; };
+		85F8D731274172DE00D0D326 /* ProfileSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSettingController.xib; sourceTree = "<group>"; };
+		85F8D733274172DE00D0D326 /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
+		85F8D735274172DE00D0D326 /* StatusOrderCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusOrderCollectionCell.swift; sourceTree = "<group>"; };
+		85F8D736274172DE00D0D326 /* StatusOrderCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusOrderCollectionCell.xib; sourceTree = "<group>"; };
+		85F8D737274172DE00D0D326 /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
+		85F8D738274172DE00D0D326 /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
+		85F8D73A274172DE00D0D326 /* ProfileEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileEditCell.xib; sourceTree = "<group>"; };
+		85F8D73B274172DE00D0D326 /* ProfileEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditCell.swift; sourceTree = "<group>"; };
+		85F8D73C274172DE00D0D326 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		85F8D73D274172DE00D0D326 /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
+		85F8D73E274172DE00D0D326 /* InformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
+		85F8D741274172DE00D0D326 /* ProfileTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTransactionCell.xib; sourceTree = "<group>"; };
+		85F8D742274172DE00D0D326 /* ProfileTransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTransactionCell.swift; sourceTree = "<group>"; };
+		85F8D743274172DE00D0D326 /* TransactionActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionActivityCell.swift; sourceTree = "<group>"; };
+		85F8D744274172DE00D0D326 /* TransactionActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionActivityCell.xib; sourceTree = "<group>"; };
+		85F8D746274172DE00D0D326 /* ProfileUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserCell.swift; sourceTree = "<group>"; };
+		85F8D747274172DE00D0D326 /* ProfileUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileUserCell.xib; sourceTree = "<group>"; };
+		85F8D749274172DE00D0D326 /* ProfileInformationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInformationsCell.swift; sourceTree = "<group>"; };
+		85F8D74A274172DE00D0D326 /* ProfileInformationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInformationsCell.xib; sourceTree = "<group>"; };
+		85F8D74C274172DE00D0D326 /* ProfileOrderStatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileOrderStatusCell.xib; sourceTree = "<group>"; };
+		85F8D74D274172DE00D0D326 /* OrderSmallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderSmallCell.xib; sourceTree = "<group>"; };
+		85F8D74E274172DE00D0D326 /* ProfileOrderStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileOrderStatusCell.swift; sourceTree = "<group>"; };
+		85F8D74F274172DE00D0D326 /* OrderSmallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSmallCell.swift; sourceTree = "<group>"; };
+		85F8D751274172DE00D0D326 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		85F8D7712741730200D0D326 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D64CFD27030340000DDB95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D64CFF27030340000DDB95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -423,7 +426,6 @@
 		C3BA70ED2740495A00939CE6 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		C3C94D8627059ABE00688485 /* AdaSuplaiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdaSuplaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C94D8827059ABE00688485 /* AdaSuplaiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaSuplaiTests.swift; sourceTree = "<group>"; };
-		C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C3C94D9927059CF000688485 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		C3C94D9C27059D7C00688485 /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		C3C94D9F27059ED500688485 /* Extension-Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-Identifiable.swift"; sourceTree = "<group>"; };
@@ -485,109 +487,11 @@
 		852019CE2733CD45002F34BC /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				852019CF2733CD45002F34BC /* ViewModel */,
-				852019D12733CD45002F34BC /* Controller */,
-				852019D52733CD45002F34BC /* View */,
+				85F8D728274172DE00D0D326 /* Controller */,
+				85F8D72D274172DE00D0D326 /* View */,
+				85F8D750274172DE00D0D326 /* ViewModel */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		852019CF2733CD45002F34BC /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				852019D02733CD45002F34BC /* ProfileViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		852019D12733CD45002F34BC /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				852019D22733CD45002F34BC /* ProfileAllOrderStatusController.swift */,
-				852019D32733CD45002F34BC /* ProfileViewController.swift */,
-				852019D42733CD45002F34BC /* ProfileSettingController.swift */,
-				85C2D60E27382D3D00E3CED7 /* ProfileEditController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		852019D52733CD45002F34BC /* View */ = {
-			isa = PBXGroup;
-			children = (
-				852019D62733CD45002F34BC /* Profile.storyboard */,
-				852019D72733CD45002F34BC /* ProfileAllOrderStatusController.xib */,
-				852019D82733CD45002F34BC /* ProfileSettingController.xib */,
-				85C2D60F27382D3D00E3CED7 /* ProfileEditController.xib */,
-				852019D92733CD45002F34BC /* Cell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		852019D92733CD45002F34BC /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				852019DF2733CD45002F34BC /* TextCell.swift */,
-				852019DC2733CD45002F34BC /* TextCell.xib */,
-				852019DD2733CD45002F34BC /* SeparatorCell.swift */,
-				852019DE2733CD45002F34BC /* SeparatorCell.xib */,
-				852019E12733CD45002F34BC /* InformationCell.swift */,
-				852019E02733CD45002F34BC /* InformationCell.xib */,
-				852019E22733CD45002F34BC /* Main */,
-				85C2D61227383DD100E3CED7 /* All Order Status */,
-				85C2D61327383DFD00E3CED7 /* Edit */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		852019E22733CD45002F34BC /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				852019E32733CD45002F34BC /* Transaction */,
-				852019E82733CD45002F34BC /* User */,
-				852019EB2733CD45002F34BC /* My Actifity */,
-				852019EE2733CD45002F34BC /* Order Status */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		852019E32733CD45002F34BC /* Transaction */ = {
-			isa = PBXGroup;
-			children = (
-				852019E42733CD45002F34BC /* ProfileTransactionCell.xib */,
-				852019E52733CD45002F34BC /* ProfileTransactionCell.swift */,
-				852019E62733CD45002F34BC /* TransactionActivityCell.swift */,
-				852019E72733CD45002F34BC /* TransactionActivityCell.xib */,
-			);
-			path = Transaction;
-			sourceTree = "<group>";
-		};
-		852019E82733CD45002F34BC /* User */ = {
-			isa = PBXGroup;
-			children = (
-				852019E92733CD45002F34BC /* ProfileUserCell.swift */,
-				852019EA2733CD45002F34BC /* ProfileUserCell.xib */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		852019EB2733CD45002F34BC /* My Actifity */ = {
-			isa = PBXGroup;
-			children = (
-				852019EC2733CD45002F34BC /* ProfileInformationsCell.swift */,
-				852019ED2733CD45002F34BC /* ProfileInformationsCell.xib */,
-			);
-			path = "My Actifity";
-			sourceTree = "<group>";
-		};
-		852019EE2733CD45002F34BC /* Order Status */ = {
-			isa = PBXGroup;
-			children = (
-				852019EF2733CD45002F34BC /* ProfileOrderStatusCell.xib */,
-				852019F02733CD45002F34BC /* OrderSmallCell.xib */,
-				852019F12733CD45002F34BC /* ProfileOrderStatusCell.swift */,
-				852019F22733CD45002F34BC /* OrderSmallCell.swift */,
-			);
-			path = "Order Status";
 			sourceTree = "<group>";
 		};
 		85201A0E2733CD94002F34BC /* ViewModel */ = {
@@ -751,31 +655,162 @@
 			path = Transaction;
 			sourceTree = "<group>";
 		};
-		85AF8079272F00C200035658 /* Cell */ = {
+		85F8D70A274172CC00D0D326 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				85AF807A272F00C200035658 /* TextFieldCell.swift */,
-				85AF807B272F00C200035658 /* TextFieldCell.xib */,
+				85F8D70B274172CC00D0D326 /* SignUpPageRouteController.swift */,
+				85F8D70C274172CC00D0D326 /* OTPController.swift */,
+				85F8D70D274172CC00D0D326 /* SignUpController.swift */,
+				85F8D70E274172CC00D0D326 /* AccountInformationController.swift */,
+				85F8D70F274172CC00D0D326 /* AuthenticationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		85F8D710274172CC00D0D326 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D711274172CC00D0D326 /* SignUpPageRouteController.xib */,
+				85F8D712274172CC00D0D326 /* AccountInformationController.xib */,
+				85F8D713274172CC00D0D326 /* Cell */,
+				85F8D716274172CC00D0D326 /* SignUpController.xib */,
+				85F8D717274172CC00D0D326 /* Authentication.storyboard */,
+				85F8D718274172CC00D0D326 /* OTPController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85F8D713274172CC00D0D326 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D714274172CC00D0D326 /* TextFieldCell.swift */,
+				85F8D715274172CC00D0D326 /* TextFieldCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		85C2D61227383DD100E3CED7 /* All Order Status */ = {
+		85F8D719274172CC00D0D326 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				852019DA2733CD45002F34BC /* StatusOrderCollectionCell.swift */,
-				852019DB2733CD45002F34BC /* StatusOrderCollectionCell.xib */,
+				85F8D71A274172CC00D0D326 /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		85F8D728274172DE00D0D326 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D729274172DE00D0D326 /* ProfileAllOrderStatusController.swift */,
+				85F8D72A274172DE00D0D326 /* ProfileViewController.swift */,
+				85F8D72B274172DE00D0D326 /* ProfileEditController.swift */,
+				85F8D72C274172DE00D0D326 /* ProfileSettingController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		85F8D72D274172DE00D0D326 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D72E274172DE00D0D326 /* ProfileEditController.xib */,
+				85F8D72F274172DE00D0D326 /* Profile.storyboard */,
+				85F8D730274172DE00D0D326 /* ProfileAllOrderStatusController.xib */,
+				85F8D731274172DE00D0D326 /* ProfileSettingController.xib */,
+				85F8D732274172DE00D0D326 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85F8D732274172DE00D0D326 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D733274172DE00D0D326 /* TextCell.xib */,
+				85F8D734274172DE00D0D326 /* All Order Status */,
+				85F8D737274172DE00D0D326 /* SeparatorCell.swift */,
+				85F8D738274172DE00D0D326 /* SeparatorCell.xib */,
+				85F8D739274172DE00D0D326 /* Edit */,
+				85F8D73C274172DE00D0D326 /* TextCell.swift */,
+				85F8D73D274172DE00D0D326 /* InformationCell.xib */,
+				85F8D73E274172DE00D0D326 /* InformationCell.swift */,
+				85F8D73F274172DE00D0D326 /* Main */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		85F8D734274172DE00D0D326 /* All Order Status */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D735274172DE00D0D326 /* StatusOrderCollectionCell.swift */,
+				85F8D736274172DE00D0D326 /* StatusOrderCollectionCell.xib */,
 			);
 			path = "All Order Status";
 			sourceTree = "<group>";
 		};
-		85C2D61327383DFD00E3CED7 /* Edit */ = {
+		85F8D739274172DE00D0D326 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				85C2D61427383E3100E3CED7 /* ProfileEditCell.swift */,
-				85C2D61527383E3100E3CED7 /* ProfileEditCell.xib */,
+				85F8D73A274172DE00D0D326 /* ProfileEditCell.xib */,
+				85F8D73B274172DE00D0D326 /* ProfileEditCell.swift */,
 			);
 			path = Edit;
+			sourceTree = "<group>";
+		};
+		85F8D73F274172DE00D0D326 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D740274172DE00D0D326 /* Transaction */,
+				85F8D745274172DE00D0D326 /* User */,
+				85F8D748274172DE00D0D326 /* My Actifity */,
+				85F8D74B274172DE00D0D326 /* Order Status */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		85F8D740274172DE00D0D326 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D741274172DE00D0D326 /* ProfileTransactionCell.xib */,
+				85F8D742274172DE00D0D326 /* ProfileTransactionCell.swift */,
+				85F8D743274172DE00D0D326 /* TransactionActivityCell.swift */,
+				85F8D744274172DE00D0D326 /* TransactionActivityCell.xib */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		85F8D745274172DE00D0D326 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D746274172DE00D0D326 /* ProfileUserCell.swift */,
+				85F8D747274172DE00D0D326 /* ProfileUserCell.xib */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		85F8D748274172DE00D0D326 /* My Actifity */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D749274172DE00D0D326 /* ProfileInformationsCell.swift */,
+				85F8D74A274172DE00D0D326 /* ProfileInformationsCell.xib */,
+			);
+			path = "My Actifity";
+			sourceTree = "<group>";
+		};
+		85F8D74B274172DE00D0D326 /* Order Status */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D74C274172DE00D0D326 /* ProfileOrderStatusCell.xib */,
+				85F8D74D274172DE00D0D326 /* OrderSmallCell.xib */,
+				85F8D74E274172DE00D0D326 /* ProfileOrderStatusCell.swift */,
+				85F8D74F274172DE00D0D326 /* OrderSmallCell.swift */,
+			);
+			path = "Order Status";
+			sourceTree = "<group>";
+		};
+		85F8D750274172DE00D0D326 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				85F8D751274172DE00D0D326 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B9D64CF127030340000DDB95 = {
@@ -1213,44 +1248,11 @@
 		C3C94D9127059C1800688485 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				C3C94D9427059C5500688485 /* ViewModel */,
-				C3C94D9227059C3A00688485 /* Controller */,
-				C3C94D9327059C4500688485 /* View */,
+				85F8D70A274172CC00D0D326 /* Controller */,
+				85F8D710274172CC00D0D326 /* View */,
+				85F8D719274172CC00D0D326 /* ViewModel */,
 			);
 			path = Authentication;
-			sourceTree = "<group>";
-		};
-		C3C94D9227059C3A00688485 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				85AF808E272F019100035658 /* AuthenticationController.swift */,
-				85AF8087272F013700035658 /* SignUpPageRouteController.swift */,
-				85AF8084272F013700035658 /* SignUpController.swift */,
-				85AF8086272F013700035658 /* AccountInformationController.swift */,
-				85AF8085272F013700035658 /* OTPController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		C3C94D9327059C4500688485 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				85AF8090272F01A200035658 /* Authentication.storyboard */,
-				85AF8078272F00C200035658 /* SignUpPageRouteController.xib */,
-				85AF8077272F00C200035658 /* SignUpController.xib */,
-				85AF807D272F00C300035658 /* AccountInformationController.xib */,
-				85AF807C272F00C200035658 /* OTPController.xib */,
-				85AF8079272F00C200035658 /* Cell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C3C94D9427059C5500688485 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C3C94D9527059C6400688485 /* AuthenticationViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C3C94D9727059C7B00688485 /* Core */ = {
@@ -1405,6 +1407,7 @@
 				C308FAF6273E7E1700301A1C /* Supplier.swift */,
 				C308FAEF273E75C400301A1C /* CDPublisher.swift */,
 				C3BA70ED2740495A00939CE6 /* Delivery.swift */,
+				85F8D7712741730200D0D326 /* User.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -1499,83 +1502,83 @@
 			files = (
 				C3B49648273A6C0D006B25FF /* SearchHistoryCell.xib in Resources */,
 				C3B49649273A6C0D006B25FF /* SearchHistoryHeaderCell.xib in Resources */,
+				85F8D769274172DF00D0D326 /* ProfileUserCell.xib in Resources */,
+				85F8D75E274172DF00D0D326 /* SeparatorCell.xib in Resources */,
+				85F8D75C274172DF00D0D326 /* StatusOrderCollectionCell.xib in Resources */,
 				C32BF8A7271805D500658994 /* ProductAttributesDescriptionCell.xib in Resources */,
-				852019FB2733CD45002F34BC /* StatusOrderCollectionCell.xib in Resources */,
 				85201A432733CDAB002F34BC /* AllProductTransactionCell.xib in Resources */,
 				C366D2DC2706F47E00EF1E0C /* HomeCategoryCollectionCell.xib in Resources */,
 				C3CBECC12716E73600622FE1 /* StatusProductCollectionCell.xib in Resources */,
+				85F8D759274172DF00D0D326 /* ProfileSettingController.xib in Resources */,
 				B9D64D0A27030341000DDB95 /* LaunchScreen.storyboard in Resources */,
 				C32BF8B32718062900658994 /* ProductSupplierCell.xib in Resources */,
-				85AF8081272F00C300035658 /* TextFieldCell.xib in Resources */,
+				85F8D726274172CC00D0D326 /* OTPController.xib in Resources */,
 				85201A1E2733CD94002F34BC /* SearchUpdaterController.xib in Resources */,
 				C32BF8C3271826B500658994 /* ProductReviewDetailCell.xib in Resources */,
 				B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */,
 				C32BF8BB2718066F00658994 /* ProductAttributesCollectionCell.xib in Resources */,
 				85201A422733CDAB002F34BC /* DeliveryCell.xib in Resources */,
-				852019F92733CD45002F34BC /* ProfileSettingController.xib in Resources */,
-				852019F72733CD45002F34BC /* Profile.storyboard in Resources */,
 				8576EFD527208D8B00F69D29 /* PromoProductCell.xib in Resources */,
+				85F8D76D274172DF00D0D326 /* OrderSmallCell.xib in Resources */,
+				85F8D721274172CC00D0D326 /* AccountInformationController.xib in Resources */,
 				C3F68F12272A92CF00F8A5A4 /* StaticStatusProductCell.xib in Resources */,
-				85201A002733CD45002F34BC /* InformationCell.xib in Resources */,
 				C3963BE827217F710017AAB6 /* Cart.storyboard in Resources */,
 				C30EA06D2710494600832135 /* SubmitButtonCell.xib in Resources */,
 				C366D2DE2706F98700EF1E0C /* Home.storyboard in Resources */,
-				85C2D61127382D3D00E3CED7 /* ProfileEditController.xib in Resources */,
 				C3963BE227217F710017AAB6 /* CartProductCell.xib in Resources */,
 				C32BF89F2718059500658994 /* ProductAttributesHeaderCell.xib in Resources */,
 				C32BF8AB271805EA00658994 /* ProductAttributesDetailCell.xib in Resources */,
-				852019FE2733CD45002F34BC /* SeparatorCell.xib in Resources */,
 				85201A442733CDAB002F34BC /* DeliveryAddressCell.xib in Resources */,
 				8576EFD627208D8B00F69D29 /* AllProductCell.xib in Resources */,
+				85F8D724274172CC00D0D326 /* SignUpController.xib in Resources */,
 				85201A3A2733CDAB002F34BC /* TransactionDetailController.xib in Resources */,
 				C32BF8AF2718061100658994 /* ProductAttributesDeliveryCell.xib in Resources */,
 				C3CBECB92716E31B00622FE1 /* ProductStatusCell.xib in Resources */,
-				85201A022733CD45002F34BC /* ProfileTransactionCell.xib in Resources */,
-				85AF807E272F00C300035658 /* SignUpController.xib in Resources */,
-				85AF8082272F00C300035658 /* OTPController.xib in Resources */,
-				852019FC2733CD45002F34BC /* TextCell.xib in Resources */,
+				85F8D723274172CC00D0D326 /* TextFieldCell.xib in Resources */,
+				85F8D757274172DF00D0D326 /* Profile.storyboard in Resources */,
 				85201A462733CDAB002F34BC /* ProductTransactionCell.xib in Resources */,
+				85F8D758274172DF00D0D326 /* ProfileAllOrderStatusController.xib in Resources */,
 				C381C13127182C4700FDD5D4 /* ProductImageCollectionCell.xib in Resources */,
-				852019F82733CD45002F34BC /* ProfileAllOrderStatusController.xib in Resources */,
-				85201A0A2733CD45002F34BC /* ProfileOrderStatusCell.xib in Resources */,
-				85201A092733CD45002F34BC /* ProfileInformationsCell.xib in Resources */,
 				C366D2D82706F39F00EF1E0C /* HomeCategoryCell.xib in Resources */,
 				C3963BCA27217D950017AAB6 /* TabBar.storyboard in Resources */,
+				85F8D762274172DF00D0D326 /* InformationCell.xib in Resources */,
 				C3963BE327217F710017AAB6 /* CartSupplierCell.xib in Resources */,
 				85201A3B2733CDAB002F34BC /* ShopTransactionPriceCell.xib in Resources */,
 				85201A472733CDAB002F34BC /* ListDeliveryController.xib in Resources */,
+				85F8D76B274172DF00D0D326 /* ProfileInformationsCell.xib in Resources */,
 				C3CBECB52716E2B300622FE1 /* ProductImagePriceCell.xib in Resources */,
-				85201A052733CD45002F34BC /* TransactionActivityCell.xib in Resources */,
 				C30EA0692710492A00832135 /* FilterHeaderCell.xib in Resources */,
 				C366D2E42706FC0F00EF1E0C /* BannerPromoCell.xib in Resources */,
 				C3CBECC92716EC6300622FE1 /* ProductVariantCell.xib in Resources */,
 				C3CBECBD2716E33B00622FE1 /* SimilarProductCell.xib in Resources */,
+				85F8D75A274172DF00D0D326 /* TextCell.xib in Resources */,
 				C30EA05B2710406C00832135 /* FilterCollectionCell.xib in Resources */,
 				8576EFD727208D8B00F69D29 /* SeeMoreCategoryCollectionCell.xib in Resources */,
 				C3963BE727217F710017AAB6 /* CartHeaderCell.xib in Resources */,
+				85F8D767274172DF00D0D326 /* TransactionActivityCell.xib in Resources */,
 				8576EFD927208D8B00F69D29 /* CategoryController.xib in Resources */,
 				C30EA04F27103D2400832135 /* FilterController.xib in Resources */,
 				C32BF8B72718063900658994 /* ProductReviewCell.xib in Resources */,
+				85F8D720274172CC00D0D326 /* SignUpPageRouteController.xib in Resources */,
 				C32BF8BF2718268600658994 /* ProductReviewCollectionCell.xib in Resources */,
 				C3B27655272706EC002E8CC7 /* MoreCategorySortFilterCell.xib in Resources */,
+				85F8D75F274172DF00D0D326 /* ProfileEditCell.xib in Resources */,
+				85F8D756274172DF00D0D326 /* ProfileEditController.xib in Resources */,
 				C3963BC927217D950017AAB6 /* Main.storyboard in Resources */,
-				85AF807F272F00C300035658 /* SignUpPageRouteController.xib in Resources */,
-				85AF8083272F00C300035658 /* AccountInformationController.xib in Resources */,
-				85201A0B2733CD45002F34BC /* OrderSmallCell.xib in Resources */,
+				85F8D725274172CC00D0D326 /* Authentication.storyboard in Resources */,
 				C3B2765127270499002E8CC7 /* MoreSortFilterCategoryController.xib in Resources */,
 				C366D2EC2706FD5500EF1E0C /* BannerCollectionCell.xib in Resources */,
 				C30EA05727103EA800832135 /* FilterCell.xib in Resources */,
 				C366D2E82706FD3C00EF1E0C /* HotProductCell.xib in Resources */,
+				85F8D764274172DF00D0D326 /* ProfileTransactionCell.xib in Resources */,
 				8576EFD227208D8B00F69D29 /* SeeMoreCategoryController.xib in Resources */,
 				C30EA061271043A000832135 /* FilterPriceRangeCell.xib in Resources */,
 				C3CBECAF2716E06C00622FE1 /* ProductController.xib in Resources */,
 				C3963BD127217DD00017AAB6 /* ProductCell.xib in Resources */,
-				85AF8091272F01A200035658 /* Authentication.storyboard in Resources */,
 				C30EA065271046C600832135 /* SpacerFilterCell.xib in Resources */,
 				C3B2765E27271C9E002E8CC7 /* regions.json in Resources */,
+				85F8D76C274172DF00D0D326 /* ProfileOrderStatusCell.xib in Resources */,
 				85201A1F2733CD94002F34BC /* SearchResultController.xib in Resources */,
-				85201A072733CD45002F34BC /* ProfileUserCell.xib in Resources */,
-				85C2D61727383E3100E3CED7 /* ProfileEditCell.xib in Resources */,
 				85201A3F2733CDAB002F34BC /* ShopTransactionDetailCell.xib in Resources */,
 				C3B49651273AC438006B25FF /* AddToCartBottomSheetController.xib in Resources */,
 			);
@@ -1617,54 +1620,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85F8D76E274172DF00D0D326 /* ProfileOrderStatusCell.swift in Sources */,
+				85F8D71B274172CC00D0D326 /* SignUpPageRouteController.swift in Sources */,
 				C308FAFF273E7E7700301A1C /* Supplier.swift in Sources */,
 				C3B49645273A6BFD006B25FF /* Extension-UITableView.swift in Sources */,
 				C3B49646273A6BFD006B25FF /* SearchHistoryCell.swift in Sources */,
 				C308FAF8273E7E1700301A1C /* Product.swift in Sources */,
 				C3B49647273A6BFD006B25FF /* SearchHistoryHeaderCell.swift in Sources */,
-				852019FD2733CD45002F34BC /* SeparatorCell.swift in Sources */,
 				85201A412733CDAB002F34BC /* DeliveryCell.swift in Sources */,
+				85F8D727274172CC00D0D326 /* AuthenticationViewModel.swift in Sources */,
 				85201A492733CDD5002F34BC /* WishlistController.swift in Sources */,
-				85AF808A272F013700035658 /* AccountInformationController.swift in Sources */,
-				85AF8089272F013700035658 /* OTPController.swift in Sources */,
 				C3C084E12722BAD1007F0762 /* WaterfallLayout.swift in Sources */,
 				C3E584B9273191D80050CE3E /* RemoteServiceError.swift in Sources */,
+				85F8D763274172DF00D0D326 /* InformationCell.swift in Sources */,
 				C3DF14862722BA7600C7A0C7 /* Extension-UICollectionView.swift in Sources */,
 				C30EA06C2710494600832135 /* SubmitButtonCell.swift in Sources */,
-				85201A0C2733CD45002F34BC /* ProfileOrderStatusCell.swift in Sources */,
 				C30EA0682710492A00832135 /* FilterHeaderCell.swift in Sources */,
 				85201A382733CDAB002F34BC /* TransactionDetailController.swift in Sources */,
-				852019F62733CD45002F34BC /* ProfileSettingController.swift in Sources */,
 				C3CBECC82716EC6300622FE1 /* ProductVariantCell.swift in Sources */,
 				C3963BE127217F710017AAB6 /* CartProductCell.swift in Sources */,
-				85AF808B272F013700035658 /* SignUpPageRouteController.swift in Sources */,
 				C308FAFC273E7E1700301A1C /* Observable.swift in Sources */,
-				85C2D61027382D3D00E3CED7 /* ProfileEditController.swift in Sources */,
 				C3D58562270EF25F00F6678D /* Extension-UIColor.swift in Sources */,
 				C378E48727183006008288B9 /* ProductViewModel.swift in Sources */,
-				852019F32733CD45002F34BC /* ProfileViewModel.swift in Sources */,
 				C3E584B5273191830050CE3E /* Extension-URLSession.swift in Sources */,
 				C3963BC827217D950017AAB6 /* MainController.swift in Sources */,
-				C3C94D9627059C6400688485 /* AuthenticationViewModel.swift in Sources */,
 				C381C13027182C4700FDD5D4 /* ProductImageCollectionCell.swift in Sources */,
 				C3D58560270EF14200F6678D /* Extension-String.swift in Sources */,
 				85201A1B2733CD94002F34BC /* SearchResultViewModel.swift in Sources */,
 				C32BF89E2718059500658994 /* ProductAttributesHeaderCell.swift in Sources */,
 				C366D2E72706FD3C00EF1E0C /* HotProductCell.swift in Sources */,
-				852019F52733CD45002F34BC /* ProfileViewController.swift in Sources */,
 				85201A372733CDAB002F34BC /* ListDeliveryController.swift in Sources */,
 				C308FAF9273E7E1700301A1C /* Location.swift in Sources */,
 				85201A3E2733CDAB002F34BC /* ShopTransactionPriceCell.swift in Sources */,
 				8576EFD127208D8B00F69D29 /* CategoryController.swift in Sources */,
 				85201A452733CDAB002F34BC /* AllProductTransactionCell.swift in Sources */,
 				C3CBECA72716D19000622FE1 /* CurrencyFormatter.swift in Sources */,
-				85201A0D2733CD45002F34BC /* OrderSmallCell.swift in Sources */,
 				C3B2765C272714F5002E8CC7 /* LocalDataService.swift in Sources */,
 				C3E584CC273519170050CE3E /* Extension-Publisher.swift in Sources */,
 				C3E584BB273191F70050CE3E /* LocalServiceError.swift in Sources */,
 				C366D2E02706F9E700EF1E0C /* HomeController.swift in Sources */,
+				85F8D766274172DF00D0D326 /* TransactionActivityCell.swift in Sources */,
 				C3E5851D273979FE0050CE3E /* SearchHistory+CoreDataProperties.swift in Sources */,
-				852019FF2733CD45002F34BC /* TextCell.swift in Sources */,
 				C3F68F3A2730703900F8A5A4 /* HTTPMethod.swift in Sources */,
 				C308FAF0273E75C400301A1C /* CDPublisher.swift in Sources */,
 				C30EA060271043A000832135 /* FilterPriceRangeCell.swift in Sources */,
@@ -1672,10 +1668,10 @@
 				C3B2765727270BA5002E8CC7 /* MoreSortFilterCategoryViewModel.swift in Sources */,
 				C3318D6C2706EF4E002294EC /* HomeViewModel.swift in Sources */,
 				C3B2766227271ECF002E8CC7 /* DataURL.swift in Sources */,
+				85F8D75B274172DF00D0D326 /* StatusOrderCollectionCell.swift in Sources */,
 				C3B49663273BC7BC006B25FF /* CartViewModel.swift in Sources */,
 				C3963BD027217DD00017AAB6 /* ProductCell.swift in Sources */,
 				8576EFD827208D8B00F69D29 /* SeeMoreCategoryCollectionCell.swift in Sources */,
-				85201A062733CD45002F34BC /* ProfileUserCell.swift in Sources */,
 				C3963BE627217F710017AAB6 /* CartHeaderCell.swift in Sources */,
 				C3E584B7273191940050CE3E /* Extension-Data.swift in Sources */,
 				C3BA70EE2740495A00939CE6 /* Delivery.swift in Sources */,
@@ -1685,31 +1681,33 @@
 				85201A402733CDAB002F34BC /* ProductTransactionCell.swift in Sources */,
 				C32BF8AE2718061100658994 /* ProductAttributesDeliveryCell.swift in Sources */,
 				C366D2DB2706F47E00EF1E0C /* HomeCategoryCollectionCell.swift in Sources */,
+				85F8D71D274172CC00D0D326 /* SignUpController.swift in Sources */,
 				C3B2765027270499002E8CC7 /* MoreSortFilterCategoryController.swift in Sources */,
 				C308FAFE273E7E1700301A1C /* Brand.swift in Sources */,
-				85AF808F272F019100035658 /* AuthenticationController.swift in Sources */,
+				85F8D722274172CC00D0D326 /* TextFieldCell.swift in Sources */,
+				85F8D768274172DF00D0D326 /* ProfileUserCell.swift in Sources */,
 				C366D2EB2706FD5500EF1E0C /* BannerCollectionCell.swift in Sources */,
 				C3E5850D27396E130050CE3E /* AdaSuplai.xcdatamodeld in Sources */,
 				85201A1D2733CD94002F34BC /* SearchUpdaterController.swift in Sources */,
 				85201A1A2733CD94002F34BC /* SearchUpdaterViewModel.swift in Sources */,
 				85201A392733CDAB002F34BC /* TransactionViewModel.swift in Sources */,
 				859DD87927313D15000FFD53 /* Extension-UIViewController.swift in Sources */,
-				85201A082733CD45002F34BC /* ProfileInformationsCell.swift in Sources */,
 				C3CBECAE2716E06C00622FE1 /* ProductController.swift in Sources */,
 				85201A1C2733CD94002F34BC /* SearchResultController.swift in Sources */,
+				85F8D770274172DF00D0D326 /* ProfileViewModel.swift in Sources */,
 				8576EFD327208D8B00F69D29 /* PromoProductCell.swift in Sources */,
 				C3F68F16272C4A9A00F8A5A4 /* RemoteDataService.swift in Sources */,
-				85201A042733CD45002F34BC /* TransactionActivityCell.swift in Sources */,
+				85F8D71E274172CC00D0D326 /* AccountInformationController.swift in Sources */,
+				85F8D76A274172DF00D0D326 /* ProfileInformationsCell.swift in Sources */,
 				C32BF8C2271826B500658994 /* ProductReviewDetailCell.swift in Sources */,
 				C32BF8B22718062900658994 /* ProductSupplierCell.swift in Sources */,
-				85AF8088272F013700035658 /* SignUpController.swift in Sources */,
 				C32BF8B62718063900658994 /* ProductReviewCell.swift in Sources */,
 				C308FAEE273E6E7E00301A1C /* ProductCart+CoreDataProperties.swift in Sources */,
+				85F8D765274172DF00D0D326 /* ProfileTransactionCell.swift in Sources */,
 				C3E5851C273979FE0050CE3E /* SearchHistory+CoreDataClass.swift in Sources */,
 				C3963BD227217DD00017AAB6 /* ProductDelegate.swift in Sources */,
 				C3E584CE273539580050CE3E /* LoadingController.swift in Sources */,
 				C3B49650273AC438006B25FF /* AddToCartBottomSheetController.swift in Sources */,
-				85AF8080272F00C300035658 /* TextFieldCell.swift in Sources */,
 				C30EA04E27103D2400832135 /* FilterController.swift in Sources */,
 				C3B27654272706EC002E8CC7 /* MoreCategorySortFilterCell.swift in Sources */,
 				85201A3C2733CDAB002F34BC /* DeliveryAddressCell.swift in Sources */,
@@ -1720,23 +1718,25 @@
 				C3C94DA027059ED500688485 /* Extension-Identifiable.swift in Sources */,
 				C30EA064271046C600832135 /* SpacerFilterCell.swift in Sources */,
 				C3CBECB82716E31B00622FE1 /* ProductStatusCell.swift in Sources */,
-				85C2D61627383E3100E3CED7 /* ProfileEditCell.swift in Sources */,
 				C3B49653273AD2BE006B25FF /* AddToCartBottomSheetViewModel.swift in Sources */,
 				C3F68F11272A92CF00F8A5A4 /* StaticStatusProductCell.swift in Sources */,
-				852019FA2733CD45002F34BC /* StatusOrderCollectionCell.swift in Sources */,
 				C308FAED273E6E7E00301A1C /* ProductCart+CoreDataClass.swift in Sources */,
+				85F8D761274172DF00D0D326 /* TextCell.swift in Sources */,
 				C3963BE427217F710017AAB6 /* CartSupplierCell.swift in Sources */,
+				85F8D754274172DF00D0D326 /* ProfileEditController.swift in Sources */,
+				85F8D752274172DF00D0D326 /* ProfileAllOrderStatusController.swift in Sources */,
+				85F8D755274172DF00D0D326 /* ProfileSettingController.swift in Sources */,
 				8576EFCF27208D8B00F69D29 /* CategoryViewModel.swift in Sources */,
 				C3C94DA227059F2700688485 /* Extension-UIView.swift in Sources */,
-				85201A012733CD45002F34BC /* InformationCell.swift in Sources */,
 				C3CBECB42716E2B300622FE1 /* ProductImagePriceCell.swift in Sources */,
 				C30EA05327103E5200832135 /* FilterViewModel.swift in Sources */,
 				8576EFD027208D8B00F69D29 /* SeeMoreCategoryController.swift in Sources */,
 				C30EA05627103EA800832135 /* FilterCell.swift in Sources */,
 				C366D2E32706FC0F00EF1E0C /* BannerPromoCell.swift in Sources */,
+				85F8D7722741730200D0D326 /* User.swift in Sources */,
+				85F8D753274172DF00D0D326 /* ProfileViewController.swift in Sources */,
 				C3CBECC02716E73600622FE1 /* StatusProductCollectionCell.swift in Sources */,
 				C366D2D72706F39F00EF1E0C /* HomeCategoryCell.swift in Sources */,
-				85201A032733CD45002F34BC /* ProfileTransactionCell.swift in Sources */,
 				8576EFD427208D8B00F69D29 /* AllProductCell.swift in Sources */,
 				C3CBECA92716D6EA00622FE1 /* Extension-UISearchBar.swift in Sources */,
 				C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */,
@@ -1744,12 +1744,16 @@
 				C308FAFA273E7E1700301A1C /* HomeCategory.swift in Sources */,
 				C3963BE027217F710017AAB6 /* CartController.swift in Sources */,
 				C3963BCB27217D950017AAB6 /* TabBarController.swift in Sources */,
+				85F8D76F274172DF00D0D326 /* OrderSmallCell.swift in Sources */,
+				85F8D75D274172DF00D0D326 /* SeparatorCell.swift in Sources */,
 				C32BF8BE2718268600658994 /* ProductReviewCollectionCell.swift in Sources */,
 				C308FAEB273E6E7E00301A1C /* Cart+CoreDataClass.swift in Sources */,
 				C3B01C8827317071001145DC /* MultiPartFormDataRequest.swift in Sources */,
-				852019F42733CD45002F34BC /* ProfileAllOrderStatusController.swift in Sources */,
 				C32BF8A6271805D500658994 /* ProductAttributesDescriptionCell.swift in Sources */,
+				85F8D71C274172CC00D0D326 /* OTPController.swift in Sources */,
+				85F8D71F274172CC00D0D326 /* AuthenticationController.swift in Sources */,
 				B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */,
+				85F8D760274172DF00D0D326 /* ProfileEditCell.swift in Sources */,
 				B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
