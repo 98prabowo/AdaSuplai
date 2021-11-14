@@ -47,7 +47,6 @@ class HomeController: BaseUIViewController {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.backgroundColor = .blueBackground
         self.tableView.registerNib(forCell: HomeCategoryCell.self)
         self.tableView.registerNib(forCell: BannerPromoCell.self)
         self.tableView.registerNib(forCell: HotProductCell.self)
