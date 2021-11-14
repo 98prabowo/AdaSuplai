@@ -10,6 +10,8 @@ import Combine
 
 class ProfileViewController: BaseUIViewController {
     
+    var userDefault = UserDefaults()
+    
     @IBOutlet var table: UITableView!
     
     private let viewModel = ProfileViewModel()
@@ -22,9 +24,23 @@ class ProfileViewController: BaseUIViewController {
         setUpNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUpNavigationBar()
+        isLogin()
+    }
+    
+    private func isLogin() {
+        if !(userDefault.bool(forKey: "isLogin")) {
+            let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
+            if let myVC = storyboard.instantiateViewController(withIdentifier: "AuthenticationController") as? AuthenticationController {
+                self.navigationController?.pushViewController(myVC, animated: true)
+            }
+        }
+    }
+    
     // MARK: - Navigation Bar
     private func setUpNavigationBar() {
-        title = ""
+        title = "Profile"
         view.backgroundColor = .white
         
         guard let navigation = self.navigationController else { return }
@@ -113,16 +129,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell.orderStatusPublisher
                 .sink { [unowned self] in
                     self.goToAllOrderController()
-            }
-            .store(in: &subscribers)
+                }
+                .store(in: &subscribers)
             return cell
         case 3 :
             let cell = tableView.dequeueReusableCell(withCell: ProfileInformationsCell.self, for: indexPath)
             cell.myActivityPublisher
                 .sink { [unowned self] text in
                     self.goToActivityController(text: text)
-            }
-            .store(in: &subscribers)
+                }
+                .store(in: &subscribers)
             return cell
             
         default :

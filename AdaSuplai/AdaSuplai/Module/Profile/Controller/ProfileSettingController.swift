@@ -13,6 +13,7 @@ class ProfileSettingController: BaseUIViewController {
     
     private var titleSection0 = ["Data Diri", "Keamanan", "Daftar Alamat", "Metode Pembayaran"]
     private var titleSection1 = ["Bahasa", "Syarat dan Ketentuan", "Kebijakan Privasi", "Hak Kekayaan Intelektual", "Ulas Aplikasi ini", "Versi Aplikasi"]
+    private var userDefault = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,14 @@ class ProfileSettingController: BaseUIViewController {
         navigation.navigationBar.tintColor = .primaryGreen
         self.addBackButton()
     }
+    
+    @IBAction func logOutButtonClicked(_ sender: UIButton) {
+        print("Logout")
+        self.userDefault.set(false, forKey: "isLogin")
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 // MARK: - Table
 extension ProfileSettingController: UITableViewDelegate, UITableViewDataSource {
