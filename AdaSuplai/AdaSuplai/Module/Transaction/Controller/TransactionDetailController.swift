@@ -34,8 +34,11 @@ class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDele
     }
     
     private func setupBackground() {
+        guard let tabBarController = self.tabBarController else { return }
+        tabBarController.tabBar.isHidden = true
         self.title = Constant.header
         self.priceBar.addShadow()
+        self.view.backgroundColor = .white
     }
     
     private func setupNavigationBar() {
