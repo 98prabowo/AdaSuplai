@@ -15,11 +15,11 @@ protocol AdaSuplaiStepperDelegate: AnyObject {
 
 @IBDesignable public class AdaSuplaiStepper: UIControl {
     /// Get current value of stepper.
-    weak var delegate: AdaSuplaiStepperDelegate?
+//    weak var delegate: AdaSuplaiStepperDelegate?
     
-    public var value: Double = 0 {
+    var value: Double = 0 {
         didSet {
-            self.delegate?.valueDidChange(value: value)
+            self.sendActions(for: .valueChanged)
             self.valueLabel.text = String(Int(value))
             self.setLeftButtonColor(enableColor: buttonEnableColor,
                                     disableColor: buttonDisableColor)

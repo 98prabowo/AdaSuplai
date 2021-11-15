@@ -54,7 +54,7 @@ class CartProductCell: UITableViewCell {
     private func setupButton() {
         self.checkmark.tintColor = .primaryGreen
         self.addNoteButton.setTitleColor(.primaryGreen, for: .normal)
-        self.quantityCounter.delegate = self
+//        self.quantityCounter.delegate = self
     }
     
     func configure(with product: ProductCart) {
@@ -89,23 +89,21 @@ class CartProductCell: UITableViewCell {
             ])
     }
     
-    @IBAction func checkmarkTapped(_ sender: UIButton) {
+    @IBAction private func checkmarkTapped(_ sender: UIButton) {
         self.isMarked = !self.isMarked
         guard let delegate = self.delegate,
               let product = self.product else { return }
         delegate.cartProductActions(actions: .select(product: product, state: isMarked))
     }
     
-    @IBAction func addNoteButtonTapped(_ sender: UIButton) {
-    }
-}
-
-extension CartProductCell: AdaSuplaiStepperDelegate {
-    func valueDidChange(value: Double) {
+    @IBAction private func quantityButtonChange(_ sender: AdaSuplaiStepper) {
         guard let delegate = delegate,
               let product = self.product else { return }
         delegate.cartProductActions(actions: .stepperChange(product: product,
-                                                            quantity: Int(value)))
+                                                            quantity: Int(sender.value)))
+    }
+    
+    @IBAction private func addNoteButtonTapped(_ sender: UIButton) {
     }
 }
 

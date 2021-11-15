@@ -8,14 +8,16 @@
 import Foundation
 
 struct User: Codable {
-    var name = "", email = "", phoneNumber = "", birthDate = ""
-    var gender = "", businessName = "", businessCategory = "", password = ""
+    var name = ""
+    var email = ""
+    var phoneNumber = ""
+    var birthDate = ""
+    var gender = ""
+    var businessName = ""
+    var businessCategory = ""
+    var password = ""
     
     enum CodingKeys: String, CodingKey {
-            case name, email, phoneNumber, birthDate, gender, businessName, businessCategory, password
-        }
-}
-
-struct Login: Codable {
-    var phoneNumber, password: String
+        case name, email, phoneNumber, birthDate, gender, businessName, businessCategory, password
+    }
 }

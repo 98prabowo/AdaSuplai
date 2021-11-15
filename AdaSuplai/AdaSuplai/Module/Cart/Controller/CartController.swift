@@ -29,7 +29,6 @@ class CartController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.reloadData()
         self.setupTableView()
         self.setupNavigationBar()
         self.setupPriceBar()
@@ -43,7 +42,8 @@ class CartController: BaseUIViewController {
         navigation.navigationBar.prefersLargeTitles = true
         tabBarController.tabBar.isHidden = false
         self.viewModel.reloadData()
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.tableView.reloadData()
             self.tableView.reloadData()
         }
     }
@@ -56,6 +56,16 @@ class CartController: BaseUIViewController {
     
     private func setupNavigationBar() {
         self.title = Constant.title
+        let refresh = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshTapped(_:)))
+        refresh.tintColor = .primaryGreen
+        self.navigationItem.rightBarButtonItems = [refresh]
+    }
+    
+    @objc private func refreshTapped(_ sender: UIBarButtonItem) {
+        self.viewModel.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     private func setupTableView() {
@@ -93,8 +103,8 @@ class CartController: BaseUIViewController {
             }.store(in: &subscriber)
     }
     
-    @IBAction func buyButtonTapped(_ sender: UIButton) {
-        let nextVC = TransactionDetailController()
+    @IBAction private func buyButtonTapped(_ sender: UIButton) {
+        let nextVC = TransactionDetailController(source: .cartPage)
         if let navigation = self.navigationController {
             navigation.pushViewController(nextVC, animated: true)
         }

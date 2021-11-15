@@ -28,11 +28,11 @@ class FilterHeaderCell: UITableViewCell {
         self.resetButton.setTitleColor(.alert, for: .normal)
     }
     
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
+    @IBAction private func closeButtonTapped(_ sender: UIButton) {
         self.publisher.send(.close)
     }
     
-    @IBAction func resetButtonTapped(_ sender: UIButton) {
+    @IBAction private func resetButtonTapped(_ sender: UIButton) {
         self.publisher.send(.reset)
     }
 }

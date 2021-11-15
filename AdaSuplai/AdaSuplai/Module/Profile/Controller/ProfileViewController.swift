@@ -147,7 +147,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = TransactionDetailController()
+        let nextVC = TransactionDetailController(source: .cartPage)
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }

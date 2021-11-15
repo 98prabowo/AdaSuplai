@@ -1,5 +1,5 @@
 //
-//  ListDeliveryController.swift
+//  DeliveryServiceController.swift
 //  AdaSuplai
 //
 //  Created by Felicia Devina on 14/10/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListDeliveryController: BaseUIViewController {
+class DeliveryServiceController: BaseUIViewController {
     private enum Constant {
         static let title = "Pilihan Pengiriman"
     }
@@ -15,6 +15,7 @@ class ListDeliveryController: BaseUIViewController {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
+    private let viewModel = DeliveryServiceViewModel()
     private var selectedIndex: IndexPath?
 
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class ListDeliveryController: BaseUIViewController {
     }
 }
 
-extension ListDeliveryController: UITableViewDelegate, UITableViewDataSource {
+extension DeliveryServiceController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

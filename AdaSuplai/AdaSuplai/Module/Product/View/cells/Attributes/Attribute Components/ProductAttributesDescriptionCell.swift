@@ -21,6 +21,6 @@ class ProductAttributesDescriptionCell: UITableViewCell {
     }
     
     func configure(with product: Product) {
-        self.productDescription.text = product.description
+        self.productDescription.attributedText = NSAttributedString(string: product.description)
     }
 }

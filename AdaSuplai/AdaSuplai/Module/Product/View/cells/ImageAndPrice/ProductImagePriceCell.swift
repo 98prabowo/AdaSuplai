@@ -67,7 +67,7 @@ class ProductImagePriceCell: UITableViewCell {
         self.collectionView.collectionViewLayout = layout
     }
     
-    @IBAction func wishlistButtonTapped(_ sender: UIButton) {
+    @IBAction private func wishlistButtonTapped(_ sender: UIButton) {
         self.isWishlist = !self.isWishlist
     }
     

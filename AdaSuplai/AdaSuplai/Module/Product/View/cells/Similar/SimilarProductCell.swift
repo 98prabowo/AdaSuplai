@@ -36,7 +36,7 @@ class SimilarProductCell: UITableViewCell {
         self.products = products
     }
     
-    @IBAction func seeMoreButtonTapped(_ sender: Any) {
+    @IBAction private func seeMoreButtonTapped(_ sender: Any) {
     }
 }
 

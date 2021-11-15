@@ -62,7 +62,7 @@ class CartSupplierCell: UITableViewCell {
         self.isMarked = false
     }
     
-    @IBAction func reorderButtonTapped(_ sender: UIButton) {
+    @IBAction private func reorderButtonTapped(_ sender: UIButton) {
     }
 }
 

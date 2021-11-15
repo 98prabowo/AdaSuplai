@@ -22,7 +22,7 @@ final class AuthenticationViewModel: BaseViewModel {
             do {
                 let parameters = ["phoneNumber": user.phoneNumber,
                                   "otp": otp]
-                response = try await service.postStringData(url: .verifyOtp, parameter: parameters)
+                response = try await service.postStringData(url: .verifyOTP, parameter: parameters)
                 myComplete(true)
             } catch {
                 response = error.localizedDescription
@@ -36,7 +36,7 @@ final class AuthenticationViewModel: BaseViewModel {
         Task {
             do {
                 let parameters = ["phoneNumber": phoneNumber]
-                response = try await service.postStringData(url: .resendOtp, parameter: parameters)
+                response = try await service.postStringData(url: .resendOTP, parameter: parameters)
                 print(response)
                 
                 myComplete(true)

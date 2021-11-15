@@ -53,7 +53,7 @@ class FilterCell: UITableViewCell {
         self.isRating = true
     }
     
-    @IBAction func seeMoreButtonTapped(_ sender: UIButton) {
+    @IBAction private func seeMoreButtonTapped(_ sender: UIButton) {
         self.publisher.send()
     }
 }

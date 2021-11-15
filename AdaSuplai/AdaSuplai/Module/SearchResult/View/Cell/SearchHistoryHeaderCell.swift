@@ -20,7 +20,7 @@ class SearchHistoryHeaderCell: UITableViewCell {
         self.header.text = header
     }
     
-    @IBAction func deleteAllHistoryTapped(_ sender: Any) {
+    @IBAction private func deleteAllHistoryTapped(_ sender: Any) {
         self.deleteAllHistory?()
     }
 }

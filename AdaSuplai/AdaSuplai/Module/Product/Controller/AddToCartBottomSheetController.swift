@@ -83,7 +83,7 @@ class AddToCartBottomSheetController: BaseUIViewController {
             ])
     }
     
-    @IBAction func addToCartTapped(_ sender: UIButton) {
+    @IBAction private func addToCartTapped(_ sender: UIButton) {
         if isAdded {
             self.dismiss(animated: false) { [unowned self] in
                 self.publisher.send(.goToCart)

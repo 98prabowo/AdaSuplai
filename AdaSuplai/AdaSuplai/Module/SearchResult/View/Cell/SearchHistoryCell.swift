@@ -25,7 +25,7 @@ class SearchHistoryCell: UITableViewCell {
         }
     }
     
-    @IBAction func deleteHistory(_ sender: UIButton) {
+    @IBAction private func deleteHistory(_ sender: UIButton) {
         self.deleteHistory?()
     }
 }

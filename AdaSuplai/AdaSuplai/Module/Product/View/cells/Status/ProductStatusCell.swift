@@ -13,6 +13,8 @@ class ProductStatusCell: UITableViewCell {
         let status: String
     }
     
+    @IBOutlet private weak var collectionView: UICollectionView!
+    
     private var gapIndexItem: Int = 2
     private var gapIndexSize: Int = 2
     private let statuses: [Status] = [
@@ -20,8 +22,6 @@ class ProductStatusCell: UITableViewCell {
         Status(header: "STOK", status: "500"),
         Status(header: "BERAT", status: "1 Kg"),
         Status(header: "MIN. PESAN", status: "100 ONS")]
-    
-    @IBOutlet private weak var collectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,13 +9,25 @@ import Foundation
 import Combine
 import CoreData
 
+enum TransactionSource {
+    case productPage(data: Cart)
+    case cartPage
+}
+
 class TransactionViewModel: BaseViewModel {
     var cart = CurrentValueSubject<[Cart], Never>([Cart]())
     var suppliers = [Supplier]()
     
-    override init() {
+    init(from sourcePage: TransactionSource) {
         super.init()
-        self.fetchCart()
+        self.cart.value.removeAll()
+        self.suppliers.removeAll()
+        switch sourcePage {
+        case .productPage(let data):
+            self.cart.value.append(data)
+        case .cartPage:
+            self.fetchCart()
+        }
     }
     
     private func fetchCart() {
@@ -24,15 +36,11 @@ class TransactionViewModel: BaseViewModel {
             let request = Cart.fetchRequest() as NSFetchRequest
             self.cart.value = try context.fetch(request)
         } catch {
-            print("Fetch Cart in CartViewModel error: \(error.localizedDescription)")
+            print("Fetch Cart in TransactionDetailViewModel error: \(error.localizedDescription)")
         }
     }
     
     // MARK: Communication Data
-    func reloadData() {
-        self.fetchCart()
-    }
-    
     func getSupplier() {
         if let productCarts = self.cart.value.first?.products?.allObjects as? [ProductCart] {
             for product in productCarts {

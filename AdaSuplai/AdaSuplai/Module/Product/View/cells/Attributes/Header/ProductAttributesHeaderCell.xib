@@ -20,26 +20,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhz-Qn-jy2">
                         <rect key="frame" x="0.0" y="10" width="414" height="70"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="x95-Eo-qtg">
-                                <rect key="frame" x="0.0" y="15" width="414" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBN-Nf-AL9" customClass="AdaSuplaiSegmentedControl" customModule="AdaSuplai" customModuleProvider="target">
+                                <rect key="frame" x="15" y="15" width="384" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="bRD-iG-1Ug"/>
+                                    <constraint firstAttribute="height" constant="40" id="fN1-LY-ZGn"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="zO9-lh-RT9">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="15" height="0.0"/>
-                                    <size key="footerReferenceSize" width="15" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                            </collectionView>
+                                <connections>
+                                    <action selector="segmentDidChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="FYL-At-lMM"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="x95-Eo-qtg" secondAttribute="bottom" constant="15" id="Qpr-MV-zpc"/>
-                            <constraint firstAttribute="trailing" secondItem="x95-Eo-qtg" secondAttribute="trailing" id="gwh-3G-EQC"/>
-                            <constraint firstItem="x95-Eo-qtg" firstAttribute="top" secondItem="zhz-Qn-jy2" secondAttribute="top" constant="15" id="kOM-1L-Jcd"/>
-                            <constraint firstItem="x95-Eo-qtg" firstAttribute="leading" secondItem="zhz-Qn-jy2" secondAttribute="leading" id="rox-Ki-wwG"/>
+                            <constraint firstItem="LBN-Nf-AL9" firstAttribute="leading" secondItem="zhz-Qn-jy2" secondAttribute="leading" constant="15" id="GCT-ub-j70"/>
+                            <constraint firstAttribute="bottom" secondItem="LBN-Nf-AL9" secondAttribute="bottom" constant="15" id="IuF-Jv-ztA"/>
+                            <constraint firstAttribute="trailing" secondItem="LBN-Nf-AL9" secondAttribute="trailing" constant="15" id="hZJ-tW-ByL"/>
+                            <constraint firstItem="LBN-Nf-AL9" firstAttribute="top" secondItem="zhz-Qn-jy2" secondAttribute="top" constant="15" id="i5n-ZA-6yq"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -53,8 +50,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="collectionView" destination="x95-Eo-qtg" id="9KY-8I-zbS"/>
                 <outlet property="containerView" destination="zhz-Qn-jy2" id="EY5-qC-hxJ"/>
+                <outlet property="segmentedController" destination="LBN-Nf-AL9" id="OaS-8W-PNG"/>
             </connections>
             <point key="canvasLocation" x="132" y="63"/>
         </tableViewCell>

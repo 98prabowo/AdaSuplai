@@ -66,13 +66,13 @@ class CartHeaderCell: UITableViewCell {
         self.isMarked = false
     }
     
-    @IBAction func checkmarkTapped(_ sender: UIButton) {
+    @IBAction private func checkmarkTapped(_ sender: UIButton) {
         self.isMarked = !self.isMarked
         guard let delegate = self.delegate else { return }
         delegate.cartHeaderAction(actions: .select(state: isMarked))
     }
     
-    @IBAction func deleteTapped(_ sender: UIButton) {
+    @IBAction private func deleteTapped(_ sender: UIButton) {
         guard let delegate = self.delegate else { return }
         delegate.cartHeaderAction(actions: .delete)
     }

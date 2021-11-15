@@ -15,6 +15,7 @@ enum ProductAttribute: String, CaseIterable {
 }
 
 class ProductAttributesHeaderCell: UITableViewCell {
+    @IBOutlet private weak var segmentedController: AdaSuplaiSegmentedControl!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var containerView: UIView!
     
@@ -29,12 +30,21 @@ class ProductAttributesHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setupCollectionView()
+        self.setupButton()
         self.setupBackgroundView()
     }
     
     private func setupBackgroundView() {
         self.containerView.addShadow()
+    }
+    
+    private func setupButton() {
+        var segmentTitles = [String]()
+        for title in ProductAttribute.allCases {
+            segmentTitles.append(title.rawValue)
+        }
+        self.segmentedController.textSize = 16
+        self.segmentedController.buttonTitles = segmentTitles
     }
     
     private func setupCollectionView() {
@@ -53,6 +63,10 @@ class ProductAttributesHeaderCell: UITableViewCell {
                 cell.configure(title: title)
             }
         }
+    }
+    
+    @IBAction private func segmentDidChanged(_ sender: AdaSuplaiSegmentedControl) {
+        self.attributesPublisher.send(ProductAttribute.allCases[sender.selectedIndex])
     }
 }
 

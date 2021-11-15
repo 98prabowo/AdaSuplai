@@ -34,7 +34,7 @@ class SubmitButtonCell: UITableViewCell {
         self.submitTitle = title
     }
     
-    @IBAction func submitButtonTapped(_ sender: Any) {
+    @IBAction private func submitButtonTapped(_ sender: Any) {
         self.publisher.send()
     }
 }

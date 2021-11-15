@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDelegate {
+class TransactionDetailController: BaseUIViewController {
     private enum Constant {
         static let header = "Pengiriman"
         static let paymentButtonTitle = "Lanjut ke Pembayaran"
@@ -21,8 +21,17 @@ class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDele
     @IBOutlet private var totalLabel: UILabel!
     @IBOutlet private var priceBar: UIView!
     
-    private let viewModel = TransactionViewModel()
+    private let viewModel: TransactionViewModel
     private var subscriber = Set<AnyCancellable>()
+    
+    init(source: TransactionSource) {
+        self.viewModel = TransactionViewModel(from: source)
+        super.init(nibName: Self.identifier, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +42,20 @@ class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDele
         self.bindViewModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupNavigationBar()
+    }
+    
     private func setupBackground() {
-        guard let tabBarController = self.tabBarController else { return }
-        tabBarController.tabBar.isHidden = true
         self.title = Constant.header
         self.priceBar.addShadow()
         self.view.backgroundColor = .white
     }
     
     private func setupNavigationBar() {
+        guard let tabBarController = self.tabBarController else { return }
+        tabBarController.tabBar.isHidden = true
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .white
         navigation.navigationBar.barTintColor = .white
@@ -72,7 +86,8 @@ class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDele
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] _ in
                 self.viewModel.getSupplier()
-                self.setTotalPrice(productPrice: self.viewModel.getTotalProductPrice())
+                let totalPrice = self.viewModel.getTotalProductPrice()
+                self.setTotalPrice(productPrice: totalPrice)
                 self.tableView.reloadData()
             }.store(in: &subscriber)
     }
@@ -93,8 +108,10 @@ class TransactionDetailController: BaseUIViewController, UIGestureRecognizerDele
         }
     }
     
-    @IBAction func paymentButtonTapped(_ sender: UIButton) {
-        print("BAYAR BOSS")
+    @IBAction private func paymentButtonTapped(_ sender: UIButton) {
+        guard let navigation = self.navigationController else { return }
+        let nextVC = PaymentController()
+        navigation.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -175,7 +192,7 @@ extension TransactionDetailController: TransactionCellDelegate {
     }
     
     func setDeliveryService() {
-        let nextVC = ListDeliveryController()
+        let nextVC = DeliveryServiceController()
         if let sheet = nextVC.presentationController as? UISheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true

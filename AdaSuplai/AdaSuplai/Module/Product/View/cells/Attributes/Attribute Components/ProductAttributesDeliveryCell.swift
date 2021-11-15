@@ -37,9 +37,9 @@ class ProductAttributesDeliveryCell: UITableViewCell {
         
     }
     
-    @IBAction func branchsButtonTapped(_ sender: Any) {
+    @IBAction private func branchsButtonTapped(_ sender: Any) {
     }
     
-    @IBAction func chevronButtonTapped(_ sender: Any) {
+    @IBAction private func chevronButtonTapped(_ sender: Any) {
     }
 }

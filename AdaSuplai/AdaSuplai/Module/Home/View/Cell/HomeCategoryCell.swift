@@ -47,7 +47,7 @@ class HomeCategoryCell: UITableViewCell {
     func configure(categories: [HomeCategory]) {
         self.categories = categories
     }
-    @IBAction func seeMoreTapped(_ sender: UIButton) {
+    @IBAction private func seeMoreTapped(_ sender: UIButton) {
         guard let publisher = self.categoryPublisher else { return }
         publisher.send(.seeMore)
     }

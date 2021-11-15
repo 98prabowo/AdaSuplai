@@ -130,14 +130,16 @@ class ProductController: BaseUIViewController {
         tabBarController.selectedIndex = 1
     }
     
-    @IBAction func buyButtonTapped(_ sender: UIButton) {
-        let nextVC = TransactionDetailController()
-        if let navigation = self.navigationController {
+    @IBAction private func buyButtonTapped(_ sender: UIButton) {
+        // TODO: Add products quantity data
+        if let navigation = self.navigationController,
+           let cart = self.viewModel.getCartData(product: self.viewModel.product, quantity: 5) {
+            let nextVC = TransactionDetailController(source: .productPage(data: cart))
             navigation.pushViewController(nextVC, animated: true)
         }
     }
     
-    @IBAction func addToCartButtonTapped(_ sender: UIButton) {
+    @IBAction private func addToCartButtonTapped(_ sender: UIButton) {
         let nextVC = AddToCartBottomSheetController(product: self.viewModel.product)
         
         if let sheet = nextVC.presentationController as? UISheetPresentationController {
