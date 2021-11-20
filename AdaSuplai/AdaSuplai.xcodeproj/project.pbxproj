@@ -192,6 +192,7 @@
 		85F8DC2727491D4A00D0D326 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8DC2227491D4A00D0D326 /* ProfileViewController.swift */; };
 		85F8DC2927491DDB00D0D326 /* ProfileEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8DC2827491DDB00D0D326 /* ProfileEditCell.xib */; };
 		85F8DC2B27491E1200D0D326 /* ProfileEditController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8DC2A27491E1200D0D326 /* ProfileEditController.xib */; };
+		85F8DC2D27492FD900D0D326 /* OrderDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F8DC2C27492FD900D0D326 /* OrderDetailController.xib */; };
 		B9D64CFE27030340000DDB95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFD27030340000DDB95 /* AppDelegate.swift */; };
 		B9D64D0027030340000DDB95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D64CFF27030340000DDB95 /* SceneDelegate.swift */; };
 		B9D64D0727030341000DDB95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D64D0627030341000DDB95 /* Assets.xcassets */; };
@@ -460,6 +461,7 @@
 		85F8DC2227491D4A00D0D326 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		85F8DC2827491DDB00D0D326 /* ProfileEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileEditCell.xib; sourceTree = "<group>"; };
 		85F8DC2A27491E1200D0D326 /* ProfileEditController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileEditController.xib; sourceTree = "<group>"; };
+		85F8DC2C27492FD900D0D326 /* OrderDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailController.xib; sourceTree = "<group>"; };
 		B9D64CFA27030340000DDB95 /* AdaSuplai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdaSuplai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D64CFD27030340000DDB95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D64CFF27030340000DDB95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1165,6 +1167,7 @@
 				85F8DC2A27491E1200D0D326 /* ProfileEditController.xib */,
 				85F8DBC227491BC500D0D326 /* ProfileAllOrderStatusController.xib */,
 				85F8DBC327491BC500D0D326 /* ProfileSettingController.xib */,
+				85F8DC2C27492FD900D0D326 /* OrderDetailController.xib */,
 				85F8DBC427491BC500D0D326 /* Cell */,
 			);
 			path = View;
@@ -1748,6 +1751,7 @@
 				85F8D8C22741785E00D0D326 /* CartSupplierCell.xib in Resources */,
 				C3B2765E27271C9E002E8CC7 /* regions.json in Resources */,
 				85F8D90D2741785F00D0D326 /* SearchHistoryHeaderCell.xib in Resources */,
+				85F8DC2D27492FD900D0D326 /* OrderDetailController.xib in Resources */,
 				85F8D8FB2741785F00D0D326 /* FilterCell.xib in Resources */,
 				85F8D8852741785E00D0D326 /* Main.storyboard in Resources */,
 			);

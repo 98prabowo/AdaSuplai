@@ -60,7 +60,7 @@ class ProfileViewController: BaseUIViewController {
     
     // MARK: - Navigation
     private func goToAllOrderController() {
-        let nextVC = OrderDetailController()
+        let nextVC = ProfileAllOrderStatusController()
         nextVC.hidesBottomBarWhenPushed = true
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
