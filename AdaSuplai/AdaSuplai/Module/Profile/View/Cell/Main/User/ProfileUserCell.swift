@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Kingfisher
 
 class ProfileUserCell: UITableViewCell {
     
@@ -49,11 +50,35 @@ class ProfileUserCell: UITableViewCell {
         profileView.addGestureRecognizer(tapGesture)
     }
     
+    func configure(user: User?) {
+        if user != nil {
+            profileName.text = user!.name
+            profileShop.text = user!.businessName
+            if let user = user {
+                guard let url = URL(string: RemoteURL.image.rawValue + user.profilePicture) else { return }
+                setupImage(url: url)
+            }
+        }
+    }
+    
     @objc func goToEditProfile(_ sender: UIView) {
         profileUserPublisher.send(Constant.editProfile)
     }
     
     @IBAction func settingButtonClicked(_ sender: UIButton) {
         profileUserPublisher.send(1)
+    }
+    
+    private func setupImage(url: URL) {
+        let processor = DownsamplingImageProcessor(size: profileImage.bounds.size)
+        profileImage.kf.indicatorType = .activity
+        profileImage.kf.setImage(
+            with: url,
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
     }
 }

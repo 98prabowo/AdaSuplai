@@ -36,7 +36,7 @@ class AccountInformationController: UIViewController {
     private let genderData = ["Pria", "Wanita", "Lainnya"]
     private let businessCategoryData = ["Makanan & Minuman", "Hobi", "Pakaian", "Lainnya"]
     
-    var user: User = User()
+    var user: Register = Register()
     private let authVM = AuthenticationViewModel()
     let datePicker = UIDatePicker()
     let genderPicker = UIPickerView()
@@ -52,7 +52,7 @@ class AccountInformationController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func configure(user: User) {
+    func configure(user: Register) {
         self.user = user
     }
     
@@ -114,15 +114,19 @@ class AccountInformationController: UIViewController {
     @IBAction func nextButton(_ sender: UIButton) {
         self.warningLabel.text = ""
         if saveUser() {
-            authVM.registerUser(user: self.user) { result in
+            authVM.registerUser(userReg: self.user) { result in
                 if result {
-                    let nextVC = OTPController()
-                    nextVC.configure(user: self.user)
-                    if let navigationController = self.navigationController {
-                        navigationController.pushViewController(nextVC, animated: true)
+                    DispatchQueue.main.async { () -> Void in
+                        let nextVC = OTPController()
+                        nextVC.configure(user: self.user)
+                        if let navigationController = self.navigationController {
+                            navigationController.pushViewController(nextVC, animated: true)
+                        }
                     }
                 } else {
-                    self.warningLabel.text = self.authVM.response
+                    DispatchQueue.main.async { () -> Void in
+                        self.warningLabel.text = self.authVM.response
+                    }
                 }
             }
         }

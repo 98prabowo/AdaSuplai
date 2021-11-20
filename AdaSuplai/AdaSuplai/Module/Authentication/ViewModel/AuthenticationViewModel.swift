@@ -11,18 +11,20 @@ final class AuthenticationViewModel: BaseViewModel {
     
     let service: RemoteDataService
     var response: String = ""
+    var loginData: LoginData?
     
     override init() {
         self.service = RemoteDataService()
         super.init()
     }
     
-    func verifyOTP(user: User, otp: String, myComplete:@escaping(Bool) -> Void) {
+    func verifyOTP(phoneNumber: String, otp: String, myComplete:@escaping(Bool) -> Void) {
         Task {
             do {
-                let parameters = ["phoneNumber": user.phoneNumber,
-                                  "otp": otp]
-                response = try await service.postStringData(url: .verifyOTP, parameter: parameters)
+                let parameters = VerifyOTP(phoneNumber: phoneNumber, otp: otp)
+                let data = try await service.postData(url: .verifyOTP, parameter: parameters)
+                response = String(decoding: data, as: UTF8.self)
+                print(response)
                 myComplete(true)
             } catch {
                 response = error.localizedDescription
@@ -35,27 +37,26 @@ final class AuthenticationViewModel: BaseViewModel {
     func resendOTP(phoneNumber: String, myComplete:@escaping(Bool) -> Void) {
         Task {
             do {
-                let parameters = ["phoneNumber": phoneNumber]
-                response = try await service.postStringData(url: .resendOTP, parameter: parameters)
+                let parameters = GenerateOTP(phoneNumber: phoneNumber)
+                let data = try await service.postData(url: .generateOTP, parameter: parameters)
+                response = String(decoding: data, as: UTF8.self)
                 print(response)
-                
                 myComplete(true)
             } catch {
                 response = error.localizedDescription
                 print(error.localizedDescription)
-                
                 myComplete(false)
             }
         }
     }
     
-    func registerUser(user: User, myComplete:@escaping(Bool) -> Void) {
+    func registerUser(userReg: Register, myComplete:@escaping(Bool) -> Void) {
         Task {
             do {
-                let parameters = user
-                response = try await service.postStringData(url: .register, parameter: parameters)
+                let parameters = userReg
+                let data = try await service.postData(url: .register, parameter: parameters)
+                response = String(decoding: data, as: UTF8.self)
                 print(response)
-                
                 myComplete(true)
             } catch {
                 response = error.localizedDescription
@@ -69,9 +70,8 @@ final class AuthenticationViewModel: BaseViewModel {
         Task {
             do {
                 let parameters = Login(phoneNumber: phone, password: password)
-                response = try await service.postStringData(url: .login, parameter: parameters)
-                print(response)
-                
+                let data = try await service.postData(url: .login, parameter: parameters)
+                loginData = try JSONDecoder().decode(LoginData.self, from: data)
                 myComplete(true)
             } catch {
                 response = error.localizedDescription

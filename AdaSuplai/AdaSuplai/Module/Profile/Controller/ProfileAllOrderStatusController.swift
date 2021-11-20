@@ -25,17 +25,13 @@ class ProfileAllOrderStatusController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setUpNavigationBar(isHidden: false)
+        setUpNavigationBar()
         setupTableView()
         setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setUpNavigationBar(isHidden: false)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        setUpNavigationBar(isHidden: true)
+        setUpNavigationBar()
     }
     
     private func setupView() {
@@ -74,12 +70,12 @@ class ProfileAllOrderStatusController: BaseUIViewController {
     }
     
     // MARK: - Navigation Bar
-    private func setUpNavigationBar(isHidden: Bool) {
+    private func setUpNavigationBar() {
         title = "Status Pemesanan"
         
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .clear
-        navigation.navigationBar.isHidden = isHidden
+        navigation.navigationBar.isHidden = false
         navigation.navigationItem.hidesBackButton = true
         navigation.navigationBar.tintColor = .primaryGreen
         self.addBackButton()

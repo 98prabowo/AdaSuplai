@@ -25,7 +25,7 @@ class OTPController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var warningLabel: UILabel!
     
     let authVM = AuthenticationViewModel()
-    var user: User = User()
+    var user: Register = Register()
     private var userDefault = UserDefaults()
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class OTPController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
     }
     
-    func configure(user: User) {
+    func configure(user: Register) {
         self.user = user
     }
     
@@ -110,14 +110,16 @@ class OTPController: UIViewController, UITextFieldDelegate {
     // MARK: - Action
     @IBAction func NextButtonClicked(_ sender: UIButton) {
         print("Next")
-        authVM.verifyOTP(user: self.user, otp: self.saveOTP()) { result in
+        authVM.verifyOTP(phoneNumber: self.user.phoneNumber, otp: self.saveOTP()) { result in
             if result {
                 self.userDefault.set(true, forKey: "isLogin")
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { () -> Void in
                     self.backToProfile()
                 }
             } else {
-                self.warningLabel.text = self.authVM.response
+                DispatchQueue.main.async { () -> Void in
+                    self.warningLabel.text = self.authVM.response
+                }
             }
         }
     }
