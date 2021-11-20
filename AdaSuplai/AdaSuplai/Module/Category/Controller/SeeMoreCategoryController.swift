@@ -119,6 +119,9 @@ extension SeeMoreCategoryController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextVC = CategoryController()
+        if let category = viewModel.categoryData.value?[indexPath.row] {
+            nextVC.configure(category: category)
+        }
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }

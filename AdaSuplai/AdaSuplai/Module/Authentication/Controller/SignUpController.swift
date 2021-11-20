@@ -30,7 +30,7 @@ class SignUpController: BaseUIViewController {
     @IBOutlet weak var stackViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    var user: User = User()
+    var user: Register = Register()
     
     override func viewDidLoad() {
         super.viewDidLoad()

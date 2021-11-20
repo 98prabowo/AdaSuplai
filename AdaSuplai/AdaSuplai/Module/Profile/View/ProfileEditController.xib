@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileEditController" customModule="AdaSuplai" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="e4P-zh-VtJ" id="cHB-H5-Bxl"/>
+                <outlet property="editImageButton" destination="X1y-xo-axr" id="f21-Qx-TQv"/>
+                <outlet property="imageContainer" destination="gYe-cf-jnk" id="p0t-Nj-MKk"/>
                 <outlet property="profileImage" destination="dze-Ng-IvA" id="5q0-ZC-gxk"/>
                 <outlet property="tableView" destination="VBq-Ty-DRX" id="d9I-vY-r6F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,13 +26,41 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-zh-VtJ">
                     <rect key="frame" x="16" y="154" width="382" height="516"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffee_2" translatesAutoresizingMaskIntoConstraints="NO" id="dze-Ng-IvA">
-                            <rect key="frame" x="129.5" y="-85" width="123" height="123"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYe-cf-jnk">
+                            <rect key="frame" x="129.5" y="-80" width="123" height="123"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dze-Ng-IvA">
+                                    <rect key="frame" x="0.0" y="0.0" width="123" height="123"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="123" id="FLT-gD-oCP"/>
+                                        <constraint firstAttribute="width" constant="123" id="tBG-Vs-l0V"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1y-xo-axr">
+                                    <rect key="frame" x="0.0" y="94.5" width="123" height="28.5"/>
+                                    <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="UBAH">
+                                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="12"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="editProfileImage:" destination="-1" eventType="touchUpInside" id="8eb-F6-yvg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="123" id="FLT-gD-oCP"/>
-                                <constraint firstAttribute="width" constant="123" id="tBG-Vs-l0V"/>
+                                <constraint firstAttribute="width" constant="123" id="2od-zf-yhT"/>
+                                <constraint firstAttribute="trailing" secondItem="X1y-xo-axr" secondAttribute="trailing" id="5yS-mW-cQ1"/>
+                                <constraint firstItem="dze-Ng-IvA" firstAttribute="centerX" secondItem="gYe-cf-jnk" secondAttribute="centerX" id="83x-Pz-4IP"/>
+                                <constraint firstItem="dze-Ng-IvA" firstAttribute="centerY" secondItem="gYe-cf-jnk" secondAttribute="centerY" id="aIO-NI-IhQ"/>
+                                <constraint firstAttribute="height" constant="123" id="gkj-Ay-ClI"/>
+                                <constraint firstAttribute="bottom" secondItem="X1y-xo-axr" secondAttribute="bottom" id="jWy-tv-XDT"/>
+                                <constraint firstItem="X1y-xo-axr" firstAttribute="leading" secondItem="gYe-cf-jnk" secondAttribute="leading" id="tWA-jK-afE"/>
                             </constraints>
-                        </imageView>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmi-wk-3vD">
                             <rect key="frame" x="170" y="247" width="42" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,19 +69,19 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VBq-Ty-DRX">
-                            <rect key="frame" x="0.0" y="54" width="382" height="462"/>
+                            <rect key="frame" x="0.0" y="51" width="382" height="465"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
-                        <constraint firstItem="dze-Ng-IvA" firstAttribute="centerX" secondItem="e4P-zh-VtJ" secondAttribute="centerX" id="3XF-7c-ElU"/>
-                        <constraint firstItem="dze-Ng-IvA" firstAttribute="top" secondItem="e4P-zh-VtJ" secondAttribute="top" constant="-85" id="HTy-nM-Yk8"/>
                         <constraint firstAttribute="trailing" secondItem="VBq-Ty-DRX" secondAttribute="trailing" id="L55-k6-hHV"/>
+                        <constraint firstItem="gYe-cf-jnk" firstAttribute="top" secondItem="e4P-zh-VtJ" secondAttribute="top" constant="-80" id="TMU-Vq-oX0"/>
                         <constraint firstAttribute="height" constant="516" id="UKs-mm-nQH"/>
                         <constraint firstItem="VBq-Ty-DRX" firstAttribute="leading" secondItem="e4P-zh-VtJ" secondAttribute="leading" id="cSt-gr-8Ni"/>
-                        <constraint firstItem="VBq-Ty-DRX" firstAttribute="top" secondItem="dze-Ng-IvA" secondAttribute="bottom" constant="16" id="dqy-eO-9MG"/>
                         <constraint firstAttribute="bottom" secondItem="VBq-Ty-DRX" secondAttribute="bottom" id="fZY-MZ-sRW"/>
+                        <constraint firstItem="gYe-cf-jnk" firstAttribute="centerX" secondItem="e4P-zh-VtJ" secondAttribute="centerX" id="oU0-Nh-3oP"/>
+                        <constraint firstItem="VBq-Ty-DRX" firstAttribute="top" secondItem="gYe-cf-jnk" secondAttribute="bottom" constant="8" id="tCp-HQ-2UI"/>
                     </constraints>
                 </view>
             </subviews>
@@ -67,7 +97,6 @@
         </view>
     </objects>
     <resources>
-        <image name="coffee_2" width="4928" height="3982"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

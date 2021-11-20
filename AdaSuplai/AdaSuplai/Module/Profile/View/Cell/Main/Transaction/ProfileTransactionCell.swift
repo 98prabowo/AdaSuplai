@@ -45,6 +45,7 @@ class ProfileTransactionCell: UITableViewCell {
     private func setUpTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isScrollEnabled = false
         
         self.tableView.registerNib(forCell: TransactionActivityCell.self)
         self.tableView.registerNib(forCell: SeparatorCell.self)

@@ -22,11 +22,7 @@ class ProfileSettingController: BaseUIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setUpNavigationBar(isHidden: false)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        setUpNavigationBar(isHidden: true)
+        setUpNavigationBar()
     }
     
     private func setupView() {
@@ -36,24 +32,21 @@ class ProfileSettingController: BaseUIViewController {
     }
     
     // MARK: - Navigation Bar
-    private func setUpNavigationBar(isHidden: Bool) {
+    private func setUpNavigationBar() {
         title = "Pengaturan"
         
         guard let navigation = self.navigationController else { return }
         navigation.navigationBar.backgroundColor = .clear
-        navigation.navigationBar.isHidden = isHidden
+        navigation.navigationBar.isHidden = false
         navigation.navigationItem.hidesBackButton = true
         navigation.navigationBar.tintColor = .primaryGreen
         self.addBackButton()
     }
     
     @IBAction func logOutButtonClicked(_ sender: UIButton) {
-        print("Logout")
-        self.userDefault.set(false, forKey: "isLogin")
-        
+        self.userDefault.removeObject(forKey: "userId")
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
 // MARK: - Table
 extension ProfileSettingController: UITableViewDelegate, UITableViewDataSource {

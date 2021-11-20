@@ -7,17 +7,24 @@
 
 import Foundation
 
+// MARK: - InitialUser
+struct InitialUser: Codable {
+    let message: String
+    let data: User
+}
+
+// MARK: - User
 struct User: Codable {
-    var name = ""
-    var email = ""
-    var phoneNumber = ""
-    var birthDate = ""
-    var gender = ""
-    var businessName = ""
-    var businessCategory = ""
-    var password = ""
-    
+    let id, name, birthDate, gender: String
+    let businessName, businessCategory, phoneNumber, email: String
+    let password, date: String
+    let v: Int
+    let profilePicture: String
+
     enum CodingKeys: String, CodingKey {
-        case name, email, phoneNumber, birthDate, gender, businessName, businessCategory, password
+        case id = "_id"
+        case name, birthDate, gender, businessName, businessCategory, phoneNumber, email, password, date
+        case v = "__v"
+        case profilePicture
     }
 }

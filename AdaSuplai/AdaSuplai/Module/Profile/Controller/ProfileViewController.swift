@@ -22,15 +22,23 @@ class ProfileViewController: BaseUIViewController {
         
         setUpTable()
         setUpNavigationBar()
+        
+        viewModel.profileData.bind { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.subscribers.removeAll(keepingCapacity: true)
+                self?.table.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setUpNavigationBar()
         isLogin()
+        viewModel.fetchProfile()
     }
     
     private func isLogin() {
-        if !(userDefault.bool(forKey: "isLogin")) {
+        if userDefault.string(forKey: "userId") == nil {
             let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
             if let myVC = storyboard.instantiateViewController(withIdentifier: "AuthenticationController") as? AuthenticationController {
                 self.navigationController?.pushViewController(myVC, animated: true)
@@ -104,6 +112,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0 :
             let cell = tableView.dequeueReusableCell(withCell: ProfileUserCell.self, for: indexPath)
+            cell.configure(user: (viewModel.profileData.value?.first))
             cell.profileUserPublisher
                 .sink { index in
                     if index == 0 {
@@ -143,13 +152,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
         default :
             return UITableViewCell()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = TransactionDetailController(source: .cartPage)
-        if let navigationController = self.navigationController {
-            navigationController.pushViewController(nextVC, animated: true)
         }
     }
 }

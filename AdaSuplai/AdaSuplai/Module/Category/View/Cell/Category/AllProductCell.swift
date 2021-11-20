@@ -13,13 +13,25 @@ class AllProductCell: UITableViewCell {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    private var categoryVM = CategoryViewModel()
     
-    let allProductPublisher = PassthroughSubject<Void, Never>()
+    let allProductPublisher = PassthroughSubject<Product?, Never>()
     
     override func awakeFromNib() {
         setUpCollectionView()
         super.awakeFromNib()
-        // Initialization code
+        
+        self.categoryVM.categoryProduct.bind { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+                self?.setUpCollectionView()
+                self?.allProductPublisher.send(nil)
+            }
+        }
+    }
+    
+    func configure(idCategory: String) {
+        self.categoryVM.fetchCategoryProduct(id: idCategory)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,7 +40,6 @@ class AllProductCell: UITableViewCell {
     }
 }
 // MARK: - Collection View
-
 extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func setUpCollectionView() {
         collectionView.backgroundColor = .blueBackground
@@ -45,11 +56,14 @@ extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return categoryVM.categoryProduct.value?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: ProductCell.self, for: indexPath)
+        if let product = categoryVM.categoryProduct.value?[indexPath.row] {
+            cell.configure(product: product)
+        }
         return cell
     }
     
@@ -62,7 +76,9 @@ extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        allProductPublisher.send()
+        if let product = self.categoryVM.categoryProduct.value?[indexPath.row] {
+            allProductPublisher.send(product)
+        }
     }
     
 }

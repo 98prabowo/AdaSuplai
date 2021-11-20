@@ -91,9 +91,9 @@ class AuthenticationController: BaseUIViewController {
     }
     
     private func checkIsLogin() {
-        if userDefault.bool(forKey: "isLogin") {
-            self.tabBarController?.selectedIndex = 0
-            self.navigationController?.popViewController(animated: true)
+        if userDefault.string(forKey: "userId") != nil {
+                self.tabBarController?.selectedIndex = 0
+                self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -114,10 +114,11 @@ class AuthenticationController: BaseUIViewController {
     @IBAction func loginClicked(_ sender: Any) {
         self.warningLabel.text = ""
         if !usernameTextField.text!.isEmpty && !passwordTextField.text!.isEmpty {
-        AuthVM.loginUser(phone: usernameTextField.text!, password: passwordTextField.text!) { result in
+            AuthVM.loginUser(phone: usernameTextField.text!, password: passwordTextField.text!) { result in
                 if result {
-                    print("Masuk Profile")
-                    self.userDefault.set(true, forKey: "isLogin")
+                    if let user = self.AuthVM.loginData {
+                        self.userDefault.set(user.id, forKey: "userId")
+                    }
                     
                     DispatchQueue.main.async { () -> Void in
                         self.checkIsLogin()
@@ -127,7 +128,6 @@ class AuthenticationController: BaseUIViewController {
                     DispatchQueue.main.async { () -> Void in
                         self.warningLabel.text = self.AuthVM.response
                     }
-                    print("Failed")
                 }
             }
         } else {
