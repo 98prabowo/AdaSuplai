@@ -11,6 +11,7 @@ import Combine
 class CategoryController: BaseUIViewController {
     
     @IBOutlet var table: UITableView!
+    private var category: Category?
     private var  subscribers = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -20,8 +21,9 @@ class CategoryController: BaseUIViewController {
         setUpTable()
     }
     
-    private func configure(title: String) {
-        self.title = title
+    func configure(category: Category) {
+        self.title = category.name
+        self.category = category
     }
     
     // MARK: - Navigation Bar
@@ -37,13 +39,17 @@ class CategoryController: BaseUIViewController {
     }
     
     // MARK: - Navigate
-    private func goToProductController() {
+    private func goToProductController(product: Product) {
         // TODO: create product data then input to ProductController
-//        let nextVC = ProductController()
-//        if let navigationController = self.navigationController {
-//            navigationController.pushViewController(nextVC, animated: true)
-//        }
-        print("Test Product")
+        let nextVC = ProductController(product: product)
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
+    }
+    
+    private func reloadAllData() {
+        subscribers.removeAll()
+        table.reloadData()
     }
 }
 
@@ -58,36 +64,42 @@ extension CategoryController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withCell: PromoProductCell.self, for: indexPath)
-            cell.promoProductPublisher
-                .sink { [unowned self] in
-                    self.goToProductController()
-                }
-                .store(in: &subscribers)
-            return cell
+//        case 0:
+//            let cell = tableView.dequeueReusableCell(withCell: PromoProductCell.self, for: indexPath)
+//            cell.promoProductPublisher
+//                .sink { [unowned self] in
+//                    self.goToProductController(product: "promo 1\(indexPath.row)")
+//                }
+//                .store(in: &subscribers)
+//            return cell
+//
+//        case 1:
+//            let cell = tableView.dequeueReusableCell(withCell: PromoProductCell.self, for: indexPath)
+//            cell.promoProductPublisher
+//                .sink { [unowned self] in
+//                    self.goToProductController(product: "promo 2\(indexPath.row)")
+//                }
+//                .store(in: &subscribers)
+//            return cell
             
-        case 1:
-            let cell = tableView.dequeueReusableCell(withCell: PromoProductCell.self, for: indexPath)
-            cell.promoProductPublisher
-                .sink { [unowned self] in
-                    self.goToProductController()
-                }
-                .store(in: &subscribers)
-            return cell
-            
-        case 2 :
+        case 0 :
             let cell = tableView.dequeueReusableCell(withCell: AllProductCell.self, for: indexPath)
+            cell.configure(idCategory: category?.id ?? "")
+            cell.mainTableView = tableView
             cell.allProductPublisher
-                .sink { [unowned self] in
-                self.goToProductController()
-            }
-            .store(in: &subscribers)
+                .sink { [ unowned self ] product in
+                    if product == nil {
+                        self.reloadAllData()
+                    } else {
+                        self.goToProductController(product: product!)
+                    }
+                }
+                .store(in: &subscribers)
             return cell
             
         default:

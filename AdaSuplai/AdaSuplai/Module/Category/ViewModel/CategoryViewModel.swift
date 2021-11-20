@@ -12,6 +12,7 @@ class CategoryViewModel: BaseViewModel {
     let service = RemoteDataService()
     var categoryData: Observable<[Category]> = Observable([])
     var allCategoryData: Observable<[Category]> = Observable([])
+    var categoryProduct: Observable<[Product]> = Observable([])
     
     override init() {
         super.init()
@@ -38,6 +39,16 @@ class CategoryViewModel: BaseViewModel {
 //                print("\(error)")
 //            }
 //        }
+    }
+    
+    func fetchCategoryProduct(id: String) {
+        Task {
+            do {
+                self.categoryProduct.value = try await service.getData([Product].self, url: .searchProductByCategoryID, keyword: id)
+            } catch {                                                                           
+                print(error)
+            }
+        }
     }
     
 }
