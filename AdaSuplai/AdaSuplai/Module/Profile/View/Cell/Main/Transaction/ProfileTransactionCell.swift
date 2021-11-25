@@ -60,12 +60,18 @@ extension ProfileTransactionCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 0 {
+        switch indexPath.row {
+        case 0:
             let cell = tableView.dequeueReusableCell(withCell: TransactionActivityCell.self, for: indexPath)
-            cell.configure(title: cellTitle[indexPath.row], image: cellImage[indexPath.row])
+            cell.configure(title: cellTitle[indexPath.row], image: cellImage[indexPath.row], totalProduct: 0)
             cell.selectionStyle = .none
             return cell
-        } else {
+        case 2:
+            let cell = tableView.dequeueReusableCell(withCell: TransactionActivityCell.self, for: indexPath)
+            cell.configure(title: cellTitle[indexPath.row], image: cellImage[indexPath.row], totalProduct: 0)
+            cell.selectionStyle = .none
+            return cell
+        default:
             let cell = tableView.dequeueReusableCell(withCell: SeparatorCell.self, for: indexPath)
             cell.selectionStyle = .none
             return cell

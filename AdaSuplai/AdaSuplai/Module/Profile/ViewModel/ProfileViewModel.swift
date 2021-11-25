@@ -12,7 +12,7 @@ class ProfileViewModel: BaseViewModel {
     let service = RemoteDataService()
     var profileData: Observable<[User]> = Observable([])
     let userDefault = UserDefaults()
-    var updateResponse = InitialUser(message: "", data: User(id: "", name: "", birthDate: "", gender: "", businessName: "", businessCategory: "", phoneNumber: "", email: "", password: "", date: "", v: 0, profilePicture: ""))
+    var error = ""
     
     override init() {
         super.init()
@@ -27,6 +27,7 @@ class ProfileViewModel: BaseViewModel {
                 profileData.value?.removeAll()
                 self.profileData.value?.append(parent.data)
             } catch {
+                self.error = error.localizedDescription
                 print("Fetch Profile in ProfileViewModel error: \(error)")
             }
         }
@@ -46,24 +47,29 @@ class ProfileViewModel: BaseViewModel {
                 print(decodedData)
                 myComplete(true)
             } catch {
+                self.error = error.localizedDescription
                 print("Update Profile in ProfileViewModel error: \(error)")
                 myComplete(false)
             }
         }
     }
     
-    func updateProfileImage(data: [String: String]) {
+    func updateProfileImage(data: UIImage, myComplete:@escaping(Bool) -> Void) {
         Task {
             do {
-                var parameters = data
-                let header = data
+                var header: [String: String] = [:]
                 if let userId = userDefault.string(forKey: "userId") {
-                    parameters.updateValue(userId, forKey: "user_id")
+                    header.updateValue(userId, forKey: "user_id")
                 }
-                let parent = try await service.postData(url: .editProfile, parameter: parameters, header: header)
-                print(parent)
+                let parent = try await service.postProfileImage(url: .editProfile, fileName: "profilePicture", imageData: data, header: header)
+                
+                let decodedData = try JSONDecoder().decode(UpdateProfileResponse.self, from: parent)
+                print(decodedData)
+                myComplete(true)
             } catch {
-                print("Update Profile in ProfileViewModel error: \(error)")
+                self.error = error.localizedDescription
+                print("Update Image Profile in ProfileViewModel error: \(error)")
+                myComplete(false)
             }
         }
     }

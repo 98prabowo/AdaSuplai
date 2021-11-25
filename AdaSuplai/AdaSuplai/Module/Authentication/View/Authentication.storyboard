@@ -41,7 +41,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d49-sh-kXE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="52"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yhs-wx-kMO">
                                                                 <rect key="frame" x="0.0" y="52" width="382" height="48"/>
@@ -151,13 +151,13 @@
                         <outlet property="forgotPasswordButton" destination="VJs-sk-glv" id="CTl-MC-fHY"/>
                         <outlet property="loginButton" destination="1Xg-wg-0nn" id="VWo-EU-6eE"/>
                         <outlet property="passwordTextField" destination="yhs-wx-kMO" id="bjh-80-Izh"/>
+                        <outlet property="phoneTextField" destination="d49-sh-kXE" id="3gQ-KB-vBP"/>
                         <outlet property="scrollView" destination="Btg-km-kSV" id="wZK-jY-ioL"/>
                         <outlet property="signupButton" destination="PrT-cP-Z7s" id="egH-71-Ord"/>
                         <outlet property="stackView" destination="4dz-zN-KJT" id="bKT-sV-EGq"/>
                         <outlet property="stackViewBottomConstraint" destination="oFb-12-B11" id="pgY-t5-qnP"/>
                         <outlet property="stackViewTop" destination="JHL-4R-GVp" id="rEE-ha-mSX"/>
                         <outlet property="titleLabel" destination="fJy-CY-qso" id="wdc-mq-mNX"/>
-                        <outlet property="usernameTextField" destination="d49-sh-kXE" id="3gQ-KB-vBP"/>
                         <outlet property="warningLabel" destination="cOu-DL-9Ms" id="AFu-5W-QJT"/>
                     </connections>
                 </viewController>

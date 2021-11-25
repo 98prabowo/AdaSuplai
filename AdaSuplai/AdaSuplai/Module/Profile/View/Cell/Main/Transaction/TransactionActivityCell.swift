@@ -26,8 +26,13 @@ class TransactionActivityCell: UITableViewCell {
         totalProductButton.tintColor = .alert
     }
     
-    func configure(title: String, image: String) {
+    func configure(title: String, image: String, totalProduct: Int) {
         titleLabel.text = title
+        if totalProduct < 100 {
+            totalProductButton.titleLabel?.text = "\(totalProduct) Produk"
+        } else {
+            totalProductButton.titleLabel?.text = "99+ Produk"
+        }
         iconImage.image = UIImage(imageLiteralResourceName: image)
     }
     

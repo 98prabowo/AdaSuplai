@@ -16,7 +16,7 @@ class ProfileEditCell: UITableViewCell {
     private var profileVM = ProfileViewModel()
     private var isEdit: Bool = false
     private var descString = ""
-    let profileEditPublisher = PassthroughSubject<Void, Never>()
+    let profileEditPublisher = PassthroughSubject<String, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,11 +71,12 @@ class ProfileEditCell: UITableViewCell {
             profileVM.updateProfile(data: [getKey(): getValue()]) { result in
                 if result {
                     DispatchQueue.main.async {
-                        self.profileEditPublisher.send()
+                        self.profileEditPublisher.send("Success")
                     }
                 } else {
                     DispatchQueue.main.async { () -> Void in
                         self.descriptionTextField.text = self.descString
+                        self.profileEditPublisher.send(self.profileVM.error)
                     }
                 }
             }

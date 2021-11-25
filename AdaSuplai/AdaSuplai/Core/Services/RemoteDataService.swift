@@ -60,6 +60,35 @@ class RemoteDataService {
         return data
     }
     
+    /// HTTP POST method to upload data from remote directory. This method is call in async condition.
+    ///
+    /// - parameters:
+    ///   - url: An end-point url in `String` format.
+    ///   - parameter: An object that will uploaded to remote directory.
+    /// - throws: An error if url have wrong format or url is wrong.
+    /// - throws: An error when server can't be reach for certains condition.
+    /// - throws: An error if any value throws an error during decoding.
+    func postProfileImage(url: RemoteURL, fileName: String, imageData: UIImage, header: [String: String]? = nil) async throws -> Data {
+        guard let url = URL(string: url.rawValue) else {
+            throw RemoteServiceError.badURL }
+        let mpfd = MultiPartFormDataRequest(url: url, method: .post)
+        mpfd.addDataField(named: fileName, data: imageData.jpegData(compressionQuality: 0.5) ?? Data(), fileName: "\(header?["userId"] ?? "profile").jpeg", mimeType: "image/jpeg")
+        var request = mpfd.asURLRequest()
+        
+        if let header = header {
+            for h in header {
+                request.addValue(h.value, forHTTPHeaderField: h.key)
+            }
+        }
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw RemoteServiceError.badServerResponse }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw RemoteServiceError.badResponseID(status: httpResponse.statusCode) }
+        return data
+    }
+    
     /// HTTP DELETE method to delete data from remote directory. This method is call in async condition.
     ///
     /// - parameters:
@@ -156,7 +185,7 @@ class RemoteDataService {
         guard let url = URL(string: url.rawValue) else {
             throw RemoteServiceError.badURL }
         let request = MultiPartFormDataRequest(url: url, method: .post)
-        request.addDataField(named: "image", data: imageData, mimeType: "img/jpeg")
+        request.addDataField(named: "image", data: imageData, fileName: "picture.jpeg", mimeType: "img/jpeg")
         let (data, response) = try await URLSession.shared.data(with: request)
         guard let httpResponse = response as? HTTPURLResponse else {
             throw RemoteServiceError.badServerResponse }

@@ -11,7 +11,7 @@ import SwiftUI
 class AuthenticationController: BaseUIViewController {
     
     private enum Constant {
-        static let usernamePlaceholder = "Alamat Email / No. Telepon"
+        static let phonePlaceholder = "No. Telepon"
         static let passwordPlaceholder = "Kata Sandi"
     }
     
@@ -25,7 +25,7 @@ class AuthenticationController: BaseUIViewController {
     @IBOutlet weak var bottomContainerView: UIView!
     private var keyboradCount = 0
     
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -79,10 +79,10 @@ class AuthenticationController: BaseUIViewController {
     }
     
     private func setupTextField() {
-        usernameTextField.placeholder = Constant.usernamePlaceholder
+        phoneTextField.placeholder = Constant.phonePlaceholder
         passwordTextField.placeholder = Constant.passwordPlaceholder
         
-        usernameTextField.delegate = self
+        phoneTextField.delegate = self
         passwordTextField.delegate = self
         
         stackView.layer.cornerRadius = 8
@@ -113,8 +113,8 @@ class AuthenticationController: BaseUIViewController {
     
     @IBAction func loginClicked(_ sender: Any) {
         self.warningLabel.text = ""
-        if !usernameTextField.text!.isEmpty && !passwordTextField.text!.isEmpty {
-            AuthVM.loginUser(phone: usernameTextField.text!, password: passwordTextField.text!) { result in
+        if !phoneTextField.text!.isEmpty && !passwordTextField.text!.isEmpty {
+            AuthVM.loginUser(phone: phoneTextField.text!.addCountryCode, password: passwordTextField.text!) { result in
                 if result {
                     if let user = self.AuthVM.loginData {
                         self.userDefault.set(user.id, forKey: "userId")
@@ -149,12 +149,12 @@ class AuthenticationController: BaseUIViewController {
 extension AuthenticationController: UITextFieldDelegate {
     private func switchTextField(_ textField: UITextField) {
         switch textField {
-        case self.usernameTextField:
+        case self.phoneTextField:
             self.passwordTextField.becomeFirstResponder()
         case self.passwordTextField:
             self.passwordTextField.resignFirstResponder()
         default:
-            self.usernameTextField.becomeFirstResponder()
+            self.phoneTextField.becomeFirstResponder()
         }
     }
     

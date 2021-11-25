@@ -55,14 +55,14 @@ class MultiPartFormDataRequest {
     ///     - name: A key parameter of information dictionary or a name category of specific information.
     ///     - data: `Data` that will be send via HTTP protocol with MPFD structure.
     ///     - mimeType:A content type of the `Data` that will be send.
-    func addDataField(named name: String, data: Data, mimeType: String) {
-        httpBody.append(dataFormField(named: name, data: data, mimeType: mimeType))
+    func addDataField(named name: String, data: Data, fileName: String, mimeType: String) {
+        httpBody.append(dataFormField(named: name, data: data, fileName: fileName, mimeType: mimeType))
     }
     
-    private func dataFormField(named name: String, data: Data, mimeType: String) -> Data {
+    private func dataFormField(named name: String, data: Data, fileName: String, mimeType: String) -> Data {
         var fieldData = Data()
         fieldData.append("--\(boundary)\r\n")
-        fieldData.append("Content-Disposition: form-data; name=\"\(name)\"\r\n")
+        fieldData.append("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(fileName)\"\r\n")
         fieldData.append("Content-Type: \(mimeType)\r\n")
         fieldData.append("\r\n")
         fieldData.append(data)

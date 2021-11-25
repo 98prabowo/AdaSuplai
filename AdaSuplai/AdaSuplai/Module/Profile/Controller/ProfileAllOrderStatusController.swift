@@ -125,6 +125,10 @@ extension ProfileAllOrderStatusController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 55)
+        let label = UILabel(frame: CGRect.zero)
+        label.text = titles[indexPath.item]
+        label.font = UIFont.boldSystemFont(ofSize: 17.0)
+        label.sizeToFit()
+        return CGSize(width: label.frame.width, height: 55)
     }
 }
