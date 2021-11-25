@@ -83,6 +83,14 @@ class ProfileViewController: BaseUIViewController {
         }
     }
     
+    private func goToOrderDetailController(orderId: String) {
+        let nextVC = OrderDetailController()
+        nextVC.hidesBottomBarWhenPushed = true
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
+    }
+    
     private func goToActivityController(text: String) {
         print("Go To My Activity \(text)")
     }
@@ -136,8 +144,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 2 :
             let cell = tableView.dequeueReusableCell(withCell: ProfileOrderStatusCell.self, for: indexPath)
             cell.orderStatusPublisher
-                .sink { [unowned self] in
-                    self.goToAllOrderController()
+                .sink { [unowned self] result in
+                    self.orderStatusNavigationCheck(result: result)
                 }
                 .store(in: &subscribers)
             return cell
@@ -152,6 +160,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
         default :
             return UITableViewCell()
+        }
+    }
+    
+    private func orderStatusNavigationCheck(result: String) {
+        switch result {
+        case "See More":
+            self.goToAllOrderController()
+        case "Refresh" :
+            self.subscribers.removeAll(keepingCapacity: true)
+            self.table.reloadData()
+        default :
+            self.goToOrderDetailController(orderId: result)
         }
     }
 }

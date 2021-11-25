@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,22 +27,22 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="62" id="ByO-VJ-bSF"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NAl-rV-Vld">
-                        <size key="itemSize" width="128" height="128"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="16" id="NAl-rV-Vld">
+                        <size key="itemSize" width="120" height="55"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rkt-9c-7A1">
-                    <rect key="frame" x="0.0" y="110" width="414" height="752"/>
+                    <rect key="frame" x="0.0" y="110" width="414" height="786"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PmI-lb-IM0">
-                    <rect key="frame" x="0.0" y="110" width="414" height="752"/>
+                    <rect key="frame" x="0.0" y="110" width="414" height="786"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KUR-mQ-wic">
-                            <rect key="frame" x="16" y="352" width="382" height="48.5"/>
+                            <rect key="frame" x="16" y="369" width="382" height="48.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Halaman Kosong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXk-mJ-RtG">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="24"/>
@@ -73,16 +73,16 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PmI-lb-IM0" secondAttribute="trailing" id="2pd-KL-0HD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p7Y-W3-byH" secondAttribute="trailing" id="Bfz-fY-9ki"/>
                 <constraint firstItem="rkt-9c-7A1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MM1-ea-tss"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PmI-lb-IM0" secondAttribute="bottom" id="T4y-cw-zhO"/>
+                <constraint firstAttribute="bottom" secondItem="PmI-lb-IM0" secondAttribute="bottom" id="T4y-cw-zhO"/>
                 <constraint firstItem="p7Y-W3-byH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WG9-Yf-w2T"/>
                 <constraint firstItem="PmI-lb-IM0" firstAttribute="top" secondItem="p7Y-W3-byH" secondAttribute="bottom" constant="4" id="X2D-ZM-gfJ"/>
                 <constraint firstItem="rkt-9c-7A1" firstAttribute="top" secondItem="p7Y-W3-byH" secondAttribute="bottom" constant="4" id="Xwe-EO-Coc"/>
                 <constraint firstItem="p7Y-W3-byH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fHG-lb-Myn"/>
                 <constraint firstItem="PmI-lb-IM0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kkG-Kg-7Yx"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rkt-9c-7A1" secondAttribute="bottom" id="lWJ-Ty-fQv"/>
+                <constraint firstAttribute="bottom" secondItem="rkt-9c-7A1" secondAttribute="bottom" id="lWJ-Ty-fQv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rkt-9c-7A1" secondAttribute="trailing" id="uGJ-mc-Haf"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="96"/>
+            <point key="canvasLocation" x="131.8840579710145" y="95.758928571428569"/>
         </view>
     </objects>
     <resources>

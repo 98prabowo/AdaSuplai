@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import Kingfisher
+import PhotosUI
 
 class ProfileEditController: BaseUIViewController {
     
@@ -34,6 +35,9 @@ class ProfileEditController: BaseUIViewController {
                 self?.configure()
             }
         }
+        
+        // Observe photo library changes
+        PHPhotoLibrary.shared().register(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,8 +91,12 @@ class ProfileEditController: BaseUIViewController {
     }
     
     @IBAction func editProfileImage(_ sender: UIButton) {
-        print("Edit Image")
-        
+        // Request permission to access photo library
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { [unowned self] (status) in
+            DispatchQueue.main.async { [unowned self] in
+                showUI(for: status)
+            }
+        }
     }
     
     // MARK: - Navigation Bar
@@ -126,6 +134,12 @@ class ProfileEditController: BaseUIViewController {
         setUpNavigationBar()
         isEdit = false
     }
+    
+    private func showAlert(error: String) {
+        let alert = UIAlertController(title: "Error", message: self.profileVM.error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
 }
 
 // MARK: - Table
@@ -140,14 +154,18 @@ extension ProfileEditController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withCell: ProfileEditCell.self, for: indexPath)
             cell.configure(titleLabel: titleLabel[indexPath.row], descriptionLabel: user?.name ?? "")
             cell.profileEditPublisher
-                .sink { [ unowned self ] in
-                    self.profileVM.fetchProfile()
+                .sink { [ unowned self ] result in
+                    if result == "Success" {
+                        self.profileVM.fetchProfile()
+                    } else {
+                        self.showAlert(error: result)
+                    }
                 }
                 .store(in: &subscribers)
             return cell
         case 1 :
             let cell = tableView.dequeueReusableCell(withCell: ProfileEditCell.self, for: indexPath)
-            cell.configureNoButton(titleLabel: titleLabel[indexPath.row], descriptionLabel: user?.phoneNumber ?? "")
+            cell.configureNoButton(titleLabel: titleLabel[indexPath.row], descriptionLabel: user?.phoneNumber.removeCountryCode ?? "")
             return cell
         case 2 :
             let cell = tableView.dequeueReusableCell(withCell: ProfileEditCell.self, for: indexPath)
@@ -157,8 +175,12 @@ extension ProfileEditController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withCell: ProfileEditCell.self, for: indexPath)
             cell.configure(titleLabel: titleLabel[indexPath.row], descriptionLabel: user?.businessName ?? "")
             cell.profileEditPublisher
-                .sink { [ unowned self ] in
-                    self.profileVM.fetchProfile()
+                .sink { [ unowned self ] result in
+                    if result == "Success" {
+                        self.profileVM.fetchProfile()
+                    } else {
+                        self.showAlert(error: result)
+                    }
                 }
                 .store(in: &subscribers)
             return cell
@@ -166,8 +188,12 @@ extension ProfileEditController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withCell: ProfileEditCell.self, for: indexPath)
             cell.configure(titleLabel: titleLabel[indexPath.row], descriptionLabel: user?.businessCategory ?? "")
             cell.profileEditPublisher
-                .sink { [ unowned self ] in
-                    self.profileVM.fetchProfile()
+                .sink { [ unowned self ] result in
+                    if result == "Success" {
+                        self.profileVM.fetchProfile()
+                    } else {
+                        self.showAlert(error: result)
+                    }
                 }
                 .store(in: &subscribers)
             return cell
@@ -175,5 +201,105 @@ extension ProfileEditController: UITableViewDelegate, UITableViewDataSource {
             let cell = UITableViewCell()
             return cell
         }
+    }
+}
+
+// MARK: - Access Library
+extension ProfileEditController: PHPhotoLibraryChangeObserver, PHPickerViewControllerDelegate {
+    
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        DispatchQueue.main.async { [unowned self] in
+            // Obtain authorization status and update UI accordingly
+            let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+            showUI(for: status)
+        }
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        picker.dismiss(animated: true)
+        
+        let identifiers = results.compactMap(\.assetIdentifier)
+        let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: identifiers, options: nil)
+        if let fetch = fetchResult.firstObject {
+            profileVM.updateProfileImage(data: getAssetThumbnail(asset: fetch)) { result in
+                if result {
+                    DispatchQueue.main.async {
+                        self.profileVM.fetchProfile()
+                    }
+                } else {
+                    DispatchQueue.main.async { () -> Void in
+                        self.showAlert(error: self.profileVM.error)
+                    }
+                }
+            }
+        }
+    }
+}
+
+private extension ProfileEditController {
+    
+    func showUI(for status: PHAuthorizationStatus) {
+        
+        switch status {
+        case .authorized:
+            openLibrary()
+
+        case .limited:
+            openLibrary()
+
+        case .restricted:
+            goToSetting()
+
+        case .denied:
+            goToSetting()
+
+        case .notDetermined:
+            break
+
+        @unknown default:
+            break
+        }
+    }
+    
+    func openLibrary() {
+        let photoLibrary = PHPhotoLibrary.shared()
+        let configuration = PHPickerConfiguration(photoLibrary: photoLibrary)
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    func goToSetting() {
+        print("Limited Access")
+    }
+    
+    func showRestrictedAccessUI() {
+        print("Restricted Access")
+    }
+    
+    func showAccessDeniedUI() {
+        print("Denied Access")
+    }
+    
+    func gotoAppPrivacySettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString),
+            UIApplication.shared.canOpenURL(url) else {
+                assertionFailure("Not able to open App privacy settings")
+                return
+        }
+
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 500, height: 500), contentMode: .aspectFit, options: option, resultHandler: {(result, _ ) -> Void in
+                thumbnail = result!
+        })
+        return thumbnail
     }
 }

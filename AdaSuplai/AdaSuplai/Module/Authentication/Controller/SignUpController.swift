@@ -126,7 +126,7 @@ extension SignUpController: UITextFieldDelegate {
         if checkTextField() {
             if checkPassword() {
                 self.user.email =  emailTextField.text ?? ""
-                self.user.phoneNumber = phoneTextField.text ?? ""
+                self.user.phoneNumber = phoneTextField.text?.addCountryCode ?? ""
                 self.user.password = passwordTextField.text ?? ""
                 return true
             } else {

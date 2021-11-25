@@ -12,8 +12,9 @@ class ProfileOrderStatusCell: UITableViewCell {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var seeMoreButton: UIButton!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
-    let orderStatusPublisher = PassthroughSubject<Void, Never>()
+    let orderStatusPublisher = PassthroughSubject<String, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +27,7 @@ class ProfileOrderStatusCell: UITableViewCell {
     }
     
     private func setUpView() {
-        
+        setupTableHeight()
     }
     
     private func setUpTableView() {
@@ -39,7 +40,7 @@ class ProfileOrderStatusCell: UITableViewCell {
     }
     
     @IBAction func seeMoreButtonClicked(_ sender: UIButton) {
-        self.orderStatusPublisher.send()
+        self.orderStatusPublisher.send("See More")
     }
     
 }
@@ -63,8 +64,16 @@ extension ProfileOrderStatusCell: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.orderStatusPublisher.send("\(indexPath.row) Cell")
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 203
     }
     
+    private func setupTableHeight() {
+        tableViewHeight.constant = CGFloat(tableView.numberOfRows(inSection: 0) * 203)
+        self.orderStatusPublisher.send("Refresh")
+    }
 }
