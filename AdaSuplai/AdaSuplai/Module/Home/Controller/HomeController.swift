@@ -73,6 +73,7 @@ class HomeController: BaseUIViewController {
     
     private func goToCategoryController(index: Int) {
         let nextVC = CategoryController()
+        nextVC.configureHome(category: viewModel.categories[index])
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }

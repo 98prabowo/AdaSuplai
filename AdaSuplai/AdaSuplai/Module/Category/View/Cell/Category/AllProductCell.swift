@@ -13,7 +13,10 @@ class AllProductCell: UITableViewCell {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var emptyViewLabel: UILabel!
     private var categoryVM = CategoryViewModel()
+    private var categoryName = ""
     
     let allProductPublisher = PassthroughSubject<Product?, Never>()
     
@@ -24,14 +27,27 @@ class AllProductCell: UITableViewCell {
         self.categoryVM.categoryProduct.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
+                self?.setupView()
                 self?.setUpCollectionView()
                 self?.allProductPublisher.send(nil)
             }
         }
     }
     
-    func configure(idCategory: String) {
-        self.categoryVM.fetchCategoryProduct(id: idCategory)
+    func configure(idCategory: String, name: String) {
+        self.categoryName = name
+        self.categoryVM.fetchCategoryProduct(id: idCategory) { result in
+            if result == false {
+                DispatchQueue.main.async {
+                    self.setupView()
+                }
+            }
+        }
+    }
+    
+    private func setupView() {
+        emptyView.isHidden = categoryVM.categoryProduct.value?.count ?? 0 < 1 ? false : true
+        emptyViewLabel.text = "\(categoryName) saat ini tidak tersedia"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

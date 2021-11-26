@@ -41,12 +41,14 @@ class CategoryViewModel: BaseViewModel {
 //        }
     }
     
-    func fetchCategoryProduct(id: String) {
+    func fetchCategoryProduct(id: String, myComplete:@escaping(Bool) -> Void) {
         Task {
             do {
                 self.categoryProduct.value = try await service.getData([Product].self, url: .searchProductByCategoryID, keyword: id)
+                myComplete(true)
             } catch {                                                                           
                 print(error)
+                myComplete(false)
             }
         }
     }
