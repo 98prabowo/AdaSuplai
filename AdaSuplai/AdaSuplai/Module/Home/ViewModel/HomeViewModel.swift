@@ -13,11 +13,13 @@ class HomeViewModel: BaseViewModel {
     let productTrends = CurrentValueSubject<[Product], Never>([Product]())
     var suppliers = CurrentValueSubject<[Supplier], Never>([Supplier]())
     let service: RemoteDataService
-    var categories = [HomeCategory]()
+    let categories: [HomeCategory]
+    let banners: [Banner]
     
     override init() {
         self.service = RemoteDataService()
         self.categories = HomeCategoryData().getHomeCategories()
+        self.banners = BannerData().dummy
         super.init()
         self.fetchProductTrends()
     }

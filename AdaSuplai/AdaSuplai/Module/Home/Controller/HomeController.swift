@@ -85,12 +85,11 @@ class HomeController: BaseUIViewController {
         }
     }
     
-    private func goToBannerController() {
-        // TODO: Assign BannerVC to nextVC
-//        let nextVC = UIViewController()
-//        if let navigationController = self.navigationController {
-//            navigationController.pushViewController(nextVC, animated: true)
-//        }
+    private func goToBannerController(index: IndexPath) {
+        let nextVC = BannerController(with: self.viewModel.banners[index.item])
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
     }
     
     private func goToProductController(with product: Product) {
@@ -125,10 +124,11 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withCell: BannerPromoCell.self, for: indexPath)
+            cell.configure(with: self.viewModel.banners)
             if let publisher = cell.bannerPublisher {
                 publisher
-                    .sink { [unowned self] in
-                    self.goToBannerController()
+                    .sink { [unowned self] index in
+                        self.goToBannerController(index: index)
                 }.store(in: &subscribers)
             }
             return cell
