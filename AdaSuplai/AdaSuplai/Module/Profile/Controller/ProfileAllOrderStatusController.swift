@@ -12,11 +12,13 @@ class ProfileAllOrderStatusController: BaseUIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet weak var emptyViewLabel: UILabel!
     
     private var titles = ["Dalam Proses", "Pengiriman", "Selesai", "Dibatalkan", "Pengembalian"]
     private var selectedIndex = 0 {
         didSet {
             DispatchQueue.main.async {
+                self.emptyViewLabel.text = "Tidak ada pesananan \(self.titles[self.selectedIndex])"
                 self.collectionView.reloadData()
             }
         }
