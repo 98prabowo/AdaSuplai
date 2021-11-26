@@ -6,7 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 class DeliveryServiceViewModel: BaseViewModel {
+    var shipmentPrices = [ShipmentPrice]()
     
+    init(with shipmentPrices: [ShipmentPrice]) {
+        self.shipmentPrices = shipmentPrices
+        super.init()
+    }
 }

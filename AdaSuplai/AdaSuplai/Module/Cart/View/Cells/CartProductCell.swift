@@ -54,7 +54,6 @@ class CartProductCell: UITableViewCell {
     private func setupButton() {
         self.checkmark.tintColor = .primaryGreen
         self.addNoteButton.setTitleColor(.primaryGreen, for: .normal)
-//        self.quantityCounter.delegate = self
     }
     
     func configure(with product: ProductCart) {
@@ -63,6 +62,7 @@ class CartProductCell: UITableViewCell {
         self.productName.text = product.productName
         self.productVariant.isHidden = true
         self.quantityCounter.value = Double(product.quantity)
+        self.quantityCounter.minimumValue = Double(product.minOrder)
         guard let imageID = product.image,
               let url = URL(string: RemoteURL.image.rawValue + imageID) else { return }
         self.setupImage(url: url)

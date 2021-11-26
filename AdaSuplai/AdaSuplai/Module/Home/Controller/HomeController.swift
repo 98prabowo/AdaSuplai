@@ -63,12 +63,6 @@ class HomeController: BaseUIViewController {
                 self.tableView.reloadData()
                 self.loading.dismiss(animated: true)
             }.store(in: &subscribers)
-        self.viewModel.suppliers
-            .receive(on: DispatchQueue.main)
-            .sink { [unowned self] _ in
-                self.tableView.reloadData()
-                self.loading.dismiss(animated: true)
-            }.store(in: &subscribers)
     }
     
     private func goToCategoryController(index: Int) {
@@ -136,7 +130,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withCell: HotProductCell.self, for: indexPath)
             cell.configure(with: self.viewModel.productTrends.value,
-                           suppliers: self.viewModel.suppliers.value,
                            title: Constant.productTrend)
             if let publisher = cell.productPublisher {
                 publisher

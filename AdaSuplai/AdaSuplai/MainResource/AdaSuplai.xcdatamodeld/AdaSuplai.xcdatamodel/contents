@@ -5,8 +5,11 @@
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductCart" inverseName="cart" inverseEntity="ProductCart"/>
     </entity>
     <entity name="ProductCart" representedClassName="ProductCart" syncable="YES">
+        <attribute name="dimension" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="isMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="minOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="productID" optional="YES" attributeType="String"/>
         <attribute name="productName" optional="YES" attributeType="String"/>
@@ -24,7 +27,7 @@
     </entity>
     <elements>
         <element name="Cart" positionX="-63" positionY="0" width="128" height="59"/>
-        <element name="ProductCart" positionX="-54" positionY="9" width="128" height="209"/>
+        <element name="ProductCart" positionX="-54" positionY="9" width="128" height="254"/>
         <element name="SearchHistory" positionX="-63" positionY="-18" width="128" height="59"/>
     </elements>
 </model>

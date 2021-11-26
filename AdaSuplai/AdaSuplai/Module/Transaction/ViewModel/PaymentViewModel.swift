@@ -10,10 +10,12 @@ import Combine
 
 class PaymentViewModel: BaseViewModel {
     let service = RemoteDataService()
+    var transaction: Transaction
     var paymentMethods = CurrentValueSubject<[Payment], Never>([Payment]())
     var paymentCategories = [String]()
     
-    override init() {
+    init(with transaction: Transaction) {
+        self.transaction = transaction
         super.init()
         self.fetchPaymentMethod()
     }
@@ -47,5 +49,36 @@ class PaymentViewModel: BaseViewModel {
     func getPaymentCountPerCategories(with category: String) -> Int {
         let paymentMethods = self.getPaymentMethodPerCategories(with: category)
         return paymentMethods.count
+    }
+    
+    private func getSubtotalProductPrice() -> Int {
+        var result: Int = 0
+        if let suppliers = self.transaction.suppliers {
+            let products = suppliers
+                .compactMap { $0.products }
+                .flatMap { $0 }
+            for product in products {
+                result += (product.price * product.quantity)
+            }
+        }
+        return result
+    }
+    
+    private func getSubtotalDeliveryPrice() -> Int {
+        var result: Int = 0
+        if let suppliers = self.transaction.suppliers {
+            let shipmentPrices = suppliers
+                .compactMap { $0.shipmentPrice }
+            for shipmentPrice in shipmentPrices {
+                result += shipmentPrice.totalPrice
+            }
+        }
+        return result
+    }
+    
+    func getTotalPrice() -> Int {
+        let productPrice = self.getSubtotalProductPrice()
+        let deliveryPrice = self.getSubtotalDeliveryPrice()
+        return productPrice + deliveryPrice
     }
 }

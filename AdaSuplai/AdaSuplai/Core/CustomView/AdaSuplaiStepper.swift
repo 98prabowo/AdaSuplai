@@ -29,13 +29,23 @@ protocol AdaSuplaiStepperDelegate: AnyObject {
     }
     
     /// Disable or enable maximum infinity
-    @IBInspectable public var maxInfinity: Bool = false
+    @IBInspectable public var maxInfinity: Bool = true
     
     /// Minimum value of stepper. Default to 1
-    @IBInspectable public var minimumValue: Double = 1
+    @IBInspectable public var minimumValue: Double = 1 {
+        didSet {
+            self.setLeftButtonColor(enableColor: buttonEnableColor,
+                                    disableColor: buttonDisableColor)
+        }
+    }
     
     /// Maximum value of stepper. Default to 100
-    @IBInspectable public var maximumValue: Double = 100
+    @IBInspectable public var maximumValue: Double = 10000 {
+        didSet {
+            self.setRightButtonColor(enableColor: buttonEnableColor,
+                                     disableColor: buttonDisableColor)
+        }
+    }
     
     /// Stepper incement value. Default to 1
     @IBInspectable public var increment: Double = 1

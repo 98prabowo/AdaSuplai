@@ -60,7 +60,7 @@ class CartViewModel: BaseViewModel {
                 if let supplierID = product.supplierID,
                    let supplierName = product.supplierName,
                    !supplierIDs.contains(supplierID) {
-                    let supplier = Supplier(id: supplierID, supplierName: supplierName, address: nil, delivery: nil, v: nil)
+                    let supplier = Supplier(id: supplierID, supplierName: supplierName, address: nil, v: nil)
                     self.suppliers.append(supplier)
                 }
             }

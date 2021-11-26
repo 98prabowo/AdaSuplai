@@ -31,7 +31,10 @@ class AddToCartBottomSheetViewModel: BaseViewModel {
     private func createProductCart(product: Product, quantity: Int) -> ProductCart? {
         guard let context = self.context else { return nil }
         let productCart = ProductCart(context: context)
+        productCart.id = product.id
         productCart.image = product.image
+        productCart.dimension = product.dimension
+        productCart.minOrder = Int64(product.minOrder)
         productCart.productName = product.name
         productCart.productPrice = Int64(product.price)
         productCart.productID = product.id

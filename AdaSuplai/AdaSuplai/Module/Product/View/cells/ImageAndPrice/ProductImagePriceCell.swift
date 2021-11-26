@@ -74,9 +74,14 @@ class ProductImagePriceCell: UITableViewCell {
     func configure(with product: Product) {
         self.product = product
         self.productName.text = product.name
-        self.rating.text = "\(product.rating)"
         self.price.text = product.price.toIDR
-        self.reviewQuantity.text = "102 Ulasan"
+        let rating = roundRating(from: product.rating)
+        self.rating.text = "\(rating)"
+        self.reviewQuantity.text = "\(product.reviews.count) Ulasan"
+    }
+    
+    private func roundRating(from data: Double) -> Double {
+        return round(10 * data) / 10
     }
 }
 

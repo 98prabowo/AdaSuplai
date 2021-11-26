@@ -13,17 +13,21 @@ class PaymentDetailCell: UITableViewCell {
     @IBOutlet private weak var paymentImage: UIImageView!
     @IBOutlet private weak var paymentMethod: UILabel!
     
+    private var payment: Payment?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setupBackground()
     }
     
     private func setupBackground() {
         self.paymentImage.backgroundColor = .clear
+        self.containerView.addShadow()
         self.containerView.addBorderAndCornerRadius(withBorderWidth: 0.5, borderColor: .black, cornerRadius: 5)
     }
     
     func configure(with payment: Payment) {
+        self.setupBackground()
+        self.payment = payment
         self.paymentMethod.text = payment.name
         if let imageURL = URL(string: RemoteURL.image.rawValue + payment.logo) {
             self.setupImage(url: imageURL)
@@ -32,6 +36,7 @@ class PaymentDetailCell: UITableViewCell {
     
     func configureSelected() {
         self.containerView.layer.borderColor = UIColor.primaryGreen.cgColor
+        self.containerView.layer.borderWidth = 3
     }
     
     private func setupImage(url: URL) {

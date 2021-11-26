@@ -62,6 +62,9 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Lihat semuanya"/>
+                                                <connections>
+                                                    <action selector="seeMoreTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Vy-Su-ilY"/>
+                                                </connections>
                                             </button>
                                             <stackView userInteractionEnabled="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="9EE-ze-dHf">
                                                 <rect key="frame" x="0.0" y="35" width="141" height="20"/>

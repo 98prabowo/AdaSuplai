@@ -115,6 +115,7 @@ class ProductController: BaseUIViewController {
         self.viewModel.similarProducts
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] _ in
+                self.subscribers.removeAll()
                 self.tableView.reloadData()
             }.store(in: &subscribers)
     }
@@ -166,6 +167,14 @@ class ProductController: BaseUIViewController {
         }
         
         self.present(nextVC, animated: true)
+    }
+    
+    private func goToReviewPage() {
+        let reviews = self.viewModel.product.reviews
+        let nextVC = ReviewController(with: reviews)
+        if let navigation = self.navigationController {
+            navigation.pushViewController(nextVC, animated: true)
+        }
     }
 }
 
@@ -223,6 +232,7 @@ extension ProductController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] action in
                 self?.attribute = action
+                self?.subscribers.removeAll()
                 self?.tableView.reloadData()
             }
             .store(in: &subscribers)
@@ -231,18 +241,24 @@ extension ProductController {
     
     private func setupSupplierCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: ProductSupplierCell.self, for: indexPath)
+        cell.configure(with: self.viewModel.product.supplier)
         return cell
     }
     
     private func setupReviewHeaderCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: ProductReviewCell.self, for: indexPath)
+        cell.configure(with: self.viewModel.product)
+        cell.reviewHeaderPublisher
+            .sink { [unowned self] in
+                self.goToReviewPage()
+            }.store(in: &subscribers)
         return cell
     }
     
     private func setupReviewDetailCell(_ tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: ProductReviewDetailCell.self, for: indexPath)
-        if indexPath.item == 7 {
-            cell.configureFirstReview()
+        if let review = self.viewModel.product.reviews.first {
+            cell.configure(with: review)
         }
         return cell
     }

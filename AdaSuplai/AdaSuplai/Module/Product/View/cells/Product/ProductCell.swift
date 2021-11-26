@@ -74,7 +74,7 @@ class ProductCell: UICollectionViewCell {
         self.soldCount.text = "\(product.sales) terjual"
         self.address.text = product.supplier.address?.first ?? ""
         self.unitOfPrice.text = "/ " + product.unit
-        self.minimumOrder.text = Constant.minOrder + String(product.minOrder)
+        self.minimumOrder.text = Constant.minOrder + " " + String(product.minOrder)
         self.productPrice.text = self.createDiscountPrice(10, from: product.price).toIDR
         guard let url = URL(string: RemoteURL.image.rawValue + product.image) else { return }
         self.setupImage(url: url)

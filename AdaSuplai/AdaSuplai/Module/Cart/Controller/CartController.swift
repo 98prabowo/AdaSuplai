@@ -56,16 +56,6 @@ class CartController: BaseUIViewController {
     
     private func setupNavigationBar() {
         self.title = Constant.title
-        let refresh = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshTapped(_:)))
-        refresh.tintColor = .primaryGreen
-        self.navigationItem.rightBarButtonItems = [refresh]
-    }
-    
-    @objc private func refreshTapped(_ sender: UIBarButtonItem) {
-        self.viewModel.reloadData()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     private func setupTableView() {
@@ -96,9 +86,11 @@ class CartController: BaseUIViewController {
                 if self.viewModel.isBuyEnable() {
                     self.buyButton.isEnabled = true
                     self.buyButton.backgroundColor = .primaryGreen
+                    self.priceBarView.isHidden = false
                 } else {
                     self.buyButton.isEnabled = false
                     self.buyButton.backgroundColor = .gray
+                    self.priceBarView.isHidden = true
                 }
             }.store(in: &subscriber)
     }

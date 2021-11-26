@@ -59,6 +59,8 @@ class AddToCartBottomSheetController: BaseUIViewController {
         self.addToCartButton.backgroundColor = .primaryGreen
         self.addToCartButton.setTitleColor(.systemBackground, for: .normal)
         self.addToCartButton.setTitle(Constant.addToCartButton, for: .normal)
+        self.productQuantity.value = Double(self.viewModel.product.minOrder)
+        self.productQuantity.minimumValue = Double(self.viewModel.product.minOrder)
     }
     
     private func setupProductInfo(with product: Product) {

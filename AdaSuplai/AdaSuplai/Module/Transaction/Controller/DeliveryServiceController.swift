@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class DeliveryServiceController: BaseUIViewController {
     private enum Constant {
@@ -15,11 +16,21 @@ class DeliveryServiceController: BaseUIViewController {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
-    private let viewModel = DeliveryServiceViewModel()
-    private var selectedIndex: IndexPath?
-
+    var deliveryPublisher = PassthroughSubject<ShipmentPrice, Never>()
+    private let viewModel: DeliveryServiceViewModel
+    
+    init(with shipmentPrice: [ShipmentPrice]) {
+        self.viewModel = DeliveryServiceViewModel(with: shipmentPrice)
+        super.init(nibName: Self.identifier, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupBackground()
         self.setupTableView()
     }
     
@@ -36,25 +47,21 @@ class DeliveryServiceController: BaseUIViewController {
 
 extension DeliveryServiceController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.viewModel.shipmentPrices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: DeliveryCell.self, for: indexPath)
-        cell.configure()
-        if let selected = self.selectedIndex,
-           selected == indexPath {
-            cell.configureSelected()
-        }
+        let shipmentPrice = self.viewModel.shipmentPrices[indexPath.row]
+        cell.configure(with: shipmentPrice)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedIndex = indexPath
+        var shipmentPrice = self.viewModel.shipmentPrices[indexPath.row]
+        shipmentPrice.createdDate = Date()
         self.tableView.deselectRow(at: indexPath, animated: false)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.deliveryPublisher.send(shipmentPrice)
         self.dismiss(animated: true)
     }
 }

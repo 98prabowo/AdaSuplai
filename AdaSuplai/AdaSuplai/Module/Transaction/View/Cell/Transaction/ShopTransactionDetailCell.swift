@@ -20,4 +20,13 @@ class ShopTransactionDetailCell: UITableViewCell {
         self.supplierNameLabel.text = supplier.supplierName
         self.locationLabel.text = supplier.address?.first ?? "-"
     }
+    
+    func configureETA(with shipmentPrice: ShipmentPrice) {
+        guard let createdDate = shipmentPrice.createdDate else { return }
+        var dateComponent = DateComponents()
+        dateComponent.day = shipmentPrice.maxDay
+        if let etaDate = Calendar.current.date(byAdding: dateComponent, to: createdDate) {
+            self.etaLabel.text = etaDate.toString(format: .basic)
+        }
+    }
 }
