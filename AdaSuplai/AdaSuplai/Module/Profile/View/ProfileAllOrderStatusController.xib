@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="collectionView" destination="p7Y-W3-byH" id="YIl-YK-9EU"/>
                 <outlet property="emptyView" destination="PmI-lb-IM0" id="fIv-Hr-mJJ"/>
+                <outlet property="emptyViewLabel" destination="8Rw-lj-Gt1" id="MRK-FI-maw"/>
                 <outlet property="tableView" destination="rkt-9c-7A1" id="j6A-Vu-CJx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -50,7 +51,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tidak ada pesanan diapain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rw-lj-Gt1">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tidak ada pesanan Dalam Proses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rw-lj-Gt1">
                                     <rect key="frame" x="0.0" y="28" width="382" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>

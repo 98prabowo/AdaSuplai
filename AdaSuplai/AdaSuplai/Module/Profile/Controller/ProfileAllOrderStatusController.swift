@@ -12,11 +12,13 @@ class ProfileAllOrderStatusController: BaseUIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet weak var emptyViewLabel: UILabel!
     
     private var titles = ["Dalam Proses", "Pengiriman", "Selesai", "Dibatalkan", "Pengembalian"]
     private var selectedIndex = 0 {
         didSet {
             DispatchQueue.main.async {
+                self.emptyViewLabel.text = "Tidak ada pesananan \(self.titles[self.selectedIndex])"
                 self.collectionView.reloadData()
             }
         }
@@ -37,7 +39,7 @@ class ProfileAllOrderStatusController: BaseUIViewController {
     private func setupView() {
         view.backgroundColor = .white
         emptyView.backgroundColor = .blueBackground
-        emptyView.isHidden = true
+        emptyView.isHidden = tableView.numberOfRows(inSection: 0) < 1 ? false : true
     }
     
     private func setupCollectionView() {
@@ -85,7 +87,7 @@ class ProfileAllOrderStatusController: BaseUIViewController {
 // MARK: - Table
 extension ProfileAllOrderStatusController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

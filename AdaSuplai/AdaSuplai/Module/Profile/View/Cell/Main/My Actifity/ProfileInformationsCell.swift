@@ -85,6 +85,7 @@ extension ProfileInformationsCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        table.deselectRow(at: indexPath, animated: true)
         if indexPath.row % 2 == 0 {
             myActivityPublisher.send("Information")
         }

@@ -19,3 +19,15 @@ struct UpdateProfileResponse: Codable {
         case birthDate, businessCategory, phoneNumber, email
     }
 }
+
+// MARK: - AddressTemp
+struct AddressTemp: Codable {
+    var addressName, province, city, district: String
+    var subdivision, postalCode, userId, id: String
+
+    enum CodingKeys: String, CodingKey {
+        case addressName, province, city, district, subdivision, postalCode
+        case userId
+        case id = "_id"
+    }
+}

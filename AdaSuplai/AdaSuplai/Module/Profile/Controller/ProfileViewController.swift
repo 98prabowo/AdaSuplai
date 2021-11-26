@@ -92,7 +92,9 @@ class ProfileViewController: BaseUIViewController {
     }
     
     private func goToActivityController(text: String) {
-        print("Go To My Activity \(text)")
+        let alert = UIAlertController(title: "Coming Soon", message: "This feature is currently unavailable", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
 }
 

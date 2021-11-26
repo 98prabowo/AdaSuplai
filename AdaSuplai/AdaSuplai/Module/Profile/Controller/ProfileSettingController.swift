@@ -58,13 +58,16 @@ class ProfileSettingController: BaseUIViewController {
     }
     
     private func goToAddressListController() {
-//        let nextVC = ProfileEditController()
-//        if let navigationController = self.navigationController {
-//            navigationController.pushViewController(nextVC, animated: true)
-//        }
+        let nextVC = ProfileAddressListController()
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
     }
     
     private func goToPaymentMethodController() {
+        let alert = UIAlertController(title: "Coming Soon", message: "This feature is currently unavailable", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
 //        let nextVC = ProfileEditController()
 //        if let navigationController = self.navigationController {
 //            navigationController.pushViewController(nextVC, animated: true)
@@ -79,6 +82,7 @@ class ProfileSettingController: BaseUIViewController {
 extension ProfileSettingController: UITableViewDelegate, UITableViewDataSource {
     private func setUpTable() {
         table.registerNib(forCell: TextCell.self)
+        table.registerNib(forCell: HorizontalTextCell.self)
         
         table.backgroundColor = .blueBackground
         table.dataSource = self
@@ -91,10 +95,8 @@ extension ProfileSettingController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == (table.numberOfRows(inSection: 0) - 1) {
-            let cell = tableView.dequeueReusableCell(withCell: TextCell.self, for: indexPath)
-            cell.title.text = "Versi Aplikasi"
-            cell.cellButton.imageView?.image = .none
-            cell.cellButton.titleLabel?.text = "1.0.1"
+            let cell = tableView.dequeueReusableCell(withCell: HorizontalTextCell.self, for: indexPath)
+            cell.configureGrayDesc(title: "Versi Aplikasi", description: "0.0.1")
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withCell: TextCell.self, for: indexPath)
