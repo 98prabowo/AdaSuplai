@@ -20,11 +20,12 @@ struct User: Codable {
     let password, date: String
     let v: Int
     let profilePicture: String
+    var address: [AddressTemp]
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name, birthDate, gender, businessName, businessCategory, phoneNumber, email, password, date
         case v = "__v"
-        case profilePicture
+        case profilePicture, address
     }
 }

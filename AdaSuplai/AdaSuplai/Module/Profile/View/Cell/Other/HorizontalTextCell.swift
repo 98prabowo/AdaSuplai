@@ -42,6 +42,15 @@ class HorizontalTextCell: UITableViewCell {
         descriptionLabel.text = description
     }
     
+    func configureGrayDesc(title: String, description: String, isHideSeparator: Bool = true) {
+        titleLabel.textColor = .black
+        setupSeparator(isHide: isHideSeparator)
+        
+        titleLabel.text = title
+        descriptionLabel.textColor = .inactive
+        descriptionLabel.text = description
+    }
+    
     private func setupSeparator(isHide: Bool) {
         if isHide {
             self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width*2)
@@ -52,8 +61,6 @@ class HorizontalTextCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
