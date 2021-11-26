@@ -11,9 +11,9 @@ import Combine
 class BannerPromoCell: UITableViewCell {
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    var bannerPublisher: PassthroughSubject<Void, Never>?
+    var bannerPublisher: PassthroughSubject<IndexPath, Never>?
     
-    private let dummyColors: [UIColor] = [.systemRed, .systemCyan, .systemPink]
+    private var banners = [Banner]()
     private var timer = Timer()
     private var counter: Int = 0
     
@@ -25,7 +25,7 @@ class BannerPromoCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.bannerPublisher = PassthroughSubject<Void, Never>()
+        self.bannerPublisher = PassthroughSubject<IndexPath, Never>()
     }
     
     private func setupCollectionView() {
@@ -41,26 +41,30 @@ class BannerPromoCell: UITableViewCell {
     }
     
     @objc private func changeBanner() {
-        if counter < dummyColors.count {
+        if self.counter < self.banners.count {
             let indexPath = IndexPath(item: counter, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             self.counter += 1
         } else {
-            counter = 0
+            self.counter = 0
             let indexPath = IndexPath(item: counter, section: 0)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
+    }
+    
+    func configure(with banners: [Banner]) {
+        self.banners = banners
     }
 }
 
 extension BannerPromoCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyColors.count
+        return banners.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withCell: BannerCollectionCell.self, for: indexPath)
-        cell.configure(color: self.dummyColors[indexPath.item])
+        cell.configure(with: self.banners[indexPath.item].image)
         return cell
     }
     
@@ -72,6 +76,6 @@ extension BannerPromoCell: UICollectionViewDelegate, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let publisher = self.bannerPublisher else { return }
-        publisher.send()
+        publisher.send(indexPath)
     }
 }

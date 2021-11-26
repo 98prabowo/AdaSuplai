@@ -20,11 +20,7 @@ class BannerCollectionCell: UICollectionViewCell {
         self.banner.layer.cornerRadius = 10
     }
     
-    func configure(banner: UIImage) {
+    func configure(with banner: UIImage?) {
         self.banner.image = banner
-    }
-    
-    func configure(color: UIColor) {
-        self.banner.backgroundColor = color
     }
 }
