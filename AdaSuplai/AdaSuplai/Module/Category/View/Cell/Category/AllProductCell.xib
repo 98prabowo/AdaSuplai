@@ -13,18 +13,18 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="912" id="KGk-i7-Jjw" customClass="AllProductCell" customModule="AdaSuplai" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="577" height="912"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="577" height="912"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkL-zZ-L6C">
-                        <rect key="frame" x="16" y="16" width="545" height="664"/>
+                        <rect key="frame" x="16" y="16" width="545" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1Vz-tV-okT">
-                        <rect key="frame" x="0.0" y="680" width="577" height="1000"/>
+                        <rect key="frame" x="0.0" y="40" width="577" height="1000"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1000" id="ne7-Nc-ejA"/>
@@ -37,10 +37,10 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnC-hV-cvQ">
-                        <rect key="frame" x="16" y="696" width="545" height="200"/>
+                        <rect key="frame" x="16" y="56" width="545" height="984"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MDZ-C8-XFa">
-                                <rect key="frame" x="149.5" y="78" width="246.5" height="44.5"/>
+                                <rect key="frame" x="149.5" y="470" width="246.5" height="44.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produk Kosong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXM-NT-laE">
                                         <rect key="frame" x="51.5" y="0.0" width="143" height="24"/>
@@ -59,7 +59,6 @@
                         </subviews>
                         <color key="backgroundColor" name="Adabackground"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="200" id="9e7-1l-2p8"/>
                             <constraint firstItem="MDZ-C8-XFa" firstAttribute="centerX" secondItem="cnC-hV-cvQ" secondAttribute="centerX" id="QhJ-Qk-ONz"/>
                             <constraint firstItem="MDZ-C8-XFa" firstAttribute="centerY" secondItem="cnC-hV-cvQ" secondAttribute="centerY" id="bVs-xY-M3K"/>
                         </constraints>
@@ -74,10 +73,10 @@
                     <constraint firstItem="xkL-zZ-L6C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="NJH-B1-tsz"/>
                     <constraint firstItem="cnC-hV-cvQ" firstAttribute="top" secondItem="xkL-zZ-L6C" secondAttribute="bottom" constant="16" id="Tw0-gT-5YK"/>
                     <constraint firstAttribute="trailing" secondItem="1Vz-tV-okT" secondAttribute="trailing" id="Wwd-9l-h9w"/>
+                    <constraint firstAttribute="bottom" secondItem="1Vz-tV-okT" secondAttribute="bottom" id="i9D-ib-5tS"/>
                     <constraint firstItem="xkL-zZ-L6C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="iOv-mY-DNM"/>
                     <constraint firstAttribute="trailing" secondItem="cnC-hV-cvQ" secondAttribute="trailing" constant="16" id="kDR-mb-gOW"/>
-                    <constraint firstAttribute="bottom" secondItem="1Vz-tV-okT" secondAttribute="bottom" priority="800" id="wKV-nr-VU0"/>
-                    <constraint firstAttribute="bottom" secondItem="cnC-hV-cvQ" secondAttribute="bottom" constant="16" id="zzX-fA-O4s"/>
+                    <constraint firstItem="1Vz-tV-okT" firstAttribute="bottom" secondItem="cnC-hV-cvQ" secondAttribute="bottom" id="zzX-fA-O4s"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

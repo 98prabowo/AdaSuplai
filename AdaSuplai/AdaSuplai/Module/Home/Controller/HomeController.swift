@@ -67,6 +67,7 @@ class HomeController: BaseUIViewController {
     
     private func goToCategoryController(index: Int) {
         let nextVC = CategoryController()
+        nextVC.hidesBottomBarWhenPushed = true
         nextVC.configureHome(category: viewModel.categories[index])
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
@@ -75,6 +76,7 @@ class HomeController: BaseUIViewController {
     
     private func goToMoreCategoryController() {
         let nextVC = SeeMoreCategoryController()
+        nextVC.hidesBottomBarWhenPushed = true
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }

@@ -27,7 +27,6 @@ class AllProductCell: UITableViewCell {
         self.categoryVM.categoryProduct.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
-                self?.setupView()
                 self?.setUpCollectionView()
                 self?.allProductPublisher.send(nil)
             }
@@ -37,16 +36,17 @@ class AllProductCell: UITableViewCell {
     func configure(idCategory: String, name: String) {
         self.categoryName = name
         self.categoryVM.fetchCategoryProduct(id: idCategory) { result in
-            if result == false {
-                DispatchQueue.main.async {
-                    self.setupView()
+            DispatchQueue.main.async {
+                self.setupView()
+                if result == false {
+                    self.setUpCollectionView()
                 }
             }
         }
     }
     
     private func setupView() {
-        emptyView.isHidden = categoryVM.categoryProduct.value?.count ?? 0 < 1 ? false : true
+        emptyView.isHidden = (categoryVM.categoryProduct.value?.count ?? 0) < 1 ? false : true
         emptyViewLabel.text = "\(categoryName) saat ini tidak tersedia"
     }
     
@@ -66,7 +66,11 @@ extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         let heightTemp = ceil(CGFloat(collectionView.numberOfItems(inSection: 0))/2) * 305
         let spacingTemp =  ceil(CGFloat(collectionView.numberOfItems(inSection: 0))/2) * 16
-        collectionViewHeight.constant = CGFloat(heightTemp+spacingTemp)
+        if (heightTemp + spacingTemp) > 0 {
+            collectionViewHeight.constant = CGFloat(heightTemp + spacingTemp)
+        } else {
+            collectionViewHeight.constant = CGFloat(200)
+        }
         
         self.collectionView.registerNib(forCell: ProductCell.self)
     }
