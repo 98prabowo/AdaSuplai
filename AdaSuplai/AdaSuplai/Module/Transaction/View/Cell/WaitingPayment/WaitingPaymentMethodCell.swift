@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Kingfisher
 
 class WaitingPaymentMethodCell: UITableViewCell {
     @IBOutlet private weak var transferHeader: UILabel!
@@ -35,5 +36,25 @@ class WaitingPaymentMethodCell: UITableViewCell {
     @IBAction private func copyButtonTapped(_ sender: UIButton) {
         guard let vaCode = codeVA.text else { return }
         self.vaCodePublisher.send(vaCode)
+    }
+    
+    func configure(with transaction: TransactionResponse, payment: Payment) {
+        self.codeVA.text = transaction.accountNumber
+        if let imageURL = URL(string: RemoteURL.image.rawValue + payment.logo) {
+            self.setupImage(url: imageURL)
+        }
+    }
+    
+    private func setupImage(url: URL) {
+        let processor = DownsamplingImageProcessor(size: paymentImage.bounds.size)
+        paymentImage.kf.indicatorType = .activity
+        paymentImage.kf.setImage(
+            with: url,
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
     }
 }

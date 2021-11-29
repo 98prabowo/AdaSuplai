@@ -1,30 +1,29 @@
 //
-//  RequestADestination.swift
+//  Address.swift
 //  AdaSuplai
 //
-//  Created by Dimas A. Prabowo on 29/11/21.
+//  Created by Dimas A. Prabowo on 25/11/21.
 //
 
 import Foundation
 
-struct RequestDestination: Codable {
+struct Address: Codable {
+    let address: String
     let areaID: Int
-    var suburbID: Int
     let lat, lng: String
 
     enum CodingKeys: String, CodingKey {
         case areaID = "area_id"
-        case suburbID = "suburb_id"
-        case lat, lng
+        case lat, lng, address
     }
     
     init (
+        address: String,
         areaID: Int,
-        suburbID: Int,
         lat: String,
         lng: String) {
+            self.address = address
             self.areaID = areaID
-            self.suburbID = suburbID
             self.lat = lat
             self.lng = lng
         }

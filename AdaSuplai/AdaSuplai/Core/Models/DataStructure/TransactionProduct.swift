@@ -15,7 +15,7 @@ struct TransactionProduct: Codable {
     var quantity: Int
     
     enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id = "product_id"
         case name
         case dimension, quantity
         case price, image

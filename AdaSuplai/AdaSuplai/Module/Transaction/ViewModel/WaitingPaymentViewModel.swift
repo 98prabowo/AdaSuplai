@@ -12,11 +12,13 @@ typealias SimpleInstruction = (instructions: [String], method: String)
 
 class WaitingPaymentViewModel: BaseViewModel {
     let service: RemoteDataService
-    private let payment: Payment
+    let transaction: TransactionResponse
+    let payment: Payment
     var paymentInstructions = CurrentValueSubject<[SimpleInstruction], Never>([SimpleInstruction]())
     
-    init(payment: Payment) {
+    init(with transaction: TransactionResponse, and payment: Payment) {
         self.service = RemoteDataService()
+        self.transaction = transaction
         self.payment = payment
         super.init()
         self.fetchPaymentInstructions()
@@ -47,7 +49,7 @@ class WaitingPaymentViewModel: BaseViewModel {
     private func getSpecificInstruction(from paymentInstructions: [PaymentInstructions]) -> [SimpleInstruction] {
         var result = [SimpleInstruction]()
         for paymentInstruction in paymentInstructions
-        where paymentInstruction.bankCode == self.payment.code {
+        where paymentInstruction.bankCode == self.transaction.bankCode {
             let instruction = SimpleInstruction(instructions: paymentInstruction.instructions,
                                                 method: paymentInstruction.paymentMethod)
             result.append(instruction)

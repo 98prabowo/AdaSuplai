@@ -18,7 +18,7 @@ class ShopTransactionDetailCell: UITableViewCell {
     
     func configure(with supplier: Supplier) {
         self.supplierNameLabel.text = supplier.supplierName
-        self.locationLabel.text = supplier.address?.first ?? "-"
+        self.locationLabel.text = supplier.address ?? "-"
     }
     
     func configureETA(with shipmentPrice: ShipmentPrice) {

@@ -69,7 +69,7 @@ class TransactionViewModel: BaseViewModel {
                 if let supplierID = product.supplierID,
                    let supplierName = product.supplierName,
                    !supplierIDs.contains(supplierID) {
-                    let supplier = Supplier(id: supplierID, supplierName: supplierName, address: nil, v: nil)
+                    let supplier = Supplier(id: supplierID, supplierName: supplierName, address: nil, profilePicture: nil, v: nil)
                     self.suppliers.append(supplier)
                 }
             }

@@ -31,4 +31,16 @@ class WaitingPaymentHeaderCell: UITableViewCell {
         self.expiredDateTitle.textColor = .alert
         self.expiredDate.textColor = .alert
     }
+    
+    func configure(with transaction: TransactionResponse) {
+        self.transactionCode.text = "Transaksi 210607/7529-10000"
+        self.totalPrice.text = transaction.expectedAmount.toIDR
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let expirationDate = dateFormatter.date(from: transaction.expirationDate) {
+            self.expiredDate.text = expirationDate.toString(format: .basic)
+        }
+    }
 }

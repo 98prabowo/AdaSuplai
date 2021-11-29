@@ -94,9 +94,8 @@ class PaymentController: BaseUIViewController {
               let index = self.selectedIndex else { return }
         let payment = self.viewModel.paymentMethods.value[index.row - 1]
         self.viewModel.transaction.payment = payment
-        // TODO: Push to nextVC and post data first
-//        let nextVC = WaitingPaymentController(payment: payment)
-//        navigation.pushViewController(nextVC, animated: true)
+        let nextVC = TransactionLoadingController(with: self.viewModel.transaction)
+        navigation.pushViewController(nextVC, animated: true)
     }
 }
 

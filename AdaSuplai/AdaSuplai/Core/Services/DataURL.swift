@@ -33,4 +33,5 @@ enum RemoteURL: String {
     case editProfile = "https://adasuplai-api-env-staging.herokuapp.com/user/update"
     case getAddress = "https://adasuplai-api-env-staging.herokuapp.com/user/getAddress"
     case addAddress = "https://adasuplai-api-env-staging.herokuapp.com/user/addAddress"
+    case createOrder = "https://adasuplai-api-env-staging.herokuapp.com/order/create"
 }

@@ -29,8 +29,8 @@ class WaitingPaymentController: BaseUIViewController {
         }
     }
     
-    init(payment: Payment) {
-        self.viewModel = WaitingPaymentViewModel(payment: payment)
+    init(with transaction: TransactionResponse, and payment: Payment) {
+        self.viewModel = WaitingPaymentViewModel(with: transaction, and: payment)
         super.init(nibName: Self.identifier, bundle: nil)
     }
     
@@ -47,7 +47,7 @@ class WaitingPaymentController: BaseUIViewController {
     
     private func setupNavigationBar() {
         self.title = Constant.header
-//        self.navigationItem.hidesBackButton = true
+        self.navigationItem.hidesBackButton = true
     }
     
     private func setupTableView() {
@@ -72,6 +72,15 @@ class WaitingPaymentController: BaseUIViewController {
                 self.tableView.reloadData()
             }.store(in: &paymentWaitSubscribers)
     }
+    
+    private func backToCart() {
+        guard let navigation = self.navigationController else { return }
+        let controllers = navigation.viewControllers
+        for vc in controllers
+        where vc is CartController {
+            navigation.popToViewController(vc, animated: true)
+        }
+    }
 }
 
 extension WaitingPaymentController: UITableViewDelegate, UITableViewDataSource {
@@ -83,9 +92,11 @@ extension WaitingPaymentController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withCell: WaitingPaymentHeaderCell.self, for: indexPath)
+            cell.configure(with: self.viewModel.transaction)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withCell: WaitingPaymentMethodCell.self, for: indexPath)
+            cell.configure(with: self.viewModel.transaction, payment: self.viewModel.payment)
             cell.vaCodePublisher
                 .sink { vaCode in
                     UIPasteboard.general.string = vaCode
@@ -103,12 +114,12 @@ extension WaitingPaymentController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             let cell = tableView.dequeueReusableCell(withCell: WaitingPaymentButtonsCell.self, for: indexPath)
             cell.waitingPaymentPublisher
-                .sink { actions in
+                .sink { [unowned self] actions in
                     switch actions {
                     case .firstTapped:
                         print("BAYAR")
                     case .secondTapped:
-                        print("BELANJA LAGI")
+                        self.backToCart()
                     }
                 }.store(in: &paymentWaitSubscribers)
             return cell
