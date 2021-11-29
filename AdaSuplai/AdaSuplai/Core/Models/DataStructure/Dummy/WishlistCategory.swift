@@ -16,9 +16,9 @@ struct WishlistCategory {
 class WishlistCategoryData {
     func getData() -> [WishlistCategory] {
         return [
-            WishlistCategory(image: "", name: "Kopi", count: 3),
-            WishlistCategory(image: "", name: "Dairy Product", count: 6),
-            WishlistCategory(image: "", name: "Packaging Kopi", count: 4)
+            WishlistCategory(image: "kopiGroup", name: "Kopi", count: 3),
+            WishlistCategory(image: "dairy", name: "Dairy Product", count: 6),
+            WishlistCategory(image: "packaging", name: "Packaging Kopi", count: 4)
         ]
     }
 }
