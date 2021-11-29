@@ -18,7 +18,7 @@ class InvoiceNumberCell: UITableViewCell {
     
     private func setupView() {
         invoiceLabel.textColor = .inactive
-        invoiceButton.tintColor = .primaryGreen
+        invoiceButton.tintColor = .inactive
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

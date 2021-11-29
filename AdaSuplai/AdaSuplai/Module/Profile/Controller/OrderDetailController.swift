@@ -33,16 +33,16 @@ class OrderDetailController: BaseUIViewController {
     
     private func setupTableView() {
         tableView.backgroundColor = .systemGray6
-        tableView.separatorColor = .inactive
+//        tableView.separatorColor = .inactive
         tableView.dataSource = self
         tableView.delegate = self
-//        tableView.separatorColor = .clear
+        tableView.separatorColor = .clear
         
         tableView.registerNib(forCell: InvoiceNumberCell.self)
         tableView.registerNib(forCell: ProgressCell.self)
         tableView.registerNib(forCell: SupplierLocationCell.self)
         tableView.registerNib(forCell: HorizontalTextCell.self)
-        tableView.registerNib(forCell: ProductTransactionCell.self)
+        tableView.registerNib(forCell: ProductOrderDetailCell.self)
     }
 }
 
@@ -59,7 +59,7 @@ extension OrderDetailController: UITableViewDelegate, UITableViewDataSource {
         case 1 :
             return 4
         case 2 :
-            return 6
+            return 7
         default :
             return 0
         }
@@ -114,25 +114,30 @@ extension OrderDetailController: UITableViewDelegate, UITableViewDataSource {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width*2)
             return cell
         case 1 :
-            let cell = tableView.dequeueReusableCell(withCell: ProductTransactionCell.self, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withCell: ProductOrderDetailCell.self, for: indexPath)
             cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
             return cell
         case 2 :
-            let cell = tableView.dequeueReusableCell(withCell: HorizontalTextCell.self, for: indexPath)
-            let total: Double = 1170000
-            cell.configure(title: "Subtotal Produk", description: "\((total).toIDR)")
+            let cell = tableView.dequeueReusableCell(withCell: ProductOrderDetailCell.self, for: indexPath)
+            cell.configure(productImage: "KopiSedikit", productName: "Biji Kopi Arabika", productPrice: "Rp. 90.000", productWeight: "10", productTotal: "1")
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
             return cell
         case 3 :
+            let cell = tableView.dequeueReusableCell(withCell: HorizontalTextCell.self, for: indexPath)
+            let total: Double = (90000 * 12) + (90000 * 2)
+            cell.configure(title: "Subtotal Produk", description: "\((total).toIDR)")
+            return cell
+        case 4 :
             let cell = tableView.dequeueReusableCell(withCell: HorizontalTextCell.self, for: indexPath)
             let total: Double = 25000
             cell.configure(title: "Subtotal Pengiriman", description: "\((total).toIDR)")
             return cell
-        case 4 :
+        case 5 :
             let cell = tableView.dequeueReusableCell(withCell: HorizontalTextCell.self, for: indexPath)
-            let total: Double = 1170000 + 25000
+            let total: Double = (90000 * 12) + (90000 * 2) + 25000
             cell.configureBold(title: "Total", description: "\((total).toIDR)")
             return cell
-        case 5 :
+        case 6 :
             let cell = tableView.dequeueReusableCell(withCell: HorizontalTextCell.self, for: indexPath)
             cell.configure(title: "Metode Pembayaran", description: "Mandiri Debit Card")
             return cell

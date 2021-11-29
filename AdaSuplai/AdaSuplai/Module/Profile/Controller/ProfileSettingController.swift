@@ -65,7 +65,7 @@ class ProfileSettingController: BaseUIViewController {
     }
     
     private func goToPaymentMethodController() {
-        let alert = UIAlertController(title: "Coming Soon", message: "This feature is currently unavailable", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Akan Datang", message: "Fitur ini sementara tidak tersedia", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true)
 //        let nextVC = ProfileEditController()

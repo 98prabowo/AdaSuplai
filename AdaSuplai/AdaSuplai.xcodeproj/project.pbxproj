@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		859DA3852754D6B20055D8DA /* ProductOrderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859DA3832754D6B20055D8DA /* ProductOrderDetailCell.swift */; };
+		859DA3862754D6B20055D8DA /* ProductOrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859DA3842754D6B20055D8DA /* ProductOrderDetailCell.xib */; };
 		859DD87927313D15000FFD53 /* Extension-UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859DD87827313D15000FFD53 /* Extension-UIViewController.swift */; };
 		85F8D8832741785E00D0D326 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D7A02741785D00D0D326 /* MainController.swift */; };
 		85F8D8842741785E00D0D326 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F8D7A12741785D00D0D326 /* TabBarController.swift */; };
@@ -296,6 +298,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		859DA3832754D6B20055D8DA /* ProductOrderDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOrderDetailCell.swift; sourceTree = "<group>"; };
+		859DA3842754D6B20055D8DA /* ProductOrderDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductOrderDetailCell.xib; sourceTree = "<group>"; };
 		859DD87827313D15000FFD53 /* Extension-UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIViewController.swift"; sourceTree = "<group>"; };
 		85F8D7A02741785D00D0D326 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		85F8D7A12741785D00D0D326 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -1259,6 +1263,8 @@
 				85F8DBD727491BC500D0D326 /* ProgressCell.swift */,
 				85F8DBD827491BC500D0D326 /* ProgressCell.xib */,
 				85F8DBD927491BC500D0D326 /* InvoiceNumberCell.swift */,
+				859DA3832754D6B20055D8DA /* ProductOrderDetailCell.swift */,
+				859DA3842754D6B20055D8DA /* ProductOrderDetailCell.xib */,
 			);
 			path = "Order Detail";
 			sourceTree = "<group>";
@@ -1773,6 +1779,7 @@
 				85F8D8DB2741785E00D0D326 /* ProductAttributesDeliveryCell.xib in Resources */,
 				85F8D8B02741785E00D0D326 /* TransactionDetailController.xib in Resources */,
 				85F8DA8A27490BEC00D0D326 /* SeeMoreCategoryCollectionCell.xib in Resources */,
+				859DA3862754D6B20055D8DA /* ProductOrderDetailCell.xib in Resources */,
 				85F8DC0627491BC500D0D326 /* SupplierLocationCell.xib in Resources */,
 				85F8DBF727491BC500D0D326 /* ProfileAllOrderStatusController.xib in Resources */,
 				85F8D8CD2741785E00D0D326 /* ProductImagePriceCell.xib in Resources */,
@@ -2043,6 +2050,7 @@
 				C33AAB472742A8CA0075780A /* WaitingPaymentHeaderCell.swift in Sources */,
 				C3C94D9D27059D7C00688485 /* BaseUIViewController.swift in Sources */,
 				85F8D8E42741785E00D0D326 /* ProductSupplierCell.swift in Sources */,
+				859DA3852754D6B20055D8DA /* ProductOrderDetailCell.swift in Sources */,
 				85F8DA94274913C500D0D326 /* User.swift in Sources */,
 				85F8D8D42741785E00D0D326 /* StatusProductCollectionCell.swift in Sources */,
 				C3963BE527217F710017AAB6 /* AdaSuplaiStepper.swift in Sources */,
