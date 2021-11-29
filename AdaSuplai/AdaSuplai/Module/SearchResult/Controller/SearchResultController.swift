@@ -10,7 +10,7 @@ import Combine
 
 class SearchResultController: BaseUIViewController {
     private enum Constant {
-        static let wishlistButtonImage = "slider.horizontal.3"
+        static let filterButtonImage = "slider.horizontal.3"
         static let loading = "Loading..."
     }
     
@@ -54,9 +54,9 @@ class SearchResultController: BaseUIViewController {
     }
     
     private func setupRightButtonItems() -> [UIBarButtonItem] {
-        let wishlistButton = UIBarButtonItem(image: UIImage(systemName: Constant.wishlistButtonImage), style: .plain, target: self, action: .some(#selector(filterTapped(_:))))
-        wishlistButton.tintColor = .systemGreen
-        return [wishlistButton]
+        let filterButton = UIBarButtonItem(image: UIImage(systemName: Constant.filterButtonImage), style: .plain, target: self, action: .some(#selector(filterTapped(_:))))
+        filterButton.tintColor = .systemGreen
+        return [filterButton]
     }
     
     @objc private func filterTapped(_ sender: UIBarButtonItem) {

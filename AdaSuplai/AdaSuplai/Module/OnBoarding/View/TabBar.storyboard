@@ -16,6 +16,16 @@
             </objects>
             <point key="canvasLocation" x="2757" y="106"/>
         </scene>
+        <!--Wishlist-->
+        <scene sceneID="Htd-Zq-G3g">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Wishlist" storyboardName="Wishlist" id="0Kw-LK-ta6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="YZC-2b-ife"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lcB-SE-0tg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2743" y="200"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="fMT-sX-kNx">
             <objects>
@@ -39,8 +49,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="ntj-Yr-4gl" kind="relationship" relationship="viewControllers" id="Imh-bj-7GN"/>
-                        <segue destination="6DZ-og-rrS" kind="relationship" relationship="viewControllers" id="8cZ-BF-Xbd"/>
-                        <segue destination="OV9-jF-R0r" kind="relationship" relationship="viewControllers" id="7O6-hl-3dk"/>
+                        <segue destination="0Kw-LK-ta6" kind="relationship" relationship="viewControllers" id="uhq-ko-VdS"/>
+                        <segue destination="6DZ-og-rrS" kind="relationship" relationship="viewControllers" id="Z3P-em-kGO"/>
+                        <segue destination="OV9-jF-R0r" kind="relationship" relationship="viewControllers" id="V6j-fz-NF1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6k-hG-p43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

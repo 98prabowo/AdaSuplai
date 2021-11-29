@@ -73,7 +73,7 @@ import UIKit
             let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: self.textSize)]
             let width = (title as NSString).size(withAttributes: fontAttributes).width + 30
             self.selectorView = UIView(frame: CGRect(x: 0,
-                                                     y: height,
+                                                     y: height - 2,
                                                      width: width,
                                                      height: 2))
         }
@@ -148,7 +148,7 @@ import UIKit
         let height = self.frame.height
         let width = button.frame.width
         selector.frame = CGRect(x: pos,
-                                y: height,
+                                y: height - 2,
                                 width: width,
                                 height: 2)
     }
