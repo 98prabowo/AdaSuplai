@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,8 +28,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vng-th-XHk">
                                 <rect key="frame" x="85" y="0.0" width="239" height="44"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="INV/210607/7529-10000">
-                                    <imageReference key="image" image="paperclip" catalog="system" symbolScale="large"/>
+                                <buttonConfiguration key="configuration" style="plain" title="INV/210607/7529-10000">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
                             </button>
@@ -55,7 +53,4 @@
             <point key="canvasLocation" x="146.37681159420291" y="81.696428571428569"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="paperclip" catalog="system" width="121" height="128"/>
-    </resources>
 </document>

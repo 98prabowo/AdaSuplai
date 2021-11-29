@@ -15,11 +15,14 @@ class ProfileAllOrderStatusController: BaseUIViewController {
     @IBOutlet weak var emptyViewLabel: UILabel!
     
     private var titles = ["Dalam Proses", "Pengiriman", "Selesai", "Dibatalkan", "Pengembalian"]
+    private var data = [0, 0, 1, 0, 0]
     private var selectedIndex = 0 {
         didSet {
             DispatchQueue.main.async {
                 self.emptyViewLabel.text = "Tidak ada pesananan \(self.titles[self.selectedIndex])"
                 self.collectionView.reloadData()
+                self.tableView.reloadData()
+                self.setupView()
             }
         }
     }
@@ -82,17 +85,31 @@ class ProfileAllOrderStatusController: BaseUIViewController {
         navigation.navigationBar.tintColor = .primaryGreen
         self.addBackButton()
     }
+    
+    private func goToOrderDetailController(orderId: String) {
+        let nextVC = OrderDetailController()
+        nextVC.hidesBottomBarWhenPushed = true
+        if let navigationController = self.navigationController {
+            navigationController.pushViewController(nextVC, animated: true)
+        }
+    }
 }
 
 // MARK: - Table
 extension ProfileAllOrderStatusController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return data[selectedIndex]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCell: OrderSmallCell.self, for: indexPath)
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.goToOrderDetailController(orderId: "")
     }
 }
 

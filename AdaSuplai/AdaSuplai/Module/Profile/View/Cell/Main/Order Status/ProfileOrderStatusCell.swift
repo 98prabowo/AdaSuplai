@@ -34,7 +34,6 @@ class ProfileOrderStatusCell: UITableViewCell {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
-        tableView.allowsSelection = false
         
         self.tableView.registerNib(forCell: OrderSmallCell.self)
     }
@@ -48,13 +47,14 @@ class ProfileOrderStatusCell: UITableViewCell {
 // MARK: - Table
 extension ProfileOrderStatusCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0 :
             let cell = tableView.dequeueReusableCell(withCell: OrderSmallCell.self, for: indexPath)
+            cell.selectionStyle = .none
             return cell
         case 1 :
             let cell = tableView.dequeueReusableCell(withCell: OrderSmallCell.self, for: indexPath)
@@ -65,6 +65,7 @@ extension ProfileOrderStatusCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         self.orderStatusPublisher.send("\(indexPath.row) Cell")
     }
     

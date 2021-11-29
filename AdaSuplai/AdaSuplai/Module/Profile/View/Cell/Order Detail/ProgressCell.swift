@@ -20,10 +20,26 @@ class ProgressCell: UITableViewCell {
     }
     
     private func setupView() {
-        firstCircleView.addBorderAndCornerRadius(withBorderWidth: 2, borderColor: .primaryGreen, cornerRadius: 8)
-        firstCircleView.backgroundColor = .white
+//        firstCircleView.addBorderAndCornerRadius(withBorderWidth: 2, borderColor: .white, cornerRadius: 8)
+        
+        // Selected
+        thirdCircleView.backgroundColor = .primaryGreen
+        thirdCircleView.layer.borderWidth = 2.0
+        thirdCircleView.layer.borderColor = UIColor.primaryGreen.cgColor
+        thirdCircleView.layer.cornerRadius = thirdCircleView.frame.width / 2
+
+        let borderLayer = CALayer()
+        borderLayer.frame = thirdCircleView.bounds
+        borderLayer.borderColor = UIColor.white.cgColor
+        borderLayer.borderWidth = 4.0
+        borderLayer.cornerRadius = borderLayer.frame.width / 2
+        thirdCircleView.layer.insertSublayer(borderLayer, above: thirdCircleView.layer)
+        
+        // Not Selected
         secondCircleView.layer.cornerRadius = 8
-        thirdCircleView.layer.cornerRadius = 8
+        secondCircleView.backgroundColor = .primaryGreen
+        firstCircleView.layer.cornerRadius = 8
+        firstCircleView.backgroundColor = .primaryGreen
         lineView.backgroundColor = .primaryGreen
     }
     
