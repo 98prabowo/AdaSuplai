@@ -14,7 +14,21 @@ class WaitingPaymentGuidlineDetailCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configure(with guideline: String) {
-        self.guidline.attributedText = NSAttributedString(string: guideline)
+    func configure(with guideline: SimpleInstruction) {
+        let instruction = self.getInstruction(from: guideline)
+        self.guidline.text = instruction
+    }
+    
+    private func getInstruction(from guideline: SimpleInstruction) -> String {
+        var text: String = ""
+        for (index, instruction) in guideline.instructions.enumerated() {
+            switch index {
+            case guideline.instructions.count:
+                text += instruction
+            default:
+                text += instruction + "\n"
+            }
+        }
+        return text
     }
 }

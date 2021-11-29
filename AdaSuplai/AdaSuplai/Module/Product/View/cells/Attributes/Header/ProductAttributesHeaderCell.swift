@@ -16,17 +16,9 @@ enum ProductAttribute: String, CaseIterable {
 
 class ProductAttributesHeaderCell: UITableViewCell {
     @IBOutlet private weak var segmentedController: AdaSuplaiSegmentedControl!
-    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var containerView: UIView!
     
     let attributesPublisher = PassthroughSubject<ProductAttribute, Never>()
-    private var selectedIndex = 0 {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,58 +36,11 @@ class ProductAttributesHeaderCell: UITableViewCell {
             segmentTitles.append(title.rawValue)
         }
         self.segmentedController.textSize = 16
+        self.segmentedController.textColor = .gray
         self.segmentedController.buttonTitles = segmentTitles
-    }
-    
-    private func setupCollectionView() {
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.registerNib(forCell: ProductAttributesCollectionCell.self)
-        let indexPath = IndexPath(item: 0, section: 0)
-        self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
-    }
-    
-    private func deselectAllItem() {
-        for i in 0..<ProductAttribute.allCases.count {
-            let indexPath = IndexPath(item: i, section: 0)
-            let title = ProductAttribute.allCases[indexPath.item].rawValue
-            if let cell = collectionView.cellForItem(at: indexPath) as? ProductAttributesCollectionCell {
-                cell.configure(title: title)
-            }
-        }
     }
     
     @IBAction private func segmentDidChanged(_ sender: AdaSuplaiSegmentedControl) {
         self.attributesPublisher.send(ProductAttribute.allCases[sender.selectedIndex])
-    }
-}
-
-extension ProductAttributesHeaderCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ProductAttribute.allCases.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withCell: ProductAttributesCollectionCell.self, for: indexPath)
-        let title = ProductAttribute.allCases[indexPath.item].rawValue
-        if indexPath.item == selectedIndex {
-            cell.configureSelected(title: title)
-        } else {
-            cell.configure(title: title)
-        }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let stringSize = ProductAttribute.allCases[indexPath.item].rawValue.size(withAttributes: nil)
-        let height: CGFloat = collectionView.bounds.height
-        return CGSize(width: stringSize.width + 50, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.collectionView.deselectItem(at: indexPath, animated: true)
-        self.deselectAllItem()
-        self.selectedIndex = indexPath.item
-        self.attributesPublisher.send(ProductAttribute.allCases[indexPath.item])
     }
 }

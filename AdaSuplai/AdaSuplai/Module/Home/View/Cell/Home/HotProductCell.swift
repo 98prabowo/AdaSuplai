@@ -20,12 +20,6 @@ class HotProductCell: UITableViewCell {
         }
     }
     
-    private var suppliers = [Supplier]() {
-        didSet {
-            self.collectionView.reloadData()
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupCollectionView()
@@ -42,8 +36,7 @@ class HotProductCell: UITableViewCell {
         self.collectionView.registerNib(forCell: ProductCell.self)
     }
     
-    func configure(with products: [Product], suppliers: [Supplier], title: String) {
-        self.suppliers = suppliers
+    func configure(with products: [Product], title: String) {
         self.productTrends = products
         self.header.text = title
     }

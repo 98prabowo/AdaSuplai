@@ -21,6 +21,9 @@ enum RemoteURL: String {
     case supplier = "https://adasuplai-api-env-staging.herokuapp.com/supplier/fetch"
     case searchSupplier = "https://adasuplai-api-env-staging.herokuapp.com/supplier/info/"
     case paymentMethod = "https://adasuplai-api-env-staging.herokuapp.com/payment/list"
+    case paymentInstruction = "https://adasuplai-api-env-staging.herokuapp.com/payment/getVaInstructions"
+    case postShipper = "https://merchant-api-sandbox.shipper.id/v3/pricing/domestic"
+    case postShipperAPIKey = "OXwMaD7mY09Gd4VP3FVEmzQG4fpo4nO4EmQSmarkQEohrUtI75lJHYp2eoBWQFjA"
     case verifyOTP = "https://adasuplai-api-env-staging.herokuapp.com/api/user/verifyOTP"
     case login = "https://adasuplai-api-env-staging.herokuapp.com/api/user/login"
     case register = "https://adasuplai-api-env-staging.herokuapp.com/api/user/register"
@@ -30,4 +33,5 @@ enum RemoteURL: String {
     case editProfile = "https://adasuplai-api-env-staging.herokuapp.com/user/update"
     case getAddress = "https://adasuplai-api-env-staging.herokuapp.com/user/getAddress"
     case addAddress = "https://adasuplai-api-env-staging.herokuapp.com/user/addAddress"
+    case createOrder = "https://adasuplai-api-env-staging.herokuapp.com/order/create"
 }

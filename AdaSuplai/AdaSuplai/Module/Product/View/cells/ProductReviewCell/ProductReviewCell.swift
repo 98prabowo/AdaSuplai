@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Combine
 
 class ProductReviewCell: UITableViewCell {
-    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var star: UIImageView!
     @IBOutlet private weak var rating: UILabel!
     @IBOutlet private weak var ratingQuantity: UILabel!
     @IBOutlet private weak var seeMoreButton: UIButton!
     @IBOutlet private weak var containerView: UIView!
+    
+    var reviewHeaderPublisher = PassthroughSubject<Void, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +38,17 @@ class ProductReviewCell: UITableViewCell {
         self.seeMoreButton.setTitleColor(.primaryGreen, for: .normal)
     }
     
-    func configure() {
-        
+    func configure(with product: Product) {
+        let rating = roundRating(from: product.rating)
+        self.rating.text = "\(rating)"
+        self.ratingQuantity.text = "dari \(product.reviews.count) Ulasan"
+    }
+    
+    private func roundRating(from data: Double) -> Double {
+        return round(10 * data) / 10
+    }
+    
+    @IBAction func seeMoreTapped(_ sender: UIButton) {
+        self.reviewHeaderPublisher.send()
     }
 }

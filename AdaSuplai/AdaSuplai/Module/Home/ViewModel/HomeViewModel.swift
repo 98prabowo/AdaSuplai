@@ -11,7 +11,6 @@ import UIKit
 
 class HomeViewModel: BaseViewModel {
     let productTrends = CurrentValueSubject<[Product], Never>([Product]())
-    var suppliers = CurrentValueSubject<[Supplier], Never>([Supplier]())
     let service: RemoteDataService
     let categories: [HomeCategory]
     let banners: [Banner]
@@ -19,7 +18,7 @@ class HomeViewModel: BaseViewModel {
     override init() {
         self.service = RemoteDataService()
         self.categories = HomeCategoryData().getHomeCategories()
-        self.banners = BannerData().dummy
+        self.banners = BannerData().getBannerData()
         super.init()
         self.fetchProductTrends()
     }
@@ -29,17 +28,7 @@ class HomeViewModel: BaseViewModel {
             do {
                 self.productTrends.value = try await service.getData([Product].self, url: .product)
             } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func fetchSupplier() {
-        Task {
-            do {
-                self.suppliers.value = try await service.getData([Supplier].self, url: .supplier)
-            } catch {
-                print(error.localizedDescription)
+                print("Fetch products in home errror: \(error.localizedDescription)")
             }
         }
     }

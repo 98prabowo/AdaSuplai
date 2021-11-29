@@ -32,5 +32,4 @@ class ProductImageCollectionCell: UICollectionViewCell {
                 .cacheOriginalImage
             ])
     }
-    
 }

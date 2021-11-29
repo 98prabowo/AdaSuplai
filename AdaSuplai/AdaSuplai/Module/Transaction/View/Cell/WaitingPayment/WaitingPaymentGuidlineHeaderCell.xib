@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cara Pembayaran:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bg-gu-Xmq">
-                        <rect key="frame" x="20" y="0.0" width="374" height="21"/>
+                        <rect key="frame" x="15" y="0.0" width="384" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFJ-Nf-Z19" customClass="AdaSuplaiSegmentedControl" customModule="AdaSuplai" customModuleProvider="target">
-                        <rect key="frame" x="20" y="33" width="374" height="37"/>
+                        <rect key="frame" x="15" y="33" width="384" height="37"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="textSize">
@@ -37,11 +37,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="VFJ-Nf-Z19" firstAttribute="top" secondItem="4bg-gu-Xmq" secondAttribute="bottom" constant="12" id="8NB-uO-fyA"/>
-                    <constraint firstItem="VFJ-Nf-Z19" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="FiX-zR-hb5"/>
-                    <constraint firstAttribute="trailing" secondItem="VFJ-Nf-Z19" secondAttribute="trailing" constant="20" id="GCo-NJ-kfF"/>
+                    <constraint firstItem="VFJ-Nf-Z19" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="FiX-zR-hb5"/>
+                    <constraint firstAttribute="trailing" secondItem="VFJ-Nf-Z19" secondAttribute="trailing" constant="15" id="GCo-NJ-kfF"/>
                     <constraint firstItem="4bg-gu-Xmq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PoY-cJ-rzq"/>
-                    <constraint firstAttribute="trailing" secondItem="4bg-gu-Xmq" secondAttribute="trailing" constant="20" id="dzm-nr-wRq"/>
-                    <constraint firstItem="4bg-gu-Xmq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uxf-ha-N4B"/>
+                    <constraint firstAttribute="trailing" secondItem="4bg-gu-Xmq" secondAttribute="trailing" constant="15" id="dzm-nr-wRq"/>
+                    <constraint firstItem="4bg-gu-Xmq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="uxf-ha-N4B"/>
                     <constraint firstAttribute="bottom" secondItem="VFJ-Nf-Z19" secondAttribute="bottom" constant="20" id="zaO-Ds-d2H"/>
                 </constraints>
             </tableViewCellContentView>

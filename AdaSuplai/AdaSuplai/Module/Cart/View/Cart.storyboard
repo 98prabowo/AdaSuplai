@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kkq-0e-6Se">
-                                <rect key="frame" x="0.0" y="88" width="414" height="699"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gqf-jb-60z">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gqf-jb-60z">
                                 <rect key="frame" x="0.0" y="787" width="414" height="75"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="i8R-xm-WnZ">
@@ -73,8 +73,8 @@
                             <constraint firstItem="kkq-0e-6Se" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Ao5-A8-7Lx"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Gqf-jb-60z" secondAttribute="trailing" id="DR3-6g-hoZ"/>
                             <constraint firstItem="kkq-0e-6Se" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="G8X-Sl-bqX"/>
+                            <constraint firstItem="kkq-0e-6Se" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="GcL-dT-eXl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kkq-0e-6Se" secondAttribute="trailing" id="JsC-cy-PAr"/>
-                            <constraint firstItem="Gqf-jb-60z" firstAttribute="top" secondItem="kkq-0e-6Se" secondAttribute="bottom" id="MJb-Fx-tYD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Gqf-jb-60z" secondAttribute="bottom" id="ZMy-W0-aR0"/>
                         </constraints>
                     </view>

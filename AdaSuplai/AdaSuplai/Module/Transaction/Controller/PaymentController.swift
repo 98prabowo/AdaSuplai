@@ -8,8 +8,9 @@
 import UIKit
 import Combine
 
-class PaymentController: UIViewController {
+class PaymentController: BaseUIViewController {
     private enum Constant {
+        static let header = "Pembayaran"
         static let payButton = "Bayar"
         static let totalHeader = "Total"
     }
@@ -20,15 +21,41 @@ class PaymentController: UIViewController {
     @IBOutlet private weak var totalPrice: UILabel!
     @IBOutlet private weak var buyButton: UIButton!
     
-    private let viewModel = PaymentViewModel()
+    private let viewModel: PaymentViewModel
     private var subscribers = Set<AnyCancellable>()
-    private var selectedIndex: IndexPath?
+    
+    init(with transaction: Transaction) {
+        self.viewModel = PaymentViewModel(with: transaction)
+        super.init(nibName: Self.identifier, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private var selectedIndex: IndexPath? {
+        didSet {
+            if selectedIndex != nil {
+                self.buyButton.isEnabled = true
+                self.buyButton.backgroundColor = .primaryGreen
+            } else {
+                self.buyButton.isEnabled = false
+                self.buyButton.backgroundColor = .gray
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupNavigationBar()
         self.setupPriceBar()
         self.setupTableView()
         self.bindViewModel()
+    }
+    
+    private func setupNavigationBar() {
+        self.addBackButton()
+        self.title = Constant.header
     }
     
     private func setupPriceBar() {
@@ -38,11 +65,13 @@ class PaymentController: UIViewController {
         self.buyButton.setTitleColor(.white, for: .normal)
         self.buyButton.backgroundColor = .primaryGreen
         self.buyButton.layer.cornerRadius = 5
+        self.totalPrice.text = self.viewModel.getTotalPrice().toIDR
     }
     
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.backgroundColor = .blueBackground
         self.tableView.registerNib(forCell: PaymentHeaderCell.self)
         self.tableView.registerNib(forCell: PaymentDetailCell.self)
     }
@@ -53,10 +82,20 @@ class PaymentController: UIViewController {
             .sink { [unowned self] _ in
                 self.viewModel.getPaymentCategories()
                 self.tableView.reloadData()
+                if selectedIndex == nil {
+                    self.buyButton.isEnabled = false
+                    self.buyButton.backgroundColor = .gray
+                }
             }.store(in: &subscribers)
     }
     
     @IBAction private func buyButton(_ sender: UIButton) {
+        guard let navigation = self.navigationController,
+              let index = self.selectedIndex else { return }
+        let payment = self.viewModel.paymentMethods.value[index.row - 1]
+        self.viewModel.transaction.payment = payment
+        let nextVC = TransactionLoadingController(with: self.viewModel.transaction)
+        navigation.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -93,5 +132,8 @@ extension PaymentController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndex = indexPath
         self.tableView.deselectRow(at: indexPath, animated: false)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

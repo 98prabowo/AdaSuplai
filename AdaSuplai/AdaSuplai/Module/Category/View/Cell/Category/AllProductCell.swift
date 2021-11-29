@@ -13,7 +13,10 @@ class AllProductCell: UITableViewCell {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var emptyViewLabel: UILabel!
     private var categoryVM = CategoryViewModel()
+    private var categoryName = ""
     
     let allProductPublisher = PassthroughSubject<Product?, Never>()
     
@@ -30,8 +33,21 @@ class AllProductCell: UITableViewCell {
         }
     }
     
-    func configure(idCategory: String) {
-        self.categoryVM.fetchCategoryProduct(id: idCategory)
+    func configure(idCategory: String, name: String) {
+        self.categoryName = name
+        self.categoryVM.fetchCategoryProduct(id: idCategory) { result in
+            DispatchQueue.main.async {
+                self.setupView()
+                if result == false {
+                    self.setUpCollectionView()
+                }
+            }
+        }
+    }
+    
+    private func setupView() {
+        emptyView.isHidden = (categoryVM.categoryProduct.value?.count ?? 0) < 1 ? false : true
+        emptyViewLabel.text = "\(categoryName) saat ini tidak tersedia"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +66,11 @@ extension AllProductCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         let heightTemp = ceil(CGFloat(collectionView.numberOfItems(inSection: 0))/2) * 305
         let spacingTemp =  ceil(CGFloat(collectionView.numberOfItems(inSection: 0))/2) * 16
-        collectionViewHeight.constant = CGFloat(heightTemp+spacingTemp)
+        if (heightTemp + spacingTemp) > 0 {
+            collectionViewHeight.constant = CGFloat(heightTemp + spacingTemp)
+        } else {
+            collectionViewHeight.constant = CGFloat(200)
+        }
         
         self.collectionView.registerNib(forCell: ProductCell.self)
     }

@@ -11,7 +11,7 @@ import Combine
 class CategoryController: BaseUIViewController {
     
     @IBOutlet var table: UITableView!
-    private var category: Category?
+    private var categoryId: String = ""
     private var  subscribers = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -22,8 +22,16 @@ class CategoryController: BaseUIViewController {
     }
     
     func configure(category: Category) {
+        self.categoryId = category.id
         self.title = category.name
-        self.category = category
+        print("\(self.categoryId) namanya \(category.name)")
+    }
+    
+    func configureHome(category: HomeCategory) {
+        self.title = category.category
+        self.categoryId = category.id
+        
+        print("\(category.id) namanya \(category.category)")
     }
     
     // MARK: - Navigation Bar
@@ -40,7 +48,6 @@ class CategoryController: BaseUIViewController {
     
     // MARK: - Navigate
     private func goToProductController(product: Product) {
-        // TODO: create product data then input to ProductController
         let nextVC = ProductController(product: product)
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
@@ -89,7 +96,7 @@ extension CategoryController: UITableViewDelegate, UITableViewDataSource {
             
         case 0 :
             let cell = tableView.dequeueReusableCell(withCell: AllProductCell.self, for: indexPath)
-            cell.configure(idCategory: category?.id ?? "")
+            cell.configure(idCategory: categoryId, name: self.title ?? "Produk")
             cell.mainTableView = tableView
             cell.allProductPublisher
                 .sink { [ unowned self ] product in

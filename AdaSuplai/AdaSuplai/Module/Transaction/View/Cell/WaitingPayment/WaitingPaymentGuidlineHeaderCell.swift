@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class WaitingPaymentGuidlineHeaderCell: UITableViewCell {
     @IBOutlet private weak var header: UILabel!
     @IBOutlet private weak var segmentedView: AdaSuplaiSegmentedControl!
+    
+    var guidelineHeaderPublisher = PassthroughSubject<Int, Never>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +24,6 @@ class WaitingPaymentGuidlineHeaderCell: UITableViewCell {
     }
     
     @IBAction private func segmentDidChanged(_ sender: AdaSuplaiSegmentedControl) {
+        self.guidelineHeaderPublisher.send(sender.selectedIndex)
     }
 }

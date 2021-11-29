@@ -10,7 +10,7 @@ import UIKit
 protocol TransactionCellDelegate: AnyObject {
     func setDeliveryAddress()
     
-    func setDeliveryService()
+    func setDeliveryService(shipmentPrices: [ShipmentPrice], index: IndexPath)
 }
 
 class DeliveryAddressCell: UITableViewCell {

@@ -12,32 +12,38 @@ import UIKit
     private var buttons = [UIButton]()
     private var selectorView: UIView?
     
-    var selectedIndex: Int = 0
+    /// Segmented control selected index.
+    var selectedIndex: Int = 0 
     
-    public var buttonTitles = ["Segment 1", "Segment 2", "Segment 3", "Segment 4"] {
+    /// Titles of segmented control items.
+    public var buttonTitles = ["Segment 1", "Segment 2", "Segment 3"] {
         didSet {
             self.updateView()
         }
     }
     
+    /// Segmented control item's title size.
     @IBInspectable public var textSize: CGFloat = 15 {
         didSet {
             self.updateView()
         }
     }
     
+    /// Segmented control item's title color.
     @IBInspectable public var textColor: UIColor = .label {
         didSet {
             self.updateView()
         }
     }
     
+    /// Segmented control selector's color.
     @IBInspectable public var selectorViewColor: UIColor = .primaryGreen {
         didSet {
             self.updateView()
         }
     }
     
+    /// Segmented control selector's text color.
     @IBInspectable public var selectorTextColor: UIColor = .primaryGreen {
         didSet {
             self.updateView()
@@ -57,24 +63,27 @@ import UIKit
     private func updateView() {
         self.subviews.forEach { $0.removeFromSuperview() }
         self.setupButton()
-        self.setupStackView()
-        self.setupSelectorView()
+        let stack = self.setupStackView()
+        self.setupSelectorView(with: stack)
     }
     
-    private func setupSelectorView() {
+    private func setupSelectorView(with stack: UIStackView) {
         let height = self.frame.height
-        let width = self.frame.width / CGFloat(buttonTitles.count)
-        self.selectorView = UIView(frame: CGRect(x: 0,
-                                                 y: height - 2,
-                                                 width: width,
-                                                 height: 2))
+        if let title = buttonTitles.first {
+            let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: self.textSize)]
+            let width = (title as NSString).size(withAttributes: fontAttributes).width + 30
+            self.selectorView = UIView(frame: CGRect(x: 0,
+                                                     y: height,
+                                                     width: width,
+                                                     height: 2))
+        }
         if let selectorView = self.selectorView {
             selectorView.backgroundColor = self.selectorViewColor
             self.addSubview(selectorView)
         }
     }
     
-    private func setupStackView() {
+    private func setupStackView() -> UIStackView {
         let stack = UIStackView(arrangedSubviews: self.buttons)
         stack.axis = .horizontal
         stack.alignment = .fill
@@ -87,6 +96,7 @@ import UIKit
             stack.topAnchor.constraint(equalTo: self.topAnchor),
             stack.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+        return stack
     }
     
     private func setupButton() {
@@ -112,7 +122,6 @@ import UIKit
             if button == sender {
                 let selectorPosition = self.getSelectorPosition(from: index)
                 self.selectedIndex = index
-                
                 UIView.animate(withDuration: 0.3) {
                     self.setSelectorPos(button: button, pos: selectorPosition)
                 }
@@ -139,7 +148,7 @@ import UIKit
         let height = self.frame.height
         let width = button.frame.width
         selector.frame = CGRect(x: pos,
-                                y: height - 2,
+                                y: height,
                                 width: width,
                                 height: 2)
     }

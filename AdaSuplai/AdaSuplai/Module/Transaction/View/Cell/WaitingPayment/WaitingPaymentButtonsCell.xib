@@ -25,7 +25,7 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="Lihat Transaksi"/>
                         <connections>
-                            <action selector="seeTransactionTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pss-Gg-aR5"/>
+                            <action selector="firstButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="m9M-UG-AjA"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjg-US-Oty">
@@ -38,7 +38,7 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="Belanja Lagi"/>
                         <connections>
-                            <action selector="shopMoreTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KLJ-oz-HSe"/>
+                            <action selector="secondButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2zY-gs-lik"/>
                         </connections>
                     </button>
                 </subviews>
@@ -55,8 +55,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="seeTransactionButton" destination="uUI-HK-g9a" id="H0a-EO-yB4"/>
-                <outlet property="shopMoreButton" destination="tjg-US-Oty" id="ane-ZZ-hPX"/>
+                <outlet property="firstButton" destination="uUI-HK-g9a" id="N45-h6-cuP"/>
+                <outlet property="secondButton" destination="tjg-US-Oty" id="N9Z-3v-YSB"/>
             </connections>
             <point key="canvasLocation" x="132" y="45"/>
         </tableViewCell>

@@ -63,16 +63,12 @@ class HomeController: BaseUIViewController {
                 self.tableView.reloadData()
                 self.loading.dismiss(animated: true)
             }.store(in: &subscribers)
-        self.viewModel.suppliers
-            .receive(on: DispatchQueue.main)
-            .sink { [unowned self] _ in
-                self.tableView.reloadData()
-                self.loading.dismiss(animated: true)
-            }.store(in: &subscribers)
     }
     
     private func goToCategoryController(index: Int) {
         let nextVC = CategoryController()
+        nextVC.hidesBottomBarWhenPushed = true
+        nextVC.configureHome(category: viewModel.categories[index])
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
@@ -80,6 +76,7 @@ class HomeController: BaseUIViewController {
     
     private func goToMoreCategoryController() {
         let nextVC = SeeMoreCategoryController()
+        nextVC.hidesBottomBarWhenPushed = true
         if let navigationController = self.navigationController {
             navigationController.pushViewController(nextVC, animated: true)
         }
@@ -135,7 +132,6 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withCell: HotProductCell.self, for: indexPath)
             cell.configure(with: self.viewModel.productTrends.value,
-                           suppliers: self.viewModel.suppliers.value,
                            title: Constant.productTrend)
             if let publisher = cell.productPublisher {
                 publisher

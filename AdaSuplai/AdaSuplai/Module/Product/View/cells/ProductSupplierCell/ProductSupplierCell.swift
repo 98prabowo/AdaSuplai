@@ -33,8 +33,8 @@ class ProductSupplierCell: UITableViewCell {
         self.containerView.addShadow()
     }
     
-    func configure(with product: Product) {
-        self.supplierName.text = product.supplier.supplierName
+    func configure(with supplier: Supplier) {
+        self.supplierName.text = supplier.supplierName
     }
     
     private func setupImage(url: URL) {

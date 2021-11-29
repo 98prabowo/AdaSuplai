@@ -128,6 +128,7 @@
                 <outlet property="deliveryButton" destination="b6Q-mw-5YG" id="fpq-8t-Lnu"/>
                 <outlet property="pickDeliveryTitle" destination="EsM-Fy-Syt" id="Dtv-ys-RyZ"/>
                 <outlet property="subTotalDeliveryPrice" destination="TAM-9s-wFm" id="ZSH-n5-XAb"/>
+                <outlet property="subTotalDeliveryStack" destination="RAU-kt-TzO" id="xTG-tn-1wV"/>
                 <outlet property="subTotalDeliveryText" destination="lUA-86-cCA" id="IqR-dF-rJD"/>
                 <outlet property="subTotalProductPrice" destination="gWi-S0-Yez" id="pCF-Iw-Scl"/>
                 <outlet property="subTotalProductText" destination="bWr-3k-gt4" id="F2w-4Y-tlH"/>

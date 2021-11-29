@@ -22,7 +22,7 @@ class TransactionDetailController: BaseUIViewController {
     @IBOutlet private var priceBar: UIView!
     
     private let viewModel: TransactionViewModel
-    private var subscriber = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
     
     init(source: TransactionSource) {
         self.viewModel = TransactionViewModel(from: source)
@@ -75,8 +75,9 @@ class TransactionDetailController: BaseUIViewController {
     }
     
     private func setupButton() {
+        self.paymentButton.isEnabled = false
         self.paymentButton.tintColor = .white
-        self.paymentButton.backgroundColor = .primaryGreen
+        self.paymentButton.backgroundColor = .gray
         self.paymentButton.layer.cornerRadius = 10
         self.paymentButton.setTitle(Constant.paymentButtonTitle, for: .normal)
     }
@@ -88,8 +89,15 @@ class TransactionDetailController: BaseUIViewController {
                 self.viewModel.getSupplier()
                 let totalPrice = self.viewModel.getTotalProductPrice()
                 self.setTotalPrice(productPrice: totalPrice)
+                self.viewModel.addProductToTransaction()
                 self.tableView.reloadData()
-            }.store(in: &subscriber)
+            }.store(in: &subscribers)
+        
+        self.viewModel.shipmentPrices
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.tableView.reloadData()
+            }.store(in: &subscribers)
     }
     
     private func setTotalPrice(productPrice: Int? = nil, deliveryPrice: Int? = nil) {
@@ -110,7 +118,8 @@ class TransactionDetailController: BaseUIViewController {
     
     @IBAction private func paymentButtonTapped(_ sender: UIButton) {
         guard let navigation = self.navigationController else { return }
-        let nextVC = PaymentController()
+        let transaction = self.viewModel.transaction.value
+        let nextVC = PaymentController(with: transaction)
         navigation.pushViewController(nextVC, animated: true)
     }
 }
@@ -138,12 +147,6 @@ extension TransactionDetailController: UITableViewDelegate, UITableViewDataSourc
             return self.getBodyCell(for: indexPath)
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section > 0 && indexPath.row == 2 {
-            
-        }
-    }
 }
 
 // MARK: Setup Table Cell
@@ -163,6 +166,10 @@ extension TransactionDetailController {
             let cell = tableView.dequeueReusableCell(withCell: ShopTransactionDetailCell.self, for: indexPath)
             cell.configure(with: supplier)
             cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+            if let suppliers = self.viewModel.transaction.value.suppliers,
+               let selectedShipment = suppliers[indexPath.section - 1].shipmentPrice {
+                cell.configureETA(with: selectedShipment)
+            }
             return cell
         case products.count:
             let cell = tableView.dequeueReusableCell(withCell: ProductTransactionCell.self, for: indexPath)
@@ -173,7 +180,13 @@ extension TransactionDetailController {
         case products.count + 1:
             let cell = tableView.dequeueReusableCell(withCell: ShopTransactionPriceCell.self, for: indexPath)
             let subtotalPrice = self.viewModel.getTotalProductPricePerSection(with: supplier.id)
-            cell.configure(with: subtotalPrice)
+            let shipmentPrices = self.viewModel.shipmentPrices.value
+            if let suppliers = self.viewModel.transaction.value.suppliers,
+               let selectedShipment = suppliers[indexPath.section - 1].shipmentPrice {
+                cell.configure(with: subtotalPrice, index: indexPath, selected: selectedShipment, and: shipmentPrices)
+            } else {
+                cell.configure(with: subtotalPrice, index: indexPath, and: shipmentPrices)
+            }
             cell.delegate = self
             return cell
         default:
@@ -191,8 +204,20 @@ extension TransactionDetailController: TransactionCellDelegate {
         print("PILIH ALAMAT")
     }
     
-    func setDeliveryService() {
-        let nextVC = DeliveryServiceController()
+    func setDeliveryService(shipmentPrices: [ShipmentPrice], index: IndexPath) {
+        let nextVC = DeliveryServiceController(with: self.viewModel.shipmentPrices.value)
+        nextVC.deliveryPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] shipmentPrice in
+                guard let self = self else { return }
+                self.viewModel.transaction.value.suppliers?[index.section - 1].shipmentPrice = shipmentPrice
+                let deliveryPrice = self.viewModel.getTotalDeliveryPrice()
+                self.setTotalPrice(deliveryPrice: deliveryPrice)
+                self.paymentButton.isEnabled = true
+                self.paymentButton.backgroundColor = .primaryGreen
+                self.tableView.reloadData()
+            }.store(in: &subscribers)
+        
         if let sheet = nextVC.presentationController as? UISheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
