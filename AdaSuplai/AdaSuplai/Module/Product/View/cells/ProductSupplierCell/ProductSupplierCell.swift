@@ -35,6 +35,12 @@ class ProductSupplierCell: UITableViewCell {
     
     func configure(with supplier: Supplier) {
         self.supplierName.text = supplier.supplierName
+        self.rating.text = "4.5"
+        self.timeToProcess.text = "6 Jam pesanan diproses"
+        if let profile = supplier.profilePicture,
+           let imageURL = URL(string: RemoteURL.image.rawValue + profile) {
+            self.setupImage(url: imageURL)
+        }
     }
     
     private func setupImage(url: URL) {

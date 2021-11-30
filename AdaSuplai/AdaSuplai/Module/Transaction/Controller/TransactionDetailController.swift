@@ -175,7 +175,10 @@ extension TransactionDetailController {
             let cell = tableView.dequeueReusableCell(withCell: ProductTransactionCell.self, for: indexPath)
             let product = products[indexPath.row - 1]
             cell.configure(with: product)
-            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.size.width, bottom: 0, right: 0)
+            cell.separatorInset = UIEdgeInsets(top: 0,
+                                               left: tableView.bounds.size.width,
+                                               bottom: 0,
+                                               right: 0)
             return cell
         case products.count + 1:
             let cell = tableView.dequeueReusableCell(withCell: ShopTransactionPriceCell.self, for: indexPath)

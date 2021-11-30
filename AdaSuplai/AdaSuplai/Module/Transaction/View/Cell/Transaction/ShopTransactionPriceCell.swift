@@ -65,7 +65,7 @@ class ShopTransactionPriceCell: UITableViewCell {
         self.deliveryButton.addGestureRecognizer(tapGesture)
         self.deliveryButton.isUserInteractionEnabled = false
         self.deliveryButton.backgroundColor = .white
-        self.deliveryButton.addBorderAndCornerRadius(withBorderWidth: 0.5,
+        self.deliveryButton.addBorderAndCornerRadius(withBorderWidth: 1,
                                                      borderColor: .primaryGreen,
                                                      cornerRadius: 10)
     }

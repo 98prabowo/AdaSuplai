@@ -159,7 +159,7 @@ class ProductController: BaseUIViewController {
                         guard let navigation = self?.navigationController,
                               let tabBarController = self?.tabBarController else { return }
                         navigation.popViewController(animated: false)
-                        tabBarController.selectedIndex = 1
+                        tabBarController.selectedIndex = 2
                     case .addedToCart:
                         break
                     }

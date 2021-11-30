@@ -54,7 +54,9 @@ class TransactionViewModel: BaseViewModel {
                     let apiKey = ["X-API-Key": RemoteURL.postShipperAPIKey.rawValue]
                     let shipmentRateData = try await self.service.postData(url: .postShipper, parameter: data, header: apiKey)
                     let shipmentRate = try JSONDecoder().decode(ShipmentRate.self, from: shipmentRateData)
-                    self.shipmentPrices.value = shipmentRate.data.pricings
+                    self.shipmentPrices.value = shipmentRate.data.pricings.sorted(by: { prev, after in
+                        prev.logistic.name < after.logistic.name
+                    })
                 }
             } catch {
                 print("Post ShipmentRate error in TransactionViewModel: \(error.localizedDescription)")
