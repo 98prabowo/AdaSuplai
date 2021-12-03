@@ -33,7 +33,7 @@ class TransactionLoadingViewModel: BaseViewModel {
     }
     
     private func createTransactionTemp() -> TransactionTemp? {
-        if let userID = UserDefaults().string(forKey: "userId"),
+        if let userID = UserDefaults().string(forKey: .userID),
            let payment = transaction.payment,
            let supplier = self.transaction.suppliers?.first,
            let shipperData = supplier.shipmentPrice,

@@ -20,6 +20,8 @@ enum ProductDetailCellIndex {
 }
 
 class ProductController: BaseUIViewController {
+    private typealias Dismiss = () -> ()
+    
     private enum Constant {
         static let searchPlaceholder = "Cari"
     }
@@ -32,6 +34,7 @@ class ProductController: BaseUIViewController {
     private var subscribers = Set<AnyCancellable>()
     private var attribute: ProductAttribute = .description
     private let viewModel: ProductViewModel
+    private var shouldDismiss: Dismiss?
     
     init(product: Product) {
         self.viewModel = ProductViewModel(product: product)
@@ -61,6 +64,7 @@ class ProductController: BaseUIViewController {
         super.viewWillDisappear(animated)
         guard let tabBarController = self.tabBarController else { return }
         tabBarController.tabBar.isHidden = false
+        if let dismiss = self.shouldDismiss { dismiss() }
     }
     
     private func setupBackground() {
@@ -119,7 +123,10 @@ class ProductController: BaseUIViewController {
                 self.tableView.reloadData()
             }.store(in: &subscribers)
     }
-    
+}
+
+// MARK: Navigation
+extension ProductController {
     @objc private func wishlistButtonTapped(_ sender: UIBarButtonItem) {
         print("Go To Wishlist")
     }
@@ -132,6 +139,14 @@ class ProductController: BaseUIViewController {
     }
     
     @IBAction private func buyButtonTapped(_ sender: UIButton) {
+        if UserDefaults().string(forKey: .userID) == nil {
+            self.switchTab(to: TabBarOrder.profile)
+        } else {
+            self.goToTransaction()
+        }
+    }
+    
+    private func goToTransaction() {
         // TODO: Add products quantity data
         if let navigation = self.navigationController,
            let cart = self.viewModel.getCartData(product: self.viewModel.product, quantity: 5) {
@@ -141,32 +156,47 @@ class ProductController: BaseUIViewController {
     }
     
     @IBAction private func addToCartButtonTapped(_ sender: UIButton) {
-        let nextVC = AddToCartBottomSheetController(product: self.viewModel.product)
-        
-        if let sheet = nextVC.presentationController as? UISheetPresentationController {
+        let nextVC = self.getBottomSheetVC()
+        self.present(nextVC, animated: true)
+    }
+    
+    private func getBottomSheetVC () -> UIViewController {
+        let viewController = AddToCartBottomSheetController(product: self.viewModel.product)
+
+        if let sheet = viewController.presentationController as? UISheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
             sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-            nextVC.publisher
+            viewController.publisher
                 .sink { [weak self] value in
+                    guard let self = self else { return }
                     switch value {
                     case .keyboaardShow:
                         sheet.selectedDetentIdentifier = .large
                     case .goToCart:
-                        guard let navigation = self?.navigationController,
-                              let tabBarController = self?.tabBarController else { return }
-                        navigation.popViewController(animated: false)
-                        tabBarController.selectedIndex = 2
-                    case .addedToCart:
-                        break
+                        self.switchTab(to: TabBarOrder.cart)
+                    case .goToLogin:
+                        self.switchTab(to: TabBarOrder.profile)
                     }
                 }.store(in: &subscribers)
         }
         
-        self.present(nextVC, animated: true)
+        self.shouldDismiss = {
+            viewController.dismiss(animated: true)
+        }
+        
+        return viewController
+    }
+    
+    private func switchTab(to index: Int) {
+        guard let navigation = self.navigationController,
+              let tabBarController = self.tabBarController else { return }
+        navigation.popViewController(animated: false)
+        tabBarController.tabBar.isHidden = false
+        tabBarController.selectedIndex = index
     }
     
     private func goToReviewPage() {
@@ -178,6 +208,7 @@ class ProductController: BaseUIViewController {
     }
 }
 
+// MARK: Setup Table
 extension ProductController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 9

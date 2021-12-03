@@ -22,14 +22,14 @@ class TabBarController: UITabBarController {
         self.tabBar.barTintColor = .systemBackground
         self.tabBar.backgroundColor = .systemBackground
         if let tabItems = self.tabBar.items {
-            tabItems[0].title = "Home"
-            tabItems[0].image = UIImage(systemName: "takeoutbag.and.cup.and.straw.fill")
-            tabItems[1].title = "Favorite"
-            tabItems[1].image = UIImage(systemName: "heart.fill")
-            tabItems[2].title = "Keranjang"
-            tabItems[2].image = UIImage(systemName: "cart.fill")
-            tabItems[3].title = "Profile"
-            tabItems[3].image = UIImage(systemName: "person.fill")
+            tabItems[TabBarOrder.home].title = "Home"
+            tabItems[TabBarOrder.home].image = UIImage(systemName: "takeoutbag.and.cup.and.straw.fill")
+            tabItems[TabBarOrder.wishlist].title = "Favorite"
+            tabItems[TabBarOrder.wishlist].image = UIImage(systemName: "heart.fill")
+            tabItems[TabBarOrder.cart].title = "Keranjang"
+            tabItems[TabBarOrder.cart].image = UIImage(systemName: "cart.fill")
+            tabItems[TabBarOrder.profile].title = "Profile"
+            tabItems[TabBarOrder.profile].image = UIImage(systemName: "person.fill")
         }
     }
 }

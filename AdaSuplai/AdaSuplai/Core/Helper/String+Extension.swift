@@ -43,3 +43,7 @@ extension String {
         return result
     }
 }
+
+extension String {
+    static let userID = "userId"
+}

@@ -73,9 +73,9 @@ class AddToCartBottomSheetController: BaseUIViewController {
     }
     
     private func setupImage(url: URL) {
-        let processor = DownsamplingImageProcessor(size: productImage.bounds.size)
-        productImage.kf.indicatorType = .activity
-        productImage.kf.setImage(
+        let processor = DownsamplingImageProcessor(size: self.productImage.bounds.size)
+        self.productImage.kf.indicatorType = .activity
+        self.productImage.kf.setImage(
             with: url,
             options: [
                 .processor(processor),
@@ -86,27 +86,45 @@ class AddToCartBottomSheetController: BaseUIViewController {
     }
     
     @IBAction private func addToCartTapped(_ sender: UIButton) {
-        if isAdded {
-            self.dismiss(animated: false) { [unowned self] in
-                self.publisher.send(.goToCart)
-            }
+        if UserDefaults().string(forKey: .userID) == nil {
+            self.goToLoginPage()
         } else {
-            let product = self.viewModel.product
-            let quantity = Int(self.productQuantity.value)
-            self.viewModel.addToCartData(product: product,
-                                         quantity: quantity)
-            
-            self.successLabel.isHidden = false
-            self.productQuantity.isHidden = true
-            self.isAdded = true
-            self.addToCartButton.setTitle(Constant.showCartButton,
-                                          for: .normal)
+            if isAdded {
+                self.goToCartPage()
+            } else {
+                self.addData()
+            }
         }
+    }
+    
+    private func goToLoginPage() {
+        self.dismiss(animated: false) { [unowned self] in
+            self.publisher.send(.goToLogin)
+        }
+    }
+    
+    private func goToCartPage() {
+        self.dismiss(animated: false) { [unowned self] in
+            self.publisher.send(.goToCart)
+        }
+    }
+    
+    private func addData() {
+        let product = self.viewModel.product
+        let quantity = Int(self.productQuantity.value)
+        self.viewModel.addToCartData(product: product,
+                                     quantity: quantity)
+        
+        self.successLabel.isHidden = false
+        self.productQuantity.isHidden = true
+        self.isAdded = true
+        self.addToCartButton.setTitle(Constant.showCartButton,
+                                      for: .normal)
     }
 }
 
 enum AddToChartBottomSheetAction {
     case keyboaardShow
-    case addedToCart
+    case goToLogin
     case goToCart
 }
