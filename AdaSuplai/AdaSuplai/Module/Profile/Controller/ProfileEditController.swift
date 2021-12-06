@@ -35,9 +35,6 @@ class ProfileEditController: BaseUIViewController {
                 self?.configure()
             }
         }
-        
-        // Observe photo library changes
-        PHPhotoLibrary.shared().register(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +88,9 @@ class ProfileEditController: BaseUIViewController {
     }
     
     @IBAction func editProfileImage(_ sender: UIButton) {
+        // Observe photo library changes
+        PHPhotoLibrary.shared().register(self)
+        
         // Request permission to access photo library
         PHPhotoLibrary.requestAuthorization(for: .readWrite) { [unowned self] (status) in
             DispatchQueue.main.async { [unowned self] in
@@ -136,7 +136,7 @@ class ProfileEditController: BaseUIViewController {
     }
     
     private func showAlert(error: String) {
-        let alert = UIAlertController(title: "Error", message: self.profileVM.error, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
@@ -233,6 +233,8 @@ extension ProfileEditController: PHPhotoLibraryChangeObserver, PHPickerViewContr
                     }
                 }
             }
+        } else {
+            self.showAlert(error: "Aplikasi tidak memiliki izin atas foto yang kamu pilih")
         }
     }
 }
@@ -246,7 +248,7 @@ private extension ProfileEditController {
             openLibrary()
 
         case .limited:
-            openLibrary()
+            openLimitedLibrary()
 
         case .restricted:
             goToSetting()
@@ -270,16 +272,21 @@ private extension ProfileEditController {
         present(picker, animated: true)
     }
     
+    func openLimitedLibrary() {
+        let photoLibrary = PHPhotoLibrary.shared()
+        let configuration = PHPickerConfiguration(photoLibrary: photoLibrary)
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
     func goToSetting() {
-        print("Limited Access")
-    }
-    
-    func showRestrictedAccessUI() {
-        print("Restricted Access")
-    }
-    
-    func showAccessDeniedUI() {
-        print("Denied Access")
+        let alert = UIAlertController(title: "Tidak memiliki izin untuk membuka galeri", message: "Ubah izin di pengaturan?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ke Pengaturan", style: .default, handler: { _ in
+            self.gotoAppPrivacySettings()
+        }))
+        alert.addAction(UIAlertAction(title: "Batal", style: .destructive, handler: nil))
+        self.present(alert, animated: true)
     }
     
     func gotoAppPrivacySettings() {
